@@ -411,9 +411,19 @@ NO MORE TABLES!! ;)
 }
 
 
-
-
-
+/*
+search
+*/
+#mainSearch{
+position:relative;
+top:5px;
+width:420px;
+ float: right;
+}
+#searGo{
+position:relative;
+top:5px;
+}
 
 
 
