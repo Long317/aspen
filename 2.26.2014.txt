@@ -1,0 +1,23 @@
+Yuejun Fang
+
+下面是我改动index.html的地方：
+1. 加了一个index_user.html
+   模拟user register进去的画面.navigation bar多了一个Hi，XXX。register和login会消失。 我用的是style display 把它们藏起来。 
+2. login和register现在都是有webpage可以点进去，那你们看下这两个page有什么问题。（个人觉得，它应该多一个回主页的button。但我没有做，一时不知道放哪，二是不知道放什么样的button才和谐）
+3. login 页的 login button 我暂时做成了一个link。 演示的时候会跳转到index_user.html。 权当模拟，后期和database链接会做修改。比如说用户不存在，会报错之类
+4. navigation bar 改成了movie times+ticket 
+5. 最下面改了.
+
+things need to do later:
+1. 用户登录，首先check database 存在用户，跳转；不存在，报错 
+（整个flow是：从jsp这边send 一个 form 给java。java在db里找，找不到就转到一个报错的login.jsp ，找得到就跳转页面到index.html(我唯一不知道的就是怎么从java这边把display：none改成display：block这样才能看到my account 这部分我用javascript做过，但从java这边传递消息来怎么开关display 我不太明白/或者我们可以真的就做一个叫做index_user.html 这样判断语句写在java里直接就可以用mapping到index_user里)。
+2. register/login page 返回 home 按钮
+
+things i learn：
+bootstrap sr-only 是在网页上占一个位置的
+
+
+note：
+我建议等改成jsp file之后 把上下两部分拿出来做成 top.jsp botton.jsp 以后只要引用就好了
+
+请同志们检验

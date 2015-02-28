@@ -1,0 +1,3 @@
+I have done following modifications:
+1. remove login and sign up page to the model in the index.html
+2. delete login and sign up page
