@@ -3,7 +3,7 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
 <head>
-    <title>Unify | Welcome...</title>
+    <title>Manager| Welcome</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -80,18 +80,18 @@
                 <img class="img-responsive profile-img margin-bottom-20" src="assets/img/team/5.jpg" alt="">
                 <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
                     <li class="list-group-item active">
-                        <a href="profile.html"><i class="fa fa-bar-chart-o"></i> Overall</a>
+                        <a href="manager.jsp"><i class="fa fa-bar-chart-o"></i> Overall</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="profile_settings.html"><i class="fa fa-user"></i> My Profile</a>
+                        <a href="manager_profile.jsp"><i class="fa fa-user"></i> My Profile</a>
                     </li>
                     <!-- My Tasks UI -->
                     <li class="list-group-item list-toggle">                   
                         <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-tasks"><i class="fa fa-tasks"></i>My Tasks</a>
                         <ul id="collapse-tasks" class="collapse">
-                            <li><a href="feature_btn_general.html"><i class="fa fa-flask"></i> Current Tasks</a></li>
+                            <li><a href="manager_current_task.jsp"><i class="fa fa-flask"></i> Current Tasks</a></li>
                             <li>      
-                                <a href="feature_btn_brands.html"><i class="fa fa-html5"></i> Past Tasks</a>
+                                <a href="manager_past_task.jsp"><i class="fa fa-html5"></i> Past Tasks</a>
                             </li>
                         </ul>
                     </li>
@@ -101,18 +101,18 @@
                     <li class="list-group-item list-toggle">                   
                         <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-contacts"><i class="fa fa-users"></i>My Contacts</a>
                         <ul id="collapse-contacts" class="collapse">
-                            <li><a href="feature_btn_general.html"><i class="fa fa-flask"></i>Administrator</a></li>
-                            <li><a href="feature_btn_brands.html"><i class="fa fa-html5"></i>Advertisement Companies</a></li>
-                            <li><a href="feature_btn_effects.html"><i class="fa fa-bolt"></i> Movie Chains</a></li>
+                            <li><a href="manager_contact_admin.jsp"><i class="fa fa-flask"></i>Administrator</a></li>
+                            <li><a href="manager_contact_ad.jsp"><i class="fa fa-html5"></i>Advertisement Companies</a></li>
+                            <li><a href="manager_contact_theater.jsp"><i class="fa fa-bolt"></i> Theater Chains</a></li>
                         </ul>
                     </li>
                     <!-- My Contacts UI -->
 
                     <li class="list-group-item">
-                        <a href="profile_comments.html"><i class="fa fa-calendar"></i>My Schedule</a>
+                        <a href="https://www.google.com/calendar"><i class="fa fa-calendar"></i>My Schedule</a>
                     </li>                                                             
                      <li class="list-group-item">
-                        <a href="profile_settings.html"><i class="fa fa-book"></i>View Reports</a>
+                        <a href="manager_report.jsp"><i class="fa fa-book"></i>View Reports</a>
                     </li> 
                 </ul>   
 
