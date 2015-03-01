@@ -98,7 +98,7 @@
                     <!-- My Tasks UI -->
 
                     <!-- My Contacts UI -->
-                    <li class="list-group-item list-toggle task">                   
+                    <li class="list-group-item list-toggle">                   
                         <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-contacts"><i class="fa fa-users"></i>My Contacts</a>
                         <ul id="collapse-contacts" class="collapse">
                             <li><a href="manager_contact_admin.jsp"><i class="fa fa-flask"></i>Administrator</a></li>
