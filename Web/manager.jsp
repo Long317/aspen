@@ -284,24 +284,13 @@
 <!-- JS Implementing Plugins -->
 <script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
 <script type="text/javascript" src="assets/plugins/counter/waypoints.min.js"></script>
-<script type="text/javascript" src="assets/plugins/counter/jquery.counterup.min.js"></script> 
-<!-- Datepicker Form -->
-<script src="assets/plugins/sky-forms/version-2.0.1/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="assets/plugins/counter/jquery.counterup.min.js"></script>
 <!-- Scrollbar -->
 <script src="assets/plugins/scrollbar/src/jquery.mousewheel.js"></script>
 <script src="assets/plugins/scrollbar/src/perfect-scrollbar.js"></script>
 <!-- JS Customization -->
 <script type="text/javascript" src="assets/js/custom.js"></script>
 <!-- JS Page Level -->           
-<script type="text/javascript" src="assets/js/app.js"></script>
-<script type="text/javascript" src="assets/js/plugins/datepicker.js"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        App.init();
-        App.initCounter();
-        Datepicker.initDatepicker();      
-    });
-</script>
 <script>
     jQuery(document).ready(function ($) {
         "use strict";
