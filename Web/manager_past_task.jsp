@@ -79,14 +79,14 @@
             <div class="col-md-3">
                 <img class="img-responsive profile-img margin-bottom-20" src="assets/img/team/5.jpg" alt="">
                 <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
-                    <li class="list-group-item">
+                    <li class="list-group-item active">
                         <a href="manager.jsp"><i class="fa fa-bar-chart-o"></i> Overall</a>
                     </li>
                     <li class="list-group-item">
                         <a href="manager_profile.jsp"><i class="fa fa-user"></i> My Profile</a>
                     </li>
                     <!-- My Tasks UI -->
-                    <li class="list-group-item list-toggle active">                   
+                    <li class="list-group-item list-toggle">                   
                         <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-tasks"><i class="fa fa-tasks"></i>My Tasks</a>
                         <ul id="collapse-tasks" class="collapse">
                             <li><a href="manager_current_task.jsp"><i class="fa fa-flask"></i> Current Tasks</a></li>

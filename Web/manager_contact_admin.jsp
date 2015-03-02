@@ -79,7 +79,7 @@
             <div class="col-md-3">
                 <img class="img-responsive profile-img margin-bottom-20" src="assets/img/team/5.jpg" alt="">
                 <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
-                    <li class="list-group-item">
+                    <li class="list-group-item active">
                         <a href="manager.jsp"><i class="fa fa-bar-chart-o"></i> Overall</a>
                     </li>
                     <li class="list-group-item">
@@ -98,7 +98,7 @@
                     <!-- My Tasks UI -->
 
                     <!-- My Contacts UI -->
-                    <li class="list-group-item list-toggle active">                   
+                    <li class="list-group-item list-toggle">                   
                         <a data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-contacts"><i class="fa fa-users"></i>My Contacts</a>
                         <ul id="collapse-contacts" class="collapse">
                             <li><a href="manager_contact_admin.jsp"><i class="fa fa-flask"></i>Administrator</a></li>

@@ -79,7 +79,7 @@
             <div class="col-md-3">
                 <img class="img-responsive profile-img margin-bottom-20" src="assets/img/team/5.jpg" alt="">
                 <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
-                    <li class="list-group-item">
+                    <li class="list-group-item active">
                         <a href="manager.jsp"><i class="fa fa-bar-chart-o"></i> Overall</a>
                     </li>
                     <li class="list-group-item">
@@ -111,7 +111,7 @@
                     <li class="list-group-item">
                         <a href="https://www.google.com/calendar"><i class="fa fa-calendar"></i>My Schedule</a>
                     </li>                                                             
-                     <li class="list-group-item active">
+                     <li class="list-group-item">
                         <a href="manager_report.jsp"><i class="fa fa-book"></i>View Reports</a>
                     </li> 
                 </ul>   
