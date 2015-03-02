@@ -40,28 +40,8 @@
 	<!-- Prettify -->
 	<link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
-	<style>
-	/* Make sure images don't get too big */
-img {
-  max-width: 100%;
-}
 
-/* no-gutters Class Rules */
-.row.no-gutters {
-   margin-right: 0;
-   margin-left: 0;
-}
-.row.no-gutters > [class^="col-"],
-.row.no-gutters > [class*=" col-"] {
-   padding-right: 0;
-   padding-left: 0;
-}
-@media screen and (min-width: 768px) {
-	
-	#login .modal-dialog  {width:400px;}
-	#signUp .modal-dialog  {width:400px;}
-}
-	</style>
+
 </head>	
 
 <body>

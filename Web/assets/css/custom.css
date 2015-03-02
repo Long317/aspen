@@ -414,6 +414,26 @@ NO MORE TABLES!! ;)
 /*
 search
 */
+	/* Make sure images don't get too big */
+img {
+  max-width: 100%;
+}
+
+/* no-gutters Class Rules */
+.row.no-gutters {
+   margin-right: 0;
+   margin-left: 0;
+}
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+   padding-right: 0;
+   padding-left: 0;
+}
+@media screen and (min-width: 768px) {
+	
+	#login .modal-dialog  {width:400px;}
+	#signUp .modal-dialog  {width:400px;}
+}
 #mainSearch{
 position:relative;
 top:5px;
@@ -424,8 +444,67 @@ width:420px;
 position:relative;
 top:5px;
 }
+div.movie-detail-container{
+background-color:#2B2B2B;
+  color:white;
+  height:245px;
+  width:140px;
+  text-align: center;
+}
 
+#movieImg{
+	position:relative;
+	left:30px;
+}
+ul
+{
+list-style-type: none;
+}
 
+#theaterSearch{
+position:relative;
+left:30px;
+top:30px;
+width:250px;
+ float: left;
+}
+#theaterSearchGo{
+	float: right;
+	position:relative;
+left:160px;
+bottom:4px;
+}
+#ShowTimeStatus{
+width:250px;
+	position:relative;
+left:30px;
+  text-align: center;
+}
 
-
-
+#Synopsis-container{
+	background-image: url("..\\img\\bg\\5.jpg");
+	height:200px;
+	text-align: center;
+	color:white;
+	font-size: 25px;
+}
+#Synopsis-content{
+	font-size: 14px;
+	width:450px;
+    font-style: italic;
+  	 position: relative;
+  	 margin: 10px 0 0 -200px;
+  	 left: 50%;
+  	 top: 10%;
+	
+}
+#Synopsis-title{
+	position: relative;
+	top:15px;
+	
+}
+#Synopsis-link{
+	font-size: 14px;
+	 position: relative;
+	 top: 15px;
+}
