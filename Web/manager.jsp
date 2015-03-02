@@ -3,7 +3,7 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
 <head>
-    <title>Manager| Welcome</title>
+    <title>Manager| Contact Ad</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
