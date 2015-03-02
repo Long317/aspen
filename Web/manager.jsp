@@ -3,7 +3,7 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
 <head>
-    <title>Manager| Welcome</title>
+    <title>Manager| Contact Ad</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -293,13 +293,7 @@
 <!-- JS Customization -->
 <script type="text/javascript" src="assets/js/custom.js"></script>
 <!-- JS Page Level -->
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        App.init();
-        App.initCounter();
-        Datepicker.initDatepicker();      
-    });
-</script>
+
 <script>
     jQuery(document).ready(function ($) {
         "use strict";
