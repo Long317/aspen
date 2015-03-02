@@ -292,9 +292,7 @@
 <script src="assets/plugins/scrollbar/src/perfect-scrollbar.js"></script>
 <!-- JS Customization -->
 <script type="text/javascript" src="assets/js/custom.js"></script>
-<!-- JS Page Level -->           
-<script type="text/javascript" src="assets/js/app.js"></script>
-<script type="text/javascript" src="assets/js/plugins/datepicker.js"></script>
+<!-- JS Page Level -->
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
