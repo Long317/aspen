@@ -295,13 +295,7 @@
 <!-- JS Page Level -->           
 <script type="text/javascript" src="assets/js/app.js"></script>
 <script type="text/javascript" src="assets/js/plugins/datepicker.js"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        App.init();
-        App.initCounter();
-        Datepicker.initDatepicker();      
-    });
-</script>
+
 <script>
     jQuery(document).ready(function ($) {
         "use strict";
