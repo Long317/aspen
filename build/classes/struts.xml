@@ -7,18 +7,16 @@
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="false" />
 
-	<package name="roseindia" extends="struts-default">
+	<package name="login" extends="struts-default">
 
-		<action name="register" class="net.roseindia.action.RegistrationAction">
-			<result name="success">/jsp/registration.jsp</result>
+		<action name="login" class="com.hoticket.action.LoginAction">
+			<result name="user">/index.jsp</result>
+			<result name="admin">/admin.jsp</result>
+			<result name="manager">/manager.jsp</result>
+			<result name="error">/index.jsp</result>
 		</action>
 
 		<!-- Redirect to another namespace -->
-
-		<action name="doRegistation" class="net.roseindia.action.RegistrationAction">
-			<result name="success">/jsp/home-page.jsp</result>
-			<result name="input">/jsp/registration.jsp</result>
-		</action>
 
 	</package>
 

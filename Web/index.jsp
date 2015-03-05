@@ -2,6 +2,7 @@
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+   <%@ taglib prefix="s" uri="/struts-tags" %>
 <head>
 	<title>Hoticket | Welcome...</title>
 
@@ -383,13 +384,14 @@ Jamie Dornan</i></h2>
             </ul>
             <p>Don't Have Account? Click <a class="color-green" href="page_registration.html">Sign Up</a> to registration.</p>            
         </div>
+        <s:form action="login">
         <div class="input-group margin-bottom-20">
             <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-            <input type="text" class="form-control" placeholder="Email">
+            <input type="text" class="form-control" name ="email" placeholder="Email">
         </div>
         <div class="input-group margin-bottom-20">
             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-            <input type="text" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" name="password" placeholder="Password">
         </div>
         <hr>
 
@@ -405,6 +407,7 @@ Jamie Dornan</i></h2>
                  <button id="login_process" class="btn-u btn-block">Log In</button>   
             </div>
         </div>
+    </s:form>
     </div>
     <!--End login Block-->
 </div>
@@ -520,18 +523,7 @@ Jamie Dornan</i></h2>
     var modal = $(this);
 
 });
-	  $(document).ready(function() {
-    $('#login_process').click(function() {
-        // var username = $('#username').val();
-        // var pass = $('#pass').val();        
 
-        // if (testUser(username) === true && testPass(pass) === true) {            
-            window.location.replace("index_user.html");
-        // } else {
-        //     alert('warning message');
-        // }
-    });
-});
 </script>
 <!--[if lt IE 9]>
 	<script src="assets/plugins/respond.js"></script>

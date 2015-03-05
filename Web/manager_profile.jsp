@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="assets/css/pages/profile.css">
 
     <!-- CSS Theme -->    
-    <link rel="stylesheet" href="assets/css/theme-colors/default.css">
+    <link rel="stylesheet" href="assets/css/theme-colors/dark-red.css">
 
     <!-- CSS Customization -->
     <link rel="stylesheet" href="assets/css/custom.css">
