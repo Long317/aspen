@@ -26,7 +26,6 @@ public class LoginService {
 					user.setLast_name(users.get(i).getLast_name());
 					user.setPassword(users.get(i).getPassword());
 					user.setUser_name(users.get(i).getUser_name());
-					System.out.println(user.getFirst_name()+","+user.getEmail());
 					return true;
 				}
 				return false;
