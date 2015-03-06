@@ -508,3 +508,6 @@ left:30px;
 	 position: relative;
 	 top: 15px;
 }
+.errorMessage span{
+	color:red;
+		}

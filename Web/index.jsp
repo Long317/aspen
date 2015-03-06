@@ -41,6 +41,8 @@
 
 	<!-- Prettify -->
 	<link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+
 </head>	
 
 <body>
@@ -526,13 +528,13 @@ Jamie Dornan</i></h2>
 
 	//switch to the signup modal
 	$( "#signin-pop" ).click(function() {
+	$('#signUp').modal('hide');
  	$('#login').modal('show');
- 	$('#signUp').modal('hide');
 	});
 	//switch to the login modal
 	$( "#signup-pop" ).click(function() {
-  	$('#signUp').modal('show');
   	$('#login').modal('hide');
+  	$('#signUp').modal('show');
 	});
 </script>
 	<s:if test="#session.loginError== 1"> 

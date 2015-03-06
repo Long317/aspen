@@ -77,17 +77,15 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 		Map session = (Map) ActionContext.getContext().get("session");
 			//validate for email field
 	        if (StringUtils.isEmpty(user.getEmail())) {  
-	            addFieldError("email", "email is required"); 
+	            addFieldError("email", "email can't be empty"); 
 	            session.put("loginError", 1);
 	        }else if (user.getEmail().indexOf("@")==-1||user.getEmail().indexOf(".com")==-1){
 	        	 addFieldError("email", "email is invalid"); 
 	        	 session.put("loginError", 1);
 	        }
 	        //validate for password field
-	        if (StringUtils.isEmpty(user.getPassword())) {  
-	            addFieldError("password", "password can't be empty");  
-	            session.put("loginError", 1);
-	        }else if (user.getPassword().length()<6||user.getPassword().length()>20){
+	        if (StringUtils.isEmpty(user.getPassword())|| 
+	        		(user.getPassword().length()<6||user.getPassword().length()>20)){
 	        	addFieldError("password", "password must be between 6-20");  
 	            session.put("loginError", 1);
 	        }  
