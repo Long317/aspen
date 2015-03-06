@@ -37,7 +37,6 @@
 <body>
 <div class="wrapper">
   <%@ include file="manager_header.jsp" %>  
-
     <!--=== Profile ===-->
     <div class="profile container content">
     	<div class="row">
