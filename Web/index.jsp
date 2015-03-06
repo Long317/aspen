@@ -380,7 +380,7 @@ Jamie Dornan</i></h2>
                 <li><a class="rounded-x social_googleplus" data-original-title="Google Plus" href="#"></a></li>
                 <li><a class="rounded-x social_linkedin" data-original-title="Linkedin" href="#"></a></li>
             </ul>
-            <p>Don't Have Account? Click <a class="color-green" href="page_registration.html">Sign Up</a> to registration.</p>            
+            <p>Don't Have Account? Click <a class="color-green" id="signup-pop">Sign Up</a> to registration.</p>            
         </div>
         <s:form action="login">
         <div class="input-group margin-bottom-20">
@@ -393,15 +393,7 @@ Jamie Dornan</i></h2>
             <input type="password" class="form-control" name="password" placeholder="Password">
         </div>
         <s:fielderror fieldName="password"/>
-        <hr>
-
-        <div class="checkbox">
-            <label>
-                <input type="checkbox"> 
-                <p>Always stay signed in</p>
-            </label>            
-        </div>
-                                
+        <hr>                    
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
                  <button class="btn-u btn-block">Log In</button>   
@@ -410,10 +402,10 @@ Jamie Dornan</i></h2>
     </s:form>
     </div>
     <!--End login Block-->
-</div>
-                    </div>
-                </div>
-            </div>
+		</div>
+      </div>
+ 	</div>
+ </div>
 	<!--end of login modal-->
 
 		 <!--sign up modal-->
@@ -430,7 +422,7 @@ Jamie Dornan</i></h2>
                 <li><a class="rounded-x social_googleplus" data-original-title="Google Plus" href="#"></a></li>
                 <li><a class="rounded-x social_linkedin" data-original-title="Linkedin" href="#"></a></li>
             </ul>
-            <p>Already Signed Up? Click <a class="color-green" href="page_login1.html">Sign In</a> to login your account.</p>
+            <p>Already Signed Up? Click <a class="color-green" id="signin-pop">Sign In</a> to login your account.</p>
         </div>
 
         <div class="input-group margin-bottom-20">
@@ -453,8 +445,8 @@ Jamie Dornan</i></h2>
 
         <div class="checkbox">            
             <label>
-                <input type="checkbox"> 
-                <p>I read <a target="_blank" href="page_terms.html">Terms and Conditions</a></p>
+                <input type="checkbox" name="terms_condition"> 
+                <p>I read <a href="terms_condition.html">Terms and Conditions</a></p>
             </label>
         </div>
                                 
@@ -498,13 +490,14 @@ Jamie Dornan</i></h2>
 	<script src="assets/js/google-code-prettify/prettify.js"></script>
 	  <script src="assets/js/application.js"></script>
 <script type="text/javascript">
+	//sliders starter
 	jQuery(document).ready(function() {
 		App.init();
 		App.initSliders();      
 		ParallaxSlider.initParallaxSlider();
 	});
 	   $(document).ready(function() {
-
+	   	//owl-demo starter
 	  $("#owl-demo").owlCarousel({
 		items : 8,
 		lazyLoad : true,
@@ -513,17 +506,28 @@ Jamie Dornan</i></h2>
 	  });
 
 	});
+	//starter for login modal
 	$('#login').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget);
     var modal = $(this);
 
 	});
-
-	   	   $('#signUp').on('show.bs.modal', function(event) {
+	//starter for signup modal
+	$('#signUp').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget);
     var modal = $(this);
+	});
 
-});
+	//switch to the signup modal
+	$( "#signin-pop" ).click(function() {
+ 	$('#login').modal('show');
+ 	$('#signUp').modal('hide');
+	});
+	//switch to the login modal
+	$( "#signup-pop" ).click(function() {
+  	$('#signUp').modal('show');
+  	$('#login').modal('hide');
+	});
 </script>
 	<s:if test="#session.loginError== 1"> 
 		<script>
