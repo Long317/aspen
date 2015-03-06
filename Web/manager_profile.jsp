@@ -36,40 +36,7 @@
 
 <body>
 <div class="wrapper">  
-     <!--=== Header ===-->    
-    <div class="header">
-        <!-- Topbar -->
-        <div class="topbar">
-            <div class="container">
-                <!-- Topbar Navigation -->
-                <ul class="loginbar pull-right">
-                 
-                    <li><a href="page_faq.html">Help</a></li>  
-              
-                </ul>
-                <!-- End Topbar Navigation -->
-            </div>
-        </div>
-        <!-- End Topbar -->
-    
-        <!-- Navbar -->
-        <div class="navbar navbar-default mega-menu" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="fa fa-bars"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html">
-                        <img id="logo-header" src="assets/img/logo3.png" alt="Logo">
-                    </a>
-                </div>
-            </div>    
-        </div>            
-        <!-- End Navbar -->
-    </div>
-    <!--=== End Header ===--> 
+ <%@ include file="manager_header.jsp" %>   
     
     <!--===Profile ===--> 
     <div class="profile">   

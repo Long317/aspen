@@ -3,6 +3,7 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
    <%@ taglib prefix="s" uri="/struts-tags" %>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
 	<title>Hoticket | Welcome...</title>
 
@@ -14,7 +15,7 @@
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="favicon.ico">
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700' rel='stylesheet' type='text/css'>
 	<!-- CSS Global Compulsory -->
 	<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
@@ -40,9 +41,6 @@
 
 	<!-- Prettify -->
 	<link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
-
-
-
 </head>	
 
 <body>
@@ -389,10 +387,12 @@ Jamie Dornan</i></h2>
             <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
             <input type="text" class="form-control" name ="email" placeholder="Email">
         </div>
+        <s:fielderror fieldName="email"/>
         <div class="input-group margin-bottom-20">
             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
             <input type="password" class="form-control" name="password" placeholder="Password">
         </div>
+        <s:fielderror fieldName="password"/>
         <hr>
 
         <div class="checkbox">
@@ -404,7 +404,7 @@ Jamie Dornan</i></h2>
                                 
         <div class="row">
             <div class="col-md-12 col-md-offset-0">
-                 <button id="login_process" class="btn-u btn-block">Log In</button>   
+                 <button class="btn-u btn-block">Log In</button>   
             </div>
         </div>
     </s:form>
@@ -513,18 +513,23 @@ Jamie Dornan</i></h2>
 	  });
 
 	});
-	   $('#login').on('show.bs.modal', function(event) {
+	$('#login').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget);
     var modal = $(this);
 
-});
+	});
+
 	   	   $('#signUp').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget);
     var modal = $(this);
 
 });
-
 </script>
+	<s:if test="#session.loginError== 1"> 
+		<script>
+		$('#login').modal('show');
+		</script>
+	</s:if>
 <!--[if lt IE 9]>
 	<script src="assets/plugins/respond.js"></script>
 	<script src="assets/plugins/html5shiv.js"></script>

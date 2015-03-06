@@ -1,3 +1,4 @@
+   <%@ taglib prefix="s" uri="/struts-tags" %>
 <!--=== Header ===-->    
 	<div class="header">
 		<!-- Topbar -->
@@ -6,13 +7,21 @@
 				<!-- Topbar Navigation -->
 				<ul class="loginbar pull-right">
 					<li><a href="page_faq.html">Help</a></li>  
-					<li class="topbar-devider"></li>   
-					<li style="display:inline">
- 				<a href="#" data-toggle="modal" data-target="#login">login</a>
-					</li> 
-					<li style="display:inline"class="topbar-devider"></li>    
-					<li><a href="#" data-toggle="modal" data-target="#signUp">Register</a></li> 
-					<li style="display:none"><a href="page_faq.html">Hi,XXX</a></li>
+					<li class="topbar-devider"></li>
+					<s:if test="#session.login== null">       
+						<li style="display:inline">
+ 						<a href="#" data-toggle="modal" data-target="#login">login</a>
+						</li> 
+						<li style="display:inline"class="topbar-devider"></li>    
+						<li><a href="#" data-toggle="modal" data-target="#signUp">Register</a></li> 
+					</s:if>
+					<s:else>     
+					<li style="display:inline"><a href="page_faq.html">Hi,
+					<s:property value="#session.login.first_name" />
+					</a></li>
+					<li style="display:inline"class="topbar-devider"></li>  
+					<li style="display:inline"><a href="signout">sign out</a></li>
+					</s:else>
 				</ul>
 				<!-- End Topbar Navigation -->
 			</div>

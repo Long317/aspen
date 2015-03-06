@@ -21,6 +21,8 @@ public class LoginService {
 				if (user.getPassword().trim()
 						.equals(users.get(i).getPassword())) {
 					user.setRole(users.get(i).getRole());
+					user.setFirst_name(users.get(i).getFirst_name());
+					user.setLast_name(users.get(i).getLast_name());
 					return true;
 				}
 				return false;
