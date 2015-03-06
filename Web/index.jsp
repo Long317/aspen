@@ -432,22 +432,22 @@ Jamie Dornan</i></h2>
             </ul>
             <p>Already Signed Up? Click <a class="color-green" href="page_login1.html">Sign In</a> to login your account.</p>
         </div>
-
+    <s:form action="register">
         <div class="input-group margin-bottom-20">
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <input type="text" class="form-control" placeholder="Username">
+            <input type="text" class="form-control" name="user_name"placeholder="Username">
         </div>
         <div class="input-group margin-bottom-20">
             <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-            <input type="text" class="form-control" placeholder="Email">
+            <input type="text" class="form-control" name="email" placeholder="Email">
         </div>
         <div class="input-group margin-bottom-20">
             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-            <input type="text" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" name="password" placeholder="Password">
         </div>
         <div class="input-group margin-bottom-30">
             <span class="input-group-addon"><i class="fa fa-key"></i></span>
-            <input type="text" class="form-control" placeholder="Confirm Password">
+            <input type="password" class="form-control" placeholder="Confirm Password">
         </div>
         <hr>
 
@@ -463,6 +463,7 @@ Jamie Dornan</i></h2>
                 <button type="submit" class="btn-u btn-block">Register</button>                
             </div>
         </div>
+        </s:form>
     </div>
     <!--End Reg Block-->
 </div>

@@ -8,12 +8,19 @@
 	<constant name="struts.devMode" value="false" />
 
 	<package name="login" extends="struts-default">
-
 		<action name="login" class="com.hoticket.action.LoginAction">
 			<result name="user">/index.jsp</result>
 			<result name="admin">/admin.jsp</result>
 			<result name="manager">/manager.jsp</result>
 			<result name="error">/index.jsp</result>
+		</action>
+		<!-- Redirect to another namespace -->
+	</package>
+	
+	<package name="register" extends="struts-default">
+		<action name="register" class="com.hoticket.action.RegisterAction">
+			<result name="SUCCESS">/index.jsp</result>
+			<result name="ERROR">/index.jsp</result>
 		</action>
 
 		<!-- Redirect to another namespace -->

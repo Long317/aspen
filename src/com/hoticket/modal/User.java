@@ -7,6 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedNativeQueries;
+import org.hibernate.annotations.NamedNativeQuery;
+
+@NamedNativeQueries({
+	@NamedNativeQuery(
+	name = "calladdCustomerProcedure",
+	query = "CALL addCustomer(:email,:password,:user_name)",
+	resultClass = User.class
+	)
+})
 @Entity
 @Table(name="user")
 public class User implements Serializable{
@@ -22,6 +32,8 @@ public class User implements Serializable{
 	private String password;
 	@Column(name="role")
 	private int role;
+	@Column(name="user_name")
+	private String user_name;
 	public int getId() {
 		return id;
 	}
@@ -58,7 +70,12 @@ public class User implements Serializable{
 	public void setRole(int role) {
 		this.role = role;
 	}
-	
+	public String getUser_name() {
+		return user_name;
+	}
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
 	
 	
 

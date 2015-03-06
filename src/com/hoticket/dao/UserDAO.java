@@ -3,7 +3,9 @@ package com.hoticket.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.hoticket.modal.User;
 import com.hoticket.util.ConnectionUtil;
@@ -34,6 +36,24 @@ public class UserDAO {
 	}
 
 	public void addUser(User user) {
-		// session.save(user);
+
+		Session session = null;
+		try {
+	
+			session = ConnectionUtil.getSessionFactory().openSession();
+			Transaction transaction = session.beginTransaction();		
+			Query query = session.getNamedQuery("calladdCustomerProcedure");
+			query.setParameter("email", user.getEmail());
+			query.setParameter("password", user.getPassword());
+			query.setParameter("user_name", user.getUser_name());
+			query.executeUpdate();
+			transaction.commit();
+			session.flush();
+			session.close();
+		} catch (Exception e) {
+			e.getMessage();
+			e.printStackTrace();
+		}
+		
 	}
 }

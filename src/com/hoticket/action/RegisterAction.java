@@ -6,10 +6,11 @@ import java.util.List;
 import com.hoticket.dao.UserDAO;
 import com.hoticket.modal.User;
 import com.hoticket.service.LoginService;
+import com.hoticket.service.RegisterService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-public class LoginAction extends ActionSupport implements ModelDriven<User> {
+public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 	/**
 	 * 
 	 */
@@ -28,21 +29,15 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 	 * for user. 0: user, 1: admin, 2.manager, 3. Error
 	 */
 	public String execute() {
-		LoginService loginService= new LoginService();
+		RegisterService registerService= new RegisterService();
 		users = userDao.getUsers();
-		System.out.println(users.size());
-		if(!loginService.verifyLogin(user, users)){
+		if(!registerService.verifyRegister(user, users)){
 			return ERROR;
 		}
-		
-		switch(user.getRole()){
-		case 0: return "user";
-		case 1:return "admin";
-		case 2: return "manager";
-		default: return ERROR;
-		
-		}
-		
+		System.out.println("user email:"+user.getEmail());
+		userDao.addUser(user);
+		System.out.println("add user!!3"+users.size());
+		return SUCCESS;
 
 	}
 
