@@ -22,9 +22,7 @@ public class LoginService {
 						.equals(users.get(i).getPassword())) {
 					user.setRole(users.get(i).getRole());
 					user.setFirst_name(users.get(i).getFirst_name());
-					user.setEmail(users.get(i).getEmail());
 					user.setLast_name(users.get(i).getLast_name());
-					user.setPassword(users.get(i).getPassword());
 					user.setUser_name(users.get(i).getUser_name());
 					return true;
 				}
