@@ -56,46 +56,12 @@
 		 			<div class="headline row">
 		 				<div class = "col-md-4"><h2>CHECKOUT</h2></div>
 		 				<div class = "col-md-6">
-		 				<a href="ticketInfo.jsp" class= "btn btn-default">Tickets</a><div class="glyphicon glyphicon-arrow-right"></div>
-		 				<a href="payment.jsp" class= "btn btn-default disabled">Payment</a><div class="glyphicon glyphicon-arrow-right"></div>
+		 				<a href="ticketInfo.jsp" class= "btn btn-default disabled">Tickets</a><div class="glyphicon glyphicon-arrow-right"></div>
+                        <a href="payment.jsp" class= "btn btn-default disabled">Payment</a><div class="glyphicon glyphicon-arrow-right"></div>
 		 				<div class= "btn btn-default disabled">Confirmation</div>
 		 			    </div>
 		 			</div>
-		 			<div class="ticketBody row">
-		 				<form>
-				          <div class="form-group">
-				          	<div class="row">
-				          	<div class = "col-md-1"></div>
-				          	<div class = "col-md-1">
-				            <label  class="control-label">Adult:</label> </div>
-				            <div class = "col-md-3">
-				            <input type="text" size="2" name="Adult"> x $17.79 =<span id="adult-result">$0.00</span>
-				       		 </div>
-				       		 </div>
-				       		 <br/> 
-				            <div class="row">
-				            <div class = "col-md-1"></div>
-				          	<div class = "col-md-1">
-				            <label  class="control-label">Senior:</label>  </div>
-				            <div class = "col-md-3">
-				            <input type="text" size="2" name="Senior"> x $17.79 =<span id="adult-result">$0.00</span>	
-				            </div>
-				            </div>
-				             <br/> 
-				            <div class="row">
-				            <div class = "col-md-1"></div>
-				          	<div class = "col-md-1">
-				            <label  class="control-label">Child:&nbsp;&nbsp;</label>  </div>
-				            <div class = "col-md-3">
-				            <input type="text" size="2" name="Child"> x $17.79 =<span id="adult-result">$0.00</span>		
-				       		</div>
-				       		</div>
-				          </div>
-				              <br/>
-				         <div class = "col-md-1"></div>
-				          <a href="payment.jsp"  class="btn btn-default"> Buy Ticket</a>
-				        </form>
-		 			</div>
+		 		<h1>You have Purchase the ticket successfully</h1>
 		 		</div>
 		 	</div>	
 		<!-- End Content Part -->
@@ -245,7 +211,12 @@
 	   stopOnHover: true
 	  });
 	});
-
+	           function isNumberKey(evt) {
+                                        var charCode = (evt.which) ? evt.which : event.keyCode;
+                                        if (charCode > 31 && (charCode < 48 || charCode > 57))
+                                            return false;
+                                        return true;
+                                    }
 </script>
 	<s:if test="#session.loginError== 1"> 
 		<script>

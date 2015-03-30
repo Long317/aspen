@@ -56,8 +56,8 @@
 		 			<div class="headline row">
 		 				<div class = "col-md-4"><h2>CHECKOUT</h2></div>
 		 				<div class = "col-md-6">
-		 				<div class= "btn btn-default">Tickets</div><div class="glyphicon glyphicon-arrow-right"></div>
-		 				<div class= "btn btn-default">Payment</div><div class="glyphicon glyphicon-arrow-right"></div>
+		 				<a href="ticketInfo.jsp" class= "btn btn-default">Tickets</a><div class="glyphicon glyphicon-arrow-right"></div>
+                        <a href="payment.jsp" class= "btn btn-default">Payment</a><div class="glyphicon glyphicon-arrow-right"></div>
 		 				<div class= "btn btn-default disabled">Confirmation</div>
 		 			    </div>
 		 			</div>
@@ -115,9 +115,9 @@
                                                      onkeypress="return isNumberKey(event);" maxlength="5"  class="form-control"></td>
                                         </tr>
                                         <tr>
-                                            <td><button type="submit" onclick="return confirm('Are you sure you want to delete this user?');"
-                                                        class="btn-primary btn" >submit</button></td>
-                                            <td><span class="error" id="addAccountError"></span> </td>
+                                            <td><a href="PurchaseSuccess.jsp" class="btn-primary btn">
+                                                check out</a></td>
+                                            
                                         </tr>
                            </table>
 				        </form>
