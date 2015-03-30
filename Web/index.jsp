@@ -512,42 +512,25 @@ Jamie Dornan</i></h2>
 	 autoPlay: 2000,
 	   stopOnHover: true
 	  });
-
-	});
-	//starter for login modal
-	$('#login').on('show.bs.modal', function(event) {
-    var button = $(event.relatedTarget);
-    var modal = $(this);
-
-	});
-	//starter for signup modal
-	$('#signUp').on('show.bs.modal', function(event) {
-    var button = $(event.relatedTarget);
-    var modal = $(this);
 	});
 
-	//switch to the signup modal
-	$( "#signin-pop" ).click(function() {
-	$('#signUp').modal('hide');
- 	$('#login').modal('show');
-	});
-	//switch to the login modal
-	$( "#signup-pop" ).click(function() {
-  	$('#login').modal('hide');
-  	$('#signUp').modal('show');
-	});
 </script>
 	<s:if test="#session.loginError== 1"> 
 		<script>
 		$('#login').modal('show');
 		</script>
 	</s:if>
-	
+		<s:if test="#session.loginError== 1"> 
+		<s:set name="loginError" value="2" scope="session" />
+		</s:if>
 	<s:if test="#session.registerError== 1"> 
 		<script>
 		$('#signUp').modal('show');
 		</script>
 	</s:if>
+	<s:if test="#session.registerError== 1"> 
+		<s:set name="registerError" value="2" scope="session" />
+		</s:if>
 
 <!--[if lt IE 9]>
 	<script src="assets/plugins/respond.js"></script>

@@ -46,7 +46,7 @@
             <div class="col-md-3">
                 <img class="img-responsive profile-img margin-bottom-20" src="assets/img/team/5.jpg" alt="">
                 <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
-                      <li class="list-group-item active">
+                      <li class="list-group-item">
                         <a href="admin.jsp"><i class="fa fa-bar-chart-o"></i> Overall</a>
                     </li>
                     <li class="list-group-item">
@@ -65,7 +65,7 @@
                     <li class="list-group-item">
                         <a href="admin_upcoming_tasks.jsp"><i class="fa fa-history"></i> Upcoming Tasks</a>
                     </li>                                       
-                    <li class="list-group-item">
+                    <li class="list-group-item active">
                         <a href="admin_settings.jsp"><i class="fa fa-cog"></i> Settings</a>
                     </li> 
 

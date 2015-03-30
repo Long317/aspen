@@ -377,123 +377,107 @@
 		</div>
 		<!--/container-->
 		<!-- End Content Part -->
-		<!--login modal-->
-		<div class="modal fade" id="login" tabindex="-1" role="dialog"
-			aria-labelledby="login" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<!--Reg Block-->
-					<div class="reg-block">
-						<div class="reg-block-header">
-							<h2>Sign In</h2>
-							<ul class="social-icons text-center">
-								<li><a class="rounded-x social_facebook"
-									data-original-title="Facebook" href="#"></a></li>
-								<li><a class="rounded-x social_twitter"
-									data-original-title="Twitter" href="#"></a></li>
-								<li><a class="rounded-x social_googleplus"
-									data-original-title="Google Plus" href="#"></a></li>
-								<li><a class="rounded-x social_linkedin"
-									data-original-title="Linkedin" href="#"></a></li>
-							</ul>
-							<p>
-								Don't Have Account? Click <a class="color-green"
-									href="page_registration.html">Sign Up</a> to registration.
-							</p>
-						</div>
-						<div class="input-group margin-bottom-20">
-							<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-							<input type="text" class="form-control" placeholder="Email">
-						</div>
-						<div class="input-group margin-bottom-20">
-							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-							<input type="text" class="form-control" placeholder="Password">
-						</div>
-						<hr>
-
-						<div class="checkbox">
-							<label> <input type="checkbox">
-								<p>Always stay signed in</p>
-							</label>
-						</div>
-
-						<div class="row">
-							<div class="col-md-12 col-md-offset-0">
-								<button id="login_process" class="btn-u btn-block">Log
-									In</button>
-							</div>
-						</div>
-					</div>
-					<!--End login Block-->
-				</div>
-			</div>
+		 <!--login modal-->
+            <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+	       <!--Reg Block-->
+    <div class="reg-block">
+        <div class="reg-block-header">
+            <h2>Sign In</h2>
+            <ul class="social-icons text-center">
+                <li><a class="rounded-x social_facebook" data-original-title="Facebook" href="#"></a></li>
+                <li><a class="rounded-x social_twitter" data-original-title="Twitter" href="#"></a></li>
+                <li><a class="rounded-x social_googleplus" data-original-title="Google Plus" href="#"></a></li>
+                <li><a class="rounded-x social_linkedin" data-original-title="Linkedin" href="#"></a></li>
+            </ul>
+            <p>Don't Have Account? Click <a class="color-green" id="signup-pop">Sign Up</a> to registration.</p>            
+        </div>
+        <s:form action="login">
+        <div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+            <input type="text" class="form-control" name ="email" placeholder="Email">
+        </div>
+        <s:fielderror fieldName="email"/>
+        <div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <input type="password" class="form-control" name="password" placeholder="Password">
+        </div>
+        <s:fielderror fieldName="password"/>
+        <hr>                    
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0">
+                 <button class="btn-u btn-block">Log In</button>   
+            </div>
+        </div>
+    </s:form>
+    </div>
+    <!--End login Block-->
 		</div>
-	</div>
+      </div>
+ 	</div>
+ </div>
 	<!--end of login modal-->
 
-	<!--sign up modal-->
-	<div class="modal fade" id="signUp" tabindex="-1" role="dialog"
-		aria-labelledby="signUp" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<!--Reg Block-->
-				<div class="reg-block">
-					<div class="reg-block-header">
-						<h2>Sign Up</h2>
-						<ul class="social-icons text-center">
-							<li><a class="rounded-x social_facebook"
-								data-original-title="Facebook" href="#"></a></li>
-							<li><a class="rounded-x social_twitter"
-								data-original-title="Twitter" href="#"></a></li>
-							<li><a class="rounded-x social_googleplus"
-								data-original-title="Google Plus" href="#"></a></li>
-							<li><a class="rounded-x social_linkedin"
-								data-original-title="Linkedin" href="#"></a></li>
-						</ul>
-						<p>
-							Already Signed Up? Click <a class="color-green"
-								href="page_login1.html">Sign In</a> to login your account.
-						</p>
-					</div>
+		 <!--sign up modal-->
+            <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="signUp" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+	 <!--Reg Block-->
+    <div class="reg-block">
+        <div class="reg-block-header">
+            <h2>Sign Up</h2>
+            <ul class="social-icons text-center">
+                <li><a class="rounded-x social_facebook" data-original-title="Facebook" href="#"></a></li>
+                <li><a class="rounded-x social_twitter" data-original-title="Twitter" href="#"></a></li>
+                <li><a class="rounded-x social_googleplus" data-original-title="Google Plus" href="#"></a></li>
+                <li><a class="rounded-x social_linkedin" data-original-title="Linkedin" href="#"></a></li>
+            </ul>
+            <p>Already Signed Up? Click <a class="color-green" id="signin-pop">Sign In</a> to login your account.</p>
+        </div>
+    <s:form action="register">
+        <div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <input type="text" class="form-control" name="user_name"placeholder="Username">
+        </div>
+         <s:fielderror fieldName="username"/>
+        <div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+            <input type="text" class="form-control" name="email" placeholder="Email">
+        </div>
+         <s:fielderror fieldName="email"/>
+        <div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <input type="password" class="form-control" name="password" placeholder="Password">
+        </div>
+         <s:fielderror fieldName="password"/>
+        <div class="input-group margin-bottom-30">
+            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+            <input type="password" class="form-control" name="confirmpass" placeholder="Confirm Password">
+        </div>
+              <s:fielderror fieldName="passwordnotequal"/>
+        <hr>
 
-					<div class="input-group margin-bottom-20">
-						<span class="input-group-addon"><i class="fa fa-user"></i></span>
-						<input type="text" class="form-control" placeholder="Username">
-					</div>
-					<div class="input-group margin-bottom-20">
-						<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-						<input type="text" class="form-control" placeholder="Email">
-					</div>
-					<div class="input-group margin-bottom-20">
-						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-						<input type="text" class="form-control" placeholder="Password">
-					</div>
-					<div class="input-group margin-bottom-30">
-						<span class="input-group-addon"><i class="fa fa-key"></i></span> <input
-							type="text" class="form-control" placeholder="Confirm Password">
-					</div>
-					<hr>
-
-					<div class="checkbox">
-						<label> <input type="checkbox">
-							<p>
-								I read <a target="_blank" href="page_terms.html">Terms and
-									Conditions</a>
-							</p>
-						</label>
-					</div>
-
-					<div class="row">
-						<div class="col-md-12 col-md-offset-0">
-							<button type="submit" class="btn-u btn-block">Register</button>
-						</div>
-					</div>
-				</div>
-				<!--End Reg Block-->
-			</div>
-		</div>
-	</div>
-	</div>
+        <div class="checkbox" name="term_condition">            
+            <label>
+                <input type="checkbox" name="terms_condition"> 
+                <p>I read <a href="terms_condition.html">Terms and Conditions</a></p>
+            </label>
+        </div>
+             <s:fielderror fieldName="termcondition"/>
+                                
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0">
+                <button type="submit" class="btn-u btn-block">Register</button>                
+            </div>
+        </div>
+        </s:form>
+    </div>
+    <!--End Reg Block-->
+</div>
+                    </div>
+                </div>
+            </div>
 	<!--end of sign up modal-->
 	<%@ include file="footer.jsp"%>
 	</div>
@@ -551,28 +535,7 @@
 			});
 
 		});
-		$('#login').on('show.bs.modal', function(event) {
-			var button = $(event.relatedTarget);
-			var modal = $(this);
 
-		});
-		$('#signUp').on('show.bs.modal', function(event) {
-			var button = $(event.relatedTarget);
-			var modal = $(this);
-
-		});
-		$(document).ready(function() {
-			$('#login_process').click(function() {
-				// var username = $('#username').val();
-				// var pass = $('#pass').val();        
-
-				// if (testUser(username) === true && testPass(pass) === true) {            
-				window.location.replace("index_user.html");
-				// } else {
-				//     alert('warning message');
-				// }
-			});
-		});
 		//scroll bar starter
 		 jQuery(document).ready(function ($) {
 		        "use strict";
