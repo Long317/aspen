@@ -20,6 +20,10 @@ import org.hibernate.annotations.NamedNativeQuery;
 @Entity
 @Table(name="user")
 public class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	private int id;
 	@Column(name="first_name")

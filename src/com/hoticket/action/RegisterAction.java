@@ -50,6 +50,22 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 		this.user = user;
 	}
 
+	public boolean isTerm_condition() {
+		return term_condition;
+	}
+
+	public void setTerm_condition(boolean term_condition) {
+		this.term_condition = term_condition;
+	}
+
+	public String getConfirmpass() {
+		return confirmpass;
+	}
+
+	public void setConfirmpass(String confirmpass) {
+		this.confirmpass = confirmpass;
+	}
+
 	public List<User> getUsers() {
 		return users;
 	}
