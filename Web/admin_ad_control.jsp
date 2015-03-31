@@ -46,7 +46,7 @@
             <div class="col-md-3">
                 <img class="img-responsive profile-img margin-bottom-20" src="assets/img/team/5.jpg" alt="">
                 <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
-                      <li class="list-group-item active">
+                      <li class="list-group-item">
                         <a href="admin.jsp"><i class="fa fa-bar-chart-o"></i> Overall</a>
                     </li>
                     <li class="list-group-item">
@@ -59,7 +59,7 @@
                     <li class="list-group-item">
                         <a href="admin_database.jsp"><i class="fa fa-cubes"></i> Database</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item active">
                         <a href="admin_ad_control.jsp"><i class="fa fa-comments"></i> Advertisement Control</a>
                     </li>                                        
                     <li class="list-group-item">

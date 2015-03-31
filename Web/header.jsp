@@ -1,4 +1,4 @@
-   <%@ taglib prefix="s" uri="/struts-tags" %>
+  <%@ taglib prefix="s" uri="/struts-tags" %>
 <!--=== Header ===-->    
 	<div class="header">
 		<!-- Topbar -->
@@ -283,7 +283,7 @@
                                 <div class="input-group animated fadeInDown">
                                     <input id="mainSearch" type="text" class="form-control" placeholder="Enter City + State, ZIP Code, or Movie">
                                     <span class="input-group-btn">
-                                        <button class="btn-u" id="searGo" type="button">Go</button>
+                                     <a href="search.jsp">   <button class="btn-u searGo" id="mainSearchCon" type="button">Go</button></a>
                                     </span>
                                 </div>
                             </div>    

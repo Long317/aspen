@@ -17,12 +17,13 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 	/**
 	 * 
 	 */
+	private boolean term_condition;
+	private String confirmpass;
 	private static final long serialVersionUID = 1L;
 	private User user = new User();
 	private List<User> users = new ArrayList<User>();
 	private UserDAO userDao = new UserDAO();
-    private boolean term_condition;
-    private String confirmpass;
+  
 	@Override
 	public User getModel() {
 		return user;
@@ -39,6 +40,9 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 			return ERROR;
 		}
 		userDao.addUser(user);
+		   @SuppressWarnings("rawtypes")
+		Map session = (Map) ActionContext.getContext().get("session");
+		   session.put("registerError", null);
 		return SUCCESS;
 	}
 
@@ -73,11 +77,29 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
+	
+	   public boolean isTerm_condition() {
+		return term_condition;
+	}
 
-	   @SuppressWarnings("unchecked")
+	public void setTerm_condition(boolean term_condition) {
+		this.term_condition = term_condition;
+	}
+
+	public String getConfirmpass() {
+		return confirmpass;
+	}
+
+	public void setConfirmpass(String confirmpass) {
+		this.confirmpass = confirmpass;
+	}
+
+	@SuppressWarnings("unchecked")
 	public void validate() {
 		   @SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
+		   
+		   System.out.println(term_condition);
 			
 	        if (StringUtils.isEmpty(user.getEmail())) {  
 	            addFieldError("email", "email is required"); 
@@ -87,7 +109,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 	            addFieldError("username", "username should be between 6 and 20 chars long"); 
 	            session.put("registerError", 1);
 	        }
-	        if (!term_condition) {  
+	        if (term_condition) {  
 	            addFieldError("termcondition", "Please  check term condition before submit your form"); 
 	            session.put("registerError", 1);
 	        }
@@ -100,7 +122,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 	            addFieldError("password", "password can't be empty");  
 	            session.put("registerError", 1);
 	        }  
-	        
+	        System.out.println(confirmpass+","+user.getPassword());
 	        if (!user.getPassword().equals(confirmpass)) {  
 	            addFieldError("passwordnotequal", "confirm password is not equal to your input password ");  
 	            session.put("registerError", 1);

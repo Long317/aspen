@@ -16,6 +16,7 @@ public class SignoutAction extends ActionSupport  {
 		Map session = (Map) ActionContext.getContext().get("session");
 		session.put("login", null);
 		session.put("loginError", null);
+		session.put("registerError", null);
 		return SUCCESS;
 	}
 	

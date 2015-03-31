@@ -440,7 +440,7 @@ top:5px;
 width:420px;
  float: right;
 }
-#searGo{
+.searGo{
 position:relative;
 top:5px;
 }
@@ -511,3 +511,6 @@ left:30px;
 .errorMessage span{
 	color:red;
 		}
+.dropdown.dropdown-menu {
+  width: 100%; 
+}
