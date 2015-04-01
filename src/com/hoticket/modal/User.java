@@ -9,7 +9,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.NamedNativeQueries;
 import org.hibernate.annotations.NamedNativeQuery;
-
 @NamedNativeQueries({
 	@NamedNativeQuery(
 	name = "calladdCustomerProcedure",
@@ -17,6 +16,7 @@ import org.hibernate.annotations.NamedNativeQuery;
 	resultClass = User.class
 	)
 })
+
 @Entity
 @Table(name="user")
 public class User implements Serializable{

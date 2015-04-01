@@ -17,7 +17,7 @@
 					</s:if>
 					<s:else>     
 					<li style="display:inline"><a href="page_faq.html">Hi,
-					<s:property value="#session.login.first_name" />
+					<s:property value="#session.login.user_name" />
 					</a></li>
 					<li style="display:inline"class="topbar-devider"></li>  
 					<li style="display:inline"><a href="signout">sign out</a></li>
