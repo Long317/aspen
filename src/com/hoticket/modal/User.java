@@ -6,7 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.OneToOne;
+import javax.persistence.UniqueConstraint;
 import org.hibernate.annotations.NamedNativeQueries;
 import org.hibernate.annotations.NamedNativeQuery;
 
@@ -17,14 +22,19 @@ import org.hibernate.annotations.NamedNativeQuery;
 	resultClass = User.class
 	)
 })
+
 @Entity
-@Table(name="user")
+@Table(name = "user", catalog = "308 project", uniqueConstraints = {
+		@UniqueConstraint(columnNames = "email") })
+
 public class User implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
 	private int id;
 	@Column(name="first_name")
 	private String first_name;

@@ -78,21 +78,6 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 		this.users = users;
 	}
 	
-	   public boolean isTerm_condition() {
-		return term_condition;
-	}
-
-	public void setTerm_condition(boolean term_condition) {
-		this.term_condition = term_condition;
-	}
-
-	public String getConfirmpass() {
-		return confirmpass;
-	}
-
-	public void setConfirmpass(String confirmpass) {
-		this.confirmpass = confirmpass;
-	}
 
 	@SuppressWarnings("unchecked")
 	public void validate() {
@@ -113,7 +98,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 	            addFieldError("termcondition", "Please  check term condition before submit your form"); 
 	            session.put("registerError", 1);
 	        }
-	        if (user.getEmail().indexOf("@")==-1||user.getEmail().indexOf(".com")==-1){
+	        if (user.getEmail().indexOf("@")==-1){
 	        	 addFieldError("email", "email is invalid"); 
 	        	 session.put("registerError", 1);
 	        }
