@@ -21,6 +21,10 @@ import org.hibernate.annotations.NamedNativeQuery;
 @DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING) 
 @DiscriminatorValue(value="user")  
 public class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	private int id;
 	@Column(name="first_name")
