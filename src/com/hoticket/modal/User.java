@@ -2,6 +2,7 @@ package com.hoticket.modal;
 
 import java.io.Serializable;
 
+<<<<<<< HEAD
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,9 +13,12 @@ import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.OneToOne;
 import javax.persistence.UniqueConstraint;
+=======
+import javax.persistence.*;
+
+>>>>>>> refs/remotes/origin/master
 import org.hibernate.annotations.NamedNativeQueries;
 import org.hibernate.annotations.NamedNativeQuery;
-
 @NamedNativeQueries({
 	@NamedNativeQuery(
 	name = "calladdCustomerProcedure",
@@ -23,10 +27,21 @@ import org.hibernate.annotations.NamedNativeQuery;
 	)
 })
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 @Entity
+<<<<<<< HEAD
 @Table(name = "user", catalog = "308 project", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "email") })
 
+=======
+@Table(name="user")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)  
+@DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING) 
+@DiscriminatorValue(value="user")  
+>>>>>>> refs/remotes/origin/master
 public class User implements Serializable{
 	/**
 	 * 

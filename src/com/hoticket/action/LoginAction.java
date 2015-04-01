@@ -9,6 +9,7 @@ import org.apache.commons.lang.xwork.StringUtils;
 import com.hoticket.dao.UserDAO;
 import com.hoticket.modal.User;
 import com.hoticket.service.LoginService;
+import com.hoticket.util.EncryptUtils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -34,6 +35,8 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 	 */
 	@SuppressWarnings("unchecked")
 	public String execute() {
+		//encrypt user password here
+		user.setPassword(EncryptUtils.base64encode(user.getPassword())); 
 		LoginService loginService= new LoginService();
 		users = userDao.getUsers();
 		@SuppressWarnings("rawtypes")
@@ -79,7 +82,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 	        if (StringUtils.isEmpty(user.getEmail())) {  
 	            addFieldError("email", "email can't be empty"); 
 	            session.put("loginError", 1);
-	        }else if (user.getEmail().indexOf("@")==-1||user.getEmail().indexOf(".com")==-1){
+	        }else if (user.getEmail().indexOf("@")==-1){
 	        	 addFieldError("email", "email is invalid"); 
 	        	 session.put("loginError", 1);
 	        }

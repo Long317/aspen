@@ -20,6 +20,11 @@
 		<action name="signout" class="com.hoticket.action.SignoutAction">
 			<result name="success">/index.jsp</result>
 		</action>
+		
+		<action name="emailer"    class="com.hoticket.action.EmailAction">
+         <result name="success">/PurchaseSuccess.jsp</result>
+         <result name="error">/index.jsp</result>
+      </action>
 		<!-- Redirect to another namespace -->
 	</package>
 	

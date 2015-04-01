@@ -98,7 +98,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 	            addFieldError("termcondition", "Please  check term condition before submit your form"); 
 	            session.put("registerError", 1);
 	        }
-	        if (user.getEmail().indexOf("@")==-1){
+	        if (user.getEmail().indexOf("@")==-1||user.getEmail().indexOf(".com")==-1){
 	        	 addFieldError("email", "email is invalid"); 
 	        	 session.put("registerError", 1);
 	        }
