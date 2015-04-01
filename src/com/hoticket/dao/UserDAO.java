@@ -57,6 +57,8 @@ public class UserDAO {
 		} catch (Exception e) {
 			e.getMessage();
 			e.printStackTrace();
+		}finally{
+			session.close();
 		}
 		
 	}

@@ -2,10 +2,7 @@ package com.hoticket.modal;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.hibernate.annotations.NamedNativeQueries;
 import org.hibernate.annotations.NamedNativeQuery;
@@ -17,8 +14,12 @@ import org.hibernate.annotations.NamedNativeQuery;
 	)
 })
 
+
 @Entity
 @Table(name="user")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)  
+@DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING) 
+@DiscriminatorValue(value="user")  
 public class User implements Serializable{
 	@Id
 	private int id;
