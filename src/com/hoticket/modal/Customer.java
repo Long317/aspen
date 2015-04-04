@@ -2,31 +2,18 @@ package com.hoticket.modal;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;  
 
-import org.hibernate.annotations.NamedNativeQueries;
-import org.hibernate.annotations.NamedNativeQuery;
-
-@NamedNativeQueries({
-	@NamedNativeQuery(
-	name = "calladdCustomerProcedure",
-	query = "CALL addCustomer(:email,:password,:user_name)",
-	resultClass = User.class
-	)
-})
-@Entity
-@Table(name="customer")
-public class Customer implements Serializable{
+@Entity  
+@Table(name="customer")  
+@PrimaryKeyJoinColumn(name="id")  
+public class Customer extends User implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
-	private int id;
 	@Column(name="birthday")
 	private Date birthday;
 	@Column(name="gender")
@@ -35,18 +22,17 @@ public class Customer implements Serializable{
 	private int zipcode;
 	@Column (name="genres")
 	private String genres;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	@OneToMany(mappedBy="customer")
+	private Set<Billing_account> billing_accounts;
+	@OneToMany(mappedBy="customer")
+	private Set<Billing_address> billing_addresses;
 	public Date getBirthday() {
 		return birthday;
 	}
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
+	
 	public int getGender() {
 		return gender;
 	}
@@ -65,6 +51,19 @@ public class Customer implements Serializable{
 	public void setGenres(String genres) {
 		this.genres = genres;
 	}
+	public Set<Billing_account> getBilling_accounts() {
+		return billing_accounts;
+	}
+	public void setBilling_accounts(Set<Billing_account> billing_accounts) {
+		this.billing_accounts = billing_accounts;
+	}
+	public Set<Billing_address> getBilling_addresses() {
+		return billing_addresses;
+	}
+	public void setBilling_addresses(Set<Billing_address> billing_addresses) {
+		this.billing_addresses = billing_addresses;
+	}
+
 	
 
 }

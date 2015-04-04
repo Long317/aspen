@@ -1,10 +1,9 @@
 package com.hoticket.modal;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.sql.Timestamp;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="pay_history")
@@ -13,39 +12,58 @@ public class Pay_history implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
+	@Id  
+	@GeneratedValue(strategy=GenerationType.AUTO)  
+	@Column(name = "id")
 	private int id;
-	@Column(name="showing_id")
-	private int showing_id;
-	@Column(name="card_number")
-	private String card_number;
-	@Column(name="email")
-	private String email;
+	@Column(name="ticket_number")
+	private int ticket_number;
+	@Column(name="date")
+	private Timestamp date;
+	@ManyToOne
+	@JoinColumn(name="billing_account_id")
+	private Billing_account billing_account;
+	@ManyToOne
+	@JoinColumn(name="billing_address_id")
+	private Billing_address billing_address;
+	@ManyToOne
+	@JoinColumn(name="showing_id")
+	private Showing showing;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getShowing_id() {
-		return showing_id;
+	public int getTicket_number() {
+		return ticket_number;
 	}
-	public void setShowing_id(int showing_id) {
-		this.showing_id = showing_id;
+	public void setTicket_number(int ticket_number) {
+		this.ticket_number = ticket_number;
 	}
-	public String getCard_number() {
-		return card_number;
+	public Timestamp getDate() {
+		return date;
 	}
-	public void setCard_number(String card_number) {
-		this.card_number = card_number;
+	public void setDate(Timestamp date) {
+		this.date = date;
 	}
-	public String getEmail() {
-		return email;
+	public Billing_account getBilling_account() {
+		return billing_account;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setBilling_account(Billing_account billing_account) {
+		this.billing_account = billing_account;
 	}
-	
-	
+	public Billing_address getBilling_address() {
+		return billing_address;
+	}
+	public void setBilling_address(Billing_address billing_address) {
+		this.billing_address = billing_address;
+	}
+	public Showing getShowing() {
+		return showing;
+	}
+	public void setShowing(Showing showing) {
+		this.showing = showing;
+	}
 
 }

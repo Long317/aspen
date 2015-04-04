@@ -1,22 +1,7 @@
 package com.hoticket.modal;
 
 import java.io.Serializable;
-
-<<<<<<< HEAD
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
-import javax.persistence.OneToOne;
-import javax.persistence.UniqueConstraint;
-=======
 import javax.persistence.*;
-
->>>>>>> refs/remotes/origin/master
 import org.hibernate.annotations.NamedNativeQueries;
 import org.hibernate.annotations.NamedNativeQuery;
 @NamedNativeQueries({
@@ -27,36 +12,25 @@ import org.hibernate.annotations.NamedNativeQuery;
 	)
 })
 
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/master
-@Entity
-<<<<<<< HEAD
-@Table(name = "user", catalog = "308 project", uniqueConstraints = {
-		@UniqueConstraint(columnNames = "email") })
-
-=======
-@Table(name="user")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)  
-@DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING) 
-@DiscriminatorValue(value="user")  
->>>>>>> refs/remotes/origin/master
+@Entity  
+@Table(name = "user")  
+@Inheritance(strategy=InheritanceType.JOINED)  
 public class User implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "id", unique = true, nullable = false)
+
+	@Id  
+	@GeneratedValue(strategy=GenerationType.AUTO)  
+	@Column(name = "id")  
 	private int id;
+	@Column(name="email")
+	private String email;
 	@Column(name="first_name")
 	private String first_name;
 	@Column(name="last_name")
 	private String last_name;
-	@Column(name="email")
-	private String email;
 	@Column (name="password")
 	private String password;
 	@Column(name="role")
@@ -81,12 +55,6 @@ public class User implements Serializable{
 	public void setLast_name(String last_name) {
 		this.last_name = last_name;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public String getPassword() {
 		return password;
 	}
@@ -98,6 +66,12 @@ public class User implements Serializable{
 	}
 	public void setRole(int role) {
 		this.role = role;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getUser_name() {
 		return user_name;

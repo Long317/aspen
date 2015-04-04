@@ -3,10 +3,16 @@ package com.hoticket.modal;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,12 +22,16 @@ public class Showing implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
+	@Id  
+	@GeneratedValue(strategy=GenerationType.AUTO)  
+	@Column(name = "id")  
 	private int id;
-	@Column(name="movie_id")
-	private int movie_id;
-	@Column(name="theatre_id")
-	private int theatre_id;
+	@ManyToOne
+    @JoinColumn(name="movie_id")
+    private Movie movie;
+	@ManyToOne
+    @JoinColumn(name="theatre_id")
+    private Theatre theatre;
 	@Column(name="date")
 	private Date date;
 	@Column (name="category")
@@ -30,23 +40,13 @@ public class Showing implements Serializable{
 	private Time start_time;
 	@Column(name="ticket_number")
 	private int ticket_number;
+	@OneToMany(mappedBy="showing")
+	private Set<Pay_history> pay_histories;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getMovie_id() {
-		return movie_id;
-	}
-	public void setMovie_id(int movie_id) {
-		this.movie_id = movie_id;
-	}
-	public int getTheatre_id() {
-		return theatre_id;
-	}
-	public void setTheatre_id(int theatre_id) {
-		this.theatre_id = theatre_id;
 	}
 	public Date getDate() {
 		return date;
@@ -71,6 +71,24 @@ public class Showing implements Serializable{
 	}
 	public void setTicket_number(int ticket_number) {
 		this.ticket_number = ticket_number;
+	}
+	public Movie getMovie() {
+		return movie;
+	}
+	public void setMovie(Movie movie) {
+		this.movie = movie;
+	}
+	public Theatre getTheatre() {
+		return theatre;
+	}
+	public void setTheatre(Theatre theatre) {
+		this.theatre = theatre;
+	}
+	public Set<Pay_history> getPay_histories() {
+		return pay_histories;
+	}
+	public void setPay_histories(Set<Pay_history> pay_histories) {
+		this.pay_histories = pay_histories;
 	}
 	
 

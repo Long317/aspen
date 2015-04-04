@@ -1,20 +1,23 @@
 package com.hoticket.modal;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="theatre")
 public class Theatre implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	@Id
+	@Id  
+	@GeneratedValue(strategy=GenerationType.AUTO)  
+	@Column(name = "id")  
 	private int id;
 	@Column(name="name")
 	private String name;
@@ -30,6 +33,8 @@ public class Theatre implements Serializable{
 	private String phone_number;
 	@Column(name="supported")
 	private int supported;
+	@OneToMany(mappedBy="theatre")
+	private Set <Showing> showing;
 	public int getId() {
 		return id;
 	}
@@ -77,6 +82,12 @@ public class Theatre implements Serializable{
 	}
 	public void setSupported(int supported) {
 		this.supported = supported;
+	}
+	public Set<Showing> getShowing() {
+		return showing;
+	}
+	public void setShowing(Set<Showing> showing) {
+		this.showing = showing;
 	}
 	
 	
