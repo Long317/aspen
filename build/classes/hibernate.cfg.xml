@@ -15,5 +15,7 @@
 		<property name="hibernate.current_session_context_class">thread</property>
 
 		<mapping class="com.hoticket.modal.User" />
+		<mapping class="com.hoticket.modal.Customer" />
+		<mapping class="com.hoticket.modal.Employee" />
 	</session-factory>
 </hibernate-configuration>

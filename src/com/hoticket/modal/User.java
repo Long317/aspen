@@ -1,9 +1,7 @@
 package com.hoticket.modal;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import org.hibernate.annotations.NamedNativeQueries;
 import org.hibernate.annotations.NamedNativeQuery;
 @NamedNativeQueries({
@@ -14,18 +12,18 @@ import org.hibernate.annotations.NamedNativeQuery;
 	)
 })
 
-
-@Entity
-@Table(name="user")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)  
-@DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING) 
-@DiscriminatorValue(value="user")  
+@Entity  
+@Table(name = "user")  
+@Inheritance(strategy=InheritanceType.JOINED)  
 public class User implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
+
+	@Id  
+	@GeneratedValue(strategy=GenerationType.AUTO)  
+	@Column(name = "id")  
 	private int id;
 	@Column(name="first_name")
 	private String first_name;
