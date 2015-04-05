@@ -26,17 +26,20 @@ public class Customer extends User implements Serializable{
 	private int zipcode;
 	@Column (name="genres")
 	private String genres;
-
 	@OneToMany(mappedBy="customer")
 	private Set<Billing_account> billing_accounts;
 	@OneToMany(mappedBy="customer")
 	private Set<Billing_address> billing_addresses;
-	
+	@OneToMany(mappedBy="customer")
+	private Set<Rating> movie_ratings;
 	@ManyToMany(cascade={CascadeType.ALL})
 	@JoinTable(name="favorite_movie", joinColumns={@JoinColumn(name="user_id")}
     , inverseJoinColumns={@JoinColumn(name="movie_id")}) 
 	private Set<Movie> favorite_movies;
-	
+	@ManyToMany(cascade={CascadeType.ALL})
+	@JoinTable(name="favorite_theatre", joinColumns={@JoinColumn(name="user_id")}
+    , inverseJoinColumns={@JoinColumn(name="theatre_id")}) 
+	private Set<Theatre> favorite_theatres;
 
 
 	public Date getBirthday() {
@@ -81,6 +84,18 @@ public class Customer extends User implements Serializable{
 	}
 	public void setFavorite_movies(Set<Movie> favorite_movies) {
 		this.favorite_movies = favorite_movies;
+	}
+	public Set<Theatre> getFavorite_theatres() {
+		return favorite_theatres;
+	}
+	public void setFavorite_theatres(Set<Theatre> favorite_theatres) {
+		this.favorite_theatres = favorite_theatres;
+	}
+	public Set<Rating> getMovie_ratings() {
+		return movie_ratings;
+	}
+	public void setMovie_ratings(Set<Rating> movie_ratings) {
+		this.movie_ratings = movie_ratings;
 	}
 
 
