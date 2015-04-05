@@ -13,9 +13,20 @@
 		<property name="show_sql">true</property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.current_session_context_class">thread</property>
-
 		<mapping class="com.hoticket.modal.User" />
 		<mapping class="com.hoticket.modal.Customer" />
 		<mapping class="com.hoticket.modal.Employee" />
+	    <mapping class="com.hoticket.modal.User" />
+		<mapping class="com.hoticket.modal.Customer" />
+		<mapping class="com.hoticket.modal.Employee" />
+		<mapping class="com.hoticket.modal.Billing_account" />
+		<mapping class="com.hoticket.modal.Billing_address" />
+		<mapping class="com.hoticket.modal.Pay_history" />
+		<mapping class="com.hoticket.modal.Guest_billing_account" />
+		<mapping class="com.hoticket.modal.Guest_billing_address" />
+		<mapping class="com.hoticket.modal.Guest_pay_history" />
+		<mapping class="com.hoticket.modal.Showing" />
+		<mapping class="com.hoticket.modal.Movie" />
+		<mapping class="com.hoticket.modal.Theatre" />
 	</session-factory>
 </hibernate-configuration>

@@ -1,5 +1,6 @@
 package com.hoticket.modal;
 
+
 import java.io.Serializable;
 import javax.persistence.*;
 import org.hibernate.annotations.NamedNativeQueries;
@@ -12,9 +13,11 @@ import org.hibernate.annotations.NamedNativeQuery;
 	)
 })
 
+
 @Entity  
 @Table(name = "user")  
 @Inheritance(strategy=InheritanceType.JOINED)  
+
 public class User implements Serializable{
 	/**
 	 * 
@@ -25,12 +28,12 @@ public class User implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)  
 	@Column(name = "id")  
 	private int id;
+	@Column(name="email")
+	private String email;
 	@Column(name="first_name")
 	private String first_name;
 	@Column(name="last_name")
 	private String last_name;
-	@Column(name="email")
-	private String email;
 	@Column (name="password")
 	private String password;
 	@Column(name="role")
@@ -55,12 +58,6 @@ public class User implements Serializable{
 	public void setLast_name(String last_name) {
 		this.last_name = last_name;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public String getPassword() {
 		return password;
 	}
@@ -72,6 +69,12 @@ public class User implements Serializable{
 	}
 	public void setRole(int role) {
 		this.role = role;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getUser_name() {
 		return user_name;

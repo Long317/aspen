@@ -1,5 +1,6 @@
 package com.hoticket.modal;
 import java.io.Serializable;
+
 import javax.persistence.*;   
 @Entity  
 @Table(name="employee")  
