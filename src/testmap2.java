@@ -1,5 +1,7 @@
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.hibernate.*;
 
@@ -8,6 +10,7 @@ import com.hoticket.modal.Billing_address;
 import com.hoticket.modal.Customer;
 import com.hoticket.modal.Movie;
 import com.hoticket.modal.Pay_history;
+import com.hoticket.modal.Rating;
 import com.hoticket.modal.Showing;
 import com.hoticket.modal.Theatre;
 import com.hoticket.util.ConnectionUtil;
@@ -19,7 +22,7 @@ public class testmap2 {
     	 Session session=  ConnectionUtil.getSessionFactory().openSession();
 	      session.beginTransaction();  
  	
- 
+ /*Add customer u3*/
         Customer u3 = new Customer();
 	    u3.setEmail("aaaa@gmail.com");
 	    u3.setFirst_name("hahads");
@@ -29,7 +32,7 @@ public class testmap2 {
 	    u3.setGender(1);
         
         session.save(u3);
-         
+ /*Add two billing_accounts for customer*/
         Billing_account emp1 = new Billing_account();
         Billing_account emp2 = new Billing_account();
         emp1.setCard_holder("sophie");
@@ -47,7 +50,7 @@ public class testmap2 {
         session.save(emp1);
         session.save(emp2);
         
-        
+    /*Add two billing addresses for customer*/
         Billing_address ad1=new Billing_address(); 
         ad1.setAddress("275 hallock rd");
         ad1.setCity("stony brook");
@@ -68,26 +71,28 @@ public class testmap2 {
         ad2.setCustomer(u3);
         session.save(ad1);
         session.save(ad2);
-        
+        /*add a movie*/
         Movie m=new Movie();
         m.setName("gone with the wind");
         session.save(m);
+        /*add second movie*/
+        Movie m1=new Movie();
+        m1.setName("howl's moving castle");
+        session.save(m1);
+        /*add a theatre*/
         Theatre  t=new Theatre();
         t.setName("amc");
         session.save(t);
         java.util.Date date = new Date();
-        
-        
+        /*add a showing*/
         Showing s=new Showing();
         s.setDate(new java.sql.Date(date.getDay()));
         s.setCategory("gg");
         s.setStart_time(new java.sql.Time(date.getTime()));
-        
-        
         s.setMovie(m);
         s.setTheatre(t);
         session.save(s);
-        
+        /*add a pay history*/
         Pay_history p=new Pay_history();
         p.setBilling_account(emp1);
         p.setBilling_address(ad1);
@@ -95,14 +100,23 @@ public class testmap2 {
         p.setShowing(s);
         p.setTicket_number(3);
         session.save(p);
-        
-        
-        
-        
-        
-        
-        
-
+        /*test for inserting customer favorite movies*/
+        Set<Movie> movies=new HashSet<Movie>();
+        movies.add(m); movies.add(m1);
+        u3.setFavorite_movies(movies);
+        session.save(u3);
+        /*test for inserting customer favorite theatres*/
+        Set<Theatre> theatres=new HashSet<Theatre>();
+        theatres.add(t);
+        u3.setFavorite_theatres(theatres);
+        session.save(u3);
+       /*test for rating table*/
+        Rating r=new Rating();
+        r.setCustomer(u3);
+        r.setMovie(m);
+        r.setComment("sophie is a genius");
+        r.setRating_score(5);
+        session.save(r);
         
         Customer u2 = new Customer();
 	    u2.setEmail("bbbb@gmail.com");
