@@ -79,6 +79,7 @@ public class testmap2 {
         
         
         Showing s=new Showing();
+        
         s.setDate(new java.sql.Date(date.getDay()));
         s.setCategory("gg");
         s.setStart_time(new java.sql.Time(date.getTime()));
