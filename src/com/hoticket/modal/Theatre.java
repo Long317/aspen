@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -35,6 +36,8 @@ public class Theatre implements Serializable{
 	private int supported;
 	@OneToMany(mappedBy="theatre")
 	private Set <Showing> showing;
+	@ManyToMany(mappedBy="favorite_theatres")
+	private Set<Customer> customers;
 	
 	public int getId() {
 		return id;
@@ -89,6 +92,12 @@ public class Theatre implements Serializable{
 	}
 	public void setShowing(Set<Showing> showing) {
 		this.showing = showing;
+	}
+	public Set<Customer> getCustomers() {
+		return customers;
+	}
+	public void setCustomers(Set<Customer> customers) {
+		this.customers = customers;
 	}
 
 	

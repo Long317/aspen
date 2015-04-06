@@ -3,7 +3,6 @@ package com.hoticket.modal;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -41,7 +40,9 @@ public class Movie implements Serializable{
 	@Column(name="trailer_url")
 	private String trailer_url;
 	@OneToMany(mappedBy="movie")
-	private Set <Showing> showing;
+	private Set <Showing> showings;
+	@OneToMany(mappedBy="movie")
+	private Set <Rating> movie_ratings;
 	@ManyToMany(mappedBy="favorite_movies")
 	private Set<Customer> customers;
 	public int getId() {
@@ -98,11 +99,11 @@ public class Movie implements Serializable{
 	public void setTrailer_url(String trailer_url) {
 		this.trailer_url = trailer_url;
 	}
-	public Set<Showing> getShowing() {
-		return showing;
+	public Set<Showing> getShowings() {
+		return showings;
 	}
-	public void setShowing(Set<Showing> showing) {
-		this.showing = showing;
+	public void setShowings(Set<Showing> showings) {
+		this.showings = showings;
 	}
 	public Set<Customer> getCustomers() {
 		return customers;
@@ -110,8 +111,11 @@ public class Movie implements Serializable{
 	public void setCustomers(Set<Customer> customers) {
 		this.customers = customers;
 	}
-
-
-
+	public Set<Rating> getMovie_ratings() {
+		return movie_ratings;
+	}
+	public void setMovie_ratings(Set<Rating> movie_ratings) {
+		this.movie_ratings = movie_ratings;
+	}
 
 }

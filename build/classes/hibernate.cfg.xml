@@ -16,9 +16,6 @@
 		<mapping class="com.hoticket.modal.User" />
 		<mapping class="com.hoticket.modal.Customer" />
 		<mapping class="com.hoticket.modal.Employee" />
-	    <mapping class="com.hoticket.modal.User" />
-		<mapping class="com.hoticket.modal.Customer" />
-		<mapping class="com.hoticket.modal.Employee" />
 		<mapping class="com.hoticket.modal.Billing_account" />
 		<mapping class="com.hoticket.modal.Billing_address" />
 		<mapping class="com.hoticket.modal.Pay_history" />
@@ -28,5 +25,6 @@
 		<mapping class="com.hoticket.modal.Showing" />
 		<mapping class="com.hoticket.modal.Movie" />
 		<mapping class="com.hoticket.modal.Theatre" />
+		<mapping class="com.hoticket.modal.Rating" />
 	</session-factory>
 </hibernate-configuration>
