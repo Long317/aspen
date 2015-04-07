@@ -496,14 +496,18 @@ Jamie Dornan</i></h2>
 	<script src="assets/js/bootstrap-tab.js"></script>
 
 	<script src="assets/js/google-code-prettify/prettify.js"></script>
-	  <script src="assets/js/application.js"></script>
+	<script src="assets/js/application.js"></script>
+	<script type="text/javascript" src="http://l2.io/ip.js?var=myip"></script>
 <script type="text/javascript">
 	//sliders starter
 	jQuery(document).ready(function() {
 		App.init();
 		App.initSliders();      
 		ParallaxSlider.initParallaxSlider();
-	});
+		var xmlhttp = new XMLHttpRequest();
+		var url = "http://localhost:8080/aspen/geolocator?clientIP="+myip;
+		xmlhttp.open("GET", url, true);
+        xmlhttp.send();
 	   $(document).ready(function() {
 	   	//owl-demo starter
 	  $("#owl-demo").owlCarousel({
@@ -513,6 +517,7 @@ Jamie Dornan</i></h2>
 	   stopOnHover: true
 	  });
 	});
+
 
 </script>
 	<s:if test="#session.loginError== 1"> 

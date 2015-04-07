@@ -1,4 +1,4 @@
-package com.hoticket.action;
+
 import org.hibernate.*;
 import org.hibernate.cfg.*;
 

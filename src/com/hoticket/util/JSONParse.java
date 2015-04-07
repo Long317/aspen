@@ -1,16 +1,11 @@
 package com.hoticket.util;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 import org.hibernate.Session;
 import org.json.simple.JSONArray;
@@ -24,8 +19,7 @@ import com.hoticket.modal.Theatre;
 public class JSONParse {
 	
 	 public static void main(String args[]) {
-    	 Session session=  ConnectionUtil.getSessionFactory().openSession();
-	      
+	  Session session=  ConnectionUtil.getSessionFactory().openSession(); 
 	  FileReader fr = null;
       JSONParser parser = new JSONParser();
       java.util.Date date = new Date();
@@ -89,13 +83,13 @@ public class JSONParse {
             		}
             		//set start_time for show
             		s.setStart_time(new java.sql.Time(calendar.getTimeInMillis()));
-            		s.setDate(new java.sql.Date(date.getDay()));
+            		s.setDate(new java.sql.Date(calendar.getTimeInMillis()));
             		s.setTicket_number(50);
             		s.setTheatre(t);
             		s.setMovie(m);
-            		if (m.getGenre().contains("IMAX") &&m.getGenre().contains("3D")){
+            		if (m.getGenre().contains("IMAX") &&m.getName().contains("3D")){
             			s.setCategory("IMAX,3D");
-            		}else if (m.getGenre().contains("3D")){
+            		}else if (m.getName().contains("3D")){
             			s.setCategory("3D");
             		}else if (m.getGenre().contains("IMAX")){
             			s.setCategory("IMAX");

@@ -93,5 +93,4 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 	            session.put("loginError", 1);
 	        }  
 	    } 
-
 }

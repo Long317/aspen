@@ -9,35 +9,46 @@
 
 	<package name="login" namespace="/" extends="struts-default">
 
-		<action name="login"  class="com.hoticket.action.LoginAction">
+		<action name="login" class="com.hoticket.action.LoginAction">
 			<result name="user">/index.jsp</result>
 			<result name="admin">/admin.jsp</result>
 			<result name="manager">/manager.jsp</result>
 			<result name="error">/index.jsp</result>
 			<result name="input">/index.jsp</result>
 		</action>
-		
+
 		<action name="signout" class="com.hoticket.action.SignoutAction">
 			<result name="success">/index.jsp</result>
 		</action>
-		
-		<action name="emailer"    class="com.hoticket.action.EmailAction">
-         <result name="success">/PurchaseSuccess.jsp</result>
-         <result name="error">/index.jsp</result>
-      </action>
-		<!-- Redirect to another namespace -->
+		<action name="emailer" class="com.hoticket.action.EmailAction">
+			<result name="success">/PurchaseSuccess.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
 	</package>
-	
 	<package name="register" namespace="/" extends="struts-default">
-	
+
 		<action name="register" class="com.hoticket.action.RegisterAction">
 			<result name="success">/index.jsp</result>
 			<result name="error">/index.jsp</result>
 			<result name="input">/index.jsp</result>
 		</action>
+	</package>
 
-		<!-- Redirect to another namespace -->
-
+	<package name="DBaction" namespace="/" extends="struts-default">
+		<action name="getData" class="com.hoticket.action.GetDataAction">
+			<result name="success">/PurchaseSuccess.jsp</result>
+			<result name="error">/demo.jsp</result>
+		</action>
+		 <action name="updateDB"    class="com.hoticket.action.UpdateDBAction">
+         <result name="success">/PurchaseSuccess.jsp</result>
+         <result name="error">/demo.jsp</result>
+      </action>
+	</package>
+	<package name="Geolocator" namespace="/" extends="struts-default">
+		<action name="geolocator" class="com.hoticket.action.GeoLocatorAction">
+			<result name="success">/PurchaseSuccess.jsp</result>
+			<result name="error">/demo.jsp</result>
+		</action>
 	</package>
 
 </struts>
