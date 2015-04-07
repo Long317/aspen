@@ -39,5 +39,16 @@
 		<!-- Redirect to another namespace -->
 
 	</package>
+	
+	<package name="searchTheatre" namespace="/" extends="struts-default">
+	
+		<action name="searchTheatre" class="com.hoticket.action.SearchTheatreByZipcodeAction">
+			<result name="TheatreList">/search.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
+
+		<!-- Redirect to another namespace -->
+
+	</package>
 
 </struts>

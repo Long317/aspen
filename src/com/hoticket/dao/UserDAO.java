@@ -62,4 +62,10 @@ public class UserDAO {
 		}
 		
 	}
+	
+	//Third build?
+	//update local image URL into database
+	public void updatePortrait(String URL){
+		
+	}
 }
