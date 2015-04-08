@@ -72,6 +72,27 @@ public class MovieDAO {
 				return movie;
 			}
 		
+//			//sort movies by rating
+//			//parameter: no
+//			//output: list of movie
+//					@SuppressWarnings("unchecked")
+//					public List<Movie> sortMovieByRating() {
+//						Movie movie = new Movie();
+//						try {
+//							session = ConnectionUtil.getSessionFactory().getCurrentSession();
+//							session.beginTransaction();
+//							movie =  (List<Movie>) session.createQuery("from Movie where name ="+"'"+input+"'");
+//							session.getTransaction().commit();
+//							return movie;
+//
+//						} catch (Exception e) {
+//							e.printStackTrace();
+//						}
+//
+//						return movie;
+//					}
+//				
+			
     //add a new movie into movie table
 	public void addMovie(Movie movie) {
 
