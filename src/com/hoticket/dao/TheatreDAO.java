@@ -18,7 +18,7 @@ public class TheatreDAO {
 	Session session = null;
 
 	  //create an object of TheaterDAO
-	   private static TheatreDAO instance = new  TheatreDAO();
+	   private static TheatreDAO instance = new TheatreDAO();
 
 	   //make the constructor private so that this class cannot be instantiated
 	   private TheatreDAO(){}
@@ -59,10 +59,6 @@ public class TheatreDAO {
 			session.beginTransaction();
 			theatres = (List<Theatre>) session.createQuery("from Theatre where zipcode ="+ input).list();
 			session.getTransaction().commit();
-			//Jessie for test
-			for(int i=0;i<theatres.size();i++)
-			System.out.println("result from query, result "+i+" = "+theatres.get(i).getAddress());
-			//Jessie for test
 			return theatres;
 
 		} catch (Exception e) {
@@ -71,6 +67,43 @@ public class TheatreDAO {
 
 		return theatres;
 	}
+	
+	//get theatre by city
+		@SuppressWarnings("unchecked")
+		public List<Theatre> getTheatreByCity(String input) {
+			List<Theatre> theatres = new ArrayList<Theatre>();
+			try {
+				session = ConnectionUtil.getSessionFactory().getCurrentSession();
+				session.beginTransaction();
+				theatres = (List<Theatre>) session.createQuery("from Theatre where city ="+"'"+input+"'").list();
+				session.getTransaction().commit();
+				return theatres;
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			return theatres;
+		}
+		
+		//get theatre by state
+				@SuppressWarnings("unchecked")
+				public List<Theatre> getTheatreByState(String input) {
+					List<Theatre> theatres = new ArrayList<Theatre>();
+					try {
+						session = ConnectionUtil.getSessionFactory().getCurrentSession();
+						session.beginTransaction();
+						theatres = (List<Theatre>) session.createQuery("from Theatre where state ="+"'"+input+"'").list();
+						session.getTransaction().commit();
+						return theatres;
+
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+					return theatres;
+				}
+				
 	
 	//get theatre by theatre name
 		@SuppressWarnings("unchecked")

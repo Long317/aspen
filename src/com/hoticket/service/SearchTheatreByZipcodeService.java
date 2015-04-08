@@ -9,6 +9,7 @@ public class SearchTheatreByZipcodeService {
 	private TheatreDAO theatreDao = TheatreDAO.getInstance();
 	public List<Theatre> searchTheatreFromZipcode(int inputZipcode){
 		return theatreDao.getTheatreByZipcode(inputZipcode);
+		
 	}
 }
 

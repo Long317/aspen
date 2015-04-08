@@ -29,36 +29,39 @@ public class MovieDAO {
 	      return instance;
 	   }
 
-	/**
-	 * get movies list from movie table
-	 */
+	   
+	   	//get all movies from database
+		//parameter: no
+		//output: list of movies
 	@SuppressWarnings("unchecked")
 	public List<Movie> getMovies() {
 
-		List<Movie> users = new ArrayList<Movie>();
+		List<Movie> movies = new ArrayList<Movie>();
 		try {
 
 			session = ConnectionUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
-			users = (List<Movie>) session.createQuery("from Movie").list();
+			movies = (List<Movie>) session.createQuery("from Movie").list();
 			session.getTransaction().commit();
-			return users;
+			return movies;
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return users;
+		return movies;
 	}
 	
 	//get movie by movie name
+	//parameter: String
+	//output: a movie
 			@SuppressWarnings("unchecked")
 			public Movie getMovieByName(String input) {
 				Movie movie = new Movie();
 				try {
 					session = ConnectionUtil.getSessionFactory().getCurrentSession();
 					session.beginTransaction();
-					movie =  (Movie) session.createQuery("from Movie where name ="+ input);
+					movie =  (Movie) session.createQuery("from Movie where name ="+"'"+input+"'");
 					session.getTransaction().commit();
 					return movie;
 
@@ -69,7 +72,7 @@ public class MovieDAO {
 				return movie;
 			}
 		
-//add a new movie into movie table
+    //add a new movie into movie table
 	public void addMovie(Movie movie) {
 
 		Session session = null;
