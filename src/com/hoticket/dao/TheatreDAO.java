@@ -38,7 +38,7 @@ public class TheatreDAO {
 
 			session = ConnectionUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
-			theatres = (List<Theatre>) session.createQuery("from theatre").list();
+			theatres = (List<Theatre>) session.createQuery("from Theatre").list();
 			session.getTransaction().commit();
 			return theatres;
 

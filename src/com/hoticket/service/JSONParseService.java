@@ -2,8 +2,7 @@ package com.hoticket.service;
 
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import org.hibernate.Session;
@@ -22,7 +21,6 @@ public class JSONParseService {
 		  Session session=  ConnectionUtil.getSessionFactory().openSession(); 
 		  FileReader fr = null;
 	      JSONParser parser = new JSONParser();
-	      java.util.Date date = new Date();
 	      GregorianCalendar calendar = new GregorianCalendar(2015,4,5);
 	      try {
 	          File f = new File(fullPath);
@@ -38,7 +36,9 @@ public class JSONParseService {
 	        	String [] addrs = address.split(",");
 	        	String[] ads = address.split(" ");
 	        	//set attribute for theater
+	        	if (ads[ads.length - 1].matches("-?\\d+(\\.\\d+)?")){
 	        	t.setZipcode(Integer.parseInt(ads[ads.length-1]));
+	        	}
 	        	t.setState(ads[ads.length-2]);
 	        	t.setCity(addrs[1]);
 	        	t.setAddress(addrs[0]);
@@ -70,16 +70,16 @@ public class JSONParseService {
 	            		System.out.println(time);
 	            		//convert time string to calender time
 	            		if (time.contains("am")){
-	            		calendar.set(calendar.AM_PM, calendar.AM);
+	            		calendar.set(Calendar.AM_PM, Calendar.AM);
 	            		}else{
-	            			calendar.set(calendar.AM_PM, calendar.PM);
+	            			calendar.set(Calendar.AM_PM, Calendar.PM);
 	            		}
 	            		
-	            		calendar.set(calendar.HOUR,Integer.parseInt(time.split(":")[0]));
+	            		calendar.set(Calendar.HOUR,Integer.parseInt(time.split(":")[0]));
 	            		if (time.contains("30")){
-	            		calendar.set(calendar.MINUTE,30);
+	            		calendar.set(Calendar.MINUTE,30);
 	            		}else{
-	            			calendar.set(calendar.MINUTE,0);
+	            			calendar.set(Calendar.MINUTE,0);
 	            		}
 	            		//set start_time for show
 	            		s.setStart_time(new java.sql.Time(calendar.getTimeInMillis()));

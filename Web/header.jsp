@@ -278,18 +278,15 @@
 	</div>
 	<!--=== End Header ===-->   
  <!-- Search Block -->
-     <s:form action="searchTheatre">
                      <div class="container">
                             <div class="search-open">
                                 <div class="input-group animated fadeInDown">
-                                    <input name="zipcode" type="zipcode" class="form-control" placeholder="Enter City+State, Zipcode or Movie">
+                                    <input id="mainSearch" type="text" class="form-control" placeholder="Enter City + State, ZIP Code, or Movie">
                                     <span class="input-group-btn">
-                                    <button class="btn-u searGo" id="mainSearchCon" type="button">Go</button></a>
+                                     <a href="search.jsp">   <button class="btn-u searGo" id="mainSearchCon" type="button">Go</button></a>
                                     </span>
                                 </div>
-                                <s:fielderror fieldName="zipcode"/>
                             </div>    
                      </div> 
-                        </s:form>
                         <!-- End Search Block -->
 <!-- End Search Block -->

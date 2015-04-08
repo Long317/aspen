@@ -12,9 +12,18 @@ import java.net.URL;
 
 
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Map;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.hoticket.dao.TheatreDAO;
+import com.hoticket.modal.Theatre;
+import com.hoticket.service.TheatreFounder;
+import com.hoticket.util.Methods;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class GeoLocatorAction extends ActionSupport {
@@ -25,8 +34,13 @@ public class GeoLocatorAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@SuppressWarnings("unchecked")
 	public String execute() {
 		try {
+			System.out.println(clientIP);
+			//get session object
+			@SuppressWarnings("rawtypes")
+			Map session = (Map) ActionContext.getContext().get("session");
 			//create remote URL
 			URL url = new URL(GEOLocator_URL+clientIP);
 			//get writer for the url response
@@ -47,10 +61,40 @@ public class GeoLocatorAction extends ActionSupport {
 	        String zip = (String) addressinfo.get("zip");
 	        //store user address
 	        String address = addr+" "+city+" "+state+" "+zip;
-	        System.out.println(addr);
-	        System.out.println(city);
-	        System.out.println(state);
-	        System.out.println(zip);
+	        session.put("clientAddress", address);
+	        ArrayList<Theatre> theatres ;
+	        //get theatres from Context if it exits
+	        if (ActionContext.getContext().get("theatres")==null){
+	        	theatres = (ArrayList<Theatre>) TheatreDAO.getInstance().getTheatre();
+	        }else{
+	        	//if not get theatres from db and store in context
+	        	theatres=  (ArrayList<Theatre>)ActionContext.getContext().get("theatres");
+	        	ActionContext.getContext().put("theatres", theatres);
+	        }
+	        //get theatre founder and calculate distance for all theatres
+	        TheatreFounder tf = new TheatreFounder();
+	        //store distances for same state theatre
+	        ArrayList<Double> distances = new ArrayList<Double>();
+	        //store same state theatre 
+	        ArrayList<Theatre> stateTheatres = new ArrayList<Theatre>();
+	        
+	        for (int i=0;i<theatres.size();i++){
+	        	//only check same state
+	        	if (theatres.get(i).getState().contains(state.trim())){
+	        		stateTheatres.add(theatres.get(i));
+	        	distances.add(TheatreFounder.calculateDistance(address,theatres.get(i)));
+	        	}
+	        }
+	        //store top 5 closest theatres to the session
+	       ArrayList<Theatre> closeTheatres = new ArrayList<Theatre>();
+	       for (int i=0;i<5;i++){
+	    	   System.out.println(stateTheatres.get(Methods.minIndex(distances)).getName());
+	    	   closeTheatres.add(stateTheatres.get(Methods.minIndex(distances)));
+	    	  distances.remove(Methods.minIndex(distances));
+	    	   
+	       }
+	       
+	       session.put("closeTheatres", closeTheatres);
 	        return SUCCESS;
 		} catch (Exception e) {
 			e.printStackTrace();

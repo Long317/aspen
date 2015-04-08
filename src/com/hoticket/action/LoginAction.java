@@ -22,7 +22,6 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 	private User user = new User();
 	private List<User> users = new ArrayList<User>();
 	private UserDAO userDao = new UserDAO();
-	private boolean terms_condition;
 
 	@Override
 	public User getModel() {

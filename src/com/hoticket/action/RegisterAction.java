@@ -38,6 +38,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 	 * this method will call loginService, which will setup role attribute for
 	 * user. 0: user, 1: admin, 2.manager, 3. Error
 	 */
+	@SuppressWarnings("unchecked")
 	public String execute() {
 		@SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
