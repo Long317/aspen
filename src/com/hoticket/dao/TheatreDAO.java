@@ -112,7 +112,7 @@ public class TheatreDAO {
 			try {
 				session = ConnectionUtil.getSessionFactory().getCurrentSession();
 				session.beginTransaction();
-				theatre =  (Theatre) session.createQuery("from Theatre where name ="+ input);
+				theatre =  (Theatre) session.createQuery("from Theatre where name ="+"'"+input+"'").uniqueResult();
 				session.getTransaction().commit();
 				return theatre;
 

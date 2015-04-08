@@ -13,9 +13,10 @@ public class testQuery {
 			
 public static void main(String args[]){
 	
+		MovieDAO movieDao = MovieDAO.getInstance();
 		TheatreDAO theatreDao = TheatreDAO.getInstance();
-		
-		List<Theatre> t=theatreDao.getTheatreByState("New York");
+//		List<Theatre> tt=(List<Theatre>) theatreDao.getTheatreByZipcode(98072);
+		Movie t=(Movie)movieDao.getMovieByName("Interstellarr");
 		System.out.println(t);
 }
 }

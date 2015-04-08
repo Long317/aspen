@@ -61,7 +61,7 @@ public class MovieDAO {
 				try {
 					session = ConnectionUtil.getSessionFactory().getCurrentSession();
 					session.beginTransaction();
-					movie =  (Movie) session.createQuery("from Movie where name ="+"'"+input+"'");
+					movie =  (Movie) session.createQuery("from Movie where name ="+"'"+input+"'").uniqueResult();
 					session.getTransaction().commit();
 					return movie;
 
