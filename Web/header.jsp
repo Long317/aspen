@@ -208,26 +208,21 @@
 														<!-- End 4 Columns -->
 													</ul>                                
 												</div>
-												<div class="col-md-3 equal-height-in">
-													<ul class="list-unstyled equal-height-list">
-														<li><h3>5 Columns</h3></li>
+                                                <div class="col-md-3 equal-height-in">
+													<ol class="list-unstyled equal-height-list">
+														<li><h3>Top Box Office</h3></li>
 												   
 														<!-- 5 Columns -->
-														<li><a href="portfolio_5_columns_fullwidth_no_space.html">5 Columns Fullwidth No Sapce</a></li>
-														<li><a href="portfolio_5_columns_fullwidth_text.html">5 Columns Fullwidth Grid Text</a></li>
-														<li><a href="portfolio_5_columns_fullwidth.html">5 Columns Fullwidth Grid</a></li>
+														<li><a href="movieoverview.jsp">1. Furious 7</a></li>
+														<li><a href="movieoverview.jsp">2. Home (2015)</a></li>
+														<li><a href="movieoverview.jsp">3. Get Hard</a></li>
+														<li><a href="movieoverview.jsp">4. Cinderella (2015)</a></li>
+														<li><a href="movieoverview.jsp">5. The Divergent Series: Insurgent</a></li>
+														<li><a href="movieoverview.jsp">6. It Follows</a></li>
+														<li><a href="movieoverview.jsp">7. Women In Gold</a></li>
 														<!-- End 5 Columns -->
-
-														<li class="big-screen-space"></li>
 														
-														<li><h3>6 Columns</h6></li>
-													
-														<!-- 6 Columns -->
-														<li><a href="portfolio_6_columns_fullwidth_no_space.html">6 Columns Fullwidth No Sapce</a></li>
-														<li><a href="portfolio_6_columns_fullwidth_text.html">6 Columns Fullwidth Grid Text</a></li>
-														<li><a href="portfolio_6_columns_fullwidth.html">6 Columns Fullwidth Grid</a></li>
-														<!-- End 6 Columns -->
-													</ul>                                
+													</ol>                                
 												</div>
 											</div>
 										</div>    
@@ -266,18 +261,18 @@
 	<!--=== End Header ===-->   
  <!-- Search Block -->
                      <div class="container">
-                            <div class="search-open">
+                          <div class="search-open">
+                            <s:form action="search">
                                 <div class="input-group animated fadeInDown">
-                                    <input id="mainSearch" type="text" class="form-control" placeholder="Enter City + State, ZIP Code, or Movie">
+                                  <input id="mainSearch" name ="searchInput" type="text" class="form-control" placeholder="Enter City + State, ZIP Code, or Movie">
                                     <span class="input-group-btn">
-                                     <a href="search.jsp">   <button class="btn-u searGo" id="mainSearchCon" type="button">Go</button></a>
+                                     <input class="btn-u searGo" id="mainSearchCon" type="submit">Go</input>
                                     </span>
                                 </div>
+                              </s:form>
                             </div>    
                      </div> 
 <!-- End Search Block -->
-
-
 	 <!--login modal-->
             <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
                 <div class="modal-dialog">

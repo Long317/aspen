@@ -11,7 +11,8 @@ CREATE TABLE `hoticket`.`movie` (
   `img_url` VARCHAR(1000) NULL,
   `synopsis` VARCHAR(10000) NULL DEFAULT 'this is a movie!',
   `trailer_url` VARCHAR(1000) NULL,
-  PRIMARY KEY (`id`));
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `movie_name_UNIQUE` (`name` ASC));
   
 
   
@@ -24,7 +25,8 @@ CREATE TABLE `hoticket`.`movie` (
   `address` VARCHAR(250) NULL DEFAULT 'null',
   `phone_number` VARCHAR(13) NULL DEFAULT 'null',
   `supported` INT NULL DEFAULT 0,
-  PRIMARY KEY (`id`));
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `theatre_name_UNIQUE` (`name` ASC));
   
   CREATE TABLE `hoticket`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -57,6 +59,8 @@ CREATE TABLE `hoticket`.`billing_account` (
   `card_holder` VARCHAR(45) NOT NULL,
   `card_type` VARCHAR(20) NOT NULL,
   `cvs` INT NOT NULL,
+  `month` INT NOT NULL,
+  `year` INT NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`customer_id`)
     REFERENCES `hoticket`.`customer` (`id`)
@@ -222,11 +226,12 @@ CREATE TABLE `hoticket`.`price_table` (
     ON UPDATE CASCADE);
 
 CREATE TABLE `hoticket`.`rating` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `movie_id` INT NOT NULL,
   `rating_score` INT NOT NULL DEFAULT 0 COMMENT '0-5',
   `comment` VARCHAR(500) NOT NULL DEFAULT 'This is an awesome movie',
-  PRIMARY KEY (`user_id`, `movie_id`),
+  PRIMARY KEY (`id`),
     FOREIGN KEY (`user_id`)
     REFERENCES `hoticket`.`user` (`id`)
     ON DELETE CASCADE
@@ -236,4 +241,24 @@ CREATE TABLE `hoticket`.`rating` (
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
+DELIMITER //
+CREATE PROCEDURE addCustomer(email varchar(250),password varchar(20),user_name varchar(45))
+ BEGIN
+ insert into user (email,password,user_name) values (email,password,user_name) ;
+ END;//
+DELIMITER ;
 
+
+DELIMITER //
+CREATE PROCEDURE addMovie(id int(11),name varchar(250),release_time date,rating float,length int(11),trailer_url varchar(100),genre varchar(100),img_url varchar(1000),synopsis varchar(10000))
+BEGIN
+ insert into movie (id,name,release_time,rating,length,trailer_url,genre,img_url,synopsis) values (id,name,release_time,rating,length,trailer_url,genre,img_url,synopsis) ;
+ END;//
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE addTheatre(id int(11),name varchar(250),city varchar(45), zipcode int(11), state varchar(45),address varchar(250), phone_number varchar(13), supported int(11))
+BEGIN
+ insert into theatre (id,name,city,zipcode,state,address,phone_number,supported) values (id,name,city,zipcode,state,address,phone_number,supported) ;
+ END;//
+DELIMITER ;
