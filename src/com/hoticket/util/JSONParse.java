@@ -3,14 +3,17 @@ package com.hoticket.util;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.hoticket.dao.MovieDAO;
 import com.hoticket.modal.Movie;
 import com.hoticket.modal.Showing;
 import com.hoticket.modal.Theatre;
@@ -18,6 +21,7 @@ import com.hoticket.modal.Theatre;
 public class JSONParse {
 
 	public static void main(String args[]) {
+		List<Movie> StoredMovies;
 		Session session = ConnectionUtil.getSessionFactory().openSession();
 		FileReader fr = null;
 		JSONParser parser = new JSONParser();
@@ -27,7 +31,6 @@ public class JSONParse {
 			fr = new FileReader(f);
 			JSONArray shows = (JSONArray) parser.parse(fr);
 			System.out.println(shows.size());
-			session.beginTransaction();
 			for (int i = 0; i < shows.size(); i++) {
 				Theatre t = new Theatre();
 				// get address
@@ -38,39 +41,60 @@ public class JSONParse {
 				String[] addrs = address.split(",");
 				String[] ads = address.split(" ");
 				// set attribute for theater
-				if (ads[ads.length - 1].matches("-?\\d+(\\.\\d+)?")){
-				t.setZipcode(Integer.parseInt(ads[ads.length - 1]));
+				if (ads[ads.length - 1].matches("-?\\d+(\\.\\d+)?")) {
+					t.setZipcode(Integer.parseInt(ads[ads.length - 1]));
 				}
 				t.setState(ads[ads.length - 2]);
 				t.setCity(addrs[1]);
 				t.setAddress(addrs[0]);
 				t.setName((String) ((JSONObject) shows.get(i)).get("name"));
+				session.getTransaction().begin();
 				session.save(t);
+				session.getTransaction().commit();
 				// get all movies json object
 				JSONArray movies = (JSONArray) (((JSONObject) shows.get(i))
 						.get("movies"));
 				for (int j = 0; j < movies.size(); j++) {
-					System.out.println((String) ((JSONObject) movies.get(j))
-							.toString());
-					// Create corresponding movie object
+					// Get corresponding movie object
+					// variable to check if movie exists
+					boolean isExist = false;
 					Movie m = new Movie();
-					m.setImg_url((String) ((JSONObject) movies.get(j))
-							.get("imgURL"));
-					m.setGenre(((String) ((JSONObject) movies.get(j))
-							.get("Genre")));
-					String length = ((String) ((JSONObject) movies.get(j))
-							.get("runTime"));
-					int timeLength = 150;
-					if (length.trim().length() == 10) {
-						timeLength = (length.trim().charAt(0) - '0') * 60
-								+ (length.trim().charAt(5) - '0') * 10
-								+ (length.trim().charAt(6) - '0');
+					List<Movie> ms = MovieDAO.getInstance().getMovies();
+					String mTitle = (String) ((JSONObject) movies.get(j))
+							.get("title");
+					System.out.println(ms.size());
+					if (!ms.isEmpty()) {
+						for (int k = 0; k < ms.size(); k++) {
+							if (ms.get(k).getName().trim()
+									.equals(mTitle.trim())) {
+								m = ms.get(k);
+								isExist = true;
+								break;
+							}
+						}
 					}
-					m.setLength(timeLength);
-					m.setName((String) ((JSONObject) movies.get(j))
-							.get("title"));
+					// check if movie has exited
+					System.out.println(isExist);
+					if (!isExist) {
+						m.setImg_url((String) ((JSONObject) movies.get(j))
+								.get("imgURL"));
+						m.setGenre(((String) ((JSONObject) movies.get(j))
+								.get("Genre")));
+						String length = ((String) ((JSONObject) movies.get(j))
+								.get("runTime"));
+						int timeLength = 150;
+						if (length.trim().length() == 10) {
+							timeLength = (length.trim().charAt(0) - '0') * 60
+									+ (length.trim().charAt(5) - '0') * 10
+									+ (length.trim().charAt(6) - '0');
+						}
+						m.setLength(timeLength);
+						m.setName(mTitle);
+						session.beginTransaction();
+						session.save(m);
+						session.getTransaction().commit();
+					}
 					// create showing
-					session.save(m);
 					String showTime = ((JSONObject) movies.get(j)).get(
 							"movieShowTime").toString();
 					System.out.println(showTime);
@@ -117,7 +141,7 @@ public class JSONParse {
 				}
 
 			}
-			session.getTransaction().commit();
+
 			session.close();
 
 			System.out.println("Done");

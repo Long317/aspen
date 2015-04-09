@@ -26,7 +26,6 @@
 		</action>
 	</package>
 	<package name="register" namespace="/" extends="struts-default">
-
 		<action name="register" class="com.hoticket.action.RegisterAction">
 			<result name="success">/index.jsp</result>
 			<result name="error">/index.jsp</result>
@@ -48,6 +47,14 @@
 		<action name="geolocator" class="com.hoticket.action.GeoLocatorAction">
 			<result name="success">/PurchaseSuccess.jsp</result>
 			<result name="error">/demo.jsp</result>
+		</action>
+	</package>
+	<package name="search" namespace="/" extends="struts-default">
+		<action name="search" class="com.hoticket.action.SearchAction">
+			<result name="general">/search_general.jsp</result>
+			<result name="theatre">/search_theatre.jsp</result>
+			<result name="movie">/movieoverview.jsp</result>
+			<result name="error">/noResultFound.jsp</result>
 		</action>
 	</package>
 	

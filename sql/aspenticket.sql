@@ -11,7 +11,8 @@ CREATE TABLE `hoticket`.`movie` (
   `img_url` VARCHAR(1000) NULL,
   `synopsis` VARCHAR(10000) NULL DEFAULT 'this is a movie!',
   `trailer_url` VARCHAR(1000) NULL,
-  PRIMARY KEY (`id`));
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `movie_name_UNIQUE` (`name` ASC));
   
 
   
@@ -24,7 +25,8 @@ CREATE TABLE `hoticket`.`movie` (
   `address` VARCHAR(250) NULL DEFAULT 'null',
   `phone_number` VARCHAR(13) NULL DEFAULT 'null',
   `supported` INT NULL DEFAULT 0,
-  PRIMARY KEY (`id`));
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `theatre_name_UNIQUE` (`name` ASC));
   
   CREATE TABLE `hoticket`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -222,11 +224,12 @@ CREATE TABLE `hoticket`.`price_table` (
     ON UPDATE CASCADE);
 
 CREATE TABLE `hoticket`.`rating` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `movie_id` INT NOT NULL,
   `rating_score` INT NOT NULL DEFAULT 0 COMMENT '0-5',
   `comment` VARCHAR(500) NOT NULL DEFAULT 'This is an awesome movie',
-  PRIMARY KEY (`user_id`, `movie_id`),
+  PRIMARY KEY (`id`),
     FOREIGN KEY (`user_id`)
     REFERENCES `hoticket`.`user` (`id`)
     ON DELETE CASCADE
@@ -236,4 +239,10 @@ CREATE TABLE `hoticket`.`rating` (
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
+DELIMITER //
+CREATE PROCEDURE addCustomer(email varchar(250),password varchar(20),user_name varchar(45))
+ BEGIN
+ insert into user (email,password,user_name) values (email,password,user_name) ;
+ END;//
+DELIMITER ;
 

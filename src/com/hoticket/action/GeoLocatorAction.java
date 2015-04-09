@@ -13,7 +13,6 @@ import java.net.URL;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
@@ -63,16 +62,14 @@ public class GeoLocatorAction extends ActionSupport {
 	        String address = addr+" "+city+" "+state+" "+zip;
 	        session.put("clientAddress", address);
 	        ArrayList<Theatre> theatres ;
-	        //get theatres from Context if it exits
+	    	//if get theatres from db if not exits in context
 	        if (ActionContext.getContext().get("theatres")==null){
 	        	theatres = (ArrayList<Theatre>) TheatreDAO.getInstance().getTheatre();
 	        }else{
-	        	//if not get theatres from db and store in context
+		        //get theatres from Context if it exits
 	        	theatres=  (ArrayList<Theatre>)ActionContext.getContext().get("theatres");
 	        	ActionContext.getContext().put("theatres", theatres);
 	        }
-	        //get theatre founder and calculate distance for all theatres
-	        TheatreFounder tf = new TheatreFounder();
 	        //store distances for same state theatre
 	        ArrayList<Double> distances = new ArrayList<Double>();
 	        //store same state theatre 
@@ -82,13 +79,14 @@ public class GeoLocatorAction extends ActionSupport {
 	        	//only check same state
 	        	if (theatres.get(i).getState().contains(state.trim())){
 	        		stateTheatres.add(theatres.get(i));
-	        	distances.add(TheatreFounder.calculateDistance(address,theatres.get(i)));
+	        		distances.add(TheatreFounder.calculateDistance(address,theatres.get(i)));
 	        	}
 	        }
 	        //store top 5 closest theatres to the session
 	       ArrayList<Theatre> closeTheatres = new ArrayList<Theatre>();
 	       for (int i=0;i<5;i++){
 	    	   System.out.println(stateTheatres.get(Methods.minIndex(distances)).getName());
+	    	   System.out.println(stateTheatres.get(i).getShowing().toString());
 	    	   closeTheatres.add(stateTheatres.get(Methods.minIndex(distances)));
 	    	  distances.remove(Methods.minIndex(distances));
 	    	   
