@@ -13,8 +13,9 @@ import com.hoticket.modal.Rating;
 import com.hoticket.modal.Showing;
 import com.hoticket.modal.Theatre;
 import com.hoticket.util.ConnectionUtil;
+import com.hoticket.util.EncryptUtils;
  
-public class testmapping {
+public class testmap2 {
  
     @SuppressWarnings({ "unchecked", "deprecation" })
     public static void main(String[] args) {
@@ -23,10 +24,10 @@ public class testmapping {
  	
  /*Add customer u3*/
         Customer u3 = new Customer();
-	    u3.setEmail("aaaa@gmail.com");
+	    u3.setEmail("sophie.fang117@gmail.com");
 	    u3.setFirst_name("hahads");
-	    u3.setUser_name("jajafsd");
-	    u3.setPassword("asdfsaffsdfs");
+	    u3.setUser_name("sophie");
+	    u3.setPassword(EncryptUtils.base64encode("56880098"));
 	    u3.setRole(0);
 	    u3.setGender(1);
         
@@ -38,12 +39,16 @@ public class testmapping {
         emp1.setCard_number("3423413241");
         emp1.setCard_type("master");
         emp1.setCvs(343);
+        emp1.setMonth(4);
+        emp1.setYear(14);
         emp1.setCustomer(u3);
         
         emp2.setCard_holder("aophie");
         emp2.setCard_number("4423413241");
         emp2.setCard_type("master");
         emp2.setCvs(743);
+        emp1.setMonth(3);
+        emp1.setYear(16);
         emp2.setCustomer(u3);
          
         session.save(emp1);
@@ -121,7 +126,7 @@ public class testmapping {
 	    u2.setEmail("bbbb@gmail.com");
 	    u2.setFirst_name("hahads");
 	    u2.setUser_name("ally");
-	    u2.setPassword("asdfsaffsdfs");
+	    u2.setPassword(EncryptUtils.base64encode("asdfsaffsdfs"));
 	    u2.setRole(0);
 	    u2.setGender(1);
         

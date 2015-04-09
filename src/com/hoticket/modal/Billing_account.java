@@ -24,6 +24,10 @@ public class Billing_account implements Serializable{
 	private String card_type;
 	@Column(name="cvs")
 	private int cvs;
+	@Column(name="month")
+	private int month;
+	@Column(name="year")
+	private int year;
     @ManyToOne
     @JoinColumn(name="customer_id")
     private Customer customer;
@@ -71,4 +75,17 @@ public class Billing_account implements Serializable{
 	public void setPay_history(Set<Pay_history> pay_history) {
 		this.pay_history = pay_history;
 	}
+	public int getMonth() {
+		return month;
+	}
+	public void setMonth(int month) {
+		this.month = month;
+	}
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+
 }

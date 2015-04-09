@@ -26,8 +26,6 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 	private String confirmpass;
 	private static final long serialVersionUID = 1L;
 	private User user = new User();
-	private List<User> users = new ArrayList<User>();
-	private UserDAO userDao = new UserDAO();
 
 	@Override
 	public User getModel() {
@@ -43,15 +41,11 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 		@SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
 		RegisterService registerService = new RegisterService();
-		users = userDao.getUsers();
-		//encrypt user password here
-		user.setPassword(EncryptUtils.base64encode(user.getPassword())); 
-		
 		//verify register
-		if (!registerService.verifyRegister(user, users)) {
+		if (!registerService.verifyRegister(user)) {
 			return ERROR;
 		}
-		userDao.addUser(user);
+		registerService.addCustomer(user);
 		session.put("registerError", null);
 		emailService.send(user.getEmail(), SUBJECT_REGISTER, BODY_REGISTER);
 		return SUCCESS;
@@ -63,14 +57,6 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
 	}
 
 	public boolean isTerm_condition() {

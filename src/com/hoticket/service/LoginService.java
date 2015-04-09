@@ -1,13 +1,14 @@
 package com.hoticket.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.hoticket.dao.UserDAO;
+import com.hoticket.modal.Customer;
 import com.hoticket.modal.User;
 
 public class LoginService {
-
-	UserDAO userDao = new UserDAO();
+	private UserDAO userDao = new UserDAO();
 	/**
 	 * check if the email and password user enter 
 	 * @param user current user who is logging in
@@ -15,11 +16,14 @@ public class LoginService {
 	 * @return	true, user login success
 	 * 			false, user login fail
 	 */
-	public boolean verifyLogin(User user, List<User> users) {
+	public boolean verifyLogin(User user) {
+		List<User> users = new ArrayList<User>();;
+		users=userDao.getUsers();
 		for (int i = 0; i < users.size(); i++) {
 			if (user.getEmail().trim().equals(users.get(i).getEmail())) {
 				if (user.getPassword().trim()
 						.equals(users.get(i).getPassword())) {
+					user.setId(users.get(i).getId());
 					user.setRole(users.get(i).getRole());
 					user.setFirst_name(users.get(i).getFirst_name());
 					user.setLast_name(users.get(i).getLast_name());
@@ -30,6 +34,10 @@ public class LoginService {
 			}
 		}
 		return false;
+	}
+	public Customer getCustomer(User user) {
+		Customer customer=userDao.getCustomer(user.getId());
+		return customer;
 	}
 
 }
