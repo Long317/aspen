@@ -1,3 +1,4 @@
+
 package com.hoticket.dao;
 
 import java.util.ArrayList;
@@ -112,7 +113,7 @@ public class TheatreDAO {
 			try {
 				session = ConnectionUtil.getSessionFactory().openSession();
 				session.beginTransaction();
-				theatre =  (Theatre) session.createQuery("from Theatre where name ="+ input);
+				theatre =  (Theatre) session.createQuery("from Theatre where name ="+"'"+input+"'").uniqueResult();
 				session.getTransaction().commit();
 				return theatre;
 

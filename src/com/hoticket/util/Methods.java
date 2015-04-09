@@ -1,12 +1,7 @@
 package com.hoticket.util;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.hoticket.modal.Movie;
-import com.hoticket.modal.Theatre;
-
-import static com.hoticket.util.Constants.*;
 
 public class Methods {
 	/**

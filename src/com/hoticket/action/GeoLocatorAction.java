@@ -84,7 +84,8 @@ public class GeoLocatorAction extends ActionSupport {
 	        }
 	        //store top 5 closest theatres to the session
 	       ArrayList<Theatre> closeTheatres = new ArrayList<Theatre>();
-	       for (int i=0;i<5;i++){
+	       int number = closeTheatres.size()>=5?5:closeTheatres.size();
+	       for (int i=0;i<number;i++){
 	    	   System.out.println(stateTheatres.get(Methods.minIndex(distances)).getName());
 	    	   System.out.println(stateTheatres.get(i).getShowing().toString());
 	    	   closeTheatres.add(stateTheatres.get(Methods.minIndex(distances)));

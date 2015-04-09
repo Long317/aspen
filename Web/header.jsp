@@ -206,26 +206,21 @@
 														<!-- End 4 Columns -->
 													</ul>                                
 												</div>
-												<div class="col-md-3 equal-height-in">
-													<ul class="list-unstyled equal-height-list">
-														<li><h3>5 Columns</h3></li>
+                                                <div class="col-md-3 equal-height-in">
+													<ol class="list-unstyled equal-height-list">
+														<li><h3>Top Box Office</h3></li>
 												   
 														<!-- 5 Columns -->
-														<li><a href="portfolio_5_columns_fullwidth_no_space.html">5 Columns Fullwidth No Sapce</a></li>
-														<li><a href="portfolio_5_columns_fullwidth_text.html">5 Columns Fullwidth Grid Text</a></li>
-														<li><a href="portfolio_5_columns_fullwidth.html">5 Columns Fullwidth Grid</a></li>
+														<li><a href="movieoverview.jsp">1. Furious 7</a></li>
+														<li><a href="movieoverview.jsp">2. Home (2015)</a></li>
+														<li><a href="movieoverview.jsp">3. Get Hard</a></li>
+														<li><a href="movieoverview.jsp">4. Cinderella (2015)</a></li>
+														<li><a href="movieoverview.jsp">5. The Divergent Series: Insurgent</a></li>
+														<li><a href="movieoverview.jsp">6. It Follows</a></li>
+														<li><a href="movieoverview.jsp">7. Women In Gold</a></li>
 														<!-- End 5 Columns -->
-
-														<li class="big-screen-space"></li>
 														
-														<li><h3>6 Columns</h6></li>
-													
-														<!-- 6 Columns -->
-														<li><a href="portfolio_6_columns_fullwidth_no_space.html">6 Columns Fullwidth No Sapce</a></li>
-														<li><a href="portfolio_6_columns_fullwidth_text.html">6 Columns Fullwidth Grid Text</a></li>
-														<li><a href="portfolio_6_columns_fullwidth.html">6 Columns Fullwidth Grid</a></li>
-														<!-- End 6 Columns -->
-													</ul>                                
+													</ol>                                
 												</div>
 											</div>
 										</div>    

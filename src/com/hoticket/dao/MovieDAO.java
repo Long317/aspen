@@ -1,3 +1,4 @@
+
 package com.hoticket.dao;
 
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class MovieDAO {
 				try {
 					session = ConnectionUtil.getSessionFactory().openSession();
 					session.beginTransaction();
-					movie =  (Movie) session.createQuery("from Movie where name ="+"'"+input+"'");
+					movie =  (Movie) session.createQuery("from Movie where name ="+"'"+input+"'").uniqueResult();
 					session.getTransaction().commit();
 					return movie;
 

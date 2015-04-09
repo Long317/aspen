@@ -47,9 +47,35 @@ public class SearchAction extends ActionSupport {
 		// check if input is zipcode
 		// if user enter 5 digit number, we confirm he enters a zipcode
 		if (searchInput.matches("[0-9]{5}")) {
-			// TODO search theatre by zip
+			matchedTheatres=SearchService.searchTheaterByZipcode(searchInput,theatres);
+			session.put(SEARCH_GENERAL_THEATRES, matchedTheatres);
 			return GENERAL;
-		}//check for movies
+		}// check for state
+		else if (!(matchedStates = SearchService.matchState(searchInput)).isEmpty()) {
+			// check if only one theatre match
+			if (matchedStates.size() == 1) {
+				// get result theatres
+				matchedTheatres =SearchService.searchTheaterByState(matchedStates.get(0),theatres);
+				session.put(SEARCH_GENERAL_THEATRES, matchedTheatres);
+				return GENERAL;
+			} else {
+				// If multiple states matched return to general search result page
+				session.put(SEARCH_GENERAL, matchedStates);
+			}
+		}//check for cities
+		else if (!(matchedCities = SearchService.matchCities(searchInput,theatres)).isEmpty()){
+			// check if only one city match
+						if (matchedCities.size() == 1) {
+							// get result theatres
+							matchedTheatres =SearchService.searchTheaterByCity(matchedCities.get(0),theatres);
+							session.put(SEARCH_GENERAL_THEATRES, matchedTheatres);
+							return GENERAL;
+						} else {
+							// If multiple cities matched return to general search result page
+							session.put(SEARCH_GENERAL, matchedCities);
+						}
+		}
+		//check for movies
 		else if (!(matchedMovies = SearchService.matchMovies(searchInput,movies)).isEmpty()){
 			// check if only one state match
 			if (matchedMovies.size() == 1) {
@@ -58,8 +84,7 @@ public class SearchAction extends ActionSupport {
 				return MOVIE;
 			} else {
 				// If multiple cities matched return to general search result page
-				session.put(GENERAL, matchedMovies);
-				return GENERAL;
+				session.put(SEARCH_GENERAL_MOVIES, matchedMovies);
 			}
 		}
 		//check for theatre
@@ -71,40 +96,17 @@ public class SearchAction extends ActionSupport {
 				return THEATER;
 			} else {
 				// If multiple cities matched return to general search result page
-				session.put(GENERAL, matchedTheatres);
-				return GENERAL;
+				session.put(SEARCH_GENERAL_THEATRES, matchedTheatres);
 			}
 		}
-		// check for state
-		else if (!(matchedStates = SearchService.matchState(searchInput)).isEmpty()) {
-			// check if only one theatre match
-			if (matchedStates.size() == 1) {
-				// get result theatres
-				session.put(SEARCH_GENERAL, theatres);
-				return GENERAL ;
-			} else {
-				// If multiple states matched return to general search result page
-				session.put(SEARCH_GENERAL, matchedStates);
-				return GENERAL;
-			}
-		}//check for cities
-		else if (!(matchedCities = SearchService.matchCities(searchInput,theatres)).isEmpty()){
-			// check if only one city match
-						if (matchedCities.size() == 1) {
-							// get result theatres
-							session.put(SEARCH_THEATRE, theatres);
-							return THEATER;
-						} else {
-							// If multiple cities matched return to general search result page
-							session.put(GENERAL, matchedCities);
-							return GENERAL;
-						}
-		}
+		
 		//No result found
-		else{
+			if (session.get(SEARCH_GENERAL_THEATRES)!=null||
+					session.get(SEARCH_GENERAL_MOVIES)!=null||
+					session.get(SEARCH_GENERAL)!=null){
+				return GENERAL;
+			}
 			return ERROR;
-		}
-
 	}
 
 	public String getSearchInput() {

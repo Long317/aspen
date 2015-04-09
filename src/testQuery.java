@@ -13,10 +13,15 @@ public class testQuery {
 			
 public static void main(String args[]){
 	
+		MovieDAO movieDao = MovieDAO.getInstance();
 		TheatreDAO theatreDao = TheatreDAO.getInstance();
+
 		
 		List<Theatre> t=theatreDao.getTheatre();
 		for (int i=0;i<t.size();i++)
 			System.out.print("\""+t.get(i).getCity().trim()+"\", ");
+
+
+
 }
 }

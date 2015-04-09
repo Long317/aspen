@@ -18,6 +18,8 @@ public class Constants {
 	public static final String SEARCH_THEATRE = "SEARCH_THEATRE";
 	public static final String GENERAL = "general";
 	public static final String SEARCH_GENERAL = "SEARCH_GENERAL";
+	public static final String SEARCH_GENERAL_THEATRES = "SEARCH_GENERAL_THEATRES";
+	public static final String SEARCH_GENERAL_MOVIES = "SEARCH_GENERAL_MOVIES";
 	
 	public static final String[] STATES = new String []{
 		"AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE",
