@@ -15,8 +15,10 @@ public static void main(String args[]){
 	
 		MovieDAO movieDao = MovieDAO.getInstance();
 		TheatreDAO theatreDao = TheatreDAO.getInstance();
+		ShowingDAO showingDao = ShowingDAO.getInstance();
+		
 //		List<Theatre> tt=(List<Theatre>) theatreDao.getTheatreByZipcode(98072);
-		Movie t=(Movie)movieDao.getMovieByName("Interstellarr");
+		List<Movie> t=(List<Movie>)showingDao.getMovieByTheatreId(2);
 		System.out.println(t);
 }
 }
