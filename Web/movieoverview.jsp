@@ -2,6 +2,7 @@
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
+  <%@ taglib prefix="s" uri="/struts-tags" %>
 <html lang="en">
 <!--<![endif]-->
 <head>
@@ -53,7 +54,16 @@
 <!-- Prettify -->
 <link href="assets/js/google-code-prettify/prettify.css"
 	rel="stylesheet">
-
+  <style>
+       #movieImg{
+                width:166px;
+                height:245px;          
+            }
+      #movieImg img{
+                width:166px;
+                height:245px;
+            }
+  </style>
 
 </head>
 
@@ -64,14 +74,14 @@
 		<!--=== Content Part ===-->
 		<div class="container content">
 			<div class="headline">
-				<h2>Fifty Shades Of Grey</h2>
+				<h2><s:property value="#session.SEARCH_MOVIE.name" /></h2>
 			</div>
 
 			<div class="row">
 				<!-- movie information -->
 				<div class="col-xs-2">
 					<div id="movieImg">
-						<img src="assets\img\movies\FiftyShadesOfGrey.jpg">
+						<img src=<s:property value="#session.SEARCH_MOVIE.img_url" />>
 					</div>
 					<input id="theaterSearch" type="text" class="form-control"
 						placeholder="Enter ZIP Code or theater"> <span
@@ -87,15 +97,15 @@
 								<br />
 								<div class="movie-detail-release-status">Released</div>
 								<div class="movie-detail-release-date">February 13, 2015</div>
-								<div class="movie-detail-release-date-note">R , 2 hr 4 min</div>
-								<div class="movie-genre">Drama</div>
+								<div class="movie-detail-release-date-note">R ,<s:property value="#session.SEARCH_MOVIE.length" /> mins</div>
+								<div class="movie-genre"><s:property value="#session.SEARCH_MOVIE.genre" /></div>
 								<div class="movie-rate">
 									<img id="logo-header" src="assets/img/heart.png"> <img
 										id="logo-header" src="assets/img/heart.png"> <img
 										id="logo-header" src="assets/img/heart.png">
 								</div>
 
-								<br /> <br /> <br />
+								<br /> <br /> 
 								<div>see it in</div>
 								<div>IMAX</div>
 

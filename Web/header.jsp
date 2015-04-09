@@ -274,14 +274,17 @@
 	<!--=== End Header ===-->   
  <!-- Search Block -->
                      <div class="container">
-                            <div class="search-open">
+                          <div class="search-open">
+                            <s:form action="search">
                                 <div class="input-group animated fadeInDown">
-                                    <input id="mainSearch" type="text" class="form-control" placeholder="Enter City + State, ZIP Code, or Movie">
+                                  <input id="mainSearch" name ="searchInput" type="text" class="form-control" placeholder="Enter City + State, ZIP Code, or Movie">
                                     <span class="input-group-btn">
-                                     <a href="search.jsp">   <button class="btn-u searGo" id="mainSearchCon" type="button">Go</button></a>
+                                     <input class="btn-u searGo" id="mainSearchCon" type="submit">Go</input>
                                     </span>
                                 </div>
+                              </s:form>
                             </div>    
                      </div> 
                         <!-- End Search Block -->
 <!-- End Search Block -->
+

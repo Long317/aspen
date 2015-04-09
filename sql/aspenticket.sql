@@ -248,6 +248,7 @@ CREATE PROCEDURE addCustomer(email varchar(250),password varchar(20),user_name v
  END;//
 DELIMITER ;
 
+
 DELIMITER //
 CREATE PROCEDURE addMovie(id int(11),name varchar(250),release_time date,rating float,length int(11),trailer_url varchar(100),genre varchar(100),img_url varchar(1000),synopsis varchar(10000))
 BEGIN

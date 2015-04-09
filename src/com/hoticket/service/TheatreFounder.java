@@ -26,7 +26,7 @@ public class TheatreFounder {
                 + URLEncoder.encode(address, "UTF-8") + "&destinations=" 
         		+ URLEncoder.encode(theatre.getAddress()+" "+theatre.getCity()+" "+theatre.getState(), "UTF-8")
         		+ "&mode=car");
-        System.out.println(url);
+        //System.out.println(url);
         //get Reader
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(url.openStream()));

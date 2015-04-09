@@ -122,22 +122,7 @@
 		       
 	             
 		 		
-		 			<div class="headline"><h2>THEATER SELECTION</h2></div> 
-		 				<div class="row">
-		 					<div class="dropdown">
-								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-								    Select theater
-								    <span class="caret"></span>
-								  </button>
-								  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">AMC1</a></li>
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">AMC2</a></li>
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">AMC3</a></li>
-								    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">AMC4</a></li>
-								  </ul>
-							</div> 
-							
-		 				</div>
+		 			<div class="headline"><h2><s:property value="#session.SEARCH_THEATRE.name" /></h2></div> 
 		 				<div><h2>MOVIE RESULTS</h2>
 		 					<div class="table-search-v2 panel panel-grey margin-bottom-50">
                         <div class="panel-heading">
@@ -148,6 +133,7 @@
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
                                 <tbody>
+                                	
                                     <tr>
                                         <div class = "col-md-2">
                                            <a href="movieoverview.jsp"> <img  src="assets/owl2.jpg" alt=""></a>
@@ -171,7 +157,7 @@
                                         </div>
                                        
                                     </tr>
-                               
+                            
                                 </tbody>
                             </table>
                         </div>    
