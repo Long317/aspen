@@ -12,6 +12,10 @@ import com.opensymphony.xwork2.ModelDriven;
 
 public class TheatreAction extends ActionSupport implements
 		ModelDriven<Theatre> {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Theatre theatre;
 
 	@Override

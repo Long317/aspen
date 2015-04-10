@@ -62,6 +62,13 @@
 			<result name="success">/theatre.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
+		<action name="movieFilter" class="com.hoticket.action.MovieFilterAction">
+			<result name="success">/movieGallary.jsp</result>
+		</action>
+		<action name="movie" class="com.hoticket.action.MovieAction">
+			<result name="success">/movieoverview.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
 	</package>
 	
 

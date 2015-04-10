@@ -81,9 +81,9 @@ public class GeoLocatorAction extends ActionSupport {
 	        		distances.add(TheatreFounder.calculateDistance(address,theatres.get(i)));
 	        	}
 	        }
-	        //store top 5 closest theatres to the session
+	        //store top MAX_THEATRE number closest theatres to the session
 	       ArrayList<Theatre> closeTheatres = new ArrayList<Theatre>();
-	       int number = stateTheatres.size()>=5?5:stateTheatres.size();
+	       int number = stateTheatres.size()>=MAX_THEATRE?MAX_THEATRE:stateTheatres.size();
 	       for (int i=0;i<number;i++){
 	    	   System.out.println(stateTheatres.get(Methods.minIndex(distances)).getName());
 	    	   closeTheatres.add(stateTheatres.get(Methods.minIndex(distances)));
@@ -91,8 +91,8 @@ public class GeoLocatorAction extends ActionSupport {
 	    	  distances.remove(Methods.minIndex(distances));
 	    	   
 	       }
-	       
 	       session.put("closeTheatres", closeTheatres);
+	       
 	        return SUCCESS;
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,4 +1,12 @@
   <%@ taglib prefix="s" uri="/struts-tags" %>
+  <s:url id="movieFilter" action="movieFilter" var="movieFilter">
+	<s:param name="Genre">all</s:param>
+	</s:url>
+  <script>
+  function GoMovies(){
+  	window.location.replace('<s:property value="#movieFilter"/>');
+  }
+  </script>
 <!--=== Header ===-->    
 	<div class="header">
 		<!-- Topbar -->
@@ -49,7 +57,7 @@
 					<ul class="nav navbar-nav">
 						<!-- Movies -->
 						<li class="dropdown mega-menu-fullwidth">
-							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+							<a href='<s:property value="#movieFilter"/>' onClick="GoMovies();" class="dropdown-toggle" data-toggle="dropdown">
 								Movies
 							</a>
 							<ul class="dropdown-menu">
