@@ -77,7 +77,7 @@ public class testmap2 {
         session.save(ad2);
         /*add a movie*/
         Movie m=new Movie();
-        m.setName("gone with the wind");
+        m.setName("Furious 7");
         session.save(m);
         /*add second movie*/
         Movie m1=new Movie();
@@ -103,6 +103,7 @@ public class testmap2 {
         p.setDate(new java.sql.Timestamp(date.getTime()));
         p.setShowing(s);
         p.setTicket_number(3);
+        p.setCustomer(u3);
         session.save(p);
         /*test for inserting customer favorite movies*/
         Set<Movie> movies=new HashSet<Movie>();

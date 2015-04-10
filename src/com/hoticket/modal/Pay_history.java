@@ -24,6 +24,9 @@ public class Pay_history implements Serializable{
 	@JoinColumn(name="billing_account_id")
 	private Billing_account billing_account;
 	@ManyToOne
+	@JoinColumn(name="customer_id")
+	private Customer customer;
+	@ManyToOne
 	@JoinColumn(name="billing_address_id")
 	private Billing_address billing_address;
 	@ManyToOne
@@ -64,6 +67,12 @@ public class Pay_history implements Serializable{
 	}
 	public void setShowing(Showing showing) {
 		this.showing = showing;
+	}
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 }

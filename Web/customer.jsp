@@ -61,7 +61,7 @@
                     </li>
                     
                     <li class="list-group-item">
-                        <a href="customer_movie_comment.jsp"><i class="fa fa-user"></i>My Movie Comment</a>
+                        <a href="customer_movie_comments.jsp"><i class="fa fa-user"></i>My Movie Comment</a>
                     </li>
                     
                     <li class="list-group-item">
@@ -111,59 +111,25 @@
                         <div class="col-sm-6">
                             <div class="panel panel-profile no-bg">
                                    <div class="panel-heading overflow-h">
-                            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>My Favorite Theatre</h2>
-                            <a href="favorite_theatre.jsp" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View All</a>
-                        </div>
+                           				<h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>My Favorite Theatre</h2>
+                            			<a href="favorite_theatre.jsp" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View All</a>
+                                   </div>
                                 <div id="scrollbar" class="panel-body contentHolder">
-                                 <div class="profile-blog blog-border">
-                                        <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
+                                 <c:forEach var="theatre" items="${sessionScope.login.favorite_theatres}" varStatus="status" begin="0">
+                              
+                                  	 <div class="profile-blog blog-border">
+                                        <img class="rounded-x" src="assets/img/testimonials/t.jpg" alt="">
                                         <div class="name-location">
-                                            <strong>Mikel Andrews</strong>
-                                            <span><i class="fa fa-map-marker"></i><a href="#">California,</a> <a href="#">US</a></span>
+                                           <c:out value="${theatre.name}"></c:out>  
+                                            
                                         </div>
-                                        <div class="clearfix margin-bottom-20"></div>    
-                                        <p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-                                        <hr>
-                                        <ul class="list-inline share-list">
-                                            <li><i class="fa fa-bell"></i><a href="#">12 Notifications</a></li>
-                                            <li><i class="fa fa-group"></i><a href="#">54 Followers</a></li>
-                                            <li><i class="fa fa-twitter"></i><a href="#">Retweet</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="profile-blog blog-border">
-                                        <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
-                                        <div class="name-location">
-                                            <strong>Mikel Andrews</strong>
-                                            <span><i class="fa fa-map-marker"></i><a href="#">California,</a> <a href="#">US</a></span>
-                                        </div>
-                                        <div class="clearfix margin-bottom-20"></div>    
-                                        <p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-                                        <hr>
-                                        <ul class="list-inline share-list">
-                                            <li><i class="fa fa-bell"></i><a href="#">12 Notifications</a></li>
-                                            <li><i class="fa fa-group"></i><a href="#">54 Followers</a></li>
-                                            <li><i class="fa fa-twitter"></i><a href="#">Retweet</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="profile-blog blog-border">
-                                        <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
-                                        <div class="name-location">
-                                            <strong>Mikel Andrews</strong>
-                                            <span><i class="fa fa-map-marker"></i><a href="#">California,</a> <a href="#">US</a></span>
-                                        </div>
-                                        <div class="clearfix margin-bottom-20"></div>    
-                                        <p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-                                        <hr>
-                                        <ul class="list-inline share-list">
-                                            <li><i class="fa fa-bell"></i><a href="#">12 Notifications</a></li>
-                                            <li><i class="fa fa-group"></i><a href="#">54 Followers</a></li>
-                                            <li><i class="fa fa-twitter"></i><a href="#">Retweet</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>        
-                        </div>
+                                 
+                                   	 </div>
+                                   </c:forEach>
+                                </div>  
+                           </div>
                         <!--End Profile Post-->
+                        </div>
                     </div><!--/end row-->
                     
                     
@@ -173,54 +139,20 @@
                             <div class="panel panel-profile no-bg">
                                    <div class="panel-heading overflow-h">
                             <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>My Movie Comment</h2>
-                            <a href="favorite_movie.jsp" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View All</a>
+                            <a href="customer_movie_comments.jsp" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View All</a>
                         </div>
                                 <div id="scrollbar" class="panel-body contentHolder">
-                              <div class="profile-blog blog-border">
-                                        <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
+                              <c:forEach var="movieratings" items="${sessionScope.login.movie_ratings}" varStatus="status" begin="0">
+                              
+                                  	 <div class="profile-blog blog-border">
+                                        <img class="rounded-x" src="assets/img/testimonials/t.jpg" alt="">
                                         <div class="name-location">
-                                            <strong>Mikel Andrews</strong>
-                                            <span><i class="fa fa-map-marker"></i><a href="#">California,</a> <a href="#">US</a></span>
+                                           <c:out value="${movieratings.movie.name}"></c:out>  
+                                           <c:out value="${movieratings.comment}"></c:out>  
                                         </div>
-                                        <div class="clearfix margin-bottom-20"></div>    
-                                        <p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-                                        <hr>
-                                        <ul class="list-inline share-list">
-                                            <li><i class="fa fa-bell"></i><a href="#">12 Notifications</a></li>
-                                            <li><i class="fa fa-group"></i><a href="#">54 Followers</a></li>
-                                            <li><i class="fa fa-twitter"></i><a href="#">Retweet</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="profile-blog blog-border">
-                                        <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
-                                        <div class="name-location">
-                                            <strong>Mikel Andrews</strong>
-                                            <span><i class="fa fa-map-marker"></i><a href="#">California,</a> <a href="#">US</a></span>
-                                        </div>
-                                        <div class="clearfix margin-bottom-20"></div>    
-                                        <p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-                                        <hr>
-                                        <ul class="list-inline share-list">
-                                            <li><i class="fa fa-bell"></i><a href="#">12 Notifications</a></li>
-                                            <li><i class="fa fa-group"></i><a href="#">54 Followers</a></li>
-                                            <li><i class="fa fa-twitter"></i><a href="#">Retweet</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="profile-blog blog-border">
-                                        <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
-                                        <div class="name-location">
-                                            <strong>Mikel Andrews</strong>
-                                            <span><i class="fa fa-map-marker"></i><a href="#">California,</a> <a href="#">US</a></span>
-                                        </div>
-                                        <div class="clearfix margin-bottom-20"></div>    
-                                        <p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-                                        <hr>
-                                        <ul class="list-inline share-list">
-                                            <li><i class="fa fa-bell"></i><a href="#">12 Notifications</a></li>
-                                            <li><i class="fa fa-group"></i><a href="#">54 Followers</a></li>
-                                            <li><i class="fa fa-twitter"></i><a href="#">Retweet</a></li>
-                                        </ul>
-                                    </div>
+                                 
+                                   	 </div>
+                                   </c:forEach>
                                 </div>
                             </div>        
                         </div>
@@ -234,66 +166,17 @@
                             <a href="purchase_history.jsp" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View All</a>
                                 </div>
                                 <div id="scrollbar2" class="panel-body contentHolder">
+                                <c:forEach var="payhistory" items="${sessionScope.login.pay_history}" varStatus="status" begin="0">
                                     <div class="profile-event">
                                         <div class="date-formats">
-                                            <span>25</span>
-                                            <small>05, 2014</small>
+                                            <small> <c:out value="${payhistory.date}"></c:out>  </small>
                                         </div>
                                         <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">GitHub seminars in Japan.</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
+                                            <h3 class="heading-xs"> <c:out value="${payhistory.showing.movie.name}"></c:out></h3>
                                         </div>    
                                     </div>
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-                                            <span>31</span>
-                                            <small>06, 2014</small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">Bootstrap Update</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                                        </div>    
-                                    </div>
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-                                            <span>07</span>
-                                            <small>08, 2014</small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">Apple Conference</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                                        </div>    
-                                    </div>
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-                                            <span>22</span>
-                                            <small>10, 2014</small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">Backend Meeting</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                                        </div>    
-                                    </div>
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-                                            <span>14</span>
-                                            <small>11, 2014</small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">Google Conference</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                                        </div>    
-                                    </div>
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-                                            <span>05</span>
-                                            <small>12, 2014</small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">FontAwesome Update</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                                        </div>    
-                                    </div>
+                                    </c:forEach>
+                                    
                                 </div>    
                             </div>
                         </div>

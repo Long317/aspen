@@ -81,14 +81,10 @@ public class UserDAO {
 		Customer c;
 		try {
 
-			session = ConnectionUtil.getSessionFactory().getCurrentSession();
+			session = ConnectionUtil.getSessionFactory().openSession();
 			session.beginTransaction();
 			c = (Customer) session.get(Customer.class,id);
-			c.getFavorite_movies();
-			c.getBilling_accounts();c.getBilling_addresses();c.getFavorite_theatres();
-			session.getTransaction().commit();
 			return c;
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();

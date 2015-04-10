@@ -9,6 +9,9 @@ import java.util.*;
 
 import javax.persistence.*;  
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 
 @Entity  
 @Table(name="customer")  
@@ -27,16 +30,24 @@ public class Customer extends User implements Serializable{
 	@Column (name="genres")
 	private String genres;
 	@OneToMany(mappedBy="customer")
+	@Fetch(FetchMode.JOIN)
 	private Set<Billing_account> billing_accounts;
 	@OneToMany(mappedBy="customer")
+	@Fetch(FetchMode.JOIN)
 	private Set<Billing_address> billing_addresses;
 	@OneToMany(mappedBy="customer")
+	@Fetch(FetchMode.JOIN)
 	private Set<Rating> movie_ratings;
+	@OneToMany(mappedBy="customer")
+	@Fetch(FetchMode.JOIN)
+    private Set<Pay_history> pay_history;
 	@ManyToMany(cascade={CascadeType.ALL})
+	@Fetch(FetchMode.JOIN)
 	@JoinTable(name="favorite_movie", joinColumns={@JoinColumn(name="user_id")}
     , inverseJoinColumns={@JoinColumn(name="movie_id")}) 
 	private Set<Movie> favorite_movies;
 	@ManyToMany(cascade={CascadeType.ALL})
+	@Fetch(FetchMode.JOIN)
 	@JoinTable(name="favorite_theatre", joinColumns={@JoinColumn(name="user_id")}
     , inverseJoinColumns={@JoinColumn(name="theatre_id")}) 
 	private Set<Theatre> favorite_theatres;
@@ -96,6 +107,12 @@ public class Customer extends User implements Serializable{
 	}
 	public void setMovie_ratings(Set<Rating> movie_ratings) {
 		this.movie_ratings = movie_ratings;
+	}
+	public Set<Pay_history> getPay_history() {
+		return pay_history;
+	}
+	public void setPay_history(Set<Pay_history> pay_history) {
+		this.pay_history = pay_history;
 	}
 
 
