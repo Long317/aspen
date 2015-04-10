@@ -52,9 +52,22 @@
 	<package name="search" namespace="/" extends="struts-default">
 		<action name="search" class="com.hoticket.action.SearchAction">
 			<result name="general">/search_general.jsp</result>
-			<result name="theatre">/search_theatre.jsp</result>
+			<result name="theatre">/theatre.jsp</result>
 			<result name="movie">/movieoverview.jsp</result>
 			<result name="error">/noResultFound.jsp</result>
+		</action>
+	</package>
+	<package name="entityForward" namespace="/" extends="struts-default">
+		<action name="theatre" class="com.hoticket.action.TheatreAction">
+			<result name="success">/theatre.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="movieFilter" class="com.hoticket.action.MovieFilterAction">
+			<result name="success">/movieGallary.jsp</result>
+		</action>
+		<action name="movie" class="com.hoticket.action.MovieAction">
+			<result name="success">/movieoverview.jsp</result>
+			<result name="error">/error.jsp</result>
 		</action>
 	</package>
 	

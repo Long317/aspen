@@ -66,6 +66,7 @@ public class ShowingDAO {
 			return movies;
 		}
 		
+		
 //		//get theatre by state
 //				@SuppressWarnings("unchecked")
 //				public List<Theatre> getTheatreByState(String input) {

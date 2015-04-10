@@ -4,6 +4,8 @@
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
    <%@ taglib prefix="s" uri="/struts-tags" %>
    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
 <head>
 	<title>Hoticket | Welcome...</title>
 
@@ -50,33 +52,7 @@
 	 <%@ include file="header.jsp" %>
 		 <!--/container-->
 			<div class="container content">	
-		 		<div class="headline"><h2>SEARCH RESULTS</h2></div> 
-
-                                    <h2>Matched Theatres</h2>
-                                    <s:if test="#session.SEARCH_GENERAL_THEATRES!=null"> 
-		 							<c:forEach items="${sessionScope.SEARCH_GENERAL_THEATRES}" var="item">
-  										<a href="search?searchInput=<c:out value='${item.name}'/>"><c:out value="${item.name}"/></a>
-                                        <br/> 
-									</c:forEach>
-                                    </s:if>
-                                     
-                                    <s:if test="#session.SEARCH_GENERAL!=null"> 
-                                    <h2>Matched States or cities</h2>
-                                	<s:iterator value="%{#session.SEARCH_GENERAL}">
-                                    <a href="search?searchInput='<s:property/>'/>"><s:property/></a>
-                                    	<br/> 
-                                    </s:iterator>
-                                    </s:if>
-
-                                    
-                                    <s:if test="#session.SEARCH_GENERAL_MOVIES!=null"> 
-                                     <h2>Matched Movies</h2>
-                               		<c:forEach items="${sessionScope.SEARCH_GENERAL_MOVIES}" var="item">
-                                    <a href="search?searchInput=<c:out value='${item.name}'/>"><c:out value="${item.name}"/></a>
-                                        <br/> 
-									</c:forEach>
-                               	     </s:if>
-                  
+		      <h1>PAGE ERROR</h1>
 		 	</div>	
 		<!-- End Content Part -->
 	</div><!--/wrapper-->
@@ -119,9 +95,16 @@
 	  $("#owl-demo").owlCarousel({
 		items : 8,
 		lazyLoad : true,
-		 autoPlay: 2000,
+	 autoPlay: 2000,
 	   stopOnHover: true
 	  });
+	});
+	           function isNumberKey(evt) {
+                                        var charCode = (evt.which) ? evt.which : event.keyCode;
+                                        if (charCode > 31 && (charCode < 48 || charCode > 57))
+                                            return false;
+                                        return true;
+                                    }
 </script>
 	<s:if test="#session.loginError== 1"> 
 		<script>

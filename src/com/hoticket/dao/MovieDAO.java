@@ -7,11 +7,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.annotations.NamedNativeQueries;
-import org.hibernate.annotations.NamedNativeQuery;
 
 import com.hoticket.modal.Movie;
-import com.hoticket.modal.Theatre;
 import com.hoticket.util.ConnectionUtil;
 
 
@@ -56,7 +53,6 @@ public class MovieDAO {
 	//get movie by movie name
 	//parameter: String
 	//output: a movie
-			@SuppressWarnings("unchecked")
 			public Movie getMovieByName(String input) {
 				Movie movie = new Movie();
 				try {
@@ -72,6 +68,26 @@ public class MovieDAO {
 
 				return movie;
 			}
+			
+			//get movie by IMG URL
+			//parameter: String
+			//output: a movie
+					public Movie getMovieByImgURL(String input) {
+						Movie movie = new Movie();
+						try {
+							session = ConnectionUtil.getSessionFactory().openSession();
+							session.beginTransaction();
+							movie =  (Movie) session.createQuery("from Movie where img_url ="+"'"+input+"'").uniqueResult();
+							session.getTransaction().commit();
+							return movie;
+
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+
+						return movie;
+					}
+					
 		
 //			//sort movies by rating
 //			//parameter: no
