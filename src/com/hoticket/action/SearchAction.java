@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.xwork.StringUtils;
+
 import com.hoticket.dao.MovieDAO;
 import com.hoticket.dao.TheatreDAO;
 import com.hoticket.modal.Movie;
@@ -43,9 +45,11 @@ public class SearchAction extends ActionSupport {
 		List<Theatre> theatres =TheatreDAO.getInstance().getTheatre();
 		//get all movies
 		List<Movie> movies = MovieDAO.getInstance().getMovies();
-		
+		//check for null value
+		if (StringUtils.isEmpty(searchInput)){
+			return ERROR;
+		}
 		// Only keep letter, number and space
-		System.out.println(searchInput);
 		searchInput = searchInput.replaceAll("[^\\d^A-Za-z\\s]", "").trim();
 		//replace two space to one space
 		searchInput = searchInput.replaceAll("  ", " ").replaceAll("  ", " ").trim();
@@ -57,7 +61,7 @@ public class SearchAction extends ActionSupport {
 			session.put(SEARCH_GENERAL_THEATRES, matchedTheatres);
 			return GENERAL;
 		}// check for state
-		else if (!(matchedStates = SearchService.matchState(searchInput)).isEmpty()) {
+		 if (!(matchedStates = SearchService.matchState(searchInput)).isEmpty()) {
 			// check if only one theatre match
 			if (matchedStates.size() == 1) {
 				// get result theatres
@@ -69,7 +73,7 @@ public class SearchAction extends ActionSupport {
 				session.put(SEARCH_GENERAL, matchedStates);
 			}
 		}//check for cities
-		else if (!(matchedCities = SearchService.matchCities(searchInput,theatres)).isEmpty()){
+		if (!(matchedCities = SearchService.matchCities(searchInput,theatres)).isEmpty()){
 			// check if only one city match
 						if (matchedCities.size() == 1) {
 							// get result theatres
@@ -82,7 +86,7 @@ public class SearchAction extends ActionSupport {
 						}
 		}
 		//check for movies
-		else if (!(matchedMovies = SearchService.matchMovies(searchInput,movies)).isEmpty()){
+		 if (!(matchedMovies = SearchService.matchMovies(searchInput,movies)).isEmpty()){
 			// check if only one state match
 			if (matchedMovies.size() == 1) {
 				// get result theatres
@@ -90,16 +94,18 @@ public class SearchAction extends ActionSupport {
 				return MOVIE;
 			} else {
 				// If multiple cities matched return to general search result page
+//				for (int x=0;x<matchedMovies.size();x++)
+//					System.out.println(matchedMovies.get(x).getName());
 				session.put(SEARCH_GENERAL_MOVIES, matchedMovies);
 			}
 		}
 		//check for theatre
-		else if (!(matchedTheatres = SearchService.matchTheatres(searchInput,theatres)).isEmpty()){
+		 if (!(matchedTheatres = SearchService.matchTheatres(searchInput,theatres)).isEmpty()){
 			// check if only one state match
 			if (matchedTheatres.size() == 1) {
 				// get result theatres
-				session.put(THEATER, matchedTheatres.get(0));
-				return THEATER;
+				session.put(THEATRE, matchedTheatres.get(0));
+				return THEATRE;
 			} else {
 				// If multiple cities matched return to general search result page
 				session.put(SEARCH_GENERAL_THEATRES, matchedTheatres);

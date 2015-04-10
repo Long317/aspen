@@ -51,17 +51,31 @@
 		 <!--/container-->
 			<div class="container content">	
 		 		<div class="headline"><h2>SEARCH RESULTS</h2></div> 
+
+                                    <h2>Matched Theatres</h2>
+                                    <s:if test="#session.SEARCH_GENERAL_THEATRES!=null"> 
 		 							<c:forEach items="${sessionScope.SEARCH_GENERAL_THEATRES}" var="item">
   										<a href="search?searchInput=<c:out value='${item.name}'/>"><c:out value="${item.name}"/></a>
+                                        <br/> 
 									</c:forEach>
+                                    </s:if>
+                                     
+                                    <s:if test="#session.SEARCH_GENERAL!=null"> 
+                                    <h2>Matched States or cities</h2>
                                 	<s:iterator value="%{#session.SEARCH_GENERAL}">
-                                    	<div class="result"><s:property/></div>
+                                    <a href="search?searchInput='<s:property/>'/>"><s:property/></a>
                                     	<br/> 
-                               		</s:iterator>
+                                    </s:iterator>
+                                    </s:if>
+
+                                    
+                                    <s:if test="#session.SEARCH_GENERAL_MOVIES!=null"> 
+                                     <h2>Matched Movies</h2>
                                		<c:forEach items="${sessionScope.SEARCH_GENERAL_MOVIES}" var="item">
-  											<div class="result"><c:out value="${item.name}"/></div>
+                                    <a href="search?searchInput=<c:out value='${item.name}'/>"><c:out value="${item.name}"/></a>
+                                        <br/> 
 									</c:forEach>
-                               	
+                               	     </s:if>
                   
 		 	</div>	
 		<!-- End Content Part -->

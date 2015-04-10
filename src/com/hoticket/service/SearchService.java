@@ -1,6 +1,6 @@
 package com.hoticket.service;
 
-import static com.hoticket.util.Constants.STATES;
+import static com.hoticket.util.Constants.*;
 import java.util.ArrayList;
 import java.util.List;
 import com.hoticket.modal.Movie;
@@ -184,7 +184,7 @@ public class SearchService {
 	
 		//store top 5 closest theatres to the session
 	       ArrayList<Theatre> closeTheatres = new ArrayList<Theatre>();
-	       int number = matchedTheatres.size()>=5?5:matchedTheatres.size();
+	       int number = matchedTheatres.size()>=MAX_THEATRE?MAX_THEATRE:matchedTheatres.size();
 	       for (int i=0;i<number;i++){
 	    	   closeTheatres.add(matchedTheatres.get(Methods.minIndex(distances)));
 	    	  distances.remove(Methods.minIndex(distances));

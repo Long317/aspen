@@ -57,6 +57,12 @@
 			<result name="error">/noResultFound.jsp</result>
 		</action>
 	</package>
+	<package name="entityForward" namespace="/" extends="struts-default">
+		<action name="theatre" class="com.hoticket.action.TheatreAction">
+			<result name="success">/theatre.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+	</package>
 	
 
 
