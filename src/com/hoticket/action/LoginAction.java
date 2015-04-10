@@ -1,12 +1,8 @@
 package com.hoticket.action;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-
 import org.apache.commons.lang.xwork.StringUtils;
-
-import com.hoticket.dao.UserDAO;
+import com.hoticket.modal.Customer;
 import com.hoticket.modal.User;
 import com.hoticket.service.LoginService;
 import com.hoticket.util.EncryptUtils;
@@ -20,9 +16,6 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 	 */
 	private static final long serialVersionUID = 1L;
 	private User user = new User();
-	private List<User> users = new ArrayList<User>();
-	private UserDAO userDao = new UserDAO();
-
 	@Override
 	public User getModel() {
 		return user;
@@ -36,19 +29,24 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 	public String execute() {
 		//encrypt user password here
 		user.setPassword(EncryptUtils.base64encode(user.getPassword())); 
+		System.out.println("p:"+user.getPassword()+":p");
 		LoginService loginService= new LoginService();
-		users = userDao.getUsers();
 		@SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
-		if(!loginService.verifyLogin(user, users)){
+		if(!loginService.verifyLogin(user)){
 			addFieldError("password", "email and password are not matched");  
             session.put("loginError", 1);
 			return ERROR;
 		}
-		 session.put("loginError", null);
+		session.put("loginError", null);
 		session.put("login", user);
+		/*if user is customer, store as customer object instead of just a user obj*/
+		if(user.getRole()==0){
+			Customer customer=loginService.getCustomer(user);
+			session.put("login", customer);
+			return "customer";
+		}
 		switch(user.getRole()){
-		case 0: return "user";
 		case 1:return "admin";
 		case 2: return "manager";
 		default: return ERROR;
@@ -62,14 +60,6 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
 	}
 	
 	

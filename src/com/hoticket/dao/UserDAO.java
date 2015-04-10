@@ -1,7 +1,9 @@
 package com.hoticket.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -9,6 +11,8 @@ import org.hibernate.Transaction;
 import org.hibernate.annotations.NamedNativeQueries;
 import org.hibernate.annotations.NamedNativeQuery;
 
+import com.hoticket.modal.Customer;
+import com.hoticket.modal.Movie;
 import com.hoticket.modal.User;
 import com.hoticket.util.ConnectionUtil;
 
@@ -38,10 +42,9 @@ public class UserDAO {
 
 		return users;
 	}
+	
 
 	public void addUser(User user) {
-
-		Session session = null;
 		try {
 	
 			session = ConnectionUtil.getSessionFactory().openSession();
@@ -68,4 +71,43 @@ public class UserDAO {
 	public void updatePortrait(String URL){
 		
 	}
+
+/**
+ * this method return a customer by searching by its pk=id
+ * @param id
+ * @return customer
+ */
+	public Customer getCustomer(int id) {
+		Customer c;
+		try {
+
+			session = ConnectionUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			c = (Customer) session.get(Customer.class,id);
+			c.getFavorite_movies();
+			c.getBilling_accounts();c.getBilling_addresses();c.getFavorite_theatres();
+			session.getTransaction().commit();
+			return c;
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+
+public void addCustomer(Customer c) {
+	try {
+
+		session = ConnectionUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		session.save(c);
+		session.getTransaction().commit();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	
+}
 }

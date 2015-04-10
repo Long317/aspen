@@ -72,6 +72,27 @@ public class MovieDAO {
 
 				return movie;
 			}
+			
+			//get movie by IMG URL
+			//parameter: String
+			//output: a movie
+					@SuppressWarnings("unchecked")
+					public Movie getMovieByImgURL(String input) {
+						Movie movie = new Movie();
+						try {
+							session = ConnectionUtil.getSessionFactory().openSession();
+							session.beginTransaction();
+							movie =  (Movie) session.createQuery("from Movie where img_url ="+"'"+input+"'").uniqueResult();
+							session.getTransaction().commit();
+							return movie;
+
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+
+						return movie;
+					}
+					
 		
 //			//sort movies by rating
 //			//parameter: no

@@ -6,6 +6,7 @@ import org.hibernate.*;
 import com.hoticket.modal.Billing_account;
 import com.hoticket.modal.Billing_address;
 import com.hoticket.modal.Customer;
+import com.hoticket.modal.Movie;
 import com.hoticket.util.ConnectionUtil;
 
 public class fetchmap2 {    
@@ -26,20 +27,17 @@ public static void main(String[] args) {
 		System.out.println("Customer id: "+q.getId());
 		
 		//print billing accounts
-		Set<Billing_account> list2=q.getBilling_accounts();
-		Iterator<Billing_account> itr2=list2.iterator();
+		Set<Movie> list2=q.getFavorite_movies();
+
+		System.out.println("end");
+		Iterator<Movie> itr2=list2.iterator();
+
+
+		System.out.println("end1");
 		while(itr2.hasNext()){
-			Billing_account a=itr2.next();
-			System.out.println(a.getCard_number());
+			Movie a=itr2.next();
+			System.out.println(a.getName());
 		}
-		//print billing addresses
-				Set<Billing_address> list3=q.getBilling_addresses();
-				Iterator<Billing_address> itr3=list3.iterator();
-				while(itr3.hasNext()){
-					Billing_address a=itr3.next();
-					System.out.println(a.getAddress());
-				}
-		
 	}
 	session.close();
 	System.out.println("success");
