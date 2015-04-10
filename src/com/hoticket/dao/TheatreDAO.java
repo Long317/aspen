@@ -7,8 +7,6 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.annotations.NamedNativeQueries;
-import org.hibernate.annotations.NamedNativeQuery;
 
 import com.hoticket.modal.Theatre;
 import com.hoticket.util.ConnectionUtil;
@@ -107,7 +105,6 @@ public class TheatreDAO {
 				
 	
 	//get theatre by theatre name
-		@SuppressWarnings("unchecked")
 		public Theatre getTheatreByName(String input) {
 			Theatre theatre = new Theatre();
 			try {

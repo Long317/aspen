@@ -74,7 +74,6 @@ public class GeoLocatorAction extends ActionSupport {
 	        ArrayList<Double> distances = new ArrayList<Double>();
 	        //store same state theatre 
 	        ArrayList<Theatre> stateTheatres = new ArrayList<Theatre>();
-	        
 	        for (int i=0;i<theatres.size();i++){
 	        	//only check same state
 	        	if (theatres.get(i).getState().contains(state.trim())){
@@ -84,11 +83,11 @@ public class GeoLocatorAction extends ActionSupport {
 	        }
 	        //store top 5 closest theatres to the session
 	       ArrayList<Theatre> closeTheatres = new ArrayList<Theatre>();
-	       int number = closeTheatres.size()>=5?5:closeTheatres.size();
+	       int number = stateTheatres.size()>=5?5:stateTheatres.size();
 	       for (int i=0;i<number;i++){
 	    	   System.out.println(stateTheatres.get(Methods.minIndex(distances)).getName());
-	    	   System.out.println(stateTheatres.get(i).getShowing().toString());
 	    	   closeTheatres.add(stateTheatres.get(Methods.minIndex(distances)));
+	    	   System.out.println(closeTheatres.get(i).getShowing().toString());
 	    	  distances.remove(Methods.minIndex(distances));
 	    	   
 	       }

@@ -1,13 +1,8 @@
 package com.hoticket.service;
 
 import static com.hoticket.util.Constants.STATES;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.json.simple.parser.ParseException;
-
 import com.hoticket.modal.Movie;
 import com.hoticket.modal.Theatre;
 import com.hoticket.util.Methods;
@@ -182,7 +177,6 @@ public class SearchService {
 				try {
 					distances.add(TheatreFounder.calculateDistance(searchInput, theatres.get(i)));
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} 
 				}

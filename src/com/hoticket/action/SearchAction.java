@@ -27,6 +27,10 @@ public class SearchAction extends ActionSupport {
 		// get session object
 		@SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
+		//clear search result
+		session.put(SEARCH_GENERAL_THEATRES, null);
+		session.put(SEARCH_GENERAL_MOVIES, null);
+		session.put(SEARCH_GENERAL, null);
 		// used to check if match states
 		ArrayList<String> matchedStates;
 		// used to check if match cities
@@ -43,6 +47,8 @@ public class SearchAction extends ActionSupport {
 		// Only keep letter, number and space
 		System.out.println(searchInput);
 		searchInput = searchInput.replaceAll("[^\\d^A-Za-z\\s]", "").trim();
+		//replace two space to one space
+		searchInput = searchInput.replaceAll("  ", " ").replaceAll("  ", " ").trim();
 		System.out.println(searchInput);
 		// check if input is zipcode
 		// if user enter 5 digit number, we confirm he enters a zipcode
@@ -92,7 +98,7 @@ public class SearchAction extends ActionSupport {
 			// check if only one state match
 			if (matchedTheatres.size() == 1) {
 				// get result theatres
-				session.put(SEARCH_THEATRE, matchedTheatres.get(0));
+				session.put(THEATER, matchedTheatres.get(0));
 				return THEATER;
 			} else {
 				// If multiple cities matched return to general search result page

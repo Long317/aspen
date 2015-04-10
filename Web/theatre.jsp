@@ -122,7 +122,7 @@
 		       
 	             
 		 		
-		 			<div class="headline"><h2><s:property value="#session.SEARCH_THEATRE.name" /></h2></div> 
+		 			<div class="headline"><h2><s:property value="#session.theatre.name" /></h2></div> 
 		 				<div><h2>MOVIE RESULTS</h2>
 		 					<div class="table-search-v2 panel panel-grey margin-bottom-50">
                         <div class="panel-heading">
