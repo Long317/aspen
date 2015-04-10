@@ -4,6 +4,8 @@ import java.util.Set;
 
 import org.hibernate.*;
 
+import com.hoticket.dao.MovieDAO;
+import com.hoticket.dao.TheatreDAO;
 import com.hoticket.modal.Billing_account;
 import com.hoticket.modal.Billing_address;
 import com.hoticket.modal.Customer;
@@ -76,17 +78,11 @@ public class testmap2 {
         session.save(ad1);
         session.save(ad2);
         /*add a movie*/
-        Movie m=new Movie();
-        m.setName("Furious 7");
-        session.save(m);
+        Movie m=MovieDAO.getInstance().getMovieByName("100 Days of Love");
         /*add second movie*/
-        Movie m1=new Movie();
-        m1.setName("howl's moving castle");
-        session.save(m1);
+        Movie m1=MovieDAO.getInstance().getMovieByName("12 Golden Ducks");
         /*add a theatre*/
-        Theatre  t=new Theatre();
-        t.setName("amc");
-        session.save(t);
+        Theatre  t=TheatreDAO.getInstance().getTheatreByName("AMC Festival Plaza 16");
         java.util.Date date = new Date();
         /*add a showing*/
         Showing s=new Showing();

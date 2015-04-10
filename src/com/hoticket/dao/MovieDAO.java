@@ -37,7 +37,7 @@ public class MovieDAO {
 		List<Movie> movies = new ArrayList<Movie>();
 		try {
 
-			session = ConnectionUtil.getSessionFactory().openSession();
+			session = ConnectionUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
 			movies = (List<Movie>) session.createQuery("from Movie").list();
 			session.getTransaction().commit();
@@ -56,10 +56,14 @@ public class MovieDAO {
 			public Movie getMovieByName(String input) {
 				Movie movie = new Movie();
 				try {
-					session = ConnectionUtil.getSessionFactory().openSession();
+					session = ConnectionUtil.getSessionFactory().getCurrentSession();
 					session.beginTransaction();
 					movie =  (Movie) session.createQuery("from Movie where name ="+"'"+input+"'").uniqueResult();
 					session.getTransaction().commit();
+					if (movie==null){
+						movie = new Movie();
+						return movie;
+					}
 					return movie;
 
 				} catch (Exception e) {
@@ -75,7 +79,7 @@ public class MovieDAO {
 					public Movie getMovieByImgURL(String input) {
 						Movie movie = new Movie();
 						try {
-							session = ConnectionUtil.getSessionFactory().openSession();
+							session = ConnectionUtil.getSessionFactory().getCurrentSession();
 							session.beginTransaction();
 							movie =  (Movie) session.createQuery("from Movie where img_url ="+"'"+input+"'").uniqueResult();
 							session.getTransaction().commit();
@@ -96,7 +100,7 @@ public class MovieDAO {
 //					public List<Movie> sortMovieByRating() {
 //						Movie movie = new Movie();
 //						try {
-//							session = ConnectionUtil.getSessionFactory().openSession();
+//							session = ConnectionUtil.getSessionFactory().getCurrentSession();
 //							session.beginTransaction();
 //							movie =  (List<Movie>) session.createQuery("from Movie where name ="+"'"+input+"'");
 //							session.getTransaction().commit();
@@ -116,7 +120,7 @@ public class MovieDAO {
 		Session session = null;
 		try {
 	
-			session = ConnectionUtil.getSessionFactory().openSession();
+			session = ConnectionUtil.getSessionFactory().getCurrentSession();
 			Transaction transaction = session.beginTransaction();		
 			Query query = session.getNamedQuery("calladdMovieProcedure");
 			query.setParameter("id", movie.getId());

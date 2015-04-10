@@ -35,7 +35,7 @@ public class TheatreDAO {
 		List<Theatre> theatres = new ArrayList<Theatre>();
 		try {
 
-			session = ConnectionUtil.getSessionFactory().openSession();
+			session = ConnectionUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
 			theatres = (List<Theatre>) session.createQuery("from Theatre").list();
 			session.getTransaction().commit();
@@ -54,7 +54,7 @@ public class TheatreDAO {
 	public List<Theatre> getTheatreByZipcode(int input) {
 		List<Theatre> theatres = new ArrayList<Theatre>();
 		try {
-			session = ConnectionUtil.getSessionFactory().openSession();
+			session = ConnectionUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
 			theatres = (List<Theatre>) session.createQuery("from Theatre where zipcode ="+ input).list();
 			session.getTransaction().commit();
@@ -72,7 +72,7 @@ public class TheatreDAO {
 		public List<Theatre> getTheatreByCity(String input) {
 			List<Theatre> theatres = new ArrayList<Theatre>();
 			try {
-				session = ConnectionUtil.getSessionFactory().openSession();
+				session = ConnectionUtil.getSessionFactory().getCurrentSession();
 				session.beginTransaction();
 				theatres = (List<Theatre>) session.createQuery("from Theatre where city ="+"'"+input+"'").list();
 				session.getTransaction().commit();
@@ -90,7 +90,7 @@ public class TheatreDAO {
 				public List<Theatre> getTheatreByState(String input) {
 					List<Theatre> theatres = new ArrayList<Theatre>();
 					try {
-						session = ConnectionUtil.getSessionFactory().openSession();
+						session = ConnectionUtil.getSessionFactory().getCurrentSession();
 						session.beginTransaction();
 						theatres = (List<Theatre>) session.createQuery("from Theatre where state ="+"'"+input+"'").list();
 						session.getTransaction().commit();
@@ -108,7 +108,7 @@ public class TheatreDAO {
 		public Theatre getTheatreByName(String input) {
 			Theatre theatre = new Theatre();
 			try {
-				session = ConnectionUtil.getSessionFactory().openSession();
+				session = ConnectionUtil.getSessionFactory().getCurrentSession();
 				session.beginTransaction();
 				theatre =  (Theatre) session.createQuery("from Theatre where name ="+"'"+input+"'").uniqueResult();
 				session.getTransaction().commit();
@@ -127,7 +127,7 @@ public class TheatreDAO {
 		Session session = null;
 		try {
 	
-			session = ConnectionUtil.getSessionFactory().openSession();
+			session = ConnectionUtil.getSessionFactory().getCurrentSession();
 			Transaction transaction = session.beginTransaction();		
 			Query query = session.getNamedQuery("calladdTheatreProcedure");
 			query.setParameter("id",theatre.getId());
