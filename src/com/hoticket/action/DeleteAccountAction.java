@@ -1,10 +1,7 @@
 package com.hoticket.action;
 import static com.hoticket.util.Constants.*;
-
 import java.util.Map;
-
 import com.hoticket.dao.UserDAO;
-import com.hoticket.modal.Customer;
 import com.hoticket.modal.User;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;

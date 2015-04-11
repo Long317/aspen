@@ -81,6 +81,9 @@
 		<action name="deleteAcc" class="com.hoticket.action.DeleteAccountAction">
 			<result name="success">/billing_account.jsp</result>
 		</action>
+		<action name="addAcc" class="com.hoticket.action.AddAccountAction">
+			<result name="success">/billing_account.jsp</result>
+		</action>
 	</package>
 
 

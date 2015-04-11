@@ -140,4 +140,20 @@ finally {
 }
 	
 }
+
+public void addAcc(Billing_account ba) {
+	session = ConnectionUtil.getSessionFactory().openSession();
+	Transaction tx = session.beginTransaction();
+	try {
+	     session.save(ba);
+	     tx.commit();
+	}
+	catch (Exception e) {
+	    if (tx!=null) tx.rollback();
+	}
+	finally {
+	    session.close();
+	}
+	
+}
 }

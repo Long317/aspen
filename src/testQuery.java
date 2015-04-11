@@ -37,10 +37,9 @@ public class testQuery {
 
 			
 public static void main(String args[]){
-<<<<<<< HEAD
 	List<Movie> t=(List<Movie>)getMovieByTheatreId(1);
 	System.out.println(t);
-=======
+
 	
 		MovieDAO movieDao = MovieDAO.getInstance();
 		TheatreDAO theatreDao = TheatreDAO.getInstance();
@@ -49,7 +48,6 @@ public static void main(String args[]){
 //		
 //		List<Theatre> tt=(List<Theatre>) theatreDao.getTheatreByZipcode(85741);
 //		System.out.println(tt.get(0).getName());
-		List<Movie> t=(List<Movie>)movieDao.getMovieByTheatreId(2);
 		System.out.println(t.get(0).getName());
 //
 //		Movie t =(Movie)movieDao.getMovieByName("Let's Get Married");
@@ -64,7 +62,6 @@ public static void main(String args[]){
 //			System.out.print("\""+t.get(i).getCity().trim()+"\", ");
 
 
->>>>>>> refs/remotes/origin/master
 
 }
 }
