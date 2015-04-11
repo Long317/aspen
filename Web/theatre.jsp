@@ -5,6 +5,7 @@
    <%@ taglib prefix="s" uri="/struts-tags" %>
    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
    <jsp:useBean id="now" class="java.util.Date" />
    <c:set var="day2" value="<%=new java.util.Date (new java.util.Date().getTime() + 60*60*24*1000)%>"/>
 	<c:set var="day3" value="<%=new java.util.Date(new java.util.Date().getTime() + 2*60*60*24*1000)%>"/>
@@ -123,49 +124,43 @@
 	             
 		 		
 		 			<div class="headline"><h2><s:property value="#session.theatre.name" /></h2></div> 
-		 				<div><h2>MOVIE RESULTS</h2>
-		 					<div class="table-search-v2 panel panel-grey margin-bottom-50">
+
+		 			<div class="panel panel-grey margin-bottom-50">
                         <div class="panel-heading">
                             <div class="panel-title pull-left"><i class="fa fa-globe"></i> Movie Search Results</div>
-           
                             <div class="clearfix"></div>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
-                                <tbody>
-                                	
-                                    <tr>
+                            <table class="table table-bordered">
+		 							<c:forEach items="${sessionScope.SHOWING_MOVIES}" var="movie">
+		 							<tr><td>
+		 							   <div class="row">
                                         <div class = "col-md-2">
-                                           <a href="movieoverview.jsp"> <img  src="assets/owl2.jpg" alt=""></a>
+                                           <a href="movie?movie.name=<c:out value='${movie.name}'/>"> <img src="<c:out value='${movie.img_url}'/>"></a>
                                         </div>
-                                         <div class = "col-md-2">
-                                          THE DIVERGENT SERIES: INSURGENT 
+                                         <div class = "col-md-3">
+                                        	<h3><c:out value="${movie.name}"/></h3>
     
-												PG-13 , 1 hr 58 min
-											Action/Adventure, Romance
+											<div>PG-13 ,  <c:out value="${movie.length}"/> min</div>
+											<c:out value="${movie.genre}"/>
                                         </div>
-                                        <div class = "col-md-6">
-                                            <h3>Jupiter 1</h3>
-                                            <p>Select a movie time to buy tickets
-												Accessibility devices available</p>
-                                            <a href="ticketInfo.jsp">9:50am</a>
-                                             <a href="ticketInfo.jsp">12:20pm</a>
-                                             <a href="ticketInfo.jsp">12:20pm</a>
-                                             <a href="ticketInfo.jsp">3:15pm</a>
-                                             <a href="ticketInfo.jsp">6:15pm</a>
-                                             <a href="ticketInfo.jsp">9:15pm</a>
+                                        <div class = "col-md-5">
+                                            <h4>Select a movie time to buy tickets
+												Accessibility devices available</h4>
+											 <c:forEach items="${sessionScope.theatre.showing}" var="showing">
+											 	    <c:if test="${showing.movie.id==movie.id}"> 
+											 	    <c:set var="start_time_full" value="${showing.start_time}"/>
+											 	    <c:set var="start_time" value="${fn:substring(start_time_full, 0, 5)}" />
+                                          	 	<button class="btn btn-default"><a href="purchase?showing.id=<c:out value='${showing.id}'/>"><c:out value="${start_time}"/></a></button>
+                                          	 		</c:if>
+                                             </c:forEach>
                                         </div>
-                                       
-                                    </tr>
-                            
-                                </tbody>
+                                       </div>
+                                   </td>
+                                      </tr>
+									</c:forEach>
                             </table>
-                        </div>    
+                        
                     </div>
-
-		 				</div> 
-
-		 				<div class="row"></div>
 		 	</div>	
 		<!-- End Content Part -->
 	</div><!--/wrapper-->

@@ -52,16 +52,16 @@
 			<div class="container content">	
 		 		<div class="headline"><h2>SEARCH RESULTS</h2></div> 
 
-                                    <h2>Matched Theatres</h2>
+                                    <h2>Theatres Matched</h2>
                                     <s:if test="#session.SEARCH_GENERAL_THEATRES!=null"> 
-		 							<c:forEach items="${sessionScope.SEARCH_GENERAL_THEATRES}" var="item">
-  										<a href="search?searchInput=<c:out value='${item.name}'/>"><c:out value="${item.name}"/></a>
+		 							<c:forEach items="${sessionScope.SEARCH_GENERAL_THEATRES}" var="theatre">
+  										<a href="theatre?theatre.id=<c:out value='${theatre.id}'/>"><c:out value="${theatre.name}"/></a>
                                         <br/> 
 									</c:forEach>
                                     </s:if>
                                      
                                     <s:if test="#session.SEARCH_GENERAL!=null"> 
-                                    <h2>Matched States or cities</h2>
+                                    <h2>States or cities Matched</h2>
                                 	<s:iterator value="%{#session.SEARCH_GENERAL}">
                                     <a href="search?searchInput='<s:property/>'/>"><s:property/></a>
                                     	<br/> 
@@ -70,9 +70,9 @@
 
                                     
                                     <s:if test="#session.SEARCH_GENERAL_MOVIES!=null"> 
-                                     <h2>Matched Movies</h2>
-                               		<c:forEach items="${sessionScope.SEARCH_GENERAL_MOVIES}" var="item">
-                                    <a href="search?searchInput=<c:out value='${item.name}'/>"><c:out value="${item.name}"/></a>
+                                     <h2>Movies Matched</h2>
+                               		<c:forEach items="${sessionScope.SEARCH_GENERAL_MOVIES}" var="movie">
+                                    <a href="movie?movie.id=<c:out value='${movie.id}'/>"><c:out value="${movie.name}"/></a>
                                         <br/> 
 									</c:forEach>
                                	     </s:if>

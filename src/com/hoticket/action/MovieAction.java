@@ -31,8 +31,12 @@ ModelDriven<Movie>{
 		// get session object
 		@SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
+		//if no movie id pass
+		if (movie.getId()==0){
+			return ERROR;
+		}
 		//get movie object
-		Movie m = MovieDAO.getInstance().getMovieByName(movie.getName());
+		Movie m = MovieDAO.getInstance().getMovieById(movie.getId());
 		//if no theatre in the db has same name return to error page
 				if (m.getName() == null) {
 					return ERROR;

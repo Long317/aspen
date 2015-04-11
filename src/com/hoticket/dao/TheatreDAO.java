@@ -35,7 +35,7 @@ public class TheatreDAO {
 		List<Theatre> theatres = new ArrayList<Theatre>();
 		try {
 
-			session = ConnectionUtil.getSessionFactory().getCurrentSession();
+			session = ConnectionUtil.getSessionFactory().openSession();
 			session.beginTransaction();
 			theatres = (List<Theatre>) session.createQuery("from Theatre").list();
 			session.getTransaction().commit();
@@ -65,6 +65,23 @@ public class TheatreDAO {
 		}
 
 		return theatres;
+	}
+	//get theatre by id
+	public Theatre getTheatreById(int input) {
+		Theatre theatre = new Theatre();
+		try {
+			session = ConnectionUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			theatre =  (Theatre) session.createQuery("from Theatre where id ="+"'"+input+"'").uniqueResult();
+			session.getTransaction().commit();
+			return theatre;
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return theatre;
 	}
 	
 	//get theatre by city

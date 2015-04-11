@@ -81,7 +81,7 @@
 				 		<div class="row">
 								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="0" end="5">
 					  		<div class="col-md-2">
-                             <a href="movie?movie.name=<c:out value='${movie.name}'/>">
+                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
                              <div class="movieImg">
                              <img src="<c:out value='${movie.img_url}'/>">
                         	 </div>
@@ -93,7 +93,7 @@
           				  <div class="row">
 								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="6" end="11">
 					  		<div class="col-md-2">
-                             <a href="movie?movie.name=<c:out value='${movie.name}'/>">
+                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
                              <div class="movieImg">
                              <img src="<c:out value='${movie.img_url}'/>">
                         	 </div>
@@ -105,7 +105,7 @@
           				  <div class="row">
 								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="12" end="17">
 					  		<div class="col-md-2">
-                             <a href="movie?movie.name=<c:out value='${movie.name}'/>">
+                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
                              <div class="movieImg">
                              <img src="<c:out value='${movie.img_url}'/>">
                         	 </div>
@@ -117,7 +117,7 @@
           				  <div class="row">
 								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="18" end="23">
 					  		<div class="col-md-2">
-                             <a href="movie?movie.name=<c:out value='${movie.name}'/>">
+                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
                              <div class="movieImg">
                              <img src="<c:out value='${movie.img_url}'/>">
                         	 </div>
@@ -129,7 +129,7 @@
           				  <div class="row">
 								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="24" end="29">
 					  		<div class="col-md-2">
-                             <a href="movie?movie.name=<c:out value='${movie.name}'/>">
+                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
                              <div class="movieImg">
                              <img src="<c:out value='${movie.img_url}'/>">
                         	 </div>
@@ -141,7 +141,7 @@
           				  <div class="row">
 								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="30" end="35">
 					  		<div class="col-md-2">
-                             <a href="movie?movie.name=<c:out value='${movie.name}'/>">
+                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
                              <div class="movieImg">
                              <img src="<c:out value='${movie.img_url}'/>">
                         	 </div>
@@ -153,7 +153,7 @@
           				  <div class="row">
 								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="36" end="41">
 					  		<div class="col-md-2">
-                             <a href="movie?movie.name=<c:out value='${movie.name}'/>">
+                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
                              <div class="movieImg">
                              <img src="<c:out value='${movie.img_url}'/>">
                         	 </div>
@@ -165,7 +165,7 @@
           				  <div class="row">
 								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="42" end="47">
 					  		<div class="col-md-2">
-                             <a href="movie?movie.name=<c:out value='${movie.name}'/>">
+                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
                              <div class="movieImg">
                              <img src="<c:out value='${movie.img_url}'/>">
                         	 </div>
@@ -177,7 +177,7 @@
           				  <div class="row">
 								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="48" end="53">
 					  		<div class="col-md-2">
-                             <a href="movie?movie.name=<c:out value='${movie.name}'/>">
+                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
                              <div class="movieImg">
                              <img src="<c:out value='${movie.img_url}'/>">
                         	 </div>
@@ -189,7 +189,7 @@
           				  <div class="row">
 								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="54" end="59">
 					  		<div class="col-md-2">
-                             <a href="movie?movie.name=<c:out value='${movie.name}'/>">
+                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
                              <div class="movieImg">
                              <img src="<c:out value='${movie.img_url}'/>">
                         	 </div>
@@ -202,7 +202,7 @@
 						<div class="row">
 								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="60" end="65">
 					  		<div class="col-md-2">
-                             <a href="movie?movie.name=<c:out value='${movie.name}'/>">
+                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
                              <div class="movieImg">
                              <img src="<c:out value='${movie.img_url}'/>">
                         	 </div>
@@ -214,7 +214,7 @@
           				  	<div class="row">
 								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="66" end="71">
 					  		<div class="col-md-2">
-                             <a href="movie?movie.name=<c:out value='${movie.name}'/>">
+                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
                              <div class="movieImg">
                              <img src="<c:out value='${movie.img_url}'/>">
                         	 </div>
@@ -226,7 +226,7 @@
           				  	<div class="row">
 								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="72" end="76">
 					  		<div class="col-md-2">
-                             <a href="movie?movie.name=<c:out value='${movie.name}'/>">
+                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
                              <div class="movieImg">
                              <img src="<c:out value='${movie.img_url}'/>">
                         	 </div>

@@ -2,7 +2,9 @@
 package com.hoticket.dao;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -36,6 +38,28 @@ public class ShowingDAO {
 			session = ConnectionUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
 			showings = (List<Showing>) session.createQuery("from Showing").list();
+			session.getTransaction().commit();
+			return showings;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return showings;
+	}
+	
+	/**
+	 * get Showing list by theatreId
+	 */
+	@SuppressWarnings("unchecked")
+	public Set<Showing> getShowingByTheatreId(int theatre_id) {
+		Set<Showing> showings = new HashSet<Showing>();
+		try {
+			
+			session = ConnectionUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			Query query = session.getNamedQuery("callgetShowingByTheatreIdProcedure").setParameter("theatre_id",theatre_id);
+			showings = new HashSet<Showing>(query.list());
 			session.getTransaction().commit();
 			return showings;
 
@@ -116,5 +140,6 @@ public class ShowingDAO {
 //		}
 //		
 //	}
-}
 
+
+}
