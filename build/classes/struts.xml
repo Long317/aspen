@@ -71,7 +71,17 @@
 		</action>
 	</package>
 	
-
+	<package name="changesetting" namespace="/" extends="struts-default">
+		<action name="changesetting" class="com.hoticket.action.ChangeSettingAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
+	</package>
+    <package name="billingaccount" namespace="/" extends="struts-default">
+		<action name="deleteAcc" class="com.hoticket.action.DeleteAccountAction">
+			<result name="success">/billing_account.jsp</result>
+		</action>
+	</package>
 
 
 </struts>

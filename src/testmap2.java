@@ -37,7 +37,7 @@ public class testmap2 {
         Billing_account emp2 = new Billing_account();
         emp1.setCard_holder("sophie");
         emp1.setCard_number("3423413241");
-        emp1.setCard_type("master");
+        emp1.setCard_type(1);
         emp1.setCvs(343);
         emp1.setMonth(4);
         emp1.setYear(14);
@@ -45,7 +45,7 @@ public class testmap2 {
         
         emp2.setCard_holder("aophie");
         emp2.setCard_number("4423413241");
-        emp2.setCard_type("master");
+        emp2.setCard_type(1);
         emp2.setCvs(743);
         emp1.setMonth(3);
         emp1.setYear(16);
@@ -85,7 +85,7 @@ public class testmap2 {
         session.save(m1);
         /*add a theatre*/
         Theatre  t=new Theatre();
-        t.setName("amc");
+        t.setName("amc");t.setCity("stony brook");t.setState("NY");t.setAddress("270 hallp rd");t.setZipcode(11790);
         session.save(t);
         java.util.Date date = new Date();
         /*add a showing*/
@@ -137,13 +137,13 @@ public class testmap2 {
         Billing_account emp4 = new Billing_account();
         emp3.setCard_holder("alice");
         emp3.setCard_number("3423413241");
-        emp3.setCard_type("master");
+        emp3.setCard_type(1);
         emp3.setCvs(343);
         emp3.setCustomer(u2);
         
         emp4.setCard_holder("chris");
         emp4.setCard_number("4423413241");
-        emp4.setCard_type("master");
+        emp4.setCard_type(1);
         emp4.setCvs(743);
         emp4.setCustomer(u2);
          
@@ -174,7 +174,8 @@ public class testmap2 {
         
         
         
-        
+        u3.setUser_name("ALICECHEN");
+        session.update(u3);
         
         
         session.getTransaction().commit();

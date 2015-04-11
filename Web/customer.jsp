@@ -71,6 +71,10 @@
                     <li class="list-group-item">
                         <a href="billing_account.jsp"><i class="fa fa-user"></i>Manage Billing Account</a>
                     </li>
+                    
+                    <li class="list-group-item">
+                        <a href="customer_settings.jsp"><i class="fa fa-user"></i>Setting</a>
+                    </li>
                 </ul>   
 
 

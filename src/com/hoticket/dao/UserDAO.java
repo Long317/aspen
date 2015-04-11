@@ -1,20 +1,17 @@
 package com.hoticket.dao;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.annotations.NamedNativeQueries;
-import org.hibernate.annotations.NamedNativeQuery;
 
+import com.hoticket.modal.Billing_account;
 import com.hoticket.modal.Customer;
-import com.hoticket.modal.Movie;
 import com.hoticket.modal.User;
 import com.hoticket.util.ConnectionUtil;
+import com.hoticket.util.EncryptUtils;
 
 
 
@@ -25,24 +22,24 @@ public class UserDAO {
 	 * get users list from user table
 	 */
 	@SuppressWarnings("unchecked")
-	public List<User> getUsers() {
+	public User checkUser(String email) {
 
-		List<User> users = new ArrayList<User>();
+		User user=null;
 		try {
 
-			session = ConnectionUtil.getSessionFactory().getCurrentSession();
+			session = ConnectionUtil.getSessionFactory().openSession();
 			session.beginTransaction();
-			users = (List<User>) session.createQuery("from User").list();
+			String query ="from User where email =:email";
+			user =  (User) session.createQuery(query).setParameter("email", email).uniqueResult();
 			session.getTransaction().commit();
-			return users;
-
+      
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		finally{session.close();}
 
-		return users;
+		return user;
 	}
-	
 
 	public void addUser(User user) {
 		try {
@@ -78,19 +75,21 @@ public class UserDAO {
  * @return customer
  */
 	public Customer getCustomer(int id) {
-		Customer c;
+		Customer c=null;
 		try {
 
 			session = ConnectionUtil.getSessionFactory().openSession();
 			session.beginTransaction();
 			c = (Customer) session.get(Customer.class,id);
-			return c;
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		finally{
+			session.close();
+		}
 		
-		return null;
+		return c;
 	}
 
 
@@ -104,6 +103,41 @@ public void addCustomer(Customer c) {
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
+}
+public void changePassAndName(String username,String pass,int id){
+	 session = ConnectionUtil.getSessionFactory().openSession();
+	 Transaction tx = session.beginTransaction();
+	 try {
+		 User u=(User) session.get(User.class, id);
+		 u.setUser_name(username);u.setPassword(EncryptUtils.base64encode(pass));
+	     session.update(u);
+	     tx.commit();
+	 }
+	 catch (Exception e) {
+	     if (tx!=null) tx.rollback();
+	 }
+	 finally {
+	     session.close();
+	 }
+	
+	
+	
+}
+
+public void deleteAcc(int acc_id,int id) {
+	session = ConnectionUtil.getSessionFactory().openSession();
+Transaction tx = session.beginTransaction();
+try {
+	 Billing_account ba=(Billing_account) session.get(Billing_account.class, acc_id);
+     session.delete(ba);
+     tx.commit();
+}
+catch (Exception e) {
+    if (tx!=null) tx.rollback();
+}
+finally {
+    session.close();
+}
 	
 }
 }

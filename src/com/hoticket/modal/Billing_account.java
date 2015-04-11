@@ -21,7 +21,7 @@ public class Billing_account implements Serializable{
 	@Column(name="card_holder")
 	private String card_holder;
 	@Column (name="card_type")
-	private String card_type;
+	private int card_type;
 	@Column(name="cvs")
 	private int cvs;
 	@Column(name="month")
@@ -51,10 +51,10 @@ public class Billing_account implements Serializable{
 	public void setCard_holder(String card_holder) {
 		this.card_holder = card_holder;
 	}
-	public String getCard_type() {
+	public int getCard_type() {
 		return card_type;
 	}
-	public void setCard_type(String card_type) {
+	public void setCard_type(int card_type) {
 		this.card_type = card_type;
 	}
 	public Customer getCustomer() {
