@@ -105,12 +105,17 @@ CREATE TABLE `hoticket`.`showing` (
 
 CREATE TABLE `hoticket`.`pay_history` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `customer_id` INT NOT NULL,
   `ticket_number` INT NOT NULL,
   `date` DATETIME NOT NULL,
   `showing_id` INT NOT NULL,
   `billing_account_id` INT NOT NULL,
   `billing_address_id` INT NOT NULL,
   PRIMARY KEY (`id`),
+  FOREIGN KEY (`customer_id`)
+    REFERENCES `hoticket`.`customer` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   FOREIGN KEY (`showing_id`)
     REFERENCES `hoticket`.`showing` (`id`)
     ON DELETE CASCADE
@@ -240,7 +245,7 @@ CREATE TABLE `hoticket`.`rating` (
     REFERENCES `hoticket`.`movie` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
-
+/* PROCEDURES */
 DELIMITER //
 CREATE PROCEDURE addCustomer(email varchar(250),password varchar(20),user_name varchar(45))
  BEGIN
@@ -249,16 +254,3 @@ CREATE PROCEDURE addCustomer(email varchar(250),password varchar(20),user_name v
 DELIMITER ;
 
 
-DELIMITER //
-CREATE PROCEDURE addMovie(id int(11),name varchar(250),release_time date,rating float,length int(11),trailer_url varchar(100),genre varchar(100),img_url varchar(1000),synopsis varchar(10000))
-BEGIN
- insert into movie (id,name,release_time,rating,length,trailer_url,genre,img_url,synopsis) values (id,name,release_time,rating,length,trailer_url,genre,img_url,synopsis) ;
- END;//
-DELIMITER ;
-
-DELIMITER //
-CREATE PROCEDURE addTheatre(id int(11),name varchar(250),city varchar(45), zipcode int(11), state varchar(45),address varchar(250), phone_number varchar(13), supported int(11))
-BEGIN
- insert into theatre (id,name,city,zipcode,state,address,phone_number,supported) values (id,name,city,zipcode,state,address,phone_number,supported) ;
- END;//
-DELIMITER ;

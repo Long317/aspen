@@ -22,7 +22,6 @@ import org.hibernate.annotations.NamedNativeQuery;
 	resultClass = Movie.class
 	)
 })
-
 @Entity
 @Table(name="movie")
 public class Movie implements Serializable{

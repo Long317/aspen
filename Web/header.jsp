@@ -274,7 +274,7 @@
                                 <div class="input-group animated fadeInDown">
                                   <input id="mainSearch" name ="searchInput" type="text" class="form-control" placeholder="Enter City + State, ZIP Code, or Movie">
                                     <span class="input-group-btn">
-                                     <input class="btn-u searGo" id="mainSearchCon" type="submit">Go</input>
+                                     <button class="btn-u searGo" id="mainSearchCon" type="submit">Go</button>
                                     </span>
                                 </div>
                               </s:form>

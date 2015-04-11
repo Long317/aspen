@@ -7,9 +7,19 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.annotations.NamedNativeQueries;
+import org.hibernate.annotations.NamedNativeQuery;
+import org.hibernate.transform.Transformers;
 
 import com.hoticket.modal.*;
 import com.hoticket.util.ConnectionUtil;
+@NamedNativeQueries({
+	@NamedNativeQuery(
+	name = "callgetMovieByTheatreIdProcedure",
+	query = "CALL getMovieByTheatreId(:input)",
+	resultClass = User.class
+	)
+})
 
 public class ShowingDAO {
 	Session session = null;
@@ -46,26 +56,9 @@ public class ShowingDAO {
 		return showings;
 	}
 
-	
-	
-	//get movie by theatre id
-		@SuppressWarnings("unchecked")
-		public List<Movie> getMovieByTheatreId(int input) {
-			List<Movie> movies = new ArrayList<Movie>();
-			try {
-				session = ConnectionUtil.getSessionFactory().getCurrentSession();
-				session.beginTransaction();
-				movies = (List<Movie>) session.createSQLQuery("select distinct m.* from movie m join showing s where m.id=s.movie_id and s.theatre_id="+input).list();
-				session.getTransaction().commit();
-				return movies;
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-			return movies;
-		}
 		
+
+	
 		
 //		//get theatre by state
 //				@SuppressWarnings("unchecked")
