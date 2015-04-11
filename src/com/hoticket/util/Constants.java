@@ -20,6 +20,7 @@ public class Constants {
 	public static final String SEARCH_GENERAL = "SEARCH_GENERAL";
 	public static final String SEARCH_GENERAL_THEATRES = "SEARCH_GENERAL_THEATRES";
 	public static final String SEARCH_GENERAL_MOVIES = "SEARCH_GENERAL_MOVIES";
+	public static final String SHOWING_MOVIES = "SHOWING_MOVIES";
 	
 	public static final String ALL_MOVIES = "ALL_MOVIES";
 	public static final String FILTER_MOVIES="FILTER_MOVIES";

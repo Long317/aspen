@@ -105,6 +105,12 @@ public class SearchAction extends ActionSupport {
 			if (matchedTheatres.size() == 1) {
 				// get result theatres
 				session.put(THEATRE, matchedTheatres.get(0));
+				List<Movie> showingMovies= MovieDAO.getInstance().getMovieByTheatreId(matchedTheatres.get(0).getId());
+				//check if showing movies correct
+				for (int i=0;i<showingMovies.size();i++){
+					System.out.println(showingMovies.get(i).getName());
+				}
+				session.put(SHOWING_MOVIES, showingMovies);
 				return THEATRE;
 			} else {
 				// If multiple cities matched return to general search result page

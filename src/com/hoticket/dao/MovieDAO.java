@@ -51,28 +51,41 @@ public class MovieDAO {
 	}
 	
 	//get movie by movie name
-	//parameter: String
-	//output: a movie
-			public Movie getMovieByName(String input) {
-				Movie movie = new Movie();
+		//parameter: String
+		//output: a movie
+				public Movie getMovieByName(String input) {
+					Movie movie = new Movie();
+					try {
+						session = ConnectionUtil.getSessionFactory().openSession();
+						session.beginTransaction();
+						 String query ="from Movie where name =:input";
+						movie =  (Movie) session.createQuery(query).setParameter("input", input).uniqueResult();
+						session.getTransaction().commit();
+						return movie;
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					return movie;
+				}
+
+			
+			//get movie by theatre id
+			@SuppressWarnings("unchecked")
+			public List<Movie> getMovieByTheatreId(int input) {
+				List<Movie> movies = new ArrayList<Movie>();
 				try {
 					session = ConnectionUtil.getSessionFactory().getCurrentSession();
 					session.beginTransaction();
-					movie =  (Movie) session.createQuery("from Movie where name ="+"'"+input+"'").uniqueResult();
+					movies = (List<Movie>) session.createSQLQuery("select distinct m.* from movie m join showing s where m.id=s.movie_id and s.theatre_id="+input).list();
 					session.getTransaction().commit();
-					if (movie==null){
-						movie = new Movie();
-						return movie;
-					}
-					return movie;
+					return movies;
 
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 
-				return movie;
+				return movies;
 			}
-			
 			//get movie by IMG URL
 			//parameter: String
 			//output: a movie
