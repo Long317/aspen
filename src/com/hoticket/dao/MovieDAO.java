@@ -7,8 +7,11 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.annotations.NamedNativeQueries;
+import org.hibernate.annotations.NamedNativeQuery;
 
 import com.hoticket.modal.Movie;
+import com.hoticket.modal.Theatre;
 import com.hoticket.util.ConnectionUtil;
 
 
@@ -37,7 +40,7 @@ public class MovieDAO {
 		List<Movie> movies = new ArrayList<Movie>();
 		try {
 
-			session = ConnectionUtil.getSessionFactory().getCurrentSession();
+			session = ConnectionUtil.getSessionFactory().openSession();
 			session.beginTransaction();
 			movies = (List<Movie>) session.createQuery("from Movie").list();
 			session.getTransaction().commit();
@@ -53,33 +56,52 @@ public class MovieDAO {
 	//get movie by movie name
 	//parameter: String
 	//output: a movie
+			@SuppressWarnings("unchecked")
 			public Movie getMovieByName(String input) {
 				Movie movie = new Movie();
 				try {
-					session = ConnectionUtil.getSessionFactory().getCurrentSession();
+					session = ConnectionUtil.getSessionFactory().openSession();
 					session.beginTransaction();
-					movie =  (Movie) session.createQuery("from Movie where name ="+"'"+input+"'").uniqueResult();
+					 String query ="from Movie where name =:input";
+					movie =  (Movie) session.createQuery(query).setParameter("input", input).uniqueResult();				
 					session.getTransaction().commit();
-					if (movie==null){
-						movie = new Movie();
-						return movie;
-					}
 					return movie;
-
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return movie;
+			}
+			
+			//get movie by theatre id
+			@SuppressWarnings("unchecked")
+			public List<Movie> getMovieByTheatreId(int theatre_id) {
+				
+				List<Movie> movies = new ArrayList<Movie>();
+				try {
+					session = ConnectionUtil.getSessionFactory().getCurrentSession();
+					Transaction transaction = session.beginTransaction();		
+					Query query = session.getNamedQuery("callgetMovieByTheatreIdProcedure").setParameter("theatre_id",theatre_id);
+//					movies =  (List<Movie>) session.createSQLQuery(query).list();
+					movies=query.list();
+					transaction.commit();
+//					session.flush();
+//					session.close();
+					return movies;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 
-				return movie;
+				return movies;
 			}
 			
 			//get movie by IMG URL
 			//parameter: String
 			//output: a movie
+					@SuppressWarnings("unchecked")
 					public Movie getMovieByImgURL(String input) {
 						Movie movie = new Movie();
 						try {
-							session = ConnectionUtil.getSessionFactory().getCurrentSession();
+							session = ConnectionUtil.getSessionFactory().openSession();
 							session.beginTransaction();
 							movie =  (Movie) session.createQuery("from Movie where img_url ="+"'"+input+"'").uniqueResult();
 							session.getTransaction().commit();
@@ -92,6 +114,45 @@ public class MovieDAO {
 						return movie;
 					}
 					
+					//filter movie by genre
+					//parameter: String
+					//output: list of  movie
+							@SuppressWarnings("unchecked")
+							public List<Movie> filterMovieByGenre(String input) {
+								List<Movie> movies = new ArrayList<Movie>();								
+								try {
+									session = ConnectionUtil.getSessionFactory().openSession();
+									session.beginTransaction();
+									movies =  (List<Movie>) session.createQuery("from Movie where genre ="+"'"+input+"'").list();
+									session.getTransaction().commit();
+									return movies;
+
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+
+								return movies;
+							}
+						
+							//sort movie by rating
+							//parameter: no
+							//output: list of  movie
+									@SuppressWarnings("unchecked")
+									public List<Movie> sortMovieByRating() {
+										List<Movie> movies = new ArrayList<Movie>();								
+										try {
+											session = ConnectionUtil.getSessionFactory().openSession();
+											session.beginTransaction();
+											movies =  (List<Movie>) session.createSQLQuery("select m.* from movie m order by m.rating DESC").list();
+											session.getTransaction().commit();
+											return movies;
+
+										} catch (Exception e) {
+											e.printStackTrace();
+										}
+
+										return movies;
+									}
 		
 //			//sort movies by rating
 //			//parameter: no
@@ -100,7 +161,7 @@ public class MovieDAO {
 //					public List<Movie> sortMovieByRating() {
 //						Movie movie = new Movie();
 //						try {
-//							session = ConnectionUtil.getSessionFactory().getCurrentSession();
+//							session = ConnectionUtil.getSessionFactory().openSession();
 //							session.beginTransaction();
 //							movie =  (List<Movie>) session.createQuery("from Movie where name ="+"'"+input+"'");
 //							session.getTransaction().commit();
@@ -120,7 +181,7 @@ public class MovieDAO {
 		Session session = null;
 		try {
 	
-			session = ConnectionUtil.getSessionFactory().getCurrentSession();
+			session = ConnectionUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();		
 			Query query = session.getNamedQuery("calladdMovieProcedure");
 			query.setParameter("id", movie.getId());

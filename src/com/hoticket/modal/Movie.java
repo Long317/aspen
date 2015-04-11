@@ -3,6 +3,7 @@ package com.hoticket.modal;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,15 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedNativeQueries;
+import org.hibernate.annotations.NamedNativeQuery;
+@NamedNativeQueries({
+	@NamedNativeQuery(
+	name = "callgetMovieByTheatreIdProcedure",
+	query = "CALL getMovieByTheatreId(:theatre_id)",
+	resultClass = Movie.class
+	)
+})
 @Entity
 @Table(name="movie")
 public class Movie implements Serializable{
