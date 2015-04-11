@@ -18,13 +18,13 @@ CREATE TABLE `hoticket`.`movie` (
   
   CREATE TABLE `hoticket`.`theatre` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(250) NULL DEFAULT 'theatre',
-  `city` VARCHAR(45) NULL DEFAULT 'null',
-  `state` VARCHAR(45) NULL DEFAULT 'null',
-  `zipcode` INT NULL DEFAULT NULL,
-  `address` VARCHAR(250) NULL DEFAULT 'null',
-  `phone_number` VARCHAR(13) NULL DEFAULT 'null',
-  `supported` INT NULL DEFAULT 0,
+  `name` VARCHAR(250)NOT NULL DEFAULT 'amc theatre',
+  `city` VARCHAR(45)NOT NULL DEFAULT 'stony brook',
+  `state` VARCHAR(45)NOT NULL DEFAULT 'NY',
+  `zipcode` INT NOT NULL DEFAULT 11790,
+  `address` VARCHAR(250)NOT NULL DEFAULT '271 hallock rd',
+  `phone_number` VARCHAR(25) NULL,
+  `supported` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `theatre_name_UNIQUE` (`name` ASC));
   
@@ -34,7 +34,7 @@ CREATE TABLE `hoticket`.`movie` (
   `first_name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
   `password` VARCHAR(20) NOT NULL,
-  `user_name` VARCHAR(45) NOT NULL,
+  `user_name` VARCHAR(45) NOT NULL DEFAULT 'Buddy',
   `role` INT NOT NULL DEFAULT 0 COMMENT '0:customer\n1:admin\n2:manager\n3:movie chain',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC));
@@ -54,10 +54,10 @@ FOREIGN KEY (`id`)
 
 CREATE TABLE `hoticket`.`billing_account` (
   `id` INT NOT NULL AUTO_INCREMENT,
-   `customer_id` INT NOT NULL,
+  `customer_id` INT NOT NULL,
   `card_number` VARCHAR(45) NOT NULL,
   `card_holder` VARCHAR(45) NOT NULL,
-  `card_type` VARCHAR(20) NOT NULL,
+  `card_type` INT NOT NULL COMMENT '0:VISA\n1:MASTER',
   `cvs` INT NOT NULL,
   `month` INT NOT NULL,
   `year` INT NOT NULL,
@@ -135,7 +135,7 @@ CREATE TABLE `hoticket`.`pay_history` (
   `email` VARCHAR(250) NOT NULL,
   `card_number` VARCHAR(45) NOT NULL,
   `card_holder` VARCHAR(45) NOT NULL,
-  `card_type` VARCHAR(20) NOT NULL,
+  `card_type` INT NOT NULL COMMENT '0:VISA\n1:MASTER',
   `cvs` INT NOT NULL,
   PRIMARY KEY (`id`));
 
@@ -245,12 +245,11 @@ CREATE TABLE `hoticket`.`rating` (
     REFERENCES `hoticket`.`movie` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
-/* PROCEDURES */
+    
 DELIMITER //
-CREATE PROCEDURE addCustomer(email varchar(250),password varchar(20),user_name varchar(45))
+CREATE PROCEDURE `hoticket`.`addCustomer`(email varchar(250),password varchar(20),user_name varchar(45))
  BEGIN
  insert into user (email,password,user_name) values (email,password,user_name) ;
  END;//
 DELIMITER ;
-
 
