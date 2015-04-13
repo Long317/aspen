@@ -141,11 +141,11 @@ finally {
 }
 	
 }
-public void deleteAddr(int addr_id, int id) {
+public void deleteAddr(int acc_id, int id) {
 	session = ConnectionUtil.getSessionFactory().openSession();
 	Transaction tx = session.beginTransaction();
 	try {
-		 Billing_account ba=(Billing_account) session.get(Billing_account.class, addr_id);
+		 Billing_address ba=(Billing_address) session.get(Billing_address.class, acc_id);
 	     session.delete(ba);
 	     tx.commit();
 	}

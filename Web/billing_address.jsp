@@ -87,23 +87,23 @@
                         <div class="tab-v1">
                             <ul class="nav nav-justified nav-tabs">
                                 <li class="active"><a data-toggle="tab" href="#deleteacc">Delete billing address</a></li>
-                                <li><a data-toggle="tab" href="#addacc">Add billing address</a></li>
+                                <li><a data-toggle="tab" href="#addaddr">Add billing address</a></li>
                             </ul>    
                             <div class="tab-content">      
-								 <div id="deleteacc" class="profile-edit tab-pane fade in active">
+								 <div id="deleteaddr" class="profile-edit tab-pane fade in active">
                                     <h2 class="heading-md">Delete your billing address</h2>
                                     <p>Below are the card info of your existing address</p>
                                     </br>
                                     <dl class="dl-horizontal">
                                     <c:forEach var="baddr" items="${sessionScope.login.billing_addresses}" varStatus="status" begin="0">
-                                    <form action="deleteAcc">
+                                    <form action="deleteAddr">
                                        <dd>
                                       		<strong>Address:</strong><c:out value="${baddr.address}"/><br>
                                       		<strong>City:</strong><c:out value="${baddr.city} "/> 
                                             <strong>State:</strong><c:out value="${baddr.state} "/>
                                             <strong>State:</strong><c:out value="${baddr.zipcode} "/><br>
                                             <strong>Name:</strong><c:out value="${baddr.first_name} ${baddr.last_name}"/><br>
-                                            <input name="acc_id" value="${ba.id}" type="hidden" />
+                                            <input name="acc_id" value="${baddr.id}" type="hidden" />
                                             <span>
                                                 <button type="submit" class="btn-u btn-u-default" onclick="return confirmAction()">DELETE</button>
                                             </span>
@@ -113,7 +113,7 @@
                                      </c:forEach>
                                     </dl>
                                 </div>
-                                <div id="addacc" class="profile-edit tab-pane fade">
+                                <div id="addaddr" class="profile-edit tab-pane fade">
                                     <h2 class="heading-md">Manage your Payment Settings</h2>
                                     <p>Below are the payment options for your account.</p>
                                     </br>
