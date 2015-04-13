@@ -1,9 +1,10 @@
 package com.hoticket.action;
 
-import java.util.List;
-import java.util.Map;
 
 import static com.hoticket.util.Constants.*;
+
+import java.util.List;
+import java.util.Map;
 
 import com.hoticket.dao.MovieDAO;
 import com.hoticket.dao.ShowingDAO;
@@ -30,7 +31,6 @@ public class TheatreAction extends ActionSupport implements
 	/**
 	 * redirect to action base on
 	 */
-	@SuppressWarnings("unchecked")
 	public String execute() {
 		// get session object
 		@SuppressWarnings("rawtypes")

@@ -4,8 +4,6 @@ import java.util.Set;
 
 import org.hibernate.*;
 
-import com.hoticket.dao.MovieDAO;
-import com.hoticket.dao.TheatreDAO;
 import com.hoticket.modal.Billing_account;
 import com.hoticket.modal.Billing_address;
 import com.hoticket.modal.Customer;
@@ -25,21 +23,21 @@ public class testmap2 {
 	      session.beginTransaction();  
  	
  /*Add customer u3*/
-        Customer u3 = new Customer();
-	    u3.setEmail("sophie.fang117@gmail.com");
-	    u3.setFirst_name("hahads");
-	    u3.setUser_name("sophie");
-	    u3.setPassword(EncryptUtils.base64encode("56880098"));
-	    u3.setRole(0);
-	    u3.setGender(1);
-        
-        session.save(u3);
+	      Customer u3 = new Customer();
+		    u3.setEmail("sophie.fang117@gmail.com");
+		    u3.setFirst_name("hahads");
+		    u3.setUser_name("sophie");
+		    u3.setPassword(EncryptUtils.base64encode("56880098"));
+		    u3.setRole(0);
+		    u3.setGender(1);
+	        session.save(u3);
+	        session.save(u3);
  /*Add two billing_accounts for customer*/
         Billing_account emp1 = new Billing_account();
         Billing_account emp2 = new Billing_account();
         emp1.setCard_holder("sophie");
         emp1.setCard_number("3423413241");
-        emp1.setCard_type("master");
+        emp1.setCard_type(1);
         emp1.setCvs(343);
         emp1.setMonth(4);
         emp1.setYear(14);
@@ -47,7 +45,7 @@ public class testmap2 {
         
         emp2.setCard_holder("aophie");
         emp2.setCard_number("4423413241");
-        emp2.setCard_type("master");
+        emp2.setCard_type(1);
         emp2.setCvs(743);
         emp1.setMonth(3);
         emp1.setYear(16);
@@ -78,11 +76,17 @@ public class testmap2 {
         session.save(ad1);
         session.save(ad2);
         /*add a movie*/
-        Movie m=MovieDAO.getInstance().getMovieByName("100 Days of Love");
+        Movie m=new Movie();
+        m.setName("gone with the wind");
+        session.save(m);
         /*add second movie*/
-        Movie m1=MovieDAO.getInstance().getMovieByName("12 Golden Ducks");
+        Movie m1=new Movie();
+        m1.setName("howl's moving castle");
+        session.save(m1);
         /*add a theatre*/
-        Theatre  t=TheatreDAO.getInstance().getTheatreByName("AMC Festival Plaza 16");
+        Theatre  t=new Theatre();
+        t.setName("amc");t.setAddress("27 nelon rd");t.setCity("stony brook");t.setState("NY");
+        session.save(t);
         java.util.Date date = new Date();
         /*add a showing*/
         Showing s=new Showing();
@@ -123,7 +127,7 @@ public class testmap2 {
 	    u2.setEmail("bbbb@gmail.com");
 	    u2.setFirst_name("hahads");
 	    u2.setUser_name("ally");
-	    u2.setPassword(EncryptUtils.base64encode("asdfsaffsdfs"));
+	    u2.setPassword("asdfsaffsdfs");
 	    u2.setRole(0);
 	    u2.setGender(1);
         
@@ -133,13 +137,13 @@ public class testmap2 {
         Billing_account emp4 = new Billing_account();
         emp3.setCard_holder("alice");
         emp3.setCard_number("3423413241");
-        emp3.setCard_type("master");
+        emp3.setCard_type(1);
         emp3.setCvs(343);
         emp3.setCustomer(u2);
         
         emp4.setCard_holder("chris");
         emp4.setCard_number("4423413241");
-        emp4.setCard_type("master");
+        emp4.setCard_type(1);
         emp4.setCvs(743);
         emp4.setCustomer(u2);
          
@@ -177,4 +181,4 @@ public class testmap2 {
         session.close();
         
     }
-}
+    }

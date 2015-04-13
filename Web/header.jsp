@@ -361,9 +361,9 @@
               <s:fielderror fieldName="passwordnotequal"/>
         <hr>
 
-        <div class="checkbox" name="term_condition">            
+        <div class="row" >            
             <label>
-                <input type="checkbox" name="terms_condition"> 
+                <input type="checkbox" name="term_condition"> 
                 <p>I read <a href="terms_condition.html">Terms and Conditions</a></p>
             </label>
         </div>

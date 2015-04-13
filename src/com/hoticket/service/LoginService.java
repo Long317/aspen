@@ -16,24 +16,14 @@ public class LoginService {
 	 * @return	true, user login success
 	 * 			false, user login fail
 	 */
-	public boolean verifyLogin(User user) {
-		List<User> users = new ArrayList<User>();;
-		users=userDao.getUsers();
-		for (int i = 0; i < users.size(); i++) {
-			if (user.getEmail().trim().equals(users.get(i).getEmail())) {
+	public User verifyLogin(String email, String pass) {
+		User user=userDao.checkUser(email);
+		if(user!=null){
 				if (user.getPassword().trim()
-						.equals(users.get(i).getPassword())) {
-					user.setId(users.get(i).getId());
-					user.setRole(users.get(i).getRole());
-					user.setFirst_name(users.get(i).getFirst_name());
-					user.setLast_name(users.get(i).getLast_name());
-					user.setUser_name(users.get(i).getUser_name());
-					return true;
-				}
-				return false;
-			}
-		}
-		return false;
+						.equals(pass.trim()) ){
+					return user;
+				}}
+				return null;
 	}
 	public Customer getCustomer(User user) {
 		Customer customer=userDao.getCustomer(user.getId());

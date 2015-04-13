@@ -18,18 +18,9 @@ public class RegisterService {
 	 * 			false, email already exists
 	 */
 	public boolean verifyRegister(User user) {
-		users=userDao.getUsers();
-		System.out.println("user");
-		System.out.println(user.getEmail());
-		System.out.println("verifyRegister");
-		for (int i = 0; i < users.size(); i++) {
-			if (user.getEmail().trim().equals(users.get(i).getEmail())) {
-				System.out.println("false");
-				return false;
-			}		
-		}
-		System.out.println("true");
-		return true;
+		User user1=userDao.checkUser(user.getEmail());
+			if(user1==null)return true;
+			else return false;
 	}
 	public void addCustomer(User user) {
         Customer u3 = new Customer();

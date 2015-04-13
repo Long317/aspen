@@ -27,14 +27,14 @@ public static void main(String[] args) {
    Guest_billing_account emp2 = new Guest_billing_account();
    emp1.setCard_holder("fsophie");
    emp1.setCard_number("3423413241");
-   emp1.setCard_type("master");
+   emp1.setCard_type(0);
    emp1.setCvs(343);
    emp1.setEmail("asdf@gmail.com");
   
    
    emp2.setCard_holder("faophie");
    emp2.setCard_number("4423413241");
-   emp2.setCard_type("master");
+   emp2.setCard_type(0);
    emp2.setCvs(743);
    emp2.setEmail("fdasdf@gmail.com");
     

@@ -48,7 +48,7 @@
                     <li class="list-group-item">
                         <a href="customer.jsp"><i class="fa fa-bar-chart-o"></i> Overall</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item active">
                         <a href="purchase_history.jsp"><i class="fa fa-user"></i>My Purchase History</a>
                     </li>
                     
@@ -60,7 +60,7 @@
                         <a href="favorite_theatre.jsp"><i class="fa fa-user"></i>My Favorite Theatre</a>
                     </li>
                     
-                    <li class="list-group-item active">
+                    <li class="list-group-item">
                         <a href="customer_movie_comments.jsp"><i class="fa fa-user"></i>My Movie Comment</a>
                     </li>
                     
