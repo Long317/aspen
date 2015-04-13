@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.hoticket.modal.Billing_account;
+import com.hoticket.modal.Billing_address;
 import com.hoticket.modal.Customer;
 import com.hoticket.modal.User;
 import com.hoticket.util.ConnectionUtil;
@@ -140,7 +141,21 @@ finally {
 }
 	
 }
-
+public void deleteAddr(int acc_id, int id) {
+	session = ConnectionUtil.getSessionFactory().openSession();
+	Transaction tx = session.beginTransaction();
+	try {
+		 Billing_address ba=(Billing_address) session.get(Billing_address.class, acc_id);
+	     session.delete(ba);
+	     tx.commit();
+	}
+	catch (Exception e) {
+	    if (tx!=null) tx.rollback();
+	}
+	finally {
+	    session.close();
+	}
+}
 public void addAcc(Billing_account ba) {
 	session = ConnectionUtil.getSessionFactory().openSession();
 	Transaction tx = session.beginTransaction();
@@ -156,4 +171,21 @@ public void addAcc(Billing_account ba) {
 	}
 	
 }
+public void addAddr(Billing_address bAddr) {
+	session = ConnectionUtil.getSessionFactory().openSession();
+	Transaction tx = session.beginTransaction();
+	try {
+	     session.save(bAddr);
+	     tx.commit();
+	}
+	catch (Exception e) {
+	    if (tx!=null) tx.rollback();
+	}
+	finally {
+	    session.close();
+	}
+}
+
+
+
 }

@@ -79,6 +79,23 @@ var CheckoutForm = function () {
 	                {
 	                    required: true,
 	                    digits: true
+	                },
+	                state:
+	                {
+	                	required: true
+	                },
+	                zipcode:
+	                {
+	                	required: true,
+	                	digits: true
+	                },
+	                first_name:
+	                {
+	                	required: true
+	                },
+	                last_name:
+	                {
+	                	required: true
 	                }
 	            },
 	                                
@@ -119,7 +136,7 @@ var CheckoutForm = function () {
 	                {
 	                    required: 'Please enter your full address'
 	                },
-	                name:
+	                name_number:
 	                {
 	                    required: 'Please enter name on your card'
 	                },
@@ -140,7 +157,25 @@ var CheckoutForm = function () {
 	                {
 	                    required: 'Enter year',
 	                    digits: 'Digits only please'
+	                },
+	                state:
+	                {
+	                	required: 'Please selete a state'
+	                },
+	                zipcode:
+	                {
+	                	required: 'Please enter a zipcode',
+	                	digits: 'Digits only please'
+	                },
+	                first_name:
+	                {
+	                	required: 'Please enter your first name'
+	                },
+	                last_name:
+	                {
+	                	required: 'Please enter your last name'
 	                }
+	                
 	            },                  
 	            
 	            // Do not change code below
