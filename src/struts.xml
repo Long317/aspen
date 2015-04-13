@@ -85,6 +85,14 @@
 			<result name="success">/billing_account.jsp</result>
 		</action>
 	</package>
-
+	
+	<package name="billingaddress" namespace="/" extends="struts-default">
+		<action name="deleteAddr" class="com.hoticket.action.DeleteAddressAction">
+			<result name="success">/billing_address.jsp</result>
+		</action>
+		<action name="addAddr" class="com.hoticket.action.AddAddressAction">
+			<result name="success">/billing_address.jsp</result>
+		</action>
+	</package>
 
 </struts>
