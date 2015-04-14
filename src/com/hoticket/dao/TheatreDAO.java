@@ -72,7 +72,8 @@ public class TheatreDAO {
 		try {
 			session = ConnectionUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
-			theatre =  (Theatre) session.createQuery("from Theatre where id ="+"'"+input+"'").uniqueResult();
+			 String query ="from Theatre where id =:input";
+			 theatre =  (Theatre) session.createQuery(query).setParameter("input", input).uniqueResult();	
 			session.getTransaction().commit();
 			return theatre;
 

@@ -25,7 +25,7 @@ public class Constants {
 	public static final String ALL_MOVIES = "ALL_MOVIES";
 	public static final String FILTER_MOVIES="FILTER_MOVIES";
 	
-	public static final int MAX_THEATRE =5;
+	public static final int MAX_THEATRE =6;
 	
 	public static final String[] STATES = new String []{
 		"AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE",

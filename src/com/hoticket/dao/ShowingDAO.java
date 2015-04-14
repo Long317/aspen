@@ -8,7 +8,6 @@ import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import com.hoticket.modal.*;
 import com.hoticket.util.ConnectionUtil;

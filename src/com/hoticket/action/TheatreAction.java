@@ -31,6 +31,7 @@ public class TheatreAction extends ActionSupport implements
 	/**
 	 * redirect to action base on
 	 */
+	@SuppressWarnings("unchecked")
 	public String execute() {
 		// get session object
 		@SuppressWarnings("rawtypes")

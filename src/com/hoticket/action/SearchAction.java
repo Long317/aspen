@@ -3,7 +3,6 @@ package com.hoticket.action;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.commons.lang.xwork.StringUtils;
 
@@ -11,7 +10,6 @@ import com.hoticket.dao.MovieDAO;
 import com.hoticket.dao.ShowingDAO;
 import com.hoticket.dao.TheatreDAO;
 import com.hoticket.modal.Movie;
-import com.hoticket.modal.Showing;
 import com.hoticket.modal.Theatre;
 import com.hoticket.service.SearchService;
 import com.opensymphony.xwork2.ActionContext;

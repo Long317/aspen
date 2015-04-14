@@ -4,11 +4,9 @@ import java.util.Map;
 
 import org.apache.commons.lang.xwork.StringUtils;
 
-import com.hoticket.dao.UserDAO;
-import com.hoticket.modal.Customer;
+
 import com.hoticket.modal.User;
 import com.hoticket.service.LoginService;
-import com.hoticket.service.RegisterService;
 import com.hoticket.util.EncryptUtils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -31,7 +29,6 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 	 */
 	@SuppressWarnings("unchecked")
 	public String execute() {
-		UserDAO userdao=new UserDAO();
 		LoginService ls=new LoginService();
 		//encrypt user password here
 		user.setPassword(EncryptUtils.base64encode(user.getPassword())); 
@@ -45,6 +42,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 		}
 		session.put("loginError", null);
 		session.put("login", user);
+		System.out.println(user.getPassword());
 		switch(user.getRole()){
 		case 0:return "customer";
 		case 1:return "admin";

@@ -18,7 +18,7 @@ import org.hibernate.annotations.NamedNativeQuery;
 @NamedNativeQueries({
 	@NamedNativeQuery(
 	name = "callgetMovieByTheatreIdProcedure",
-	query = "CALL getMovieByTheatreId(:theatreId)",
+	query = "CALL getMovieByTheatreId(:theatre_id)",
 	resultClass = Movie.class
 	)
 })

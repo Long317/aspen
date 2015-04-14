@@ -15,9 +15,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Map;
 
+import org.apache.struts2.ServletActionContext;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.google.gson.Gson;
 import com.hoticket.dao.TheatreDAO;
 import com.hoticket.modal.Theatre;
 import com.hoticket.service.TheatreFounder;
@@ -92,7 +94,17 @@ public class GeoLocatorAction extends ActionSupport {
 	    	   
 	       }
 	       session.put("closeTheatres", closeTheatres);
-	       
+	       //return to user with JSON String for closeTheatres
+	       String jsonString="[";
+	       Gson gson = new Gson();
+	       for (int i=0;i<closeTheatres.size();i++){
+	    	   jsonString+=gson.toJson(closeTheatres.get(i)); 
+	    	   if (i!=closeTheatres.size()-1){
+	    		   jsonString+=",";
+	    	   }
+	       }
+	       jsonString+="]";
+	       ServletActionContext.getResponse().getWriter().write(jsonString);
 	        return SUCCESS;
 		} catch (Exception e) {
 			e.printStackTrace();

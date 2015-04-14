@@ -8,11 +8,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.annotations.NamedNativeQueries;
-import org.hibernate.annotations.NamedNativeQuery;
 
 import com.hoticket.modal.Movie;
-import com.hoticket.modal.Theatre;
 import com.hoticket.util.ConnectionUtil;
 
 
@@ -41,7 +38,7 @@ public class MovieDAO {
 		List<Movie> movies = new ArrayList<Movie>();
 		try {
 
-			session = ConnectionUtil.getSessionFactory().openSession();
+			session = ConnectionUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
 			movies = (List<Movie>) session.createQuery("from Movie").list();
 			session.getTransaction().commit();
@@ -197,7 +194,7 @@ public class MovieDAO {
 		Session session = null;
 		try {
 	
-			session = ConnectionUtil.getSessionFactory().openSession();
+			session = ConnectionUtil.getSessionFactory().getCurrentSession();
 			Transaction transaction = session.beginTransaction();		
 			Query query = session.getNamedQuery("calladdMovieProcedure");
 			query.setParameter("id", movie.getId());

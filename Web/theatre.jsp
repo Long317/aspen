@@ -135,7 +135,7 @@
 		 							<tr><td>
 		 							   <div class="row">
                                         <div class = "col-md-2">
-                                           <a href="movie?movie.name=<c:out value='${movie.name}'/>"> <img src="<c:out value='${movie.img_url}'/>"></a>
+                                           <a href="movie?movie.id=<c:out value='${movie.id}'/>"> <img src="<c:out value='${movie.img_url}'/>"></a>
                                         </div>
                                          <div class = "col-md-3">
                                         	<h3><c:out value="${movie.name}"/></h3>
