@@ -34,8 +34,14 @@ public class MovieFilterAction extends ActionSupport {
 		}else{
 			//filter movie by genre
 			for (int i = 0;i<movies.size();i++){
-				if (!movies.get(i).getGenre().equals(Genre)){
+				//skip movie without genre
+				if (movies.get(i).getGenre()==null){
+					continue;
+				}
+				//remove movie whose genre not matched 
+				if (!movies.get(i).getGenre().toLowerCase().contains(Genre.toLowerCase())){
 					movies.remove(i);
+					i--;
 				}
 			}
 			session.put(FILTER_MOVIES,movies);

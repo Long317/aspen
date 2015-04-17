@@ -150,7 +150,7 @@
 											 	    <c:if test="${showing.movie.id==movie.id}"> 
 											 	    <c:set var="start_time_full" value="${showing.start_time}"/>
 											 	    <c:set var="start_time" value="${fn:substring(start_time_full, 0, 5)}" />
-                                          	 	<button class="btn btn-default"><a href="purchase?showing.id=<c:out value='${showing.id}'/>"><c:out value="${start_time}"/></a></button>
+                                          	 	<button class="btn btn-default"><a href="ticket?showing.id=<c:out value='${showing.id}'/>"><c:out value="${start_time}"/></a></button>
                                           	 		</c:if>
                                              </c:forEach>
                                         </div>

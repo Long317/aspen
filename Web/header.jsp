@@ -1,4 +1,10 @@
   <%@ taglib prefix="s" uri="/struts-tags" %>
+  <!--Jquery lib-->
+ <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery/jquery-migrate.min.js"></script>
+	  <script type="text/javascript" src="http://l2.io/ip.js?var=myip"></script>
+
+
   <s:url id="movieFilter" action="movieFilter" var="movieFilter">
 	<s:param name="Genre">all</s:param>
 	</s:url>
@@ -165,73 +171,19 @@
 									<div class="mega-menu-content">
 										<div class="container">
 											<div class="row equal-height">
+                                			   <c:forEach var="i" begin="0" end="17" step="6">
 												<div class="col-md-3 equal-height-in">
 													<ul class="list-unstyled equal-height-list">
-														<li><h3>Default</h3></li>
-
-														<!-- Default -->
-														<li><a href="portfolio_single_item.html">Portfolio Item Option</a></li>
-														<li><a href="portfolio_item.html">Portfolio Item Option 1</a></li>
-														<li><a href="portfolio_item1.html">Portfolio Item Option 2</a></li>
-														<li><a href="portfolio_2_column.html">Portfolio 2 Columns</a></li>
-														<li><a href="portfolio_3_column.html">Portfolio 3 Columns</a></li>
-														<li><a href="portfolio_4_column.html">Portfolio 4 Columns</a></li>
-														<li><a href="portfolio_text_blocks.html">Portfolio 4 Columns With Text</a></li>
-														
+													<c:forEach items="${sessionScope.popular_cities}" var="city" varStatus="status" begin="${i}" end="${i+4}" step="2">
+														<li><a class="location" href="search?searchInput='${city}'"><c:out value="${city}"/>
+														 <c:out value="${sessionScope.popular_cities[status.index+1]}"/></a></li>
 														<!-- End Default -->
+													</c:forEach> 
 													</ul>
 												</div>
-												<div class="col-md-3 equal-height-in">
-													<ul class="list-unstyled equal-height-list">
-														<li><h3>2 Columns</h3></li>
-												   
-														<!-- 2 Columns -->
-														<li><a href="portfolio_2_columns_grid_no_space.html">2 Columns No Sapce</a></li>
-														<li><a href="portfolio_2_columns_grid_text.html">2 Columns Grid Text</a></li>
-														<li><a href="portfolio_2_columns_grid.html">2 Columns Grid</a></li>
+												</c:forEach>
 
-														<!-- End 2 Columns -->
-
-														<li class="big-screen-space"></li>
-														
-														<li><h3>3 Columns</h3></li>
-													
-														<!-- 3 Columns -->
-														<li><a href="portfolio_3_columns_grid_no_space.html">3 Columns No Sapce</a></li>
-														<li><a href="portfolio_3_columns_grid_text.html">3 Columns Grid Text</a></li>
-														<li><a href="portfolio_3_columns_grid.html">3 Columns Grid</a></li>
-														<!-- End 3 Columns -->
-													</ul>                                
-												</div>
-												<div class="col-md-3 equal-height-in">
-													<ul class="list-unstyled equal-height-list">
-														<li><h3>4 Columns</h3></li>
-														<!-- 4 Columns -->
-														<li><a href="portfolio_4_columns_fullwidth_no_space.html">4 Columns Full Width No Sapce</a></li>
-														<li><a href="portfolio_4_columns_fullwidth_text.html">4 Columns Fullwidth Grid Text</a></li>
-														<li><a href="portfolio_4_columns_fullwidth.html">4 Columns Fullwidth Grid</a></li>
-														<li><a href="portfolio_4_columns_grid_no_space.html">4 Columns No Sapce</a></li>
-														<li><a href="portfolio_4_columns_grid_text.html">4 Columns Grid Text</a></li>
-														<li><a href="portfolio_4_columns_grid.html">4 Columns Grid</a></li>
-														<!-- End 4 Columns -->
-													</ul>                                
-												</div>
-                                                <div class="col-md-3 equal-height-in">
-													<ol class="list-unstyled equal-height-list">
-														<li><h3>Top Box Office</h3></li>
-												   
-														<!-- 5 Columns -->
-														<li><a href="movieoverview.jsp">1. Furious 7</a></li>
-														<li><a href="movieoverview.jsp">2. Home (2015)</a></li>
-														<li><a href="movieoverview.jsp">3. Get Hard</a></li>
-														<li><a href="movieoverview.jsp">4. Cinderella (2015)</a></li>
-														<li><a href="movieoverview.jsp">5. The Divergent Series: Insurgent</a></li>
-														<li><a href="movieoverview.jsp">6. It Follows</a></li>
-														<li><a href="movieoverview.jsp">7. Women In Gold</a></li>
-														<!-- End 5 Columns -->
-														
-													</ol>                                
-												</div>
+										
 											</div>
 										</div>    
 									</div>    
@@ -397,3 +349,5 @@
 		<s:set name="registerError" value="2" scope="session" />
 		</s:if>
 <!--end of sign up modal-->
+
+

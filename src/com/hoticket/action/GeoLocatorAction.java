@@ -2,6 +2,8 @@ package com.hoticket.action;
 
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import static com.hoticket.util.Constants.*;
@@ -14,12 +16,10 @@ import java.net.URL;
 
 import java.util.ArrayList;
 import java.util.Map;
-
-import org.apache.struts2.ServletActionContext;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import com.google.gson.Gson;
 import com.hoticket.dao.TheatreDAO;
 import com.hoticket.modal.Theatre;
 import com.hoticket.service.TheatreFounder;
@@ -29,12 +29,16 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class GeoLocatorAction extends ActionSupport {
 	private String clientIP;
+	private InputStream inputStream;
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	/**
+	 * geoLocator calculate the distance and get closest theatre from clinet
+	 */
 	@SuppressWarnings("unchecked")
 	public String execute() {
 		try {
@@ -42,17 +46,21 @@ public class GeoLocatorAction extends ActionSupport {
 			//get session object
 			@SuppressWarnings("rawtypes")
 			Map session = (Map) ActionContext.getContext().get("session");
+			
 			//create remote URL
 			URL url = new URL(GEOLocator_URL+clientIP);
+			
 			//get writer for the url response
 	        BufferedReader in = new BufferedReader(
 	                new InputStreamReader(url.openStream()));
 	        String inputLine;
+	        
 	        //store url content to the result
 	        String result = "";
 	        while ((inputLine = in.readLine()) != null) {
 	            result += inputLine;
 	        }
+	        
 	        //parse the json result
 	        JSONParser parser = new JSONParser();
 	        JSONObject addressinfo =(JSONObject) parser.parse(result);
@@ -60,10 +68,12 @@ public class GeoLocatorAction extends ActionSupport {
 	        String city = addressinfo.get("city").toString();
 	        String state = addressinfo.get("region").toString();
 	        String zip = (String) addressinfo.get("zip");
+	        
 	        //store user address
 	        String address = addr+" "+city+" "+state+" "+zip;
 	        session.put("clientAddress", address);
 	        ArrayList<Theatre> theatres ;
+	        
 	    	//if get theatres from db if not exits in context
 	        if (ActionContext.getContext().get("theatres")==null){
 	        	theatres = (ArrayList<Theatre>) TheatreDAO.getInstance().getTheatre();
@@ -72,6 +82,7 @@ public class GeoLocatorAction extends ActionSupport {
 	        	theatres=  (ArrayList<Theatre>)ActionContext.getContext().get("theatres");
 	        	ActionContext.getContext().put("theatres", theatres);
 	        }
+	        
 	        //store distances for same state theatre
 	        ArrayList<Double> distances = new ArrayList<Double>();
 	        //store same state theatre 
@@ -83,35 +94,72 @@ public class GeoLocatorAction extends ActionSupport {
 	        		distances.add(TheatreFounder.calculateDistance(address,theatres.get(i)));
 	        	}
 	        }
+	        
 	        //store top MAX_THEATRE number closest theatres to the session
 	       ArrayList<Theatre> closeTheatres = new ArrayList<Theatre>();
 	       int number = stateTheatres.size()>=MAX_THEATRE?MAX_THEATRE:stateTheatres.size();
 	       for (int i=0;i<number;i++){
 	    	   System.out.println(stateTheatres.get(Methods.minIndex(distances)).getName());
 	    	   closeTheatres.add(stateTheatres.get(Methods.minIndex(distances)));
-	    	   System.out.println(closeTheatres.get(i).getShowing().toString());
-	    	  distances.remove(Methods.minIndex(distances));
-	    	   
+	    	  distances.set(Methods.minIndex(distances), 1000000.0);
 	       }
+	       //add closest theatre to 9 theatre
+//	       for (int i=0;i<theatres.size();i++){
+//	    	  if (closeTheatres.size()==9){
+//	    		  break;
+//	    	  }
+//	    	 if (!closeTheatres.contains(theatres.get(i))){
+//	    		 closeTheatres.add(theatres.get(i));
+//	    	 }
+//	       }
 	       session.put("closeTheatres", closeTheatres);
 	       //return to user with JSON String for closeTheatres
-	       String jsonString="[";
-	       Gson gson = new Gson();
+	       JSONArray theatresJSON = new JSONArray();
 	       for (int i=0;i<closeTheatres.size();i++){
-	    	   jsonString+=gson.toJson(closeTheatres.get(i)); 
-	    	   if (i!=closeTheatres.size()-1){
-	    		   jsonString+=",";
-	    	   }
+	       JSONObject theatreJSON = new JSONObject();
+	       theatreJSON.put("name", closeTheatres.get(i).getName());
+	       theatreJSON.put("addr", closeTheatres.get(i).getAddress());
+	       theatreJSON.put("id", closeTheatres.get(i).getId());
+	       theatresJSON.add(theatreJSON);
 	       }
-	       jsonString+="]";
-	       ServletActionContext.getResponse().getWriter().write(jsonString);
+	       //add user info
+	       JSONObject theatreJSON = new JSONObject();
+	       theatreJSON.put("zip", zip);
+	       theatreJSON.put("ip", clientIP);
+	       theatresJSON.add(theatreJSON);
+	       //return JSON String to the client
+	       inputStream = new ByteArrayInputStream(
+	    		   theatresJSON.toJSONString().getBytes("UTF-8"));
+	       //update user_geo_status to ok
+	       session.put("user_geo_status", "ok");
+	       //replace popular cities with theatre info
+	       String[] theatreInfo = new String[closeTheatres.size()*2];
+	       for (int i=0, j=0;i<closeTheatres.size();i++){
+	    	   theatreInfo[j]=closeTheatres.get(i).getName();
+	    	   theatreInfo[j+1]=closeTheatres.get(i).getAddress();
+	    	   j=j+2;
+	       }
+	       session.put("popular_cities", theatreInfo);
+	       session.put("default_theatre", closeTheatres.get(0));
+	       System.out.println(closeTheatres.get(0).getName());
 	        return SUCCESS;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ERROR;
 		}
 	}
-
+	/**
+	 * user decline to use his geo location data
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public String decline() {
+		@SuppressWarnings("rawtypes")
+		Map session = (Map) ActionContext.getContext().get("session");
+		session.put("user_geo_status", "decline");
+		return SUCCESS;
+		
+	}
 	public String getClientIP() {
 		return clientIP;
 	}
@@ -120,7 +168,9 @@ public class GeoLocatorAction extends ActionSupport {
 		this.clientIP = clientIP;
 	}
 
-
+    public InputStream getInputStream() {
+        return inputStream;
+    }
 	
 	
 }

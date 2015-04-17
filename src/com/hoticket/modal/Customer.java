@@ -6,9 +6,6 @@ import java.sql.Date;
 import javax.persistence.*;  
 
 import java.util.*;
-
-import javax.persistence.*;  
-
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 

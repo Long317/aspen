@@ -96,6 +96,17 @@ var CheckoutForm = function () {
 	                last_name:
 	                {
 	                	required: true
+	                },
+	                adult:{
+	                	required: true,
+	                	digits: true},
+	                senior:{
+	                	required: true,
+	                	digits: true
+	                },
+	                child:{
+	                	required: true,
+	                	digits: true
 	                }
 	            },
 	                                

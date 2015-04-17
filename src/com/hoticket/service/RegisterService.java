@@ -1,6 +1,5 @@
 package com.hoticket.service;
 
-import java.util.List;
 
 import com.hoticket.dao.UserDAO;
 import com.hoticket.modal.Customer;
@@ -8,7 +7,6 @@ import com.hoticket.modal.User;
 import com.hoticket.util.EncryptUtils;
 
 public class RegisterService {
-	private  List<User> users;
 	UserDAO userDao = new UserDAO();
 	/**
 	 * check if the email already exists in the db 

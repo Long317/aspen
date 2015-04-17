@@ -46,7 +46,25 @@ public class ShowingDAO {
 
 		return showings;
 	}
-	
+	/**
+	 * get Showing list from Showing table
+	 */
+	public Showing getShowingById(int input) {
+		Showing showing = new Showing();
+		try {
+			session = ConnectionUtil.getSessionFactory().openSession();
+			session.beginTransaction();
+			 String query ="from Showing where id =:input";
+			 showing =  (Showing) session.createQuery(query).setParameter("input", input).uniqueResult();				
+			session.getTransaction().commit();
+			return showing;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return showing;
+	}
 	/**
 	 * get Showing list by theatreId
 	 */

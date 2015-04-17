@@ -90,11 +90,21 @@
                                 <div class="media media-v2">
                                     <div class="media-body">
                                         <h4 class="media-heading">
-                                            <strong><a href="movie?movie.name=<c:out value="${pay.showing.movie.name}"/>"> Movie Name:<c:out value="${pay.showing.movie.name}"></c:out></a></strong> 
-                                            <strong><a href="#"> Theatre Name:<c:out value="${pay.showing.theatre.name}"></c:out></a></strong> 
-                                            <small>Purchase Time:<c:out value="${pay.date}"></c:out></small>
-                                            <small>Showing Time:<c:out value="${pay.showing.date}"></c:out><c:out value="${pay.showing.start_time}"></c:out></small>
+                                            <strong> Movie Name:</strong> 
+                                            <a href="movie?movie.id=<c:out value='${pay.showing.movie.id}'/>">
+                                            <c:out value="${pay.showing.movie.name}"></c:out></a>
                                         </h4>
+                                        <h4  class="media-heading">
+                                            <strong>Theatre Name:</strong> <a href="#"> <c:out value="${pay.showing.theatre.name}"></c:out></a>
+                                        </h4>
+                                          <br/>
+                                           <h4>
+                                             <small>Purchase Time:<c:out value="${pay.date}"></c:out></small>
+                                        </h4>
+                                        <h4>
+                                             <small>Showing Time:<c:out value="${pay.showing.date}"></c:out><c:out value="${pay.showing.start_time}"></c:out></small>
+                                        </h4>
+
                                     </div>
                                 </div><!--/end media media v2--> 
                                 </c:forEach>

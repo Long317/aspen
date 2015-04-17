@@ -78,8 +78,9 @@
                           <button class="btn btn-primary" type="submit">Go</button>
                         </s:form>
 					<div class="headline"><h2>OPENING THIS WEEK</h2></div> 
+            <c:forEach var="i" begin="0" end="80" step="6">
 				 		<div class="row">
-								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="0" end="5">
+								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="${i}" end="${i+5}">
 					  		<div class="col-md-2">
                              <a href="movie?movie.id=<c:out value='${movie.id}'/>">
                              <div class="movieImg">
@@ -88,153 +89,9 @@
                          	</a>
                              <h4><c:out value="${movie.name}"/> </h4>
                         	</div>
-						</c:forEach>
-          				  </div>
-          				  <div class="row">
-								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="6" end="11">
-					  		<div class="col-md-2">
-                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
-                             <div class="movieImg">
-                             <img src="<c:out value='${movie.img_url}'/>">
-                        	 </div>
-                         	</a>
-                             <h4><c:out value="${movie.name}"/> </h4>
-                        	</div>
-						</c:forEach>
-          				  </div>
-          				  <div class="row">
-								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="12" end="17">
-					  		<div class="col-md-2">
-                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
-                             <div class="movieImg">
-                             <img src="<c:out value='${movie.img_url}'/>">
-                        	 </div>
-                         	</a>
-                             <h4><c:out value="${movie.name}"/> </h4>
-                        	</div>
-						</c:forEach>
-          				  </div>
-          				  <div class="row">
-								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="18" end="23">
-					  		<div class="col-md-2">
-                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
-                             <div class="movieImg">
-                             <img src="<c:out value='${movie.img_url}'/>">
-                        	 </div>
-                         	</a>
-                             <h4><c:out value="${movie.name}"/> </h4>
-                        	</div>
-						</c:forEach>
-          				  </div>
-          				  <div class="row">
-								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="24" end="29">
-					  		<div class="col-md-2">
-                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
-                             <div class="movieImg">
-                             <img src="<c:out value='${movie.img_url}'/>">
-                        	 </div>
-                         	</a>
-                             <h4><c:out value="${movie.name}"/> </h4>
-                        	</div>
-						</c:forEach>
-          				  </div>
-          				  <div class="row">
-								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="30" end="35">
-					  		<div class="col-md-2">
-                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
-                             <div class="movieImg">
-                             <img src="<c:out value='${movie.img_url}'/>">
-                        	 </div>
-                         	</a>
-                             <h4><c:out value="${movie.name}"/> </h4>
-                        	</div>
-						</c:forEach>
-          				  </div>
-          				  <div class="row">
-								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="36" end="41">
-					  		<div class="col-md-2">
-                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
-                             <div class="movieImg">
-                             <img src="<c:out value='${movie.img_url}'/>">
-                        	 </div>
-                         	</a>
-                             <h4><c:out value="${movie.name}"/> </h4>
-                        	</div>
-						</c:forEach>
-          				  </div>
-          				  <div class="row">
-								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="42" end="47">
-					  		<div class="col-md-2">
-                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
-                             <div class="movieImg">
-                             <img src="<c:out value='${movie.img_url}'/>">
-                        	 </div>
-                         	</a>
-                             <h4><c:out value="${movie.name}"/> </h4>
-                        	</div>
-						</c:forEach>
-          				  </div>
-          				  <div class="row">
-								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="48" end="53">
-					  		<div class="col-md-2">
-                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
-                             <div class="movieImg">
-                             <img src="<c:out value='${movie.img_url}'/>">
-                        	 </div>
-                         	</a>
-                             <h4><c:out value="${movie.name}"/> </h4>
-                        	</div>
-						</c:forEach>
-          				  </div>
-          				  <div class="row">
-								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="54" end="59">
-					  		<div class="col-md-2">
-                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
-                             <div class="movieImg">
-                             <img src="<c:out value='${movie.img_url}'/>">
-                        	 </div>
-                         	</a>
-                             <h4><c:out value="${movie.name}"/> </h4>
-                        	</div>
-						</c:forEach>
-          				  </div>
-				
-						<div class="row">
-								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="60" end="65">
-					  		<div class="col-md-2">
-                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
-                             <div class="movieImg">
-                             <img src="<c:out value='${movie.img_url}'/>">
-                        	 </div>
-                         	</a>
-                             <h4><c:out value="${movie.name}"/> </h4>
-                        	</div>
-						</c:forEach>
-          				  </div>
-          				  	<div class="row">
-								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="66" end="71">
-					  		<div class="col-md-2">
-                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
-                             <div class="movieImg">
-                             <img src="<c:out value='${movie.img_url}'/>">
-                        	 </div>
-                         	</a>
-                             <h4><c:out value="${movie.name}"/> </h4>
-                        	</div>
-						</c:forEach>
-          				  </div>	
-          				  	<div class="row">
-								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="72" end="76">
-					  		<div class="col-md-2">
-                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
-                             <div class="movieImg">
-                             <img src="<c:out value='${movie.img_url}'/>">
-                        	 </div>
-                         	</a>
-                             <h4><c:out value="${movie.name}"/> </h4>
-                        	</div>
-						</c:forEach>
-          				  </div>		
+					 	</c:forEach>
+          	</div>
+          </c:forEach>		 
                   
 
 		 	</div>	

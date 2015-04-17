@@ -2,6 +2,9 @@ package com.hoticket.util;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
 
 public class Methods {
 	/**
@@ -21,6 +24,23 @@ public class Methods {
 		  }
 		  return minIndex;
 		}
+	/**
+	 * get cookies from http request
+	 * @param request
+	 * @param name 
+	 * @return cookie with particular name
+	 */
+	public static Cookie getCookie(HttpServletRequest request, String name) {
+        if (request.getCookies() != null) {
+            for (Cookie cookie : request.getCookies()) {
+                if (cookie.getName().equals(name)) {
+                    return cookie;
+                }
+            }
+        }
+
+        return null;
+    }
 	
 
 }
