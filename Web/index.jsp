@@ -32,8 +32,6 @@
 	<!-- CSS Theme -->    
 	<link rel="stylesheet" href="assets/css/theme-colors/dark-red.css">
 
-	<!-- CSS Customization -->
-	<link rel="stylesheet" href="assets/css/custom.css">
 		<!-- Owl Carousel Assets -->
 	<link href="owl-carousel/owl.carousel.css" rel="stylesheet">
 	<link href="owl-carousel/owl.theme.css" rel="stylesheet">
@@ -42,7 +40,29 @@
 	<!-- Prettify -->
 	<link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
+		<!-- CSS Customization -->
+	<link rel="stylesheet" href="assets/css/custom.css">
 
+	<style>
+	  .movieCarousel_img{
+                width:180px;
+                height:270px;          
+            }
+      .movieCarousel_img img{
+                width:180px;
+                height:270px;
+            }
+       .movieCarousel_item{
+       	height:320px;
+       	 width:180px;
+       }
+       .movieTitle{
+  		  white-space: nowrap; 
+  		  width: 12em; 
+  		  overflow: hidden;
+  		  text-overflow: ellipsis; 
+		}
+	</style>
 </head>	
 
 <body>
@@ -52,115 +72,29 @@
 	  
 	  <div id="movieGallary">
 		<div class="container">
-			 <div id="GallaryHeader">
-
-		 <div class="headline"> <h2>Top Movies </h2></div>
-	 </div> 
+			<div id="GallaryHeader">
+				 <div class="headline"> <h2>Top Movies </h2></div>
+			 </div> 
 		  <div class="row">
 			<div class="col-xs-12">
-
 			  <div id="owl-demo" class="owl-carousel">
-			 <div class="item thumbnail  thumbnail-kenburn">
-				 <div class="thumbnail-img"> 
-					<div class="overflow-hidden"> 
-					<img class="lazyOwl img-responsive" data-src="assets/owl1.jpg" alt="Lazy Owl Image">
-					</div>
+			  	<c:forEach items="${sessionScope.movieCarousel}" var="movie">
+				 <div class="item thumbnail  thumbnail-kenburn movieCarousel_item">
+					 <div class="thumbnail-img movieCarousel_img"> 
+						<div class="overflow-hidden"> 
+						<img class="lazyOwl img-responsive" data-src="<c:out value='${movie.img_url}'/>" alt="Lazy Owl Image">
+						</div>
+					 </div>
+					<div class="caption">
+					 <div class="movieTitle" onmouseover="showText(this);"><c:out value='${movie.name}'/></div>
+				   </div>
 				 </div>
-							<div class="caption">
-		 <h3>Jupiter Accedent</h3>
-		 
-		   </div>
-			 </div>
-				<div class="item thumbnail  thumbnail-kenburn">
-						   <div class="thumbnail-img"> 
-					<div class="overflow-hidden"> 
-					  <img class="lazyOwl img-responsive" data-src="assets/owl2.jpg" alt="Lazy Owl Image">
-				  </div>
-				  </div>
-				  <div class="caption">
-		 <h3>Jupiter Accedent</h3>
-		 
-	 </div>
-			  </div>
-				<div class="item thumbnail  thumbnail-kenburn">
-						   <div class="thumbnail-img"> 
-					<div class="overflow-hidden"> 
-					  <img class="lazyOwl img-responsive" data-src="assets/owl3.jpg" alt="Lazy Owl Image"></div></div>           <div class="caption">
-		 <h3>Jupiter Accedent</h3>
-		 
-	 </div></div>
-				<div class="item thumbnail thumbnail-kenburn">
-						   <div class="thumbnail-img"> 
-					<div class="overflow-hidden"> <img class="lazyOwl img-responsive" data-src="assets/owl4.jpg" alt="Lazy Owl Image"></div></div>           <div class="caption">
-		 <h3>Jupiter Accedent</h3>
-		 
-	 </div></div>
-				<div class="item thumbnail thumbnail-kenburn">         <div class="thumbnail-img"> 
-					<div class="overflow-hidden"> <img class="lazyOwl img-responsive" data-src="assets/owl5.jpg" alt="Lazy Owl Image"></div></div>           <div class="caption">
-		 <h3>Jupiter Accedent</h3>
-		 
-	 </div></div>
-				<div class="item thumbnail thumbnail-kenburn">         <div class="thumbnail-img"> 
-					<div class="overflow-hidden"> <img class="lazyOwl img-responsive" data-src="assets/owl6.jpg" alt="Lazy Owl Image"></div></div>           <div class="caption">
-		 <h3>Jupiter Accedent</h3>
-		 
-	 </div></div>
-				<div class="item thumbnail thumbnail-kenburn">         <div class="thumbnail-img"> 
-					<div class="overflow-hidden"> <img class="lazyOwl img-responsive" data-src="assets/owl7.jpg" alt="Lazy Owl Image"></div></div>           <div class="caption">
-		 <h3>Jupiter Accedent</h3>
-		 
-	 </div></div>
-				<div class="item thumbnail thumbnail-kenburn">         <div class="thumbnail-img"> 
-					<div class="overflow-hidden"> <img class="lazyOwl img-responsive" data-src="assets/owl8.jpg" alt="Lazy Owl Image"></div></div>           <div class="caption">
-		 <h3>Jupiter Accedent</h3>
-		 
-	 </div></div>
-				<div class="item thumbnail thumbnail-kenburn">         <div class="thumbnail-img"> 
-					<div class="overflow-hidden"> <img class="lazyOwl img-responsive" data-src="assets/owl1.jpg" alt="Lazy Owl Image"></div></div>           <div class="caption">
-		 <h3>Jupiter Accedent</h3>
-		 
-	 </div></div>
-				<div class="item thumbnail thumbnail-kenburn">         <div class="thumbnail-img"> 
-					<div class="overflow-hidden"> <img class="lazyOwl img-responsive" data-src="assets/owl2.jpg" alt="Lazy Owl Image"></div></div>           <div class="caption">
-		 <h3>Jupiter Accedent</h3>
-		 
-	 </div></div>
-				<div class="item thumbnail thumbnail-kenburn">         <div class="thumbnail-img"> 
-					<div class="overflow-hidden"> <img class="lazyOwl img-responsive" data-src="assets/owl3.jpg" alt="Lazy Owl Image"></div></div>           <div class="caption">
-		 <h3>Jupiter Accedent</h3>
-		 
-	 </div></div>
-				<div class="item thumbnail thumbnail-kenburn">         <div class="thumbnail-img"> 
-					<div class="overflow-hidden"> <img class="lazyOwl img-responsive" data-src="assets/owl4.jpg" alt="Lazy Owl Image"></div></div>           <div class="caption">
-		 <h3>Jupiter Accedent</h3>
-		 
-	 </div></div>
-				<div class="item thumbnail thumbnail-kenburn">         <div class="thumbnail-img"> 
-					<div class="overflow-hidden"> <img class="lazyOwl img-responsive" data-src="assets/owl5.jpg" alt="Lazy Owl Image"></div></div>           <div class="caption">
-		 <h3>Jupiter Accedent</h3>
-		 
-	 </div></div>
-				<div class="item thumbnail thumbnail-kenburn">         <div class="thumbnail-img"> 
-					<div class="overflow-hidden"> <img class="lazyOwl img-responsive" data-src="assets/owl6.jpg" alt="Lazy Owl Image"></div></div>           <div class="caption">
-		 <h3>Jupiter Accedent</h3>
-		 
-	 </div></div>
-				<div class="item thumbnail thumbnail-kenburn">         <div class="thumbnail-img"> 
-					<div class="overflow-hidden"> <img class="lazyOwl img-responsive" data-src="assets/owl7.jpg" alt="Lazy Owl Image"></div></div>           <div class="caption">
-		 <h3>Jupiter Accedent</h3>
-		 
-	 </div></div>
-				<div class="item thumbnail thumbnail-kenburn">         <div class="thumbnail-img"> 
-					<div class="overflow-hidden"> <img class="lazyOwl img-responsive" data-src="assets/owl8.jpg" alt="Lazy Owl Image"></div></div>           <div class="caption">
-		 <h3>Jupiter Accedent</h3>
-		 
-	 </div></div>
+				</c:forEach>
 			  </div>
 
 			</div>
 		  </div>
 		</div>
-
 	</div> 
 		<!--=== Slider ===-->
 	<div class="slider-inner">
@@ -395,8 +329,10 @@ Jamie Dornan</i></h2>
 
 	<script src="assets/js/google-code-prettify/prettify.js"></script>
 	  <script src="assets/js/application.js"></script>
-	  <script type="text/javascript" src="http://l2.io/ip.js?var=myip"></script>
 <script type="text/javascript">
+	  function showText(txt){
+  	txt.className = "";
+  }
 	//sliders starter
 	jQuery(document).ready(function() {
 		App.init();
@@ -406,18 +342,72 @@ Jamie Dornan</i></h2>
 	   $(document).ready(function() {
 	   	//owl-demo starter
 	  $("#owl-demo").owlCarousel({
-		items : 8,
+		items : 7,
 		lazyLoad : true,
 	 autoPlay: 2000,
 	   stopOnHover: true
 	  });
-		var xmlhttp = new XMLHttpRequest();
-        var url = "http://localhost:8080/aspen/geolocator?clientIP="+myip;
+	});
+
+	//geolocator function
+	function geoLocationUpdate(){
+			//send ajax to get geolocation
+  		var xmlhttp = new XMLHttpRequest();
+        var url = "aspen/geolocator?clientIP="+myip;
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
-	});
-</script>
+        //onstate change function
+          xmlhttp.onreadystatechange  = function(){
+		     if (xmlhttp.readyState == 4  ) {
+		       // Javascript function JSON.parse to parse JSON data
+		       var jsonArray = JSON.parse(xmlhttp.responseText);
+		       //change popular city data to close theatre data
+		       var elements = document.getElementsByClassName('location');
+		       for (i = 0; i < elements.length; i++) { 
+		       		if (i<jsonArray.length-1){
+  					elements[i].innerHTML  = jsonArray[i].name +"<br>"+jsonArray[i].addr;
+  					elements[i].href="theatre?theatre.id="+jsonArray[i].id;
+  					}else{
+  						elements[i].remove();
+  						i--;
+  					}
+				}
+				//set cookie to browswer
+			//	document.cookie="geoPermission=ok";
+				//set user info to browswer
+				//document.cookie="geoPermission="+elements[jsonArray.length-1].ip;
+				//document.cookie="geoPermission="+elements[jsonArray.length-1].zip;
+		     }
+		 }
 
+	}
+</script>
+<!--Geo locator code-->
+  <s:if test="#session.user_geo_status=='first_visit'"> 
+  <script>
+   $(document).ready(function() {
+   	var result = confirm("Do you allow to use your location?");
+  	if (result){
+  		geoLocationUpdate();
+  	}//ajax to tell server user not allow to use his location data
+  	else{
+  		var XMLHttpReq = new XMLHttpRequest();
+        var url = "aspen/geodecline";
+        XMLHttpReq.open("GET", url, true);
+        XMLHttpReq.send();
+        //set cookie to browswer
+		//document.cookie="geoPermission=decline";
+  	}
+});
+  </script>
+  </s:if>
+   <s:if test="#session.user_geo_status=='ok'"> 
+    <script>
+       $(document).ready(function() {
+       	geoLocationUpdate();
+       	});
+      </script>
+     </s:if>
 <!--[if lt IE 9]>
 	<script src="assets/plugins/respond.js"></script>
 	<script src="assets/plugins/html5shiv.js"></script>

@@ -2,24 +2,15 @@
 package com.hoticket.dao;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.annotations.NamedNativeQueries;
-import org.hibernate.annotations.NamedNativeQuery;
-import org.hibernate.transform.Transformers;
 
 import com.hoticket.modal.*;
 import com.hoticket.util.ConnectionUtil;
-@NamedNativeQueries({
-	@NamedNativeQuery(
-	name = "callgetMovieByTheatreIdProcedure",
-	query = "CALL getMovieByTheatreId(:input)",
-	resultClass = User.class
-	)
-})
 
 public class ShowingDAO {
 	Session session = null;
@@ -55,10 +46,50 @@ public class ShowingDAO {
 
 		return showings;
 	}
+	/**
+	 * get Showing list from Showing table
+	 */
+	public Showing getShowingById(int input) {
+		Showing showing = new Showing();
+		try {
+			session = ConnectionUtil.getSessionFactory().openSession();
+			session.beginTransaction();
+			 String query ="from Showing where id =:input";
+			 showing =  (Showing) session.createQuery(query).setParameter("input", input).uniqueResult();				
+			session.getTransaction().commit();
+			return showing;
 
-		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return showing;
+	}
+	/**
+	 * get Showing list by theatreId
+	 */
+	@SuppressWarnings("unchecked")
+	public Set<Showing> getShowingByTheatreId(int theatre_id) {
+		Set<Showing> showings = new HashSet<Showing>();
+		try {
+			
+			session = ConnectionUtil.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			Query query = session.getNamedQuery("callgetShowingByTheatreIdProcedure").setParameter("theatre_id",theatre_id);
+			showings = new HashSet<Showing>(query.list());
+			session.getTransaction().commit();
+			return showings;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return showings;
+	}
 
 	
+	
+		
 		
 //		//get theatre by state
 //				@SuppressWarnings("unchecked")
@@ -126,5 +157,6 @@ public class ShowingDAO {
 //		}
 //		
 //	}
-}
 
+
+}

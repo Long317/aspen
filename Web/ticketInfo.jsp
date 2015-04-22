@@ -62,14 +62,15 @@
 		 			    </div>
 		 			</div>
 		 			<div class="ticketBody row">
-		 				<form>
+		 				<form class="sky-form" id="sky-form" onsubmit="return validateForm()"  action="payment">
 				          <div class="form-group">
 				          	<div class="row">
 				          	<div class = "col-md-1"></div>
 				          	<div class = "col-md-1">
 				            <label  class="control-label">Adult:</label> </div>
 				            <div class = "col-md-3">
-				            <input type="text" size="2" name="Adult"> x $17.79 =<span id="adult-result">$0.00</span>
+				            <input type="text" maxlength="2" onchange="calculate();" onkeypress="return isNumberKey(event);" name="adult" id="adult"> 
+				            x <span id="price"><s:property value="#session.ticket_price" /></span> =<span id="adult-result">$0.00</span>
 				       		 </div>
 				       		 </div>
 				       		 <br/> 
@@ -78,7 +79,8 @@
 				          	<div class = "col-md-1">
 				            <label  class="control-label">Senior:</label>  </div>
 				            <div class = "col-md-3">
-				            <input type="text" size="2" name="Senior"> x $17.79 =<span id="adult-result">$0.00</span>	
+				            <input type="text" maxlength="2"  onchange="calculateSenior();"  onkeypress="return isNumberKey(event);"  name="senior" id="senior">
+				            x <s:property value="#session.ticket_price *0.8" /> =<span id="senior-result">$0.00</span>	
 				            </div>
 				            </div>
 				             <br/> 
@@ -87,13 +89,14 @@
 				          	<div class = "col-md-1">
 				            <label  class="control-label">Child:&nbsp;&nbsp;</label>  </div>
 				            <div class = "col-md-3">
-				            <input type="text" size="2" name="Child"> x $17.79 =<span id="adult-result">$0.00</span>		
+				            <input type="text"  maxlength="2"  onchange="calculateChild();"  onkeypress="return isNumberKey(event);"  name="child" id="child">
+				             x <s:property value="#session.ticket_price *0.8" /> =<span id="child-result">$0.00</span>		
 				       		</div>
 				       		</div>
 				          </div>
 				              <br/>
 				         <div class = "col-md-1"></div>
-				          <a href="payment.jsp"  class="btn btn-default"> Buy Ticket</a>
+				          <button  type ="submit" class="btn btn-default"> Buy Ticket</button>
 				        </form>
 		 			</div>
 		 		</div>
@@ -229,13 +232,26 @@
 
 	<script src="assets/js/google-code-prettify/prettify.js"></script>
 	  <script src="assets/js/application.js"></script>
-<script type="text/javascript">
+<script>
+	//auto calculate price
+	function calculate(){
+		$("#adult-result").html($("#price").text()*$("#adult").val());
+	}
+	//auto calculate child and senior
+	function calculateSenior() {
+	$("#senior-result").html($("#price").text()*$("#senior").val()*0.8);
+	}
+	//auto calculate child and senior
+	function calculateChild() {
+	$("#child-result").html($("#price").text()*$("#child").val()*0.8);
+	}
 	//sliders starter
 	jQuery(document).ready(function() {
 		App.init();
 		App.initSliders();      
 		ParallaxSlider.initParallaxSlider();
 	});
+
 	   $(document).ready(function() {
 	   	//owl-demo starter
 	  $("#owl-demo").owlCarousel({
@@ -245,6 +261,17 @@
 	   stopOnHover: true
 	  });
 	});
+
+	//validate form function
+	function validateForm(){
+	if (($("#adult").val()==null|| $("#adult").val()=="")&& 
+		($("#senior").val()==null || $("#senior").val()=="")&& 
+		($("#child").val()==null || $("#child").val()=="")){
+		alert("You have to enter ticket number");
+		return false;
+	}
+	return true;
+	}
 
 </script>
 	<s:if test="#session.loginError== 1"> 

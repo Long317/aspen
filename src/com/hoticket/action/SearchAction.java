@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.commons.lang.xwork.StringUtils;
 
 import com.hoticket.dao.MovieDAO;
+import com.hoticket.dao.ShowingDAO;
 import com.hoticket.dao.TheatreDAO;
 import com.hoticket.modal.Movie;
 import com.hoticket.modal.Theatre;
@@ -105,6 +106,16 @@ public class SearchAction extends ActionSupport {
 			if (matchedTheatres.size() == 1) {
 				// get result theatres
 				session.put(THEATRE, matchedTheatres.get(0));
+				int theatreId=matchedTheatres.get(0).getId();
+				//get corresponding showing movies
+				List<Movie> showingMovies= MovieDAO.getInstance().getMovieByTheatreId(theatreId);
+				session.put(SHOWING_MOVIES, showingMovies);
+				//get showing time
+				matchedTheatres.get(0).setShowing(ShowingDAO.getInstance().getShowingByTheatreId(theatreId));
+//				Set<Showing> showings = matchedTheatres.get(0).getShowing();
+//						for (Showing s : showings) {
+//						    System.out.println(s.getStart_time());
+//						}
 				return THEATRE;
 			} else {
 				// If multiple cities matched return to general search result page

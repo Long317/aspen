@@ -15,6 +15,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedNativeQueries;
+import org.hibernate.annotations.NamedNativeQuery;
+@NamedNativeQueries({
+	@NamedNativeQuery(
+	name = "callgetShowingByTheatreIdProcedure",
+	query = "CALL getShowingByTheatreId(:theatre_id)",
+	resultClass = Showing.class
+	)
+})
 @Entity
 @Table(name="showing")
 public class Showing implements Serializable{

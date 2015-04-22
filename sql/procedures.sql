@@ -26,3 +26,10 @@ BEGIN
  select distinct m.* from movie m join showing s where m.id=s.movie_id and s.theatre_id=theatre_id;
  END;//
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE hoticket.getShowingByTheatreId(theatre_id int(11))
+BEGIN
+ select s.* from showing s where s.theatre_id =theatre_id;
+ END;//
+DELIMITER ;

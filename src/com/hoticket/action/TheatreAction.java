@@ -1,10 +1,15 @@
 package com.hoticket.action;
 
-import java.util.Map;
 
 import static com.hoticket.util.Constants.*;
 
+import java.util.List;
+import java.util.Map;
+
+import com.hoticket.dao.MovieDAO;
+import com.hoticket.dao.ShowingDAO;
 import com.hoticket.dao.TheatreDAO;
+import com.hoticket.modal.Movie;
 import com.hoticket.modal.Theatre;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -31,13 +36,21 @@ public class TheatreAction extends ActionSupport implements
 		// get session object
 		@SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
+		//check if any id pass in 
+		if (theatre.getId()==0){
+			return ERROR;
+		}
 		//get theatre object
-		Theatre t = TheatreDAO.getInstance()
-				.getTheatreByName(theatre.getName());
+		Theatre t = TheatreDAO.getInstance().getTheatreById(theatre.getId());
 		//if no theatre in the db has same name return to error page
 		if (t.getName() == null) {
 			return ERROR;
 		} else {
+			//get corresponding showing movies
+			List<Movie> showingMovies= MovieDAO.getInstance().getMovieByTheatreId(t.getId());
+			session.put(SHOWING_MOVIES, showingMovies);
+			//get showing time
+			t.setShowing(ShowingDAO.getInstance().getShowingByTheatreId(t.getId()));
 			session.put(THEATRE, t);
 			return SUCCESS;
 		}

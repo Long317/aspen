@@ -91,10 +91,10 @@
                                     <div class="media-body">
                                         <h4 class="media-heading">
                                             <strong><a href="movie?movie.name=<c:out value="${rating.movie.name}"/>"> <c:out value="${rating.movie.name}"></c:out></a></strong> 
-                                            <small><c:out value="${rating.rating_score}"></c:out></small>
                                         </h4>
                                         <p><c:out value="${rating.comment}"></c:out></p>
                                         <ul class="list-inline results-list pull-left">
+                                            <li> Rate: <c:out value="${rating.rating_score}"></c:out></li>
                                             <li><a href="#">25 Likes</a></li>
                                             <li><a href="#">10 Share</a></li>
                                         </ul>    

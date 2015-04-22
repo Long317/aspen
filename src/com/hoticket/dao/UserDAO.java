@@ -1,7 +1,6 @@
 package com.hoticket.dao;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -22,7 +21,6 @@ public class UserDAO {
 	/**
 	 * get users list from user table
 	 */
-	@SuppressWarnings("unchecked")
 	public User checkUser(String email) {
 
 		User user=null;

@@ -79,6 +79,38 @@ var CheckoutForm = function () {
 	                {
 	                    required: true,
 	                    digits: true
+
+	                },
+	                state:
+	                {
+	                	required: true
+	                },
+	                zipcode:
+	                {
+	                	required: true,
+	                	digits: true
+	                },
+	                first_name:
+	                {
+	                	required: true
+	                },
+	                last_name:
+	                {
+	                	required: true
+	                },
+	                adult:
+	                {
+	                	required: true,
+	                	digits: true},
+	                senior:
+	                {
+	                	required: true,
+	                	digits: true
+	                },
+	                child:
+	                {
+	                	required: true,
+	                	digits: true
 	                }
 	            },
 	                                

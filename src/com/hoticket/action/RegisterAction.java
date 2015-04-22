@@ -1,19 +1,13 @@
 package com.hoticket.action;
 
-import java.util.ArrayList;
 
 import static com.hoticket.util.Constants.*;
-
-import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.xwork.StringUtils;
-
-import com.hoticket.dao.UserDAO;
 import com.hoticket.modal.User;
 import com.hoticket.service.RegisterService;
 import com.hoticket.service.emailService;
-import com.hoticket.util.EncryptUtils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;

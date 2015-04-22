@@ -1,4 +1,5 @@
 
+
 package com.hoticket.dao;
 
 import java.util.ArrayList;
@@ -7,11 +8,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.annotations.NamedNativeQueries;
-import org.hibernate.annotations.NamedNativeQuery;
 
 import com.hoticket.modal.Movie;
-import com.hoticket.modal.Theatre;
 import com.hoticket.util.ConnectionUtil;
 
 
@@ -40,7 +38,7 @@ public class MovieDAO {
 		List<Movie> movies = new ArrayList<Movie>();
 		try {
 
-			session = ConnectionUtil.getSessionFactory().openSession();
+			session = ConnectionUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
 			movies = (List<Movie>) session.createQuery("from Movie").list();
 			session.getTransaction().commit();
@@ -56,7 +54,6 @@ public class MovieDAO {
 	//get movie by movie name
 	//parameter: String
 	//output: a movie
-			@SuppressWarnings("unchecked")
 			public Movie getMovieByName(String input) {
 				Movie movie = new Movie();
 				try {
@@ -71,6 +68,23 @@ public class MovieDAO {
 				}
 				return movie;
 			}
+			//get movie by movie id
+			//parameter: int
+			//output: a movie
+					public Movie getMovieById(int input) {
+						Movie movie = new Movie();
+						try {
+							session = ConnectionUtil.getSessionFactory().openSession();
+							session.beginTransaction();
+							 String query ="from Movie where id =:input";
+							movie =  (Movie) session.createQuery(query).setParameter("input", input).uniqueResult();				
+							session.getTransaction().commit();
+							return movie;
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						return movie;
+					}
 			
 			//get movie by theatre id
 			@SuppressWarnings("unchecked")
@@ -97,7 +111,6 @@ public class MovieDAO {
 			//get movie by IMG URL
 			//parameter: String
 			//output: a movie
-					@SuppressWarnings("unchecked")
 					public Movie getMovieByImgURL(String input) {
 						Movie movie = new Movie();
 						try {
@@ -181,7 +194,7 @@ public class MovieDAO {
 		Session session = null;
 		try {
 	
-			session = ConnectionUtil.getSessionFactory().openSession();
+			session = ConnectionUtil.getSessionFactory().getCurrentSession();
 			Transaction transaction = session.beginTransaction();		
 			Query query = session.getNamedQuery("calladdMovieProcedure");
 			query.setParameter("id", movie.getId());
@@ -206,3 +219,4 @@ public class MovieDAO {
 		
 	}
 }
+

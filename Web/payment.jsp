@@ -66,9 +66,33 @@
 		 				<form>
 				          <div class="form-group">
 				          <table class='table table-striped '>
+                                         <s:if test="#session.login!=null"> 
+                                             <s:if test="#session.login.billing_accounts!=null"> 
+                                            <tr> <td><select type="text" class="form-control" onchange="location = this.options[this.selectedIndex].value;">
+                                                <option selected value="payment.jsp">select your account</option>  
+                                            <c:forEach items="${sessionScope.login.billing_accounts}" var="billing">
+                                            <option value="billinfo?billing_account.card_number=<c:out value='${billing.card_number}'/>"><c:out value='${billing.card_number}'/></option>
+                                            </c:forEach>
+                                            </select></td></tr>
+                                            </s:if>
+                                         </s:if>
+
+                                           <s:if test="#session.login!=null"> 
+                                             <s:if test="#session.login.billing_addresses!=null"> 
+                                            <tr> <td><select type="text" class="form-control" onchange="location = this.options[this.selectedIndex].value;">
+                                                <option selected value="payment.jsp">select your billing address</option>  
+                                            <c:forEach items="${sessionScope.login.billing_addresses}" var="billing">
+                                            <option value="billinfo?billing_address.address=<c:out value='${billing.address}'/>"><c:out value='${billing.address}'/></option>
+                                            </c:forEach>
+                                            </select></td></tr>
+                                            </s:if>
+                                         </s:if>
+                                        <tr><td> Card Info:</td></tr>
                                         <tr><td>Card Number</td>
                                             <td><input type="text" name ="cardNumber" id="cardNumber" 
-                                                       onkeypress="return isNumberKey(event);" maxlength="16" class="form-control"></td>
+                                                       onkeypress="return isNumberKey(event);"
+                                                        value = "<c:out value='${sessionScope.selected_acct.card_number}'/>"
+                                                        maxlength="16" class="form-control"></td>
                                         </tr>
                                         <tr><td>Expiration Date</td>
                                             <td><select type="text" name ="expirationMonth" id="expirationMonth" class="form-control">
@@ -101,17 +125,81 @@
                                             <option value="2015">25</option>
                                         	</select></td>
                                         </tr>
-                                         <tr><td>First Name</td>
-                                            <td><input type="text" name ="firstName" id="firstName" 
-                                                      class="form-control"></td>
+                                         <tr><td>Card Holder</td>
+                                            <td><input type="text" name ="card_holder"  
+                                                     value="<c:out value='${sessionScope.selected_acct.card_holder}'/>" class="form-control"></td>
                                         </tr>
-                                        <tr>
-                                        	    <td>  Last Name</td>
-                                            <td><input type="text" name ="lastName" id="lastName" 
-                                                      class="form-control"></td>
-                                        </tr>	
+                                         <tr><td></td></tr>
+                                           <tr><td> Billing Address Info:</td></tr>
+                                             <tr><td>Billing Address</td>
+                                            <td><input type="text" name ="address" id="address" 
+                                                    value="<c:out value='${sessionScope.selected_addr.address}'/>"
+                                                     class="form-control"></td>
+                                           </tr>
+                                           <tr><td>Billing city</td>
+                                            <td><input type="text" name ="city" id="city" 
+                                                    value="<c:out value='${sessionScope.selected_addr.city}'/>"
+                                                       class="form-control"></td>
+                                           </tr>
+                                           <tr><td>State</td>
+                                            <td>      <select name="state" class="form-control">
+                                                        <option value="AL">Alabama</option>
+                                                        <option value="AK">Alaska</option>
+                                                        <option value="AZ">Arizona</option>
+                                                        <option value="AR">Arkansas</option>
+                                                        <option value="CA">California</option>
+                                                        <option value="CO">Colorado</option>
+                                                        <option value="CT">Connecticut</option>
+                                                        <option value="DE">Delaware</option>
+                                                        <option value="DC">District Of Columbia</option>
+                                                        <option value="FL">Florida</option>
+                                                        <option value="GA">Georgia</option>
+                                                        <option value="HI">Hawaii</option>
+                                                        <option value="ID">Idaho</option>
+                                                        <option value="IL">Illinois</option>
+                                                        <option value="IN">Indiana</option>
+                                                        <option value="IA">Iowa</option>
+                                                        <option value="KS">Kansas</option>
+                                                        <option value="KY">Kentucky</option>
+                                                        <option value="LA">Louisiana</option>
+                                                        <option value="ME">Maine</option>
+                                                        <option value="MD">Maryland</option>
+                                                        <option value="MA">Massachusetts</option>
+                                                        <option value="MI">Michigan</option>
+                                                        <option value="MN">Minnesota</option>
+                                                        <option value="MS">Mississippi</option>
+                                                        <option value="MO">Missouri</option>
+                                                        <option value="MT">Montana</option>
+                                                        <option value="NE">Nebraska</option>
+                                                        <option value="NV">Nevada</option>
+                                                        <option value="NH">New Hampshire</option>
+                                                        <option value="NJ">New Jersey</option>
+                                                        <option value="NM">New Mexico</option>
+                                                        <option value="NY">New York</option>
+                                                        <option value="NC">North Carolina</option>
+                                                        <option value="ND">North Dakota</option>
+                                                        <option value="OH">Ohio</option>
+                                                        <option value="OK">Oklahoma</option>
+                                                        <option value="OR">Oregon</option>
+                                                        <option value="PA">Pennsylvania</option>
+                                                        <option value="RI">Rhode Island</option>
+                                                        <option value="SC">South Carolina</option>
+                                                        <option value="SD">South Dakota</option>
+                                                        <option value="TN">Tennessee</option>
+                                                        <option value="TX">Texas</option>
+                                                        <option value="UT">Utah</option>
+                                                        <option value="VT">Vermont</option>
+                                                        <option value="VA">Virginia</option>
+                                                        <option value="WA">Washington</option>
+                                                        <option value="WV">West Virginia</option>
+                                                        <option value="WI">Wisconsin</option>
+                                                        <option value="WY">Wyoming</option>
+                                                    </select>
+                                            </td>
+                                           </tr>
                                            <tr><td>Billing ZIP Code</td>
                                             <td><input type="text" name ="zipcode" id="zipcode" 
+                                                    value="<c:out value='${sessionScope.selected_addr.zipcode}'/>"
                                                      onkeypress="return isNumberKey(event);" maxlength="5"  class="form-control"></td>
                                         </tr>
                                         <tr>
@@ -272,12 +360,7 @@
 	   stopOnHover: true
 	  });
 	});
-	           function isNumberKey(evt) {
-                                        var charCode = (evt.which) ? evt.which : event.keyCode;
-                                        if (charCode > 31 && (charCode < 48 || charCode > 57))
-                                            return false;
-                                        return true;
-                                    }
+	       
 </script>
 	<s:if test="#session.loginError== 1"> 
 		<script>
