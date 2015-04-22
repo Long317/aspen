@@ -36,9 +36,14 @@ public class Theatre implements Serializable{
 	private int supported;
 	@OneToMany(mappedBy="theatre")
 	private Set <Showing> showing;
+	@OneToMany(mappedBy="theatre")
+	private Set <Price_table> prices;
 	@ManyToMany(mappedBy="favorite_theatres")
 	private Set<Customer> customers;
-	
+	@Column(name="longitude")
+	private double longitude;
+	@Column(name="latitude")
+	private double latitude;
 	public int getId() {
 		return id;
 	}
@@ -98,6 +103,24 @@ public class Theatre implements Serializable{
 	}
 	public void setCustomers(Set<Customer> customers) {
 		this.customers = customers;
+	}
+	public double getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+	public double getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+	public Set<Price_table> getPrices() {
+		return prices;
+	}
+	public void setPrices(Set<Price_table> prices) {
+		this.prices = prices;
 	}
 
 	

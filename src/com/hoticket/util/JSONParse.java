@@ -14,6 +14,7 @@ import org.json.simple.parser.JSONParser;
 
 import com.hoticket.dao.MovieDAO;
 import com.hoticket.modal.Movie;
+import com.hoticket.modal.Price_table;
 import com.hoticket.modal.Showing;
 import com.hoticket.modal.Theatre;
 
@@ -42,12 +43,31 @@ public class JSONParse {
 				if (ads[ads.length - 1].matches("-?\\d+(\\.\\d+)?")) {
 					t.setZipcode(Integer.parseInt(ads[ads.length - 1]));
 				}
+				
 				t.setState(ads[ads.length - 2]);
 				t.setCity(addrs[1]);
 				t.setAddress(addrs[0]);
 				t.setName((String) ((JSONObject) shows.get(i)).get("name"));
 				session.getTransaction().begin();
 				session.save(t);
+				session.getTransaction().commit();
+				//set price table
+				Price_table pt = new Price_table();
+				Price_table pt1 = new Price_table();
+				Price_table pt2 = new Price_table();
+				pt.setTheatre(t);
+				pt.setCategory("IMAX");
+				pt.setPrice(12.99);
+				pt1.setTheatre(t);
+				pt1.setCategory("3D");
+				pt1.setPrice(15.99);
+				pt2.setTheatre(t);
+				pt2.setCategory("normal");
+				pt2.setPrice(7.99);
+				session.getTransaction().begin();
+				session.save(pt);
+				session.save(pt1);
+				session.save(pt2);
 				session.getTransaction().commit();
 				// get all movies json object
 				JSONArray movies = (JSONArray) (((JSONObject) shows.get(i))

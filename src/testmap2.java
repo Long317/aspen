@@ -99,6 +99,7 @@ public class testmap2 {
         session.save(s);
         /*add a pay history*/
         Pay_history p=new Pay_history();
+      
         p.setBilling_account(emp1);
         p.setBilling_address(ad1);
         p.setDate(new java.sql.Timestamp(date.getTime()));
@@ -173,12 +174,7 @@ public class testmap2 {
         session.save(ad3);
         session.save(ad4);
         
-        
-        
-        
-        
-        
         session.getTransaction().commit();
         session.close();
         
-    }
+    }}

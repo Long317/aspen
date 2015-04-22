@@ -18,6 +18,8 @@ public class Pay_history implements Serializable{
 	private int id;
 	@Column(name="ticket_number")
 	private int ticket_number;
+	@Column(name="price")
+	private double price;
 	@Column(name="date")
 	private Timestamp date;
 	@ManyToOne
@@ -73,6 +75,12 @@ public class Pay_history implements Serializable{
 	}
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 }
