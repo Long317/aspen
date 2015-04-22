@@ -31,7 +31,8 @@ public class testmap2 {
 		    u3.setRole(0);
 		    u3.setGender(1);
 	        session.save(u3);
-	        session.save(u3);
+        
+        session.save(u3);
  /*Add two billing_accounts for customer*/
         Billing_account emp1 = new Billing_account();
         Billing_account emp2 = new Billing_account();
@@ -39,16 +40,12 @@ public class testmap2 {
         emp1.setCard_number("3423413241");
         emp1.setCard_type(1);
         emp1.setCvs(343);
-        emp1.setMonth(4);
-        emp1.setYear(14);
         emp1.setCustomer(u3);
         
         emp2.setCard_holder("aophie");
         emp2.setCard_number("4423413241");
         emp2.setCard_type(1);
         emp2.setCvs(743);
-        emp1.setMonth(3);
-        emp1.setYear(16);
         emp2.setCustomer(u3);
          
         session.save(emp1);
@@ -181,3 +178,4 @@ public class testmap2 {
         session.close();
         
     }
+}

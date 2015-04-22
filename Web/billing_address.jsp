@@ -86,7 +86,7 @@
                     <div class="profile-body margin-bottom-20">
                         <div class="tab-v1">
                             <ul class="nav nav-justified nav-tabs">
-                                <li class="active"><a data-toggle="tab" href="#deleteacc">Delete billing address</a></li>
+                                <li class="active"><a data-toggle="tab" href="#deleteaddr">Delete billing address</a></li>
                                 <li><a data-toggle="tab" href="#addaddr">Add billing address</a></li>
                             </ul>    
                             <div class="tab-content">      
