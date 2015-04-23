@@ -5,7 +5,7 @@
 				<div class="row">
 					<!-- About -->
 					<div class="col-md-3 md-margin-bottom-40">
-						<a href="index.html"><img id="logo-footer" class="footer-logo" src="assets/img/logo3.png" alt=""></a>
+						<a href="index.jsp"><img id="logo-footer" class="footer-logo" src="assets/img/logo3.png" alt=""></a>
 						<p>We Guarantee you the perfect movie night with your family, your buddy, or your lover with tickets from Hoticket. Find theater movie times, watch trailers, read reviews and buy movie tickets in advance to prepare for the perfect night out!
 						</p>
 				    </div><!--/col-md-3-->

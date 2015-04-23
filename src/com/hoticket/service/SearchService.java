@@ -1,10 +1,16 @@
 package com.hoticket.service;
 
 import static com.hoticket.util.Constants.*;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.json.simple.parser.ParseException;
+
 import com.hoticket.modal.Movie;
 import com.hoticket.modal.Theatre;
+import com.hoticket.util.AddressConverter;
 import com.hoticket.util.Methods;
 
 public class SearchService {
@@ -167,10 +173,40 @@ public class SearchService {
 	 */
 	public static ArrayList<Theatre> searchTheaterByZipcode(String searchInput,
 			List<Theatre> theatres) {
+        //store closest theatre in that area
+	    ArrayList<Theatre> closeTheatres = new ArrayList<Theatre>();
+        
+		//get client geodata lat and lon
+	    double [] geoData = new double[2];
+		try {
+			geoData = AddressConverter.convertToLatLong(searchInput);
+			closeTheatres =getCloseTheatre (searchInput,geoData,theatres,true);
+			
+		} catch (Exception e1) {
+			closeTheatres =getCloseTheatre (searchInput,geoData,theatres,false);
+		}
+		
+	
+	       
+		return closeTheatres;
+	}
+
+	private static ArrayList<Theatre> getCloseTheatre(String searchInput, double[] geoData,
+			List<Theatre> theatres, boolean isGetGeodata) {
+		 //store closest theatre in that area
+	    ArrayList<Theatre> closeTheatres = new ArrayList<Theatre>();
+		//store matched theatre
 		ArrayList<Theatre> matchedTheatres = new ArrayList<Theatre>();
 		//store distances for same state theatre
         ArrayList<Double> distances = new ArrayList<Double>();
 	    for (int i=0;i<theatres.size();i++){
+	    	if (isGetGeodata){
+	    		if (Math.abs(theatres.get(i).getZipcode()-Integer.parseInt(searchInput))<10000){
+				double[] theatreGeo = new double[]{theatres.get(i).getLatitude(),theatres.get(i).getLongitude()};
+				distances.add(AddressConverter.calculateDistance(geoData, theatreGeo));
+	    		}
+				matchedTheatres.add(theatres.get(i));
+			}else{
         	//only check close distance
 	    	if (Math.abs(theatres.get(i).getZipcode()-Integer.parseInt(searchInput))<1000){
 	    		matchedTheatres.add(theatres.get(i));
@@ -179,18 +215,17 @@ public class SearchService {
 				} catch (Exception e) {
 					e.printStackTrace();
 				} 
-				}
-        }
-	
+			}
+		}
+	  }
 		//store top 5 closest theatres to the session
-	       ArrayList<Theatre> closeTheatres = new ArrayList<Theatre>();
 	       int number = matchedTheatres.size()>=MAX_THEATRE?MAX_THEATRE:matchedTheatres.size();
 	       for (int i=0;i<number;i++){
 	    	   closeTheatres.add(matchedTheatres.get(Methods.minIndex(distances)));
 	    	  distances.remove(Methods.minIndex(distances));
 	    	  System.out.println(closeTheatres.get(i).getName());
 	       }
-	       
 		return closeTheatres;
+		
 	}
 }

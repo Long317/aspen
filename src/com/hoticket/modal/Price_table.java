@@ -1,8 +1,6 @@
 package com.hoticket.modal;
 
 import java.io.Serializable;
-import java.util.Set;
-
 import javax.persistence.*;
 
 @Entity

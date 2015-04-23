@@ -69,7 +69,8 @@
 				          	<div class = "col-md-1">
 				            <label  class="control-label">Adult:</label> </div>
 				            <div class = "col-md-3">
-				            <input type="text" maxlength="2" onchange="calculate();" onkeypress="return isNumberKey(event);" name="adult" id="adult"> 
+				            <input type="text" maxlength="2" class="ticketInput" onchange="calculate();"
+				             onkeypress="return isNumberKey(event);" name="adult" id="adult"> 
 				            x <span id="price"><s:property value="#session.ticket_price" /></span> =<span id="adult-result">$0.00</span>
 				       		 </div>
 				       		 </div>
@@ -79,7 +80,8 @@
 				          	<div class = "col-md-1">
 				            <label  class="control-label">Senior:</label>  </div>
 				            <div class = "col-md-3">
-				            <input type="text" maxlength="2"  onchange="calculateSenior();"  onkeypress="return isNumberKey(event);"  name="senior" id="senior">
+				            <input type="text" maxlength="2" class="ticketInput" onchange="calculateSenior();" 
+				             onkeypress="return isNumberKey(event);"  name="senior" id="senior">
 				            x <s:property value="#session.ticket_price *0.8" /> =<span id="senior-result">$0.00</span>	
 				            </div>
 				            </div>
@@ -89,7 +91,8 @@
 				          	<div class = "col-md-1">
 				            <label  class="control-label">Child:&nbsp;&nbsp;</label>  </div>
 				            <div class = "col-md-3">
-				            <input type="text"  maxlength="2"  onchange="calculateChild();"  onkeypress="return isNumberKey(event);"  name="child" id="child">
+				            <input type="text"  maxlength="2" class="ticketInput" onchange="calculateChild();" 
+				             onkeypress="return isNumberKey(event);"  name="child" id="child">
 				             x <s:property value="#session.ticket_price *0.8" /> =<span id="child-result">$0.00</span>		
 				       		</div>
 				       		</div>

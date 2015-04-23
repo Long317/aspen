@@ -9,20 +9,16 @@ import java.io.InputStreamReader;
 import static com.hoticket.util.Constants.*;
 
 import java.net.URL;
-
-
-
-
-
 import java.util.ArrayList;
 import java.util.Map;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import com.hoticket.dao.TheatreDAO;
 import com.hoticket.modal.Theatre;
-import com.hoticket.service.TheatreFounder;
+import com.hoticket.util.AddressConverter;
 import com.hoticket.util.Methods;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -69,6 +65,12 @@ public class GeoLocatorAction extends ActionSupport {
 	        String state = addressinfo.get("region").toString();
 	        String zip = (String) addressinfo.get("zip");
 	        
+	        //create double[] to store lat and lon for client
+	        double [] geoData = new double[2];
+	        geoData[0] = (double) addressinfo.get("lat");
+	        geoData[1] = (double) addressinfo.get("lon");
+	        session.put("clientGeodata", geoData);
+	        
 	        //store user address
 	        String address = addr+" "+city+" "+state+" "+zip;
 	        session.put("clientAddress", address);
@@ -89,10 +91,11 @@ public class GeoLocatorAction extends ActionSupport {
 	        ArrayList<Theatre> stateTheatres = new ArrayList<Theatre>();
 	        for (int i=0;i<theatres.size();i++){
 	        	//only check same state
-	        	if (theatres.get(i).getState().contains(state.trim())){
+	        	//if (theatres.get(i).getState().contains(state.trim())){
 	        		stateTheatres.add(theatres.get(i));
-	        		distances.add(TheatreFounder.calculateDistance(address,theatres.get(i)));
-	        	}
+	        		double[] theatreGeo = new double[]{theatres.get(i).getLatitude(),theatres.get(i).getLongitude()};
+	        		distances.add(AddressConverter.calculateDistance(geoData, theatreGeo));
+	        //	}
 	        }
 	        
 	        //store top MAX_THEATRE number closest theatres to the session
@@ -103,15 +106,7 @@ public class GeoLocatorAction extends ActionSupport {
 	    	   closeTheatres.add(stateTheatres.get(Methods.minIndex(distances)));
 	    	  distances.set(Methods.minIndex(distances), 1000000.0);
 	       }
-	       //add closest theatre to 9 theatre
-//	       for (int i=0;i<theatres.size();i++){
-//	    	  if (closeTheatres.size()==9){
-//	    		  break;
-//	    	  }
-//	    	 if (!closeTheatres.contains(theatres.get(i))){
-//	    		 closeTheatres.add(theatres.get(i));
-//	    	 }
-//	       }
+
 	       session.put("closeTheatres", closeTheatres);
 	       //return to user with JSON String for closeTheatres
 	       JSONArray theatresJSON = new JSONArray();

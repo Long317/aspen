@@ -19,6 +19,7 @@ import com.hoticket.modal.Showing;
 import com.hoticket.modal.Theatre;
 
 public class JSONParse {
+	static Object lock = new Object();
 
 	public static void main(String args[]) {
 		Session session = ConnectionUtil.getSessionFactory().openSession();
@@ -43,11 +44,21 @@ public class JSONParse {
 				if (ads[ads.length - 1].matches("-?\\d+(\\.\\d+)?")) {
 					t.setZipcode(Integer.parseInt(ads[ads.length - 1]));
 				}
-				
 				t.setState(ads[ads.length - 2]);
 				t.setCity(addrs[1]);
 				t.setAddress(addrs[0]);
 				t.setName((String) ((JSONObject) shows.get(i)).get("name"));
+				//get longitude and latitude
+				try{
+				synchronized (lock) {
+				double [] geoData= AddressConverter.convertToLatLong(address);
+				t.setLatitude(geoData[0]);
+				t.setLongitude(geoData[1]);
+				lock.wait(300);
+				}
+				}catch(Exception e){
+					e.printStackTrace();
+				}
 				session.getTransaction().begin();
 				session.save(t);
 				session.getTransaction().commit();
