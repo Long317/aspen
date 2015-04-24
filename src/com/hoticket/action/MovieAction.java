@@ -20,7 +20,7 @@ ModelDriven<Movie>{
 	 */
 	private static final long serialVersionUID = 1L;
 	private Movie movie;
-
+    private String isFav;
 	@Override
 	public Movie getModel() {
 		return movie;
@@ -28,6 +28,7 @@ ModelDriven<Movie>{
 	
 	@SuppressWarnings("unchecked")
 	public String execute(){
+		isFav="0";
 		// get session object
 		@SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
@@ -35,6 +36,7 @@ ModelDriven<Movie>{
 		if (movie.getId()==0){
 			return ERROR;
 		}
+		
 		//get movie object
 		Movie m = MovieDAO.getInstance().getMovieById(movie.getId());
 		//if no theatre in the db has same name return to error page
@@ -53,6 +55,14 @@ ModelDriven<Movie>{
 
 	public void setMovie(Movie movie) {
 		this.movie = movie;
+	}
+
+	public String getIsFav() {
+		return isFav;
+	}
+
+	public void setIsFav(String isFav) {
+		this.isFav = isFav;
 	}
 	
 	

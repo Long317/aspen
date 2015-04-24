@@ -2,6 +2,8 @@ package com.hoticket.dao;
 
 
 
+import java.util.Set;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -9,6 +11,7 @@ import org.hibernate.Transaction;
 import com.hoticket.modal.Billing_account;
 import com.hoticket.modal.Billing_address;
 import com.hoticket.modal.Customer;
+import com.hoticket.modal.Movie;
 import com.hoticket.modal.User;
 import com.hoticket.util.ConnectionUtil;
 import com.hoticket.util.EncryptUtils;
@@ -182,6 +185,47 @@ public void addAddr(Billing_address bAddr) {
 	finally {
 	    session.close();
 	}
+}
+
+public void addfavmov(Movie m, Customer c) {
+	session = ConnectionUtil.getSessionFactory().openSession();
+	Transaction tx = session.beginTransaction();
+	try {
+		 Movie m1=(Movie)session.get(Movie.class,m.getId());
+		 Customer c1=(Customer)session.get(Customer.class,c.getId());
+		 c1.getFavorite_movies().add(m1);
+		 session.save(c1);
+	     tx.commit();
+	}
+	catch (Exception e) {
+	    if (tx!=null) tx.rollback();
+	}
+	finally {
+	    session.close();
+	}
+	
+	
+}
+
+public void delefavmov(Movie m, Customer c) {
+	
+	session = ConnectionUtil.getSessionFactory().openSession();
+	Transaction tx = session.beginTransaction();
+	try {
+		 Movie m1=(Movie)session.get(Movie.class,m.getId());
+		 Customer c1=(Customer)session.get(Customer.class,c.getId());
+		 c1.getFavorite_movies().remove(m1);
+		 session.save(c1);
+	     tx.commit();
+	}
+	catch (Exception e) {
+	    if (tx!=null) tx.rollback();
+	}
+	finally {
+	    session.close();
+	}
+	
+	
 }
 
 

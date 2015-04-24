@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- Favicon -->
 <link rel="shortcut icon" href="favicon.ico">
 <link
@@ -75,6 +75,28 @@
 		<div class="container content">
 			<div class="headline">
 				<h2><s:property value="#session.SEARCH_MOVIE.name" /></h2>
+				<s:set var="isFAV"  value="%{'no'}"/>
+				<s:if test="#session.login!=null">		
+				<!--=== test if any customer's favorite movies match this movie ===-->	
+				<s:iterator var="m" value="#session.login.favorite_movies">
+  	            <s:if test="#m.name==#session.SEARCH_MOVIE.name">
+  	            <s:set var="isFAV" value="%{'yes'}"/>
+  	            </s:if>
+                </s:iterator>				
+				</s:if>
+				<s:if test="#session.login==null">
+				<!--=== no button needed ===-->
+				</s:if>
+				<s:elseif test="#isFAV=='no'">
+     		    <form action="addfavmov">
+			    <button type="submit" class="btn-u btn-u-default float-shadow">Add it to Your Favorite Movie</button>
+			    </form>
+				</s:elseif>
+				<s:elseif test="#isFAV=='yes'">
+				<form action="delefavmov">
+			    <button type="submit" class="btn-u btn-u-default float-shadow">Delete it from Your Favorite Movie</button>
+			    </form>
+				</s:elseif>
 			</div>
 
 			<div class="row">

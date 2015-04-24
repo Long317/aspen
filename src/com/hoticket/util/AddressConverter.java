@@ -50,14 +50,14 @@ public class AddressConverter {
 
     public static double calculateDistance(double[] origin, double[] destination) {
         int R = 6371; // km
-        double φ1 = Math.toRadians(origin[0]);
-        double φ2 = Math.toRadians(destination[0]);
-        double Δφ = Math.toRadians(destination[0] - origin[0]);
-        double Δλ = Math.toRadians(destination[1] - origin[1]);
+        double x = Math.toRadians(origin[0]);
+        double y = Math.toRadians(destination[0]);
+        double u = Math.toRadians(destination[0] - origin[0]);
+        double v = Math.toRadians(destination[1] - origin[1]);
 
-        double a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2)
-                + Math.cos(φ1) * Math.cos(φ2)
-                * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+        double a = Math.sin(u / 2) * Math.sin(u / 2)
+                + Math.cos(x) * Math.cos(y)
+                * Math.sin(v / 2) * Math.sin(v/ 2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
         double d = R * c;

@@ -105,7 +105,14 @@
 			<result name="success">/billing_account.jsp</result>
 		</action>
 	</package>
-	
+	<package name="favmovie" namespace="/" extends="struts-default">
+		<action name="addfavmov" class="com.hoticket.action.AddFavMovieAction">
+			<result name="success">/movieoverview.jsp</result>
+		</action>
+		<action name="delefavmov" class="com.hoticket.action.DeleteFavMovieAction">
+			<result name="success">/movieoverview.jsp</result>
+		</action>
+	</package>
 	<package name="billingaddress" namespace="/" extends="struts-default">
 		<action name="deleteAddr" class="com.hoticket.action.DeleteAddressAction">
 			<result name="success">/billing_address.jsp</result>
