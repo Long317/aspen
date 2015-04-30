@@ -77,7 +77,7 @@
 			<result name="success">/movieoverview.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
-		<action name="ticket" class="com.hoticket.action.PurchaseAction"  method="execute">
+		<action name="ticket" class="com.hoticket.action.PurchaseAction"  method="ticket">
 			<result name="success">/ticketInfo.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>

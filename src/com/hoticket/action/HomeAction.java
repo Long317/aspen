@@ -34,13 +34,15 @@ public class HomeAction extends ActionSupport{
 		//if get Movie from db if not exits in context
         if (ActionContext.getContext().get("movies")==null){
         	movies = (ArrayList<Movie>) MovieDAO.getInstance().getMovies();
+        	ActionContext.getContext().put("movies", movies);
         }else{
 	        //get theatres from Context if it exits
         	movies=  (ArrayList<Movie>)ActionContext.getContext().get("movies");
-        	ActionContext.getContext().put("movies", movies);
         }
+        //check if we have movie data
+        if (movies.size()>=12){
         session.put("movieCarousel", movies.subList(0, 12));
-        
+        }
         
         //Following codes are for user geolocator
         

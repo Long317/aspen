@@ -14,20 +14,24 @@ import org.json.simple.parser.JSONParser;
 
 import com.hoticket.dao.MovieDAO;
 import com.hoticket.modal.Movie;
+import com.hoticket.modal.Price_table;
 import com.hoticket.modal.Showing;
 import com.hoticket.modal.Theatre;
+import com.hoticket.util.AddressConverter;
 import com.hoticket.util.ConnectionUtil;
 
 public class JSONParseService {
+
+	static Object lock = new Object();
 	
 	 public boolean parse(String fullPath) {
-		  Session session=  ConnectionUtil.getSessionFactory().openSession(); 
-		  FileReader fr = null;
-	      JSONParser parser = new JSONParser();
-	      GregorianCalendar calendar = new GregorianCalendar(2015,4,5);
-	      try {
-	          File f = new File(fullPath);
-	          fr = new FileReader(f);
+			Session session = ConnectionUtil.getSessionFactory().openSession();
+			FileReader fr = null;
+			JSONParser parser = new JSONParser();
+			GregorianCalendar calendar = new GregorianCalendar(2015, 4, 5);
+			try {
+				File f = new File(fullPath);
+				fr = new FileReader(f);
 				JSONArray shows = (JSONArray) parser.parse(fr);
 				System.out.println(shows.size());
 				for (int i = 0; i < shows.size(); i++) {
@@ -47,8 +51,37 @@ public class JSONParseService {
 					t.setCity(addrs[1]);
 					t.setAddress(addrs[0]);
 					t.setName((String) ((JSONObject) shows.get(i)).get("name"));
+					//get longitude and latitude
+					try{
+					synchronized (lock) {
+					double [] geoData= AddressConverter.convertToLatLong(address);
+					t.setLatitude(geoData[0]);
+					t.setLongitude(geoData[1]);
+					lock.wait(210);
+					}
+					}catch(Exception e){
+						e.printStackTrace();
+					}
 					session.getTransaction().begin();
 					session.save(t);
+					session.getTransaction().commit();
+					//set price table
+					Price_table pt = new Price_table();
+					Price_table pt1 = new Price_table();
+					Price_table pt2 = new Price_table();
+					pt.setTheatre(t);
+					pt.setCategory("IMAX");
+					pt.setPrice(12.99);
+					pt1.setTheatre(t);
+					pt1.setCategory("3D");
+					pt1.setPrice(15.99);
+					pt2.setTheatre(t);
+					pt2.setCategory("normal");
+					pt2.setPrice(7.99);
+					session.getTransaction().begin();
+					session.save(pt);
+					session.save(pt1);
+					session.save(pt2);
 					session.getTransaction().commit();
 					// get all movies json object
 					JSONArray movies = (JSONArray) (((JSONObject) shows.get(i))

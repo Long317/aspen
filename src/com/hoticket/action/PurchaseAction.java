@@ -35,7 +35,7 @@ public class PurchaseAction extends ActionSupport implements
 	}
 
 	@SuppressWarnings("unchecked")
-	public String execute() {
+	public String ticket() {
 		// get session object
 		@SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
@@ -48,7 +48,7 @@ public class PurchaseAction extends ActionSupport implements
 		if (showing.getStart_time() == null) {
 			return ERROR;
 		}
-
+		
 		// Put showing object and ticket price in the session
 		session.put(SELECTED_SHOWING, showing);
 		// enter the ticket price based on the catogary

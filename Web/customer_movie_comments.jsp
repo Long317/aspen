@@ -257,6 +257,10 @@
 <!-- JS Page Level -->           
 <script type="text/javascript" src="assets/js/app.js"></script>
 <script type="text/javascript" src="assets/js/plugins/datepicker.js"></script>
+
+<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
