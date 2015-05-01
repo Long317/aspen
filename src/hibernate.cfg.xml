@@ -27,5 +27,6 @@
 		<mapping class="com.hoticket.modal.Theatre" />
 		<mapping class="com.hoticket.modal.Rating" />
 		<mapping class="com.hoticket.modal.Price_table" />
+		<mapping class="com.hoticket.modal.Cast" />
 	</session-factory>
 </hibernate-configuration>

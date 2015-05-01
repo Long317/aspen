@@ -39,6 +39,13 @@ public class HomeAction extends ActionSupport{
 	        //get theatres from Context if it exits
         	movies=  (ArrayList<Movie>)ActionContext.getContext().get("movies");
         }
+        //get rid of 3D IMAX Movies
+        for (int i = 0 ; i<movies.size();i++){
+        	if (movies.get(i).getName().contains("3D")||movies.get(i).getName().contains("IMAX")){
+        		movies.remove(i);
+        		i--;
+        	}
+        }
         //check if we have movie data
         if (movies.size()>=12){
         session.put("movieCarousel", movies.subList(0, 12));

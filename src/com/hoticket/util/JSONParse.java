@@ -54,7 +54,7 @@ public class JSONParse {
 				double [] geoData= AddressConverter.convertToLatLong(address);
 				t.setLatitude(geoData[0]);
 				t.setLongitude(geoData[1]);
-				lock.wait(300);
+				lock.wait(210);
 				}
 				}catch(Exception e){
 					e.printStackTrace();
@@ -111,6 +111,8 @@ public class JSONParse {
 								.get("Genre")));
 						String length = ((String) ((JSONObject) movies.get(j))
 								.get("runTime"));
+						m.setInfo_url(((String) ((JSONObject) movies.get(j))
+								.get("movieInfoURL")));
 						int timeLength = 150;
 						if (length.trim().length() == 10) {
 							timeLength = (length.trim().charAt(0) - '0') * 60
@@ -131,6 +133,9 @@ public class JSONParse {
 							showTime.length() - 2).split(",");
 					for (int k = 0; k < showtimes.length; k++) {
 						Showing s = new Showing();
+						 if (showtimes[k].length()<5){
+							 continue;
+						 }
 						String time = showtimes[k].substring(1,
 								showtimes[k].length() - 1);
 						System.out.println(time);

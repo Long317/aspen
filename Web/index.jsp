@@ -67,11 +67,6 @@
 
 <body>
 <div class="wrapper">
-	<iframe src="http://localhost:9999/MovieChain/adHandler?site=1" scrolling="no" width="100%" height="100" align="middle">
-		<a href="http://localhost:9999/MovieChain/adForwarder?image=2">
-		  <img src="http://localhost:9999/MovieChain/ads/ad2.JPG" />
-		</a>
-	</iframe>
 	 <%@ include file="header.jsp" %>
 		  <!--Movie Gallary -->
 	  
@@ -336,7 +331,7 @@ Jamie Dornan</i></h2>
 
 	<script src="assets/js/google-code-prettify/prettify.js"></script>
 	  <script src="assets/js/application.js"></script>
-	  
+
 	  <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 

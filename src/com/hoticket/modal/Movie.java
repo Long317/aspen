@@ -44,8 +44,12 @@ public class Movie implements Serializable {
 	private String synopsis;
 	@Column(name = "trailer_url")
 	private String trailer_url;
+	@Column(name = "info_url")
+	private String Info_url;
 	@OneToMany(mappedBy = "movie")
 	private Set<Showing> showings;
+	@OneToMany(mappedBy = "movie")
+	private Set<Cast> casts;
 	@OneToMany(mappedBy = "movie")
 	private Set<Rating> movie_ratings;
 	@ManyToMany(mappedBy = "favorite_movies")
@@ -145,6 +149,22 @@ public class Movie implements Serializable {
 
 	public void setMovie_ratings(Set<Rating> movie_ratings) {
 		this.movie_ratings = movie_ratings;
+	}
+
+	public Set<Cast> getCasts() {
+		return casts;
+	}
+
+	public void setCasts(Set<Cast> casts) {
+		this.casts = casts;
+	}
+
+	public String getInfo_url() {
+		return Info_url;
+	}
+
+	public void setInfo_url(String info_url) {
+		Info_url = info_url;
 	}
 
 }

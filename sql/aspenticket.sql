@@ -3,7 +3,7 @@ CREATE SCHEMA `hoticket` ;
 
 CREATE TABLE `hoticket`.`movie` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
   `release_time` DATE NULL DEFAULT '2016-01-01',
   `rating` FLOAT NULL DEFAULT 0.0,
   `length` INT NULL DEFAULT 0,
@@ -11,6 +11,7 @@ CREATE TABLE `hoticket`.`movie` (
   `img_url` VARCHAR(1000) NULL,
   `synopsis` VARCHAR(10000) NULL DEFAULT 'this is a movie!',
   `trailer_url` VARCHAR(1000) NULL,
+  `info_url` VARCHAR(1000) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `movie_name_UNIQUE` (`name` ASC));
   
@@ -241,6 +242,25 @@ CREATE TABLE `hoticket`.`rating` (
     ON DELETE CASCADE
     ON UPDATE CASCADE,
     FOREIGN KEY (`movie_id`)
+    REFERENCES `hoticket`.`movie` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+CREATE TABLE `hoticket`.`gift_card` (
+  `card_number` BIGINT NOT NULL,
+  `money_remained` DOUBLE NOT NULL,
+  `pin` INT NOT NULL,
+  PRIMARY KEY (`card_number`));
+
+
+CREATE TABLE `hoticket`.`cast` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `img_url` VARCHAR(500) NULL,
+  `info_url` VARCHAR(500) NULL,
+  `movie_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+   FOREIGN KEY (`movie_id`)
     REFERENCES `hoticket`.`movie` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);

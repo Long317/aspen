@@ -70,6 +70,18 @@
       	position:relative;
 		left:30px;
       }
+        .movieCarousel_img{
+                width:200px;
+                height:270px;          
+            }
+      .movieCarousel_img img{
+                width:180px;
+                height:270px;
+            }
+       .movieCarousel_item{
+       	height:320px;
+       	 width:200px;
+       }
   </style>
 
 </head>
@@ -188,7 +200,8 @@
 					<div id="trailer" class="trailer">
 						<iframe width="600" height="366"
 							src="https://www.youtube.com/embed/SfZWFDs0LxA" frameborder="0"
-							allowfullscreen> </iframe>
+							allowfullscreen>
+							 </iframe>
 					</div>
 				</div>
 				<!--end of movie trailer -->
@@ -197,11 +210,7 @@
 			<!--Synopsis -->
 			<div class="row" id="Synopsis-container">
 				<div id="Synopsis-title">SYNOPSIS</div>
-				<div id="Synopsis-content">A veteran con man (Will Smith) is
-					thrown off his game when his former lover and protege (Margot
-					Robbie) unexpectedly appears and interferes with his latest -- and
-					very dangerous -- scheme.</div>
-				<a id="Synopsis-link" href="#">READ FULL SYNOPSIS</a>
+				<div id="Synopsis-content"><s:property value="#session.SEARCH_MOVIE.synopsis" /></div>
 			</div>
 			<!--End of Synopsis -->
 			<hr>
@@ -214,27 +223,27 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
-
 						<div id="owl-demo" class="owl-carousel">
-						 <c:forEach var="i" begin="0" end="12">
-							<div class="item thumbnail  thumbnail-kenburn">
-								<div class="thumbnail-img">
-									<div class="overflow-hidden">
-										<img class="lazyOwl img-responsive"
-											data-src="assets\img\casts\dakotajohnson.jpg"
-											alt="Lazy Owl Image">
+								<c:forEach items="${sessionScope.SEARCH_MOVIE.casts}" var="cast">
+                                   <div class="item thumbnail  thumbnail-kenburn movieCarousel_item">
+									<div class="thumbnail-img movieCarousel_img">
+										<div class="overflow-hidden">
+												<a href="<c:out value='${cast.info_url}'/>">
+											<img class="lazyOwl img-responsive"
+												data-src="<c:out value='${cast.img_url}'/>"
+												alt="Lazy Owl Image">
+										</div>
 									</div>
-								</div>
 								<div class="caption">
-									<h3>Dakota Johnson</h3>
+									<h3><c:out value="${cast.name}"/></h3>
 								</div>
 							</div>
 						</c:forEach>
-						</div>
-
 					</div>
+
 				</div>
 			</div>
+		</div>
 
 			<!--end of casts-->
 			<hr>
@@ -401,7 +410,7 @@
 		$(document).ready(function() {
 
 			$("#owl-demo").owlCarousel({
-				items : 8,
+				items : 6,
 				lazyLoad : true,
 				autoPlay : 2000,
 				stopOnHover : true
