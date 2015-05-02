@@ -37,7 +37,7 @@ public class PurchaseAction extends ActionSupport implements
 	}
 
 	@SuppressWarnings("unchecked")
-	public String execute() {
+	public String ticket() {
 		// get session object
 		@SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
@@ -56,6 +56,7 @@ public class PurchaseAction extends ActionSupport implements
 		session.put("showing", showing);
         //Get price from theatre price table
 		double[] p=TheatreDAO.getInstance().getTheatrePriceTable(showing.getTheatre().getId());
+
 		// Put showing object and ticket price in the session
 		session.put(SELECTED_SHOWING, showing);
 		// enter the ticket price based on the catogary

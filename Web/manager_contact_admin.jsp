@@ -88,154 +88,45 @@
             <!--End Left Sidebar-->
             
             <div class="col-md-9">
-                <!--Profile Body-->
-                <div class="profile-body">
-                    <!--Service Block v3-->
-                    <div class="row margin-bottom-12">
-                      
-                          <iframe src="https://www.google.com/calendar/embed?height=300&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=cg4od0ll2v91dtp8scack73fps%40group.calendar.google.com&amp;color=%235229A3&amp;ctz=America%2FNew_York" style=" border-width:0 " width="800" height="500" frameborder="0" scrolling="no"></iframe>
-                    </div><!--/end row-->
-                    <!--End Service Block v3-->
-
-                    <hr>
-
-                    <div class="row margin-bottom-20">
-                        <!--Profile Post-->
-                        <div class="col-sm-6">
-                            <div class="panel panel-profile no-bg">
-                                   <div class="panel-heading overflow-h">
-                            <h2 class="panel-title heading-sm pull-left"><i class="fa fa-tasks"></i>Contacts</h2>
-                            <a href="profile_users.html" class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View All</a>
-                        </div>
-                                <div id="scrollbar" class="panel-body contentHolder">
-                              <div class="profile-blog blog-border">
-                                        <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
-                                        <div class="name-location">
-                                            <strong>Mikel Andrews</strong>
-                                            <span><i class="fa fa-map-marker"></i><a href="#">California,</a> <a href="#">US</a></span>
-                                        </div>
-                                        <div class="clearfix margin-bottom-20"></div>    
-                                        <p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-                                        <hr>
-                                        <ul class="list-inline share-list">
-                                            <li><i class="fa fa-bell"></i><a href="#">12 Notifications</a></li>
-                                            <li><i class="fa fa-group"></i><a href="#">54 Followers</a></li>
-                                            <li><i class="fa fa-twitter"></i><a href="#">Retweet</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="profile-blog blog-border">
-                                        <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
-                                        <div class="name-location">
-                                            <strong>Mikel Andrews</strong>
-                                            <span><i class="fa fa-map-marker"></i><a href="#">California,</a> <a href="#">US</a></span>
-                                        </div>
-                                        <div class="clearfix margin-bottom-20"></div>    
-                                        <p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-                                        <hr>
-                                        <ul class="list-inline share-list">
-                                            <li><i class="fa fa-bell"></i><a href="#">12 Notifications</a></li>
-                                            <li><i class="fa fa-group"></i><a href="#">54 Followers</a></li>
-                                            <li><i class="fa fa-twitter"></i><a href="#">Retweet</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="profile-blog blog-border">
-                                        <img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
-                                        <div class="name-location">
-                                            <strong>Mikel Andrews</strong>
-                                            <span><i class="fa fa-map-marker"></i><a href="#">California,</a> <a href="#">US</a></span>
-                                        </div>
-                                        <div class="clearfix margin-bottom-20"></div>    
-                                        <p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-                                        <hr>
-                                        <ul class="list-inline share-list">
-                                            <li><i class="fa fa-bell"></i><a href="#">12 Notifications</a></li>
-                                            <li><i class="fa fa-group"></i><a href="#">54 Followers</a></li>
-                                            <li><i class="fa fa-twitter"></i><a href="#">Retweet</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>        
-                        </div>
-                        <!--End Profile Post-->
-
-                        <!--Profile Event-->
-                        <div class="col-sm-6 md-margin-bottom-20">
-                            <div class="panel panel-profile no-bg">
-                                <div class="panel-heading overflow-h">
-                                    <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i>Upcoming Events</h2>
-                                    <a href="#"><i class="fa fa-cog pull-right"></i></a>
-                                </div>
-                                <div id="scrollbar2" class="panel-body contentHolder">
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-                                            <span>25</span>
-                                            <small>05, 2014</small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">GitHub seminars in Japan.</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                                        </div>    
-                                    </div>
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-                                            <span>31</span>
-                                            <small>06, 2014</small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">Bootstrap Update</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                                        </div>    
-                                    </div>
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-                                            <span>07</span>
-                                            <small>08, 2014</small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">Apple Conference</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                                        </div>    
-                                    </div>
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-                                            <span>22</span>
-                                            <small>10, 2014</small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">Backend Meeting</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                                        </div>    
-                                    </div>
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-                                            <span>14</span>
-                                            <small>11, 2014</small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">Google Conference</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                                        </div>    
-                                    </div>
-                                    <div class="profile-event">
-                                        <div class="date-formats">
-                                            <span>05</span>
-                                            <small>12, 2014</small>
-                                        </div>
-                                        <div class="overflow-h">
-                                            <h3 class="heading-xs"><a href="#">FontAwesome Update</a></h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry printing.</p>
-                                        </div>    
-                                    </div>
-                                </div>    
-                            </div>
-                        </div>
-                        <!--End Profile Event-->
-                    </div><!--/end row-->
-
-                    <hr>
-                 
-                </div>
-                <!--End Profile Body-->
+                <!--Admin editor Body-->
+                 <form action="UserInfoEdit.jsp">
+                                <table class='table table-striped '>
+                                    <c:forEach var="row" items="${searchResult.rows}">
+                                        <tr><td > SSN </td>
+                                            <td> <span id='SSN'><c:out value="${sessionScope.SSN}"/> </span></td></tr>
+                                        <tr><td> First Name </td>
+                                            <td> <input class="form-control" name="FirstName" type="text" value="<c:out value="${row.FirstName }"/>"> </td></tr>
+                                        <tr><td> Last Name </td>
+                                            <td> <input class="form-control" name="LastName" type="text" value="<c:out value="${row.LastName }"/> "></td></tr>
+                                        <tr><td> Password </td>
+                                            <td> <input class="form-control" name="Password" type="text" value="<c:out value="${row.Password }"/> "></td></tr>
+                                        <tr><td> Street </td>
+                                            <td> <input  class="form-control" name="Street" type="text" value="<c:out value="${row.Street }"/> "></td></tr>
+                                        <tr><td> City </td>
+                                            <td> <input  class="form-control" name="City" type="text" value="<c:out value="${row.City }"/> "></td></tr>
+                                        <tr><td> State </td>
+                                            <td> <input class="form-control" name="State"  type="text" value="<c:out value="${row.State }"/> "></td></tr>
+                                        <tr><td> Zipcode </td>
+                                            <td> <input class="form-control" name="Zipcode" type="text" value="<c:out value="${row.Zipcode }"/> "></td></tr>
+                                        <tr><td> Email </td>
+                                            <td> <input class="form-control" name="Email" type="text" value="<c:out value="${row.Email }"/> "></td></tr>
+                                        <tr><td> Street </td>
+                                            <td> <input class="form-control" name="Telephone" type="text" value="<c:out value="${row.Telephone }"/>"> </td></tr>
+                                        <tr><td> PPP </td>
+                                            <td> <select name="PPP" class="form-control">
+                                                    <option selected value="<c:out value="${row.PPP }"/>"><c:out value="${row.PPP }"/></option>
+                                                    <option  value="Super-User">Super-User</option>
+                                                    <option  value="Good-User">Good-User</option>
+                                                    <option  value="User-User">User-User</option>
+                                                </select>
+                                            </td></tr>
+                                        </c:forEach>
+                                    <tr><td> <input type="submit" onclick="return confirm('Are you sure you want to continue?');"  value="Submit" class='btn btn-primary' ></td>
+                                        <td> <button type="button" onclick='deleteUser();'  class="btn btn-primary">Delete</button></td></tr>
+                                    <tr> <span class="error" id='error'>*</span></tr>
+                                </table>
+                            </form>
+                <!--End Admin editor Body-->
             </div>
         </div><!--/end row-->
     </div><!--/container-->    

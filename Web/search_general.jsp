@@ -107,6 +107,10 @@
 
 	<script src="assets/js/google-code-prettify/prettify.js"></script>
 	  <script src="assets/js/application.js"></script>
+
+	  <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 <script type="text/javascript">
 	//sliders starter
 	jQuery(document).ready(function() {

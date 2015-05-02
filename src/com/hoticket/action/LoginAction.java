@@ -46,7 +46,8 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 		switch(user.getRole()){
 		case 0:return "customer";
 		case 1:return "admin";
-		case 2: return "manager";
+		case 2: 
+			return "manager";
 		default: return ERROR;
 		
 		}

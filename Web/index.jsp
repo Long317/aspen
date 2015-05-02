@@ -45,7 +45,7 @@
 
 	<style>
 	  .movieCarousel_img{
-                width:180px;
+                width:200px;
                 height:270px;          
             }
       .movieCarousel_img img{
@@ -54,7 +54,7 @@
             }
        .movieCarousel_item{
        	height:320px;
-       	 width:180px;
+       	 width:200px;
        }
        .movieTitle{
   		  white-space: nowrap; 
@@ -81,9 +81,11 @@
 			  	<c:forEach items="${sessionScope.movieCarousel}" var="movie">
 				 <div class="item thumbnail  thumbnail-kenburn movieCarousel_item">
 					 <div class="thumbnail-img movieCarousel_img"> 
-						<div class="overflow-hidden"> 
-						<img class="lazyOwl img-responsive" data-src="<c:out value='${movie.img_url}'/>" alt="Lazy Owl Image">
-						</div>
+					 	<a href = "movie?movie.id=<c:out value='${movie.id}'/>">
+							<div class="overflow-hidden"> 
+								<img class="lazyOwl img-responsive" data-src="<c:out value='${movie.img_url}'/>" alt="Lazy Owl Image">
+							</div>
+						</a>
 					 </div>
 					<div class="caption">
 					 <div class="movieTitle" onmouseover="showText(this);"><c:out value='${movie.name}'/></div>
@@ -305,7 +307,7 @@ Jamie Dornan</i></h2>
 	<%@ include file="footer.jsp" %>
 </div><!--/wrapper-->
 
-<!-- JS Global Compulsory -->			
+<!-- JS Global Compulsory -->
 <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="assets/plugins/jquery/jquery-migrate.min.js"></script>
 <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -329,6 +331,10 @@ Jamie Dornan</i></h2>
 
 	<script src="assets/js/google-code-prettify/prettify.js"></script>
 	  <script src="assets/js/application.js"></script>
+
+	  <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 <script type="text/javascript">
 	  function showText(txt){
   	txt.className = "";
@@ -342,7 +348,7 @@ Jamie Dornan</i></h2>
 	   $(document).ready(function() {
 	   	//owl-demo starter
 	  $("#owl-demo").owlCarousel({
-		items : 7,
+		items : 6,
 		lazyLoad : true,
 	 autoPlay: 2000,
 	   stopOnHover: true

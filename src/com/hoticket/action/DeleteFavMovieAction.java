@@ -1,7 +1,6 @@
 package com.hoticket.action;
 
 import java.util.Map;
-import java.util.Set;
 import com.hoticket.dao.UserDAO;
 import com.hoticket.modal.Customer;
 import com.hoticket.modal.Movie;

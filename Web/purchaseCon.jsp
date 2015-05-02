@@ -56,12 +56,55 @@
 		 			<div class="headline row">
 		 				<div class = "col-md-4"><h2>CHECKOUT</h2></div>
 		 				<div class = "col-md-6">
-		 				<a href="ticketInfo.jsp" class= "btn btn-default disabled">Tickets</a><div class="glyphicon glyphicon-arrow-right"></div>
-                        <a href="payment.jsp" class= "btn btn-default disabled">Payment</a><div class="glyphicon glyphicon-arrow-right"></div>
-		 				<div class= "btn btn-default disabled">Confirmation</div>
+		 				<a href="ticketInfo.jsp" class= "btn btn-default">Tickets</a><div class="glyphicon glyphicon-arrow-right"></div>
+		 				<a href="payment.jsp" class= "btn btn-default disabled">Payment</a><div class="glyphicon glyphicon-arrow-right"></div>
+		 				<div class= "btn btn-default">Confirmation</div>
 		 			    </div>
 		 			</div>
-		 		<h1>You have Purchase the ticket successfully</h1>
+		 			<div class="ticketBody row">
+		 				<form class="sky-form" id="sky-form"  action="confirm">
+				          <div class="form-group">
+				          	<div class = "col-md-1"></div><h3>Theatre: <s:property value="#session.selected_showing.theatre.name" /></h3>
+				          	<div class = "col-md-1"></div><h3>Movie: <s:property value="#session.selected_showing.movie.name" /></h3>
+				          	<div class="row">
+				          	<div class = "col-md-1"></div>
+				          	<div class = "col-md-1">
+				            <label  class="control-label">Adult:</label> </div>
+				            <div class = "col-md-2">
+				          	 <s:property value="#session.adult" /> * $<s:property value="#session.ticket_price" /> = $<s:property value="#session.ticket_price * #session.adult" />
+				       		 </div>
+				       		 </div>
+				       		 <br/> 
+				            <div class="row">
+				            <div class = "col-md-1"></div>
+				          	<div class = "col-md-1">
+				            <label  class="control-label">Senior:</label>  </div>
+				            <div class = "col-md-3">
+				             <s:property value="#session.senior" /> * $<s:property value="#session.ticket_price * 0.8" /> = $<s:property value="#session.ticket_price * #session.senior" />
+				            </div>
+				            </div>
+				             <br/> 
+				            <div class="row">
+				            <div class = "col-md-1"></div>
+				          	<div class = "col-md-1">
+				            <label  class="control-label">Child:&nbsp;&nbsp;</label>  </div>
+				             <div class = "col-md-3">
+				             <s:property value="#session.child" /> * $<s:property value="#session.ticket_price * 0.8" /> = $<s:property value="#session.ticket_price * #session.child" />
+				            </div>
+				       		</div>
+				          </div>
+				              <br/>
+				         <div class = "col-md-1"></div>
+				          	<div class= "totalPrice row">
+		 				Total price: $<s:property value="#session.ticket_price * #session.adult + #session.ticket_price * #session.child + #session.ticket_price * #session.senior" />
+		 				<br/><br/><br/>
+		 				  <div class = "col-md-1"></div> <button  type ="submit" class="btn btn-default"> Confirm</button>
+		 				</div>
+		 					
+		 			
+				        </form>
+		 			</div>
+		 		
 		 		</div>
 		 	</div>	
 		<!-- End Content Part -->
@@ -196,16 +239,29 @@
 	<script src="assets/js/google-code-prettify/prettify.js"></script>
 	  <script src="assets/js/application.js"></script>
 
-      <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+	  <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
-<script type="text/javascript">
+<script>
+	//auto calculate price
+	function calculate(){
+		$("#adult-result").html(($("#price").text()*$("#adult").val()).toFixed(2));
+	}
+	//auto calculate child and senior
+	function calculateSenior() {
+	$("#senior-result").html(($("#price").text()*$("#senior").val()*0.8).toFixed(2));
+	}
+	//auto calculate child and senior
+	function calculateChild() {
+	$("#child-result").html(($("#price").text()*$("#child").val()*0.8).toFixed(2));
+	}
 	//sliders starter
 	jQuery(document).ready(function() {
 		App.init();
 		App.initSliders();      
 		ParallaxSlider.initParallaxSlider();
 	});
+
 	   $(document).ready(function() {
 	   	//owl-demo starter
 	  $("#owl-demo").owlCarousel({
@@ -215,12 +271,7 @@
 	   stopOnHover: true
 	  });
 	});
-	           function isNumberKey(evt) {
-                                        var charCode = (evt.which) ? evt.which : event.keyCode;
-                                        if (charCode > 31 && (charCode < 48 || charCode > 57))
-                                            return false;
-                                        return true;
-                                    }
+
 </script>
 	<s:if test="#session.loginError== 1"> 
 		<script>

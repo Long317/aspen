@@ -80,7 +80,7 @@
 					<div class="headline"><h2>OPENING THIS WEEK</h2></div> 
             <c:forEach var="i" begin="0" end="80" step="6">
 				 		<div class="row">
-								<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="${i}" end="${i+5}">
+						<c:forEach items="${sessionScope.FILTER_MOVIES}" var="movie" varStatus="status" begin="${i}" end="${i+5}">
 					  		<div class="col-md-2">
                              <a href="movie?movie.id=<c:out value='${movie.id}'/>">
                              <div class="movieImg">
@@ -124,6 +124,10 @@
 
 	<script src="assets/js/google-code-prettify/prettify.js"></script>
 	  <script src="assets/js/application.js"></script>
+
+	  	  <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 <script type="text/javascript">
 	//sliders starter
 	jQuery(document).ready(function() {

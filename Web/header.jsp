@@ -2,18 +2,26 @@
   <!--Jquery lib-->
  <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="assets/plugins/jquery/jquery-migrate.min.js"></script>
-	  <script type="text/javascript" src="http://l2.io/ip.js?var=myip"></script>
+		  <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
+	  <script type="text/javascript" src="http://l2.io/ip.js?var=myip"></script>
 
   <s:url id="movieFilter" action="movieFilter" var="movieFilter">
 	<s:param name="Genre">all</s:param>
 	</s:url>
+
   <script>
   function GoMovies(){
   	window.location.replace('<s:property value="#movieFilter"/>');
   }
   </script>
-<!--=== Header ===-->    
+<!--=== Header ===-->   
+	<iframe src="http://localhost:9999/MovieChain/adHandler?site=1" scrolling="no" width="100%" height="100" align="middle">
+		<a href="http://localhost:9999/MovieChain/adForwarder?image=2">
+		  <img src="http://localhost:9999/MovieChain/ads/ad2.JPG" />
+		</a>
+	</iframe> 
 	<div class="header">
 		<!-- Topbar -->
 		<div class="topbar">
@@ -222,9 +230,14 @@
  <!-- Search Block -->
                      <div class="container">
                           <div class="search-open">
+                          	 <div class="ui-widget">
+						         
+						      </div>
                             <s:form action="search">
                                 <div class="input-group animated fadeInDown">
+                                	<div class="ui-widget">
                                   <input id="mainSearch" name ="searchInput" type="text" class="form-control" placeholder="Enter City + State, ZIP Code, or Movie">
+                                    </div>
                                     <span class="input-group-btn">
                                      <button class="btn-u searGo" id="mainSearchCon" type="submit">Go</button>
                                     </span>

@@ -235,18 +235,22 @@
 
 	<script src="assets/js/google-code-prettify/prettify.js"></script>
 	  <script src="assets/js/application.js"></script>
+
+ <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 <script>
 	//auto calculate price
 	function calculate(){
-		$("#adult-result").html($("#price").text()*$("#adult").val());
+		$("#adult-result").html(($("#price").text()*$("#adult").val()).toFixed(2));
 	}
 	//auto calculate child and senior
 	function calculateSenior() {
-	$("#senior-result").html($("#price").text()*$("#senior").val()*0.8);
+	$("#senior-result").html(($("#price").text()*$("#senior").val()*0.8).toFixed(2));
 	}
 	//auto calculate child and senior
 	function calculateChild() {
-	$("#child-result").html($("#price").text()*$("#child").val()*0.8);
+	$("#child-result").html(($("#price").text()*$("#child").val()*0.8).toFixed(2));
 	}
 	//sliders starter
 	jQuery(document).ready(function() {

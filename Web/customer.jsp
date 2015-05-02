@@ -214,6 +214,9 @@
 <!-- JS Customization -->
 <script type="text/javascript" src="assets/js/custom.js"></script>
 <!-- JS Page Level -->
+      <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 
 <script>
     jQuery(document).ready(function ($) {
