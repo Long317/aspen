@@ -3,7 +3,7 @@ CREATE SCHEMA `hoticket` ;
 
 CREATE TABLE `hoticket`.`movie` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
   `release_time` DATE NULL DEFAULT '2016-01-01',
   `rating` FLOAT NULL DEFAULT 0.0,
   `length` INT NULL DEFAULT 0,
@@ -11,6 +11,7 @@ CREATE TABLE `hoticket`.`movie` (
   `img_url` VARCHAR(1000) NULL,
   `synopsis` VARCHAR(10000) NULL DEFAULT 'this is a movie!',
   `trailer_url` VARCHAR(1000) NULL,
+  `info_url` VARCHAR(1000) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `movie_name_UNIQUE` (`name` ASC));
   
@@ -244,11 +245,22 @@ CREATE TABLE `hoticket`.`rating` (
     REFERENCES `hoticket`.`movie` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
-    
-DELIMITER //
-CREATE PROCEDURE `hoticket`.`addCustomer`(email varchar(250),password varchar(20),user_name varchar(45))
- BEGIN
- insert into user (email,password,user_name) values (email,password,user_name) ;
- END;//
-DELIMITER ;
 
+CREATE TABLE `hoticket`.`gift_card` (
+  `card_number` BIGINT NOT NULL,
+  `money_remained` DOUBLE NOT NULL,
+  `pin` INT NOT NULL,
+  PRIMARY KEY (`card_number`));
+
+
+CREATE TABLE `hoticket`.`cast` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `img_url` VARCHAR(500) NULL,
+  `info_url` VARCHAR(500) NULL,
+  `movie_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+   FOREIGN KEY (`movie_id`)
+    REFERENCES `hoticket`.`movie` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);

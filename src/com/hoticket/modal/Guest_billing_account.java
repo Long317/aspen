@@ -13,9 +13,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "guest_billing_account")
 public class Guest_billing_account implements Serializable {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
@@ -31,6 +28,10 @@ public class Guest_billing_account implements Serializable {
 	private int card_type;
 	@Column(name = "cvs")
 	private int cvs;
+	@Column(name="month")
+	private int month;
+	@Column(name="year")
+	private int year;
 	@OneToMany(mappedBy = "guest_billing_account")
 	private Set<Guest_pay_history> guest_pay_history;
 
@@ -90,6 +91,19 @@ public class Guest_billing_account implements Serializable {
 		this.email = email;
 	}
 
+	public int getMonth() {
+		return month;
+	}
 
+	public void setMonth(int month) {
+		this.month = month;
+	}
 
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
 }

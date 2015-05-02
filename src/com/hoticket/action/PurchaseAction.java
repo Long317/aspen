@@ -5,7 +5,9 @@ import java.util.Set;
 
 import static com.hoticket.util.Constants.*;
 
+import com.hoticket.dao.CustomerDAO;
 import com.hoticket.dao.ShowingDAO;
+import com.hoticket.dao.TheatreDAO;
 import com.hoticket.modal.Billing_account;
 import com.hoticket.modal.Billing_address;
 import com.hoticket.modal.Customer;
@@ -21,14 +23,14 @@ public class PurchaseAction extends ActionSupport implements
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	private Showing showing;
 	private Billing_account billing_account;
 	private Billing_address billing_address;
-	private String adult;
-	private String senior;
-	private String child;
-
+	private int adult;
+	private int senior;
+	private int child;
+    private int bacc;
+    private int badd;
 	@Override
 	public Showing getModel() {
 		return showing;
@@ -39,6 +41,9 @@ public class PurchaseAction extends ActionSupport implements
 		// get session object
 		@SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
+		session.put("giftcard",null);
+		session.put("giftcarderror",null);
+		session.put("nobilling",null);
 		// check if showing id valid
 		if (showing.getId() < 1) {
 			return ERROR;
@@ -48,16 +53,30 @@ public class PurchaseAction extends ActionSupport implements
 		if (showing.getStart_time() == null) {
 			return ERROR;
 		}
-
+		session.put("showing", showing);
+        //Get price from theatre price table
+		double[] p=TheatreDAO.getInstance().getTheatrePriceTable(showing.getTheatre().getId());
 		// Put showing object and ticket price in the session
 		session.put(SELECTED_SHOWING, showing);
 		// enter the ticket price based on the catogary
+		if(p==null){
 		if (showing.getCategory().equals("3D")) {
 			session.put(TICKET_PRICE, PRICE_3D);
 		} else if (showing.getCategory().equals("IMAX")) {
 			session.put(TICKET_PRICE, PRICE_IMAX);
 		} else {
 			session.put(TICKET_PRICE, PRICE_NORMAL);
+		}}
+		else{
+			
+			if (showing.getCategory().equals("3D")) {
+				session.put(TICKET_PRICE, p[1]);
+			} else if (showing.getCategory().equals("IMAX")) {
+				session.put(TICKET_PRICE, p[0]);
+			} else {
+				session.put(TICKET_PRICE, p[2]);
+			}
+			
 		}
 
 		return SUCCESS;
@@ -77,7 +96,10 @@ public class PurchaseAction extends ActionSupport implements
 		session.put(ADULT, adult);
 		session.put(SENIOR, senior);
 		session.put(CHILD, child);
-		return SUCCESS;
+		if(session.get("login")==null){
+			return "guest";
+		}
+		else {return "customer";}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -85,33 +107,14 @@ public class PurchaseAction extends ActionSupport implements
 		// get session object
 		@SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
-
-		// get customer object
-		Customer c = (Customer) session.get("login");
-		// check if user login
-		if (c == null) {
-			return SUCCESS;
-		}
-		Set<Billing_account> bas = c.getBilling_accounts();
-		if (billing_account != null && bas != null) {
-			// put bill_acct to the session
-			for (Billing_account b : bas) {
-				if (b.getCard_number().equals(billing_account.getCard_number())) {
-					session.put("selected_acct", b);
-					System.out.println(b.getCard_number());
-				}
-			}
-		}
-		Set<Billing_address> baddrs = c.getBilling_addresses();
-		if (billing_address != null && baddrs != null) {
-			// put bill_acct to the session
-			for (Billing_address b : baddrs) {
-				if (b.getAddress().equals(billing_address.getAddress())) {
-					session.put("selected_addr", b);
-				}
-			}
-
-		}
+        CustomerDAO customerdao= new CustomerDAO();
+		if(bacc==-1||badd==-1){
+		session.put("nobilling", "Please select a valid billing address or billing account");
+		if(session.get("login")==null){return "guest";}else{ return "customer";}}
+		Billing_account baccount=customerdao.setbillingacc(bacc);
+		Billing_address baddress=customerdao.setbillingadd(badd);
+		session.put("bacc", baccount);
+		session.put("badd", baddress);
 		return SUCCESS;
 	}
 
@@ -139,28 +142,45 @@ public class PurchaseAction extends ActionSupport implements
 		this.billing_address = billing_address;
 	}
 
-	public String getAdult() {
+	public int getAdult() {
 		return adult;
 	}
 
-	public void setAdult(String adult) {
+	public void setAdult(int adult) {
 		this.adult = adult;
 	}
 
-	public String getSenior() {
+	public int getSenior() {
 		return senior;
 	}
 
-	public void setSenior(String senior) {
+	public void setSenior(int senior) {
 		this.senior = senior;
 	}
 
-	public String getChild() {
+	public int getChild() {
 		return child;
 	}
 
-	public void setChild(String child) {
+	public void setChild(int child) {
 		this.child = child;
 	}
+
+	public int getBacc() {
+		return bacc;
+	}
+
+	public void setBacc(int bacc) {
+		this.bacc = bacc;
+	}
+
+	public int getBadd() {
+		return badd;
+	}
+
+	public void setBadd(int badd) {
+		this.badd = badd;
+	}
+
 
 }

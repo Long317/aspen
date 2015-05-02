@@ -40,8 +40,6 @@ public class CustomerDAO {
 	}
 
 	public void addCustomer(Customer customer) {
-
-		Session session = null;
 		try {
 	
 			session = ConnectionUtil.getSessionFactory().openSession();
@@ -61,6 +59,40 @@ public class CustomerDAO {
 			session.close();
 		}
 		
+	}
+
+	public Billing_account setbillingacc(int bacc) {
+
+		session = ConnectionUtil.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			Billing_account m1=(Billing_account)session.get(Billing_account.class,bacc);
+			return m1;
+		}
+		catch (Exception e) {
+		    if (tx!=null) tx.rollback();
+		}
+		finally {
+		    session.close();
+		}
+		return null;
+		
+	}
+
+	public Billing_address setbillingadd(int badd) {
+		session = ConnectionUtil.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			Billing_address m1=(Billing_address)session.get(Billing_address.class,badd);
+			return m1;
+		}
+		catch (Exception e) {
+		    if (tx!=null) tx.rollback();
+		}
+		finally {
+		    session.close();
+		}
+		return null;
 	}
 	
 	

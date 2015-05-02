@@ -11,6 +11,9 @@ import org.hibernate.Transaction;
 import com.hoticket.modal.Billing_account;
 import com.hoticket.modal.Billing_address;
 import com.hoticket.modal.Customer;
+import com.hoticket.modal.Gift_card;
+import com.hoticket.modal.Guest_billing_account;
+import com.hoticket.modal.Guest_billing_address;
 import com.hoticket.modal.Movie;
 import com.hoticket.modal.User;
 import com.hoticket.util.ConnectionUtil;
@@ -20,7 +23,6 @@ import com.hoticket.util.EncryptUtils;
 
 public class UserDAO {
 	Session session = null;
-
 	/**
 	 * get users list from user table
 	 */
@@ -228,6 +230,94 @@ public void delefavmov(Movie m, Customer c) {
 	
 }
 
+public Gift_card findGiftCard(int card_number) {
+	session = ConnectionUtil.getSessionFactory().openSession();
+	Transaction tx = session.beginTransaction();
+	try {
+		 Gift_card m1=(Gift_card)session.get(Gift_card.class,card_number);
+		 if(m1==null)return null;
+		 else return m1;
+	}
+	catch (Exception e) {
+	    if (tx!=null) tx.rollback();
+	}
+	finally {
+	    session.close();
+	}
+	return null;
+	
+}
+
+public int addGuestBillingAcc(Guest_billing_account ba) {
+	session = ConnectionUtil.getSessionFactory().openSession();
+	Transaction tx = session.beginTransaction();
+	try {
+	     Query query1 = session.createSQLQuery("SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'hoticket' AND   TABLE_NAME   = 'guest_billing_account';");
+	     String baid = query1.uniqueResult().toString();
+	     session.save(ba);
+	     tx.commit();
+	     return Integer.parseInt(baid);
+	}
+	catch (Exception e) {
+	    if (tx!=null) tx.rollback();
+	}
+	finally {
+	    session.close();
+	}
+	return -1;
+}
+public int addGuestBillingAdd(Guest_billing_address badd) {
+	session = ConnectionUtil.getSessionFactory().openSession();
+	Transaction tx = session.beginTransaction();
+	try {
+	     Query query1 = session.createSQLQuery("SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'hoticket' AND   TABLE_NAME   = 'guest_billing_address';");
+	     String baid = query1.uniqueResult().toString();
+	     session.save(badd);
+	     tx.commit();
+	     return Integer.parseInt(baid);
+	}
+	catch (Exception e) {
+	    if (tx!=null) tx.rollback();
+	}
+	finally {
+	    session.close();
+	}
+	return -1;
+}
+
+public Guest_billing_account setbillingacc(int bacc) {
+
+	session = ConnectionUtil.getSessionFactory().openSession();
+	Transaction tx = session.beginTransaction();
+	try {
+		Guest_billing_account m1=(Guest_billing_account)session.get(Guest_billing_account.class,bacc);
+		return m1;
+	}
+	catch (Exception e) {
+	    if (tx!=null) tx.rollback();
+	}
+	finally {
+	    session.close();
+	}
+	return null;
+	
+}
+
+public Guest_billing_address setbillingadd(int badd) {
+	session = ConnectionUtil.getSessionFactory().openSession();
+	Transaction tx = session.beginTransaction();
+	try {
+		Guest_billing_address m1=(Guest_billing_address)session.get(Guest_billing_address.class,badd);
+		return m1;
+	}
+	catch (Exception e) {
+	    if (tx!=null) tx.rollback();
+	}
+	finally {
+	    session.close();
+	}
+	return null;
+}
 
 
 }

@@ -9,7 +9,7 @@ import com.hoticket.modal.Customer;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class AddAccountAction extends ActionSupport{
+public class AddAccountAction1 extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private int month;

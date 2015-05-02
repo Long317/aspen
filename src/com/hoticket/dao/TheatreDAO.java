@@ -2,12 +2,17 @@
 package com.hoticket.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.hoticket.modal.Customer;
+import com.hoticket.modal.Movie;
+import com.hoticket.modal.Price_table;
 import com.hoticket.modal.Theatre;
 import com.hoticket.util.ConnectionUtil;
 
@@ -167,5 +172,38 @@ public class TheatreDAO {
 			session.close();
 		}
 		
+	}
+
+	public double[] getTheatrePriceTable(int id) {
+		//IMAX 3D NORMAL
+		double[] price=new double[3];
+		session = ConnectionUtil.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			 Theatre t1=(Theatre)session.get(Theatre.class,id);
+			 Set<Price_table> p=t1.getPrices();
+			 for ( Iterator iter = p.iterator(); iter.hasNext(); ) { 
+			      Price_table pt = (Price_table) iter.next();
+			      if(pt.getCategory().equals("IMAX")){
+			    	  price[0]=pt.getPrice();
+			      }
+			      else if(pt.getCategory().equals("3D")){
+			    	  price[1]=pt.getPrice();
+			      }
+			      else if(pt.getCategory().equals("normal")){
+			    	  price[2]=pt.getPrice();
+			      }
+			}
+		     tx.commit();
+		     return price;
+		}
+		catch (Exception e) {
+		    if (tx!=null) tx.rollback();
+		}
+		finally {
+		    session.close();
+		}
+		
+		return null;
 	}
 }

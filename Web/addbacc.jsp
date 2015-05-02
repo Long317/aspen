@@ -41,81 +41,14 @@
     <!--=== Profile ===-->
     <div class="profile container content">
     	<div class="row">
-            <!--Left Sidebar-->
-                 <!-- Begin Sidebar Menu -->
-            <div class="col-md-3">
-                <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
-                    <li class="list-group-item">
-                        <a href="customer.jsp"><i class="fa fa-bar-chart-o"></i> Overall</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="purchase_history.jsp"><i class="fa fa-user"></i>My Purchase History</a>
-                    </li>
-                    
-                    <li class="list-group-item">
-                        <a href="favorite_movie.jsp"><i class="fa fa-user"></i>My Favorite Movie</a>
-                    </li>
-                    
-                    <li class="list-group-item">
-                        <a href="favorite_theatre.jsp"><i class="fa fa-user"></i>My Favorite Theatre</a>
-                    </li>
-                    
-                    <li class="list-group-item">
-                        <a href="customer_movie_comments.jsp"><i class="fa fa-user"></i>My Movie Comment</a>
-                    </li>
-                    
-                    <li class="list-group-item">
-                        <a href="billing_address.jsp"><i class="fa fa-user"></i>Manage Billing Address</a>
-                    </li>
-                    
-                    <li class="list-group-item active">
-                        <a href="billing_account.jsp"><i class="fa fa-user"></i>Manage Billing Account</a>
-                    </li>
-                    
-                    <li class="list-group-item">
-                        <a href="customer_settings.jsp"><i class="fa fa-user"></i>Setting</a>
-                    </li>
-                </ul>   
-
-
-            </div>
-            <!--End Left Sidebar-->
-                
                 <div class="col-md-9">
                     <!--Profile Body-->
                     <div class="profile-body margin-bottom-20">
                         <div class="tab-v1">
-                            <ul class="nav nav-justified nav-tabs">
-                                <li class="active"><a data-toggle="tab" href="#deleteacc">Delete billing account</a></li>
-                                <li><a data-toggle="tab" href="#addacc">Add billing account</a></li>
-                            </ul>    
-                            <div class="tab-content">      
-								 <div id="deleteacc" class="profile-edit tab-pane fade in active">
-                                    <h2 class="heading-md">Delete your billing accounts</h2>
-                                    <p>Below are the card info of your existing accounts</p>
+                                <div id="addacc" >
+                                    <h2 class="heading-md">Add Billing Account</h2>
                                     </br>
-                                    <dl class="dl-horizontal">
-                                    <c:forEach var="ba" items="${sessionScope.login.billing_accounts}" varStatus="status" begin="0">
-                                    <form action="deleteAcc">
-                                       <dd>
-                                      		<strong>CARD type:</strong><c:if test="${ba.card_type==0}">VISA</c:if><c:if test="${ba.card_type==1}">MASTER</c:if>
-                                      		<strong>CARD HOLDER:</strong><c:out value="${ba.card_holder}"/> 
-                                            <strong>CARD NUMBER:</strong><c:out value="${ba.card_number}"/> 
-                                            <input name="acc_id" value="${ba.id}" type="hidden" />
-                                            <span>
-                                                <button type="submit" class="btn-u btn-u-default" onclick="return confirmAction()">DELETE</button>
-                                            </span>
-                                        </dd>
-                                        <hr>
-                                     </form>
-                                     </c:forEach>
-                                    </dl>
-                                </div>
-                                <div id="addacc" class="profile-edit tab-pane fade">
-                                    <h2 class="heading-md">Manage your Payment Settings</h2>
-                                    <p>Below are the payment options for your account.</p>
-                                    </br>
-                                    <form class="sky-form" id="sky-form" action="addAcc">
+                                    <form class="sky-form" id="sky-form" action="addAcc1" method="post">
                                         <!--Checkout-Form-->
                                         <section>
                                             <div class="inline-group">
@@ -123,7 +56,6 @@
                                                 <label class="radio"><input type="radio" name="card_type" value=1><i class="rounded-x"></i>MasterCard</label>
                                             </div>
                                         </section>                  
-
                                         <section>
                                             <label class="input">
                                                 <input type="text" name="name" placeholder="Name on card">
@@ -171,13 +103,11 @@
                                                 </label>
                                             </section>
                                         </div>
-                                        <button type="button" class="btn-u btn-u-default">Cancel</button>
+                                        <a href="customer_payment.jsp"><button type="button" class="btn-u btn-u-default">Cancel</button></a>
                                         <button class="btn-u" type="submit">Save Changes</button>
                                         <!--End Checkout-Form-->
                                     </form>    
                                 </div>
-                            </div>
-                        </div>    
                     </div>
                     <!--End Profile Body-->
                 </div>

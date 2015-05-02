@@ -82,12 +82,17 @@
 			<result name="error">/error.jsp</result>
 		</action>
 		<action name="payment" class="com.hoticket.action.PurchaseAction"  method="getTickets">
-			<result name="success">/payment.jsp</result>
+			<result name="customer">/customer_payment.jsp</result>
+			<result name="guest">/guest_payment.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
-		<action name="billinfo" class="com.hoticket.action.PurchaseAction"  method="getBilling">
-			<result name="success">/payment.jsp</result>
-			<result name="error">/error.jsp</result>
+		<action name="billing" class="com.hoticket.action.PurchaseAction"  method="getBilling">
+			<result name="success">/payment_review.jsp</result>
+			<result name="customer">/customer_payment.jsp</result>
+			<result name="guest">/guest_payment.jsp</result>
+		</action>
+		<action name="addGbill" class="com.hoticket.action.GuestAddBillingAction">
+			<result name="success">/payment_review.jsp</result>
 		</action>
 	</package>
 	
@@ -103,6 +108,10 @@
 		</action>
 		<action name="addAcc" class="com.hoticket.action.AddAccountAction">
 			<result name="success">/billing_account.jsp</result>
+		</action>
+		
+		<action name="addAcc1" class="com.hoticket.action.AddAccountAction1">
+			<result name="success">/customer_payment.jsp</result>
 		</action>
 	</package>
 	<package name="favmovie" namespace="/" extends="struts-default">
@@ -124,6 +133,12 @@
 	<package name="homepage" namespace="/" extends="struts-default">
 		<action name="" class="com.hoticket.action.HomeAction">
 			<result name="success">/index.jsp</result>
+		</action>
+	</package>
+	<package name="giftcard" namespace="/" extends="struts-default">
+		<action name="giftcard" class="com.hoticket.action.GiftCardAction">
+			<result name="guest">/guest_payment.jsp</result>		
+			<result name="customer">/customer_payment.jsp</result>
 		</action>
 	</package>
 

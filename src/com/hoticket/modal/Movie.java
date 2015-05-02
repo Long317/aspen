@@ -47,6 +47,8 @@ public class Movie implements Serializable {
 	@OneToMany(mappedBy = "movie")
 	private Set<Showing> showings;
 	@OneToMany(mappedBy = "movie")
+	private Set<Cast> casts;
+	@OneToMany(mappedBy = "movie")
 	private Set<Rating> movie_ratings;
 	@ManyToMany(mappedBy = "favorite_movies")
 	private Set<Customer> customers;
@@ -145,6 +147,14 @@ public class Movie implements Serializable {
 
 	public void setMovie_ratings(Set<Rating> movie_ratings) {
 		this.movie_ratings = movie_ratings;
+	}
+
+	public Set<Cast> getCasts() {
+		return casts;
+	}
+
+	public void setCasts(Set<Cast> casts) {
+		this.casts = casts;
 	}
 
 }
