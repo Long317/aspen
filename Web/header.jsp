@@ -15,6 +15,9 @@
   function GoMovies(){
   	window.location.replace('<s:property value="#movieFilter"/>');
   }
+   function GoMoviesNews(){
+  	window.location.replace("movieNews.jsp");
+  }
   </script>
 <!--=== Header ===-->   
 	<iframe src="http://localhost:9999/MovieChain/adHandler?site=1" scrolling="no" width="100%" height="100" align="middle">
@@ -202,21 +205,9 @@
 
 						<!-- MOVIE NEWS -->
 						<li class="dropdown">
-							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-								MOVIE NEWS
+							<a href="movieNews.jsp" class="dropdown-toggle" data-toggle="dropdown"  onClick="GoMoviesNews();">
+								MOVIE NEWS 
 							</a>
-							<ul class="dropdown-menu">
-								<li><a href="blog_page.html">Blog Page</a></li>
-								<li><a href="blog_large.html">Blog Large</a></li>
-								<li><a href="blog_medium.html">Blog Medium</a></li>
-								<li><a href="blog_full_width.html">Blog Full Width</a></li>
-								<li><a href="blog_timeline.html">Blog Timeline</a></li>
-								<li><a href="blog_masonry_3col.html">Masonry Grid Blog</a></li>
-								<li><a href="blog_right_sidebar.html">Blog Right Sidebar</a></li>
-								<li><a href="blog_left_sidebar.html">Blog Left Sidebar</a></li>
-								<li><a href="blog_item_option1.html">Blog Item Option 1</a></li>
-								<li><a href="blog_item_option2.html">Blog Item Option 2</a></li>
-							</ul>
 						</li>
 						<!-- End MOVIE NEWS -->
 					</ul>

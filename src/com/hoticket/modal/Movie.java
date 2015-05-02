@@ -51,8 +51,6 @@ public class Movie implements Serializable {
 	@OneToMany(mappedBy = "movie")
 	private Set<Cast> casts;
 	@OneToMany(mappedBy = "movie")
-	private Set<Cast> casts;
-	@OneToMany(mappedBy = "movie")
 	private Set<Rating> movie_ratings;
 	@ManyToMany(mappedBy = "favorite_movies")
 	private Set<Customer> customers;

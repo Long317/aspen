@@ -1,6 +1,5 @@
 package com.hoticket.action;
 
-import static com.hoticket.util.Constants.*;
 import java.util.Map;
 
 import com.hoticket.dao.UserDAO;
