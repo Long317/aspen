@@ -26,9 +26,8 @@ public class GuestAddBillingAction extends ActionSupport {
 	@SuppressWarnings("unchecked")
 	public String execute(){
 		// get session object
-		@SuppressWarnings("rawtypes")
 		UserDAO userdao=new UserDAO();
-		
+		@SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
 		Guest_billing_account ba=new Guest_billing_account();
 		ba.setCard_holder(name);ba.setCard_number(card_number);ba.setCard_type(card_type);ba.setEmail(email);ba.setCvs(cvv);ba.setMonth(month);ba.setYear(year);

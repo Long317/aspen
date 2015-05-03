@@ -14,6 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
+	<meta http-equiv="refresh" content="2;url=buyGiftcard.jsp" />
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="favicon.ico">
@@ -52,41 +53,10 @@
 	 <%@ include file="header.jsp" %>
 		 <!--/container-->
 			<div class="container content">	
-		 		<div id = "ticketInfoHeader">
-		 			<div class="headline row">
-		 				<div class = "col-md-4"><h2>CHECKOUT</h2></div>
-		 				<div class = "col-md-6">
-		 				<a href="ticketInfo.jsp" class= "btn btn-default disabled">Tickets</a><div class="glyphicon glyphicon-arrow-right"></div>
-                        <a href="user_payment.jsp" class= "btn btn-default disabled">Payment</a><div class="glyphicon glyphicon-arrow-right"></div>
-		 				<div class= "btn btn-default">Confirmation</div>
-		 			    </div>
-		 			</div>
-		 			<div class="ticketBody row">
-                      <div class="row">Theatre Info:</div>
-                      <div class="row"><s:property value="#session.showing.theatre.name"/></div>
-                      <div class="row"><s:property value="#session.showing.theatre.address"/></div>
-                      <div class="row"><s:property value="#session.showing.theatre.city"/>,<s:property value="#session.showing.theatre.state"/>,<s:property value="#session.showing.theatre.zipcode"/></div>
-		 			  <br>
-		 			  <div class="row">Movie Info:</div>
-                      <div class="row"><s:property value="#session.showing.movie.name"/></div>
-                      <div class="row"><s:property value="#session.showing.date"/><s:property value="#session.showing.start_time"/></div>
-                      <br>
-                      <div class="row">Ticket Info:</div>
-                      <div class="row">Adult: <s:property value="#session.adult"/> * <s:property value="#session.ticket_price"/></div>
-                      <div class="row">Child: <s:property value="#session.child"/> * <s:property value="#session.ticket_price*0.8"/></div>
-                      <div class="row">Senior: <s:property value="#session.senior"/> * <s:property value="#session.ticket_price*0.8"/></div>
-                      <div class="row">Total price: <s:property value="#session.ticket_price * #session.adult+#session.ticket_price*0.8 * #session.adult+#session.ticket_price * #session.adult*0.8" /></div>
-                      <form action = "pconfirm">
-                      	<input type ="hidden" name="totalprice" value="<s:property value='#session.ticket_price * #session.adult+#session.ticket_price*0.8 * #session.adult+#session.ticket_price * #session.adult*0.8' />">
-                      	<button type="submit" onclick="return confirm('Are you sure you want to add the comment?');"
-                                                 class="btn btn-info">Purchase</button>
-                      </form>
-		 			</div>
-		 		</div>
+		      <h1>Purchase fail!!!</h1>
 		 	</div>	
 		<!-- End Content Part -->
 	</div><!--/wrapper-->
-	<!--end of sign up modal-->
 	<%@ include file="footer.jsp" %>
 
 
@@ -130,7 +100,12 @@
 	   stopOnHover: true
 	  });
 	});
-	       
+	           function isNumberKey(evt) {
+                                        var charCode = (evt.which) ? evt.which : event.keyCode;
+                                        if (charCode > 31 && (charCode < 48 || charCode > 57))
+                                            return false;
+                                        return true;
+                                    }
 </script>
 	<s:if test="#session.loginError== 1"> 
 		<script>

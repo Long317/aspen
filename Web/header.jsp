@@ -18,6 +18,9 @@
    function GoMoviesNews(){
   	window.location.replace("movieNews.jsp");
   }
+  function GoGiftcardBuying(){
+  	window.location.replace("buyGiftcard.jsp");
+  }
   </script>
 <!--=== Header ===-->   
 	<iframe src="http://localhost:9999/MovieChain/adHandler?site=1" scrolling="no" width="100%" height="100" align="middle">
@@ -78,98 +81,6 @@
 							<a href='<s:property value="#movieFilter"/>' onClick="GoMovies();" class="dropdown-toggle" data-toggle="dropdown">
 								Movies
 							</a>
-							<ul class="dropdown-menu">
-								<li>
-									<div class="mega-menu-content disable-icons">
-										<div class="container">
-											<div class="row equal-height">
-												<div class="col-md-4 equal-height-in">
-													<ul class="list-unstyled equal-height-list">
-														<li><h3>NOW PLAYING</h3></li>
-
-														<!-- NOW PLAYING -->
-														<li><a href="feature_typo_general.html">Fifty Shades of Grey</a></li>
-														<li><a href="feature_typo_headings.html"> Kingsman: The Secret Service</a></li>
-														<li><a href="feature_typo_dividers.html"> The SpongeBob Movie: Sponge Out of Water</a></li>
-														<li><a href="feature_typo_blockquote.html"> McFarland, USA</a></li>
-														<li><a href="feature_typo_boxshadows.html"> The DUFF</a></li>
-														<li><a href="feature_typo_testimonials.html"> American Sniper</a></li>
-														<li><a href="feature_typo_tagline_boxes.html">Hot Tub Time Machine 2</a></li>
-														<li><a href="feature_typo_grid.html">Jupiter Ascending (2015)</a></li>
-														<li><a href="feature_compo_messages.html">The Imitation Game</a></li>
-														<li><a href="feature_compo_labels.html">Paddington</a></li>
-														<li><a href="feature_compo_media.html">Still Alice</a></li>
-														<!-- NOW PLAYING -->
-													</ul>
-												</div>
-											
-												<div class="col-md-2 equal-height-in">
-													<ul class="list-unstyled equal-height-list">
-														<li><h3>RATING</h3></li>
-
-												   
-														<!-- RATING -->
-														<li><a href="feature_form_general.html"> <img id="logo-header" src="assets/img/heart.png"></a></li>
-														<li><a href="feature_form_general1.html"><img id="logo-header" src="assets/img/heart.png"><img id="logo-header" src="assets/img/heart.png"></a></li>
-														<li><a href="feature_form_advanced.html"><img id="logo-header" src="assets/img/heart.png"><img id="logo-header" src="assets/img/heart.png"><img id="logo-header" src="assets/img/heart.png"></a></li>
-														<li><a href="feature_form_layouts.html"><img id="logo-header" src="assets/img/heart.png"></a></li>
-														<li><a href="feature_form_layouts_advanced.html"><img id="logo-header" src="assets/img/heart.png"></a></li>
-														<li><a href="feature_form_states.html"><img id="logo-header" src="assets/img/heart.png"><img id="logo-header" src="assets/img/heart.png"><img id="logo-header" src="assets/img/heart.png"><img id="logo-header" src="assets/img/heart.png"></a></li>
-														<li><a href="feature_form_sliders.html"><img id="logo-header" src="assets/img/heart.png"></a></li>
-														<li><a href="feature_form_modals.html"><img id="logo-header" src="assets/img/heart.png"></a></li>
-														<li><a href="feature_carousels.html"><img id="logo-header" src="assets/img/EmptyHeart.png"></a></li>
-														<li><a href="feature_compo_charts.html"><img id="logo-header" src="assets/img/EmptyHeart.png"></a></li>
-														<li><a href="feature_maps_google.html"><img id="logo-header" src="assets/img/EmptyHeart.png"></a></li>
-													   
-														<!-- RATING -->
-													</ul>                                
-												</div>
-
-												<div class="col-md-4 equal-height-in">
-													<ul class="list-unstyled equal-height-list">
-														<li><h3>COMING SOON</h3></li>
-
-														<!-- COMING SOON -->
-														<li><a href="feature_form_general.html">Chappie</a></li>
-														<li><a href="feature_form_general1.html"> Unfinished Business</a></li>
-														<li><a href="feature_form_advanced.html"> Run All Night</a></li>
-														<li><a href="feature_form_layouts.html"> The Divergent Series: Insurgent</a></li>
-														<li><a href="feature_form_layouts_advanced.html"> The Gunman </a></li>
-														<li><a href="feature_form_states.html"> Do You Believe?</a></li>
-														<li><a href="feature_form_sliders.html">Home </a></li>
-														<li><a href="feature_form_modals.html"> Get Hard</a></li>                        <li><a href="feature_carousels.html">The Longest Ride</a></li>
-														<li><a href="feature_compo_charts.html"> Furious 7 </a></li>
-														<li><a href="feature_maps_google.html"> The Longest Ride</a></li>
-														<li><a href="feature_maps_vector.html">The Moon and the Sun</a></li>
-														<!-- COMING SOON -->
-													</ul>                                
-												</div>
-
-												<div class="col-md-2 equal-height-in">
-													<ul class="list-unstyled equal-height-list">
-														<li><h3>RATING</h3></li>
-
-														<!-- RATING -->
-														<li><a href="feature_form_general.html"> <img id="logo-header" src="assets/img/heart.png"></a></li>
-														<li><a href="feature_form_general1.html"><img id="logo-header" src="assets/img/heart.png"><img id="logo-header" src="assets/img/heart.png"></a></li>
-														<li><a href="feature_form_advanced.html"><img id="logo-header" src="assets/img/heart.png"><img id="logo-header" src="assets/img/heart.png"><img id="logo-header" src="assets/img/heart.png"></a></li>
-														<li><a href="feature_form_layouts.html"><img id="logo-header" src="assets/img/heart.png"></a></li>
-														<li><a href="feature_form_layouts_advanced.html"><img id="logo-header" src="assets/img/heart.png"></a></li>
-														<li><a href="feature_form_states.html"><img id="logo-header" src="assets/img/heart.png"><img id="logo-header" src="assets/img/heart.png"><img id="logo-header" src="assets/img/heart.png"><img id="logo-header" src="assets/img/heart.png"></a></li>
-														<li><a href="feature_form_sliders.html"><img id="logo-header" src="assets/img/heart.png"></a></li>
-														<li><a href="feature_form_modals.html"><img id="logo-header" src="assets/img/heart.png"></a></li>
-														<li><a href="feature_carousels.html"><img id="logo-header" src="assets/img/EmptyHeart.png"></a></li>
-														<li><a href="feature_compo_charts.html"><img id="logo-header" src="assets/img/EmptyHeart.png"></a></li>
-														<li><a href="feature_maps_google.html"><img id="logo-header" src="assets/img/EmptyHeart.png"></a></li>
-														<li><a href="feature_maps_vector.html"><img id="logo-header" src="assets/img/EmptyHeart.png"></a></li>
-														<!-- RATING -->
-													</ul>                                
-												</div>
-											</div>
-										</div>    
-									</div>    
-								</li>
-							</ul>
 						</li>
 						<!-- End Movies -->
 
@@ -211,6 +122,11 @@
 							</a>
 						</li>
 						<!-- End MOVIE NEWS -->
+						<li class="dropdown">
+							<a href="movieNews.jsp" class="dropdown-toggle" data-toggle="dropdown"  onClick="GoGiftcardBuying();">
+								BUY GIFTCARD
+							</a>
+						</li>
 					</ul>
 				</div><!--/navbar-collapse-->
 

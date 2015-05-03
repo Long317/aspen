@@ -35,7 +35,7 @@
                         <span class="sr-only">Toggle navigation</span>
                         <span class="fa fa-bars"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="">
                         <img id="logo-header" src="assets/img/logo3.png" alt="Logo">
                     </a>
                 </div>

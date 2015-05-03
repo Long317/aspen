@@ -11,16 +11,16 @@ public class Gift_card implements Serializable{
 	private static final long serialVersionUID = 1L;
 	 @Id
 	 @Column(name="card_number")
-	private int card_number;
+	private String card_number;
 	@Column(name="money_remained")
 	private double money_remained;
 	@Column(name="pin")
 	private int pin;
 
-	public int getCard_number() {
+	public String getCard_number() {
 		return card_number;
 	}
-	public void setCard_number(int card_number) {
+	public void setCard_number(String card_number) {
 		this.card_number = card_number;
 	}
 	public double getMoney_remained() {
