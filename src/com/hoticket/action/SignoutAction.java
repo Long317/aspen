@@ -16,9 +16,7 @@ public class SignoutAction extends ActionSupport  {
 	public String execute() {
 		@SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
-		session.put("login", null);
-		session.put("loginError", null);
-		session.put("registerError", null);
+		session.clear();
 		return SUCCESS;
 	}
 	

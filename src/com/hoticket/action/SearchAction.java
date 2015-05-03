@@ -76,15 +76,15 @@ public class SearchAction extends ActionSupport {
 		}//check for cities
 		if (!(matchedCities = SearchService.matchCities(searchInput,theatres)).isEmpty()){
 			// check if only one city match
-						if (matchedCities.size() == 1) {
-							// get result theatres
-							matchedTheatres =SearchService.searchTheaterByCity(matchedCities.get(0),theatres);
-							session.put(SEARCH_GENERAL_THEATRES, matchedTheatres);
-							return GENERAL;
-						} else {
-							// If multiple cities matched return to general search result page
-							session.put(SEARCH_GENERAL, matchedCities);
-						}
+				if (matchedCities.size() == 1) {
+					// get result theatres
+					matchedTheatres =SearchService.searchTheaterByCity(matchedCities.get(0),theatres);
+					session.put(SEARCH_GENERAL_THEATRES, matchedTheatres);
+					return GENERAL;
+				} else {
+					// If multiple cities matched return to general search result page
+					session.put(SEARCH_GENERAL, matchedCities);
+				}
 		}
 		//check for movies
 		 if (!(matchedMovies = SearchService.matchMovies(searchInput,movies)).isEmpty()){

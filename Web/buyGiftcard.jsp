@@ -85,7 +85,7 @@
                          <tr class="success">
                             <td class="success">card number</td>
                             <td class="success">
-                                <input  onkeypress="return isNumberKey(event);" name="card_number" type="text"  class ="input-group">
+                                <input  onkeypress="return isNumberKey(event);" name="card_number" type="text" maxlength="16" size="16"  class ="input-group">
                             </td>
                         </tr>
                         <tr class="active">

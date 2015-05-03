@@ -153,15 +153,9 @@
 					 	    <c:set var="start_time_full" value="${showing.start_time}"/>
 					 	    <c:set var="start_time" value="${fn:substring(start_time_full, 0, 5)}" />
 					 	    	<!--add td every 4 tickets-->
-					 	    	 <c:if test="${counter % 4 ==0}">
-					 	    	 <td>
-					 	    	 </c:if> 
                   	 			<button class="btn btn-default"><a href="ticket?showing.id=<c:out value='${showing.id}'/>">
                   	 			<c:out value="${start_time}"/></a></button>
                   	 			<!--add td every 4 tickets-->
-					 	    	 <c:if test="${counter % 4 ==3}">
-					 	    	 </td>
-					 	    	 </c:if>
 					 	    	 <c:set var="counter" value="${counter+1}" />
                   	 		</c:if>
                     	    </c:forEach>

@@ -94,6 +94,9 @@
 		<action name="addGbill" class="com.hoticket.action.GuestAddBillingAction">
 			<result name="success">/payment_review.jsp</result>
 		</action>
+		<action name="pconfirm" class="com.hoticket.action.PurchaseAction"  method="purchaseConfirm">
+			<result name="success">/thank_you.jsp</result>
+		</action>
 	</package>
 	
 	<package name="changesetting" namespace="/" extends="struts-default">

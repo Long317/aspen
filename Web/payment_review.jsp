@@ -72,8 +72,15 @@
                       <div class="row"><s:property value="#session.showing.date"/><s:property value="#session.showing.start_time"/></div>
                       <br>
                       <div class="row">Ticket Info:</div>
-                      <div class="row"><s:property value="#session.adult"/></div>
-                     
+                      <div class="row">Adult: <s:property value="#session.adult"/> * <s:property value="#session.ticket_price"/></div>
+                      <div class="row">Child: <s:property value="#session.child"/> * <s:property value="#session.ticket_price*0.8"/></div>
+                      <div class="row">Senior: <s:property value="#session.senior"/> * <s:property value="#session.ticket_price*0.8"/></div>
+                      <div class="row">Total price: <s:property value="#session.ticket_price * #session.adult+#session.ticket_price*0.8 * #session.adult+#session.ticket_price * #session.adult*0.8" /></div>
+                      <form action = "pconfirm">
+                      	<input type ="hidden" name="totalprice" value="<s:property value='#session.ticket_price * #session.adult+#session.ticket_price*0.8 * #session.adult+#session.ticket_price * #session.adult*0.8' />">
+                      	<button type="submit" onclick="return confirm('Are you sure you want to add the comment?');"
+                                                 class="btn btn-info">Purchase</button>
+                      </form>
 		 			</div>
 		 		</div>
 		 	</div>	
