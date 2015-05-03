@@ -9,6 +9,9 @@ public class Constants {
 	public final static String PASSWORD="hoticket308:)";
 	public final static String SUBJECT_REGISTER="You have register to hoticket!";
 	public final static String BODY_REGISTER="You have register to hoticket!Congratulation!!!";
+	public final static String SUBJECT_RESETPW="You have successfully reset your password";
+	public final static String BODY_RESETPW="Your new password is:";
+	 
 	
 	/**
 	 * URL constant

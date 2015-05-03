@@ -27,6 +27,9 @@
 	href="assets/plugins/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
 
+<!--google plus share-->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
 <!-- CSS Implementing Plugins -->
 <link rel="stylesheet" href="assets/plugins/line-icons/line-icons.css">
 <link rel="stylesheet"
@@ -82,6 +85,10 @@
        	height:320px;
        	 width:200px;
        }
+       #theatre_header{
+      position:relative;
+		left:30px;
+       }
   </style>
 
 </head>
@@ -108,7 +115,7 @@
 				</s:if>
 				<s:elseif test="#isFAV=='no'">
      		    <form action="addfavmov">
-			    <button type="submit" class="btn-u btn-u-default float-shadow">Add it to Your Favorite Movie</button>
+			    <button type="submit" class="btn-u btn-u-default float-shadow ">Add it to Your Favorite Movie</button>
 			    </form>
 				</s:elseif>
 				<s:elseif test="#isFAV=='yes'">
@@ -116,6 +123,10 @@
 			    <button type="submit" class="btn-u btn-u-default float-shadow">Delete it from Your Favorite Movie</button>
 			    </form>
 				</s:elseif>
+								<!-- Place this tag where you want the +1 button to render. -->
+				<a href="https://plus.google.com/share?url='<s:property value='#session.SEARCH_MOVIE.img_url' />'" onclick="javascript:window.open(this.href,
+				  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><img
+				  src="https://www.gstatic.com/images/icons/gplus-32.png" alt="Share on Google+"/></a>
 			</div>
 
 			<div class="row">
@@ -127,11 +138,13 @@
 					<!--If user has default theatre-->
 					<s:if test="#session.default_theatre!=null">
 					<br/>
+					<h4 id="theatre_header"><a href="theatre?theatre.id=<s:property value='#session.default_theatre.id' />">
+						<s:property value="#session.default_theatre.name" /></a></h4>
 					<c:set var="movie_id" value="${sessionScope.SEARCH_MOVIE.id}" />
 					<c:set var="counter" value="${0}" />
 						<table class="table table-bordered show_data" >
 						 <tr>
-						 	<c:forEach items="${sessionScope.default_theatre.showing}" var="showing" varStatus="status">
+						 	<c:forEach var="showing" items="${sessionScope.default_theatre.showing}"  varStatus="status" begin="0">
 					 	    <c:if test="${showing.movie.id==movie_id}"> 
 					 	    <c:set var="start_time_full" value="${showing.start_time}"/>
 					 	    <c:set var="start_time" value="${fn:substring(start_time_full, 0, 5)}" />
@@ -252,58 +265,8 @@
 				<div class="headline">
 					<h2>Movie Review</h2>
 				</div>
-				<div class="row">
-					<!--CRITIC RATINGS  -->
-					<div class="col-xs-6">
-						<div class="panel panel-default">
-							<div class="panel-heading overflow-h">
-								<h2 class="panel-title heading-lg pull-left">CRITIC RATINGS</h2>
-								<a href="#"
-									class="btn-u btn-brd btn-brd-hover btn-u-dark btn-u-xs pull-right">View
-									All</a>
-							</div>
-							<div id="scrollbar" class="panel-body contentHolder">
-								<!--user profiles  -->
-								<div class="profile-blog blog-border">
-									<img class="rounded-x"
-										src="assets/img/testimonials/img1.jpg" alt="">
-									<div class="name-location">
-										<strong>Mikel Andrews</strong> <span><i
-											class="fa fa-map-marker"></i><a href="#">California,</a> <a
-											href="#">US</a></span>
-									</div>
-									<div class="clearfix margin-bottom-20"></div>
-									<p>It is a good movie</p>
-								</div>
-									<div class="profile-blog blog-border">
-									<img class="rounded-x profile-img"
-										src="assets/img/testimonials/img1.jpg" alt="">
-									<div class="name-location">
-										<strong>Mikel Andrews</strong> <span><i
-											class="fa fa-map-marker"></i><a href="#">California,</a> <a
-											href="#">US</a></span>
-									</div>
-									<div class="clearfix margin-bottom-20"></div>
-									<p>It is a good movie</p>
-								</div>
-									<div class="profile-blog blog-border">
-									<img class="rounded-x profile-img"
-										src="assets/img/testimonials/img1.jpg" alt="">
-									<div class="name-location">
-										<strong>Mikel Andrews</strong> <span><i
-											class="fa fa-map-marker"></i><a href="#">California,</a> <a
-											href="#">US</a></span>
-									</div>
-									<div class="clearfix margin-bottom-20"></div>
-									<p>It is a good movie</p>
-								</div>
-							<!-- end of user profiles -->
-							</div>
-						</div>
-					</div>
-					<!-- end of Critics review -->
 					<!-- Fan reviews -->
-					<div class="col-xs-6">
+					<div class="row col-xs-12">
 						<div class="panel panel-default">
 							<div class="panel-heading overflow-h">
 								<h2 class="panel-title heading-lg pull-left">FAN REVIEWS</h2>
@@ -314,46 +277,57 @@
 							<div id="scrollbar" class="panel-body contentHolder">
 								<!--user profiles  -->
 								<div class="profile-blog blog-border">
-									<img class="rounded-x profile-img"
-										src="assets/img/testimonials/img1.jpg" alt="">
-									<div class="name-location">
-										<strong>Mikel Andrews</strong> <span><i
-											class="fa fa-map-marker"></i><a href="#">California,</a> <a
-											href="#">US</a></span>
+									<div class="col-xs-3">
+									<div></div>
+									<h3>Rate By </h3>
 									</div>
-									<div class="clearfix margin-bottom-20"></div>
+									<div class="col-xs-9">
 									<p>It is a good movie</p>
-								</div>
-									<div class="profile-blog blog-border">
-									<img class="rounded-x profile-img"
-										src="assets/img/testimonials/img1.jpg" alt="">
-									<div class="name-location">
-										<strong>Mikel Andrews</strong> <span><i
-											class="fa fa-map-marker"></i><a href="#">California,</a> <a
-											href="#">US</a></span>
 									</div>
-									<div class="clearfix margin-bottom-20"></div>
-									<p>It is a good movie</p>
-								</div>
-									<div class="profile-blog blog-border">
-									<img class="rounded-x profile-img"
-										src="assets/img/testimonials/img1.jpg" alt="">
-									<div class="name-location">
-										<strong>Mikel Andrews</strong> <span><i
-											class="fa fa-map-marker"></i><a href="#">California,</a> <a
-											href="#">US</a></span>
-									</div>
-									<div class="clearfix margin-bottom-20"></div>
-									<p>It is a good movie</p>
 								</div>
 							<!-- end of user profiles -->
 							</div>
 						</div>
 					</div>
 					<!-- end of fan reviews -->
-				</div>
 			</div>
 			<!-- END OF MOVIE REVIEWS -->
+			<div class="row col-xs-8">
+				<div class="headline">
+					<h2>Add movie review</h2>
+				</div>
+			<form role="form">
+				   <table class="table table-striped" >
+				   	<tr class="success">
+				   		<input type="hidden" name="movie_id" value="<s:property value='#session.SEARCH_MOVIE.id' />">
+				   		<td>Rated Movie: </td><td><s:property value="#session.SEARCH_MOVIE.name" /></td>
+				   	</tr>
+				   	 <tr>
+				   		<td>user_name:</td><td> <s:property value="#session.login.user_name" /></td>
+				   	</tr>
+                    <tr class="success">
+                        <td class="success">rate: </td>
+                        <td class="success">
+                        	<input type="radio" name="rate" value="1"> 1
+							<input type="radio" name="rate" value="2"> 2
+							<input type="radio" name="rate" value="3"> 3
+							<input type="radio" name="rate" value="4"> 4
+							<input type="radio" name="rate" value="5"> 5
+                        </td>
+                    </tr>
+                    <tr><td>comments:</td>
+                    	<td>
+                    	<textarea rows="4" cols="20" placeholder="add your comment here." maxlength="490" name ="comment"></textarea></td>
+                    </tr>
+                    <tr>
+                    	<td> <button type="submit" onclick="return confirm('Are you sure you want to add the comment?');"
+                                                name='submit'  class="btn btn-info">Add</button>
+                                            </td>
+                    	<td></td>
+                    </tr>
+                </table>
+			</form>
+		  </div>
 		</div>
 		<!--/container-->
 		<!-- End Content Part -->
@@ -408,16 +382,13 @@
 			ParallaxSlider.initParallaxSlider();
 		});
 		$(document).ready(function() {
-
 			$("#owl-demo").owlCarousel({
 				items : 6,
 				lazyLoad : true,
 				autoPlay : 2000,
 				stopOnHover : true
 			});
-
 		});
-
 		//scroll bar starter
 		 jQuery(document).ready(function ($) {
 		        "use strict";

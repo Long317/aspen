@@ -27,6 +27,13 @@ public class MovieFilterAction extends ActionSupport {
 	public String execute() {
 		//get all movies
 		movies=MovieDAO.getInstance().getMovies();
+		for (int i=0;i<movies.size();i++){
+			//get rid of duplicate movies
+			if (movies.get(i).getName().contains("3D")||movies.get(i).getName().contains("IMAX")){
+				movies.remove(i);
+				i--;
+			}
+		}
 		@SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
 		if (StringUtils.isEmpty(Genre)||Genre.toLowerCase().equals("all")){

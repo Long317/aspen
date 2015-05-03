@@ -88,6 +88,7 @@ public class MovieDAO {
 	// get movie by movieInfoURL
 	// parameter: string
 	// output: a movie
+	@SuppressWarnings("unchecked")
 	public List<Movie> getMovieByInfoURL(String url) {
 		List<Movie> movies = new ArrayList<Movie>();
 		try {

@@ -16,7 +16,10 @@
 			<result name="error">/index.jsp</result>
 			<result name="input">/index.jsp</result>
 		</action>
-
+		<action name="resetpass" class="com.hoticket.action.ResetPasswordAction">
+			<result name="success">/index.jsp</result>
+			<result name="input">/forgot_password.jsp</result>
+		</action>
 		<action name="signout" class="com.hoticket.action.SignoutAction">
 			<result name="success">/index.jsp</result>
 		</action>
