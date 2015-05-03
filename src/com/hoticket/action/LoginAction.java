@@ -1,10 +1,17 @@
 package com.hoticket.action;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.xwork.StringUtils;
 
 
+
+
+
+import com.hoticket.dao.MovieDAO;
+import com.hoticket.modal.Movie;
 import com.hoticket.modal.User;
 import com.hoticket.service.LoginService;
 import com.hoticket.util.EncryptUtils;
@@ -42,6 +49,21 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 		}
 		session.put("loginError", null);
 		session.put("login", user);
+		//put movie carousel 
+		List<Movie> movies = MovieDAO.getInstance().getMovies();
+		//if get Movie from db if not exits in context
+        	movies = (ArrayList<Movie>) MovieDAO.getInstance().getMovies();
+        //get rid of 3D IMAX Movies
+        for (int i = 0 ; i<movies.size();i++){
+        	if (movies.get(i).getName().contains("3D")||movies.get(i).getName().contains("IMAX")){
+        		movies.remove(i);
+        		i--;
+        	}
+        }
+        //check if we have movie data
+        if (movies.size()>=12){
+        session.put("movieCarousel", movies.subList(0, 12));
+        }
 		System.out.println(user.getPassword());
 		switch(user.getRole()){
 		case 0:return "customer";

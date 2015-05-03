@@ -158,6 +158,12 @@
 			<result name="success">/addCommentSuccessfully.jsp</result>
 			  <param name="url">${url}</param>
 		</action>
+		<action name="deleteComment" class="com.hoticket.action.CommentAction"  method="deleteComment">
+			<result name="success">/deleteCommentSuccessfully.jsp</result>
+			  <param name="url">${url}</param>
+			 <result name="error">/deleteCommentFail.jsp</result>
+			  <param name="url">${url}</param>
+		</action>
 	</package>
 
 </struts>

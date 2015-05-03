@@ -89,6 +89,10 @@
       position:relative;
 		left:30px;
        }
+       .btn-delete{
+       	position:relative;
+       	bottom: 12px;
+       }
   </style>
 
 </head>
@@ -282,10 +286,19 @@
 										<div>Rate: <c:out value="${rating.rating_score}"/></div>
 									</div>
 								<div  class="col-lg-2">
-									<div>by <s:property value="#session.login.user_name" /> </div>
+									<div>by <c:out value="${rating.customer.user_name}"/> </div>
 								</div>
-									<div class="col-lg-8">
+									<div class="col-lg-7">
 									<p><c:out value="${rating.comment}"/></p>
+									</div>
+									<div class="col-lg-1">
+										<s:if test="#session.login.role>0"> 
+											<form action = "deleteComment">
+											 <input type="hidden" name="r.id" value="<c:out value='${rating.id}'/>">
+											<button type="submit" onclick="return confirm('Are you sure you want to add the comment?');"
+                                                name='submit'  class="btn btn-info btn-delete">Delete</button>
+                                              </form>
+										</s:if>   
 									</div>
 								</div>
 							<!-- end of user profiles -->
