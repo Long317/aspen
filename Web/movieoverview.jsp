@@ -275,49 +275,56 @@
 									All</a>
 							</div>
 							<div id="scrollbar" class="panel-body contentHolder">
+							 <c:forEach items="${sessionScope.SEARCH_MOVIE.movie_ratings}" var="rating">
 								<!--user profiles  -->
 								<div class="profile-blog blog-border">
-									<div class="col-xs-3">
-									<div></div>
-									<h3>Rate By </h3>
+									<div class="col-lg-2">
+										<div>Rate: <c:out value="${rating.rating_score}"/></div>
 									</div>
-									<div class="col-xs-9">
-									<p>It is a good movie</p>
+								<div  class="col-lg-2">
+									<div>by <s:property value="#session.login.user_name" /> </div>
+								</div>
+									<div class="col-lg-8">
+									<p><c:out value="${rating.comment}"/></p>
 									</div>
 								</div>
 							<!-- end of user profiles -->
+							</c:forEach>
 							</div>
 						</div>
 					</div>
 					<!-- end of fan reviews -->
 			</div>
 			<!-- END OF MOVIE REVIEWS -->
+			<s:if test="#session.login!= null">   
 			<div class="row col-xs-8">
 				<div class="headline">
 					<h2>Add movie review</h2>
 				</div>
-			<form role="form">
+			<form role="form" action="addComment">
 				   <table class="table table-striped" >
 				   	<tr class="success">
-				   		<input type="hidden" name="movie_id" value="<s:property value='#session.SEARCH_MOVIE.id' />">
+				   		<input type="hidden" name="r.movie.id" value="<s:property value='#session.SEARCH_MOVIE.id' />">
 				   		<td>Rated Movie: </td><td><s:property value="#session.SEARCH_MOVIE.name" /></td>
 				   	</tr>
 				   	 <tr>
-				   		<td>user_name:</td><td> <s:property value="#session.login.user_name" /></td>
+				   		<td>user_name:</td><td> 
+				   		<input type="hidden" name="r.customer.id" value="<s:property value='#session.login.id' />">
+				   		<s:property value="#session.login.user_name" /></td>
 				   	</tr>
                     <tr class="success">
                         <td class="success">rate: </td>
                         <td class="success">
-                        	<input type="radio" name="rate" value="1"> 1
-							<input type="radio" name="rate" value="2"> 2
-							<input type="radio" name="rate" value="3"> 3
-							<input type="radio" name="rate" value="4"> 4
-							<input type="radio" name="rate" value="5"> 5
+                        	<input type="radio" name="r.rating_score" value="1"> 1
+							<input type="radio" name="r.rating_score" value="2"> 2
+							<input type="radio" name="r.rating_score" value="3"> 3
+							<input type="radio" name="r.rating_score" value="4"> 4
+							<input type="radio" name="r.rating_score" value="5"> 5
                         </td>
                     </tr>
                     <tr><td>comments:</td>
                     	<td>
-                    	<textarea rows="4" cols="20" placeholder="add your comment here." maxlength="490" name ="comment"></textarea></td>
+                    	<textarea rows="4" cols="20" placeholder="add your comment here." maxlength="490" name ="r.comment"></textarea></td>
                     </tr>
                     <tr>
                     	<td> <button type="submit" onclick="return confirm('Are you sure you want to add the comment?');"
@@ -328,6 +335,7 @@
                 </table>
 			</form>
 		  </div>
+		</s:if>   
 		</div>
 		<!--/container-->
 		<!-- End Content Part -->
