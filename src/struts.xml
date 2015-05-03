@@ -139,7 +139,7 @@
 		<action name="giftcard" class="com.hoticket.action.GiftCardAction">
 			<result name="guest">/guest_payment.jsp</result>		
 			<result name="customer">/customer_payment.jsp</result>
-   
+       </action>
 	</package>
 	<package name="autocomplete" namespace="/" extends="struts-default">
 		<action name="autocomplete" class="com.hoticket.action.AutocompAction">
