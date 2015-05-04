@@ -12,7 +12,7 @@ public class GiftCardAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	int card_number;
+	String card_number;
 	int pin;
 	@SuppressWarnings("unchecked")
 	public String execute() {
@@ -36,13 +36,13 @@ public class GiftCardAction extends ActionSupport {
 
 
 
-	public int getCard_number() {
+	public String getCard_number() {
 		return card_number;
 	}
 
 
 
-	public void setCard_number(int card_number) {
+	public void setCard_number(String card_number) {
 		this.card_number = card_number;
 	}
 

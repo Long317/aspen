@@ -229,7 +229,7 @@ public void delefavmov(Movie m, Customer c) {
 	
 }
 
-public Gift_card findGiftCard(int card_number) {
+public Gift_card findGiftCard(String card_number) {
 	session = ConnectionUtil.getSessionFactory().openSession();
 	Transaction tx = session.beginTransaction();
 	try {
