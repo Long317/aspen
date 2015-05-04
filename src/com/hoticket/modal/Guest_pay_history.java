@@ -23,6 +23,14 @@ public class Guest_pay_history {
 	private int ticket_number;
 	@Column(name = "date")
 	private Timestamp date;
+	public String getConfirmation_number() {
+		return confirmation_number;
+	}
+	public void setConfirmation_number(String confirmation_number) {
+		this.confirmation_number = confirmation_number;
+	}
+	@Column(name="confirmation_number")
+	private String confirmation_number;
 	@ManyToOne
 	@JoinColumn(name = "guest_billing_account_id")
 	private Guest_billing_account guest_billing_account;

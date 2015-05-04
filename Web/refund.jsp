@@ -52,11 +52,11 @@
 	 <%@ include file="header.jsp" %>
 		 <!--/container-->
 			<div class="container content">	
-		 		<div class="headline"><h2>Forgot Password</h2></div> 
-		 		<s:fielderror fieldName="emailnotexist"/>
+		 		<div class="headline"><h2>Refund</h2></div> 
+		 		<s:fielderror fieldName="historynotexist"/>
 			 		<div class="row">
-			 			<form action="resetpass" method="post">
-			 			  Email:<input type="text" name="email"></input>
+			 			<form action="refund" method="post">
+			 			  Confirmation Number:<input type="text" name="confirmation_number"></input>
 			 			  <input type="submit" value="Submit">
 			 			</form>
 		            </div>

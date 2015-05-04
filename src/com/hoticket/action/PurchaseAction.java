@@ -30,6 +30,7 @@ import com.hoticket.modal.Guest_pay_history;
 import com.hoticket.modal.Pay_history;
 import com.hoticket.modal.Showing;
 import com.hoticket.service.emailService;
+import com.hoticket.util.RandomString;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -50,6 +51,7 @@ public class PurchaseAction extends ActionSupport implements
 	private int bacc;
 	private int badd;
 	private String totalprice;
+	RandomString rs= new RandomString(16);
 
 	@Override
 	public Showing getModel() {
@@ -132,10 +134,11 @@ public class PurchaseAction extends ActionSupport implements
 		if (session.get("login") != null) {
 			Billing_account bacc = (Billing_account) session.get("bacc");
 			Billing_address badd = (Billing_address) session.get("badd");
-
 			try {
 				Gift_card gc = (Gift_card) (session.get("giftcard"));
-				if (Double.parseDouble(totalprice) - gc.getMoney_remained() >= 0) {
+				if (gc != null
+						&& Double.parseDouble(totalprice)
+								- gc.getMoney_remained() >= 0) {
 					// calculate giftcard
 					totalprice = (Double.parseDouble(totalprice) - gc
 							.getMoney_remained()) + "";
@@ -182,9 +185,10 @@ public class PurchaseAction extends ActionSupport implements
 						ph.setTicket_number((int) session.get("adult")
 								+ (int) session.get("senior")
 								+ (int) session.get("child"));
+						String conNumber=rs.nextString();
+						ph.setConfirmation_number(conNumber);
 						int receive = Pay_historyDAO.getInstance().addHistory(
 								ph);
-						System.out.println(receive);
 						// send email for receive
 						emailService.send(
 								bacc.getCustomer().getEmail(),
@@ -200,17 +204,84 @@ public class PurchaseAction extends ActionSupport implements
 										+ " Using credit card number is "
 										+ bacc.getCard_number()
 										+ " Your confirmation number is :"
-										+ receive);
+										+ conNumber);
 						return SUCCESS;
 					} else {
 						return ERROR;
 					}
-				} else {
+				} else if (gc != null
+						&& Double.parseDouble(totalprice)
+								- gc.getMoney_remained() < 0) {
 					// calculate giftcard
 					totalprice = gc.getMoney_remained()
 							- (Double.parseDouble(totalprice)) + "";
 					gc.setMoney_remained(Double.parseDouble(totalprice));
 					GiftcardDAO.getInstance().updateGiftCard(gc);
+				} else {
+					// calcualte credit card
+					URL url = new URL(CreditCardServer_URL + "?name="
+							+ URLEncoder.encode(bacc.getCard_holder(), "UTF-8")
+							+ "&month=" + bacc.getMonth() + "&year="
+							+ bacc.getYear() + "&card_number="
+							+ bacc.getCard_number() + "&cvv=" + bacc.getCvs()
+							+ "&card_type=" + bacc.getCard_type() + "&address="
+							+ URLEncoder.encode(badd.getAddress(), "UTF-8")
+							+ "&city="
+							+ URLEncoder.encode(badd.getCity(), "UTF-8")
+							+ "&state="
+							+ URLEncoder.encode(badd.getState(), "UTF-8")
+							+ "&zipcode=" + badd.getZipcode() + "&first_name="
+							+ URLEncoder.encode(badd.getFirst_name(), "UTF-8")
+							+ "&last_name="
+							+ URLEncoder.encode(badd.getLast_name(), "UTF-8")
+							+ "&totalprice="
+							+ URLEncoder.encode(totalprice, "UTF-8"));
+					// get Reader
+					BufferedReader in = new BufferedReader(
+							new InputStreamReader(url.openConnection()
+									.getInputStream()));
+					String inputLine;
+					// Store json content in result
+					String result = "";
+					while ((inputLine = in.readLine()) != null) {
+						result += inputLine;
+					}
+					if (result.trim().equals("yes")) {
+						// update guest paying history
+						Pay_history ph = new Pay_history();
+						ph.setDate(new Timestamp(Calendar.getInstance()
+								.getTimeInMillis()));
+						ph.setBilling_account(bacc);
+						ph.setBilling_address(badd);
+						ph.setCustomer((Customer) session.get("login"));
+						ph.setPrice(Double.parseDouble(totalprice));
+						ph.setShowing((Showing) session.get(SELECTED_SHOWING));
+						ph.setTicket_number((int) session.get("adult")
+								+ (int) session.get("senior")
+								+ (int) session.get("child"));
+						String conNumber = rs.nextString();
+						
+						ph.setConfirmation_number(conNumber);
+						int receive = Pay_historyDAO.getInstance().addHistory(
+								ph);
+						// send email for receive
+						emailService.send(
+								bacc.getCustomer().getEmail(),
+								"Here is your ticket receiv..",
+								"You have " + "purchase "
+										+ (int) session.get("adult")
+										+ " ticket, "
+										+ (int) session.get("child")
+										+ " ticket  and "
+										+ (int) session.get("senior")
+										+ " ticket. Total price is "
+										+ totalprice
+										+ " Using credit card number is "
+										+ bacc.getCard_number()
+										+ " Your confirmation number is :"
+										+ conNumber);
+						return SUCCESS;
+					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -220,9 +291,13 @@ public class PurchaseAction extends ActionSupport implements
 					.get("bacc");
 			Guest_billing_address badd = (Guest_billing_address) session
 					.get("badd");
+
+			System.out.println(totalprice);
 			try {
 				Gift_card gc = (Gift_card) (session.get("giftcard"));
-				if (Double.parseDouble(totalprice) - gc.getMoney_remained() >= 0) {
+				if (gc != null
+						&& Double.parseDouble(totalprice)
+								- gc.getMoney_remained() >= 0) {
 					// calculate giftcard
 					totalprice = (Double.parseDouble(totalprice) - gc
 							.getMoney_remained()) + "";
@@ -267,6 +342,9 @@ public class PurchaseAction extends ActionSupport implements
 						gph.setTicket_number((int) session.get("adult")
 								+ (int) session.get("senior")
 								+ (int) session.get("child"));
+						String conNumber=rs.nextString();
+						gph.setConfirmation_number(conNumber);
+						
 						int receive = Guest_pay_historyDAO.getInstance()
 								.addHistory(gph);
 						System.out.println(receive);
@@ -291,12 +369,77 @@ public class PurchaseAction extends ActionSupport implements
 
 						return ERROR;
 					}
-				}else{
+				} else if (gc != null
+						&& Double.parseDouble(totalprice)
+								- gc.getMoney_remained() < 0) {
 					// calculate giftcard
 					totalprice = gc.getMoney_remained()
 							- (Double.parseDouble(totalprice)) + "";
 					gc.setMoney_remained(Double.parseDouble(totalprice));
 					GiftcardDAO.getInstance().updateGiftCard(gc);
+				} else {
+					// calculate credit card
+					URL url = new URL(CreditCardServer_URL + "?name="
+							+ URLEncoder.encode(bacc.getCard_holder(), "UTF-8")
+							+ "&month=" + bacc.getMonth() + "&year="
+							+ bacc.getYear() + "&card_number="
+							+ bacc.getCard_number() + "&cvv=" + bacc.getCvs()
+							+ "&card_type=" + bacc.getCard_type() + "&address="
+							+ URLEncoder.encode(badd.getAddress(), "UTF-8")
+							+ "&city="
+							+ URLEncoder.encode(badd.getCity(), "UTF-8")
+							+ "&state="
+							+ URLEncoder.encode(badd.getState(), "UTF-8")
+							+ "&zipcode=" + badd.getZipcode() + "&first_name="
+							+ URLEncoder.encode(badd.getFirst_name(), "UTF-8")
+							+ "&last_name="
+							+ URLEncoder.encode(badd.getLast_name(), "UTF-8")
+							+ "&totalprice="
+							+ URLEncoder.encode(totalprice, "UTF-8"));
+					// get Reader
+					BufferedReader in = new BufferedReader(
+							new InputStreamReader(url.openConnection()
+									.getInputStream()));
+					String inputLine;
+					// Store json content in result
+					String result = "";
+					while ((inputLine = in.readLine()) != null) {
+						result += inputLine;
+					}
+					if (result.trim().equals("yes")) {
+						// update guest paying history
+						Guest_pay_history gph = new Guest_pay_history();
+						gph.setDate(new Timestamp(Calendar.getInstance()
+								.getTimeInMillis()));
+						gph.setGuest_billing_account(bacc);
+						gph.setGuest_billing_address(badd);
+						gph.setShowing((Showing) session.get(SELECTED_SHOWING));
+						gph.setTicket_number((int) session.get("adult")
+								+ (int) session.get("senior")
+								+ (int) session.get("child"));
+						String conNumber=rs.nextString();
+						gph.setConfirmation_number(conNumber);
+						int receive = Guest_pay_historyDAO.getInstance()
+								.addHistory(gph);
+						System.out.println(receive);
+						// send email for receive
+						emailService.send(
+								bacc.getEmail(),
+								"Here is your ticket receiv..",
+								"You have " + "purchase "
+										+ (int) session.get("adult")
+										+ "adult ticket, "
+										+ (int) session.get("child")
+										+ "child ticket  and "
+										+ (int) session.get("senior")
+										+ "senior ticket. Total price is "
+										+ totalprice
+										+ " Using credit card number is "
+										+ bacc.getCard_number()
+										+ " Your confirmation number is :"
+										+ receive);
+						return SUCCESS;
+					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

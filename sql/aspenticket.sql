@@ -114,6 +114,7 @@ CREATE TABLE `hoticket`.`pay_history` (
   `showing_id` INT NOT NULL,
   `billing_account_id` INT NOT NULL,
   `billing_address_id` INT NOT NULL,
+   `confirmation_number` VARCHAR(16) NOT NULL,
   `price` DOUBLE NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`customer_id`)
@@ -131,7 +132,8 @@ CREATE TABLE `hoticket`.`pay_history` (
   FOREIGN KEY (`billing_address_id`)
     REFERENCES `hoticket`.`billing_address` (`id`)
     ON DELETE CASCADE
-    ON UPDATE CASCADE);
+    ON UPDATE CASCADE,
+    UNIQUE INDEX `confirmation_number_UNIQUE` (`confirmation_number` ASC));
     
     
   CREATE TABLE `hoticket`.`guest_billing_account` (
@@ -164,6 +166,7 @@ CREATE TABLE `hoticket`.`guest_pay_history` (
   `showing_id` INT NOT NULL,
   `guest_billing_account_id` INT NOT NULL,
   `guest_billing_address_id` INT NOT NULL,
+  `confirmation_number` VARCHAR(16) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`showing_id`)
     REFERENCES `hoticket`.`showing` (`id`)
@@ -176,7 +179,9 @@ CREATE TABLE `hoticket`.`guest_pay_history` (
   FOREIGN KEY (`guest_billing_address_id`)
     REFERENCES `hoticket`.`guest_billing_address` (`id`)
     ON DELETE CASCADE
-    ON UPDATE CASCADE);  
+    ON UPDATE CASCADE,
+    UNIQUE INDEX `confirmation_number_UNIQUE` (`confirmation_number` ASC)
+    );  
 
 
 

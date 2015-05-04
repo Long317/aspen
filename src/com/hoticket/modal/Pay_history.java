@@ -34,6 +34,8 @@ public class Pay_history implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="showing_id")
 	private Showing showing;
+	@Column(name="confirmation_number")
+	private String confirmation_number;
 	public int getId() {
 		return id;
 	}
@@ -81,6 +83,13 @@ public class Pay_history implements Serializable{
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public String getConfirmation_number() {
+		return confirmation_number;
+	}
+	public void setConfirmation_number(String confirmation_number) {
+		this.confirmation_number = confirmation_number;
 	}
 
 }

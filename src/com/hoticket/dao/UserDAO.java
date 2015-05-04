@@ -340,5 +340,28 @@ public String generateTempPass(String email) {
 	return re;
 }
 
+public Object checkPayHistory(String confirmation_number) {
+	Object pay=null;
+	try {
+
+		session = ConnectionUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		String query ="from Pay_history where confirmation_number =:confirmation_number";
+		pay =  session.createQuery(query).setParameter("confirmation_number", confirmation_number).uniqueResult();
+		if (pay!=null){
+			return pay;
+		}
+		String query1 ="from Guest_pay_history where confirmation_number =:confirmation_number";
+		pay =  session.createQuery(query1).setParameter("confirmation_number", confirmation_number).uniqueResult();
+		session.getTransaction().commit();
+        return pay;
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	finally{session.close();}
+
+	return pay;
+}
+
 
 }

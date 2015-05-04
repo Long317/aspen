@@ -101,6 +101,10 @@
 			<result name="success">/thank_you.jsp</result>
 			<result name="error">/purchaseTicketFail.jsp</result>
 		</action>
+		<action name="refund" class="com.hoticket.action.RefundAction">
+			<result name="success">/refund_success.jsp</result>
+			<result name="input">/refund.jsp</result>
+		</action>
 	</package>
 	
 	<package name="changesetting" namespace="/" extends="struts-default">
