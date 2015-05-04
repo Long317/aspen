@@ -192,7 +192,8 @@
 		</action>
 		<action name="editCus" class="com.hoticket.action.EditCustomerAction">
 			<result name="success">/admin_manage_customer.jsp</result>
-
+		</action>
+	</package>
 	<package name="comment" namespace="/" extends="struts-default">
 		<action name="addComment" class="com.hoticket.action.CommentAction"  method="addComment">
 			<result name="success">/addCommentSuccessfully.jsp</result>
