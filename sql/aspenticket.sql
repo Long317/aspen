@@ -264,3 +264,54 @@ CREATE TABLE `hoticket`.`cast` (
     REFERENCES `hoticket`.`movie` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
+
+UPDATE hoticket.movie
+SET movie.trailer_url="https://www.youtube.com/watch?v=8mM8iNarcRc"
+WHERE id =1;
+
+UPDATE hoticket.movie
+SET movie.trailer_url="https://www.youtube.com/watch?v=Skpu5HaVkOc"
+WHERE id =2;
+
+UPDATE hoticket.movie
+SET movie.trailer_url="https://www.youtube.com/watch?v=CWb4UDDVrAg"
+WHERE id =3;
+
+UPDATE hoticket.movie
+SET movie.trailer_url="https://www.youtube.com/watch?v=CWb4UDDVrAg"
+WHERE id =4;
+
+UPDATE hoticket.movie
+SET movie.trailer_url="https://www.youtube.com/watch?v=lEqrpuU9fYI"
+WHERE id =5;
+
+UPDATE hoticket.movie
+SET movie.trailer_url="https://www.youtube.com/watch?v=iLGDJkhYnVc"
+WHERE id =6;
+
+UPDATE hoticket.movie
+SET movie.trailer_url="https://www.youtube.com/watch?v=iLGDJkhYnVc"
+WHERE id =7;
+
+UPDATE hoticket.movie
+SET movie.trailer_url="https://www.youtube.com/watch?v=ogIX2Q7tEdc"
+WHERE id =8;
+
+UPDATE hoticket.movie
+SET movie.trailer_url="https://www.youtube.com/watch?v=Skpu5HaVkOc"
+WHERE id =9;
+
+UPDATE hoticket.movie
+SET movie.trailer_url="https://www.youtube.com/watch?v=Skpu5HaVkOc"
+WHERE id =10;
+
+UPDATE hoticket.movie
+SET movie.trailer_url="https://www.youtube.com/watch?v=Skpu5HaVkOc"
+WHERE id =11;
+
+UPDATE hoticket.movie
+SET movie.trailer_url="https://www.youtube.com/watch?v=Skpu5HaVkOc"
+WHERE id =12;
+
+
+

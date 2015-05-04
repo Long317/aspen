@@ -34,7 +34,7 @@ public class MovieDAO {
 		List<Movie> movies = new ArrayList<Movie>();
 		try {
 
-			session = ConnectionUtil.getSessionFactory().openSession();
+			session = ConnectionUtil.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
 			movies = (List<Movie>) session.createQuery("from Movie").list();
 			session.getTransaction().commit();
@@ -220,7 +220,7 @@ public class MovieDAO {
 		Session session = null;
 		try {
 
-			session = ConnectionUtil.getSessionFactory().getCurrentSession();
+			session = ConnectionUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
 			Query query = session.getNamedQuery("calladdMovieProcedure");
 			query.setParameter("id", movie.getId());
