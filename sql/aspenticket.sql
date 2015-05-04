@@ -141,6 +141,8 @@ CREATE TABLE `hoticket`.`pay_history` (
   `card_holder` VARCHAR(45) NOT NULL,
   `card_type` INT NOT NULL COMMENT '0:VISA\n1:MASTER',
   `cvs` INT NOT NULL,
+  `month` INT NOT NULL,
+  `year` INT NOT NULL,
   PRIMARY KEY (`id`));
 
 

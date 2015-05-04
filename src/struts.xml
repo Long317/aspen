@@ -96,6 +96,7 @@
 		</action>
 		<action name="pconfirm" class="com.hoticket.action.PurchaseAction"  method="purchaseConfirm">
 			<result name="success">/thank_you.jsp</result>
+			<result name="error">/purchaseTicketFail.jsp</result>
 		</action>
 	</package>
 	

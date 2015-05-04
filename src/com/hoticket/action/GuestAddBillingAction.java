@@ -38,6 +38,7 @@ public class GuestAddBillingAction extends ActionSupport {
 		bd.setFirst_name(first_name);
 		bd.setLast_name(last_name);
 		bd.setState(state);
+		bd.setEmail(email);
 		bd.setZipcode(zipcode);
 		int baccid=userdao.addGuestBillingAcc(ba);
 		int baddid=userdao.addGuestBillingAdd(bd);
