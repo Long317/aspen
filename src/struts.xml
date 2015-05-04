@@ -16,7 +16,10 @@
 			<result name="error">/index.jsp</result>
 			<result name="input">/index.jsp</result>
 		</action>
-
+		<action name="resetpass" class="com.hoticket.action.ResetPasswordAction">
+			<result name="success">/index.jsp</result>
+			<result name="input">/forgot_password.jsp</result>
+		</action>
 		<action name="signout" class="com.hoticket.action.SignoutAction">
 			<result name="success">/index.jsp</result>
 		</action>
@@ -94,6 +97,9 @@
 		<action name="addGbill" class="com.hoticket.action.GuestAddBillingAction">
 			<result name="success">/payment_review.jsp</result>
 		</action>
+		<action name="pconfirm" class="com.hoticket.action.PurchaseAction"  method="purchaseConfirm">
+			<result name="success">/thank_you.jsp</result>
+		</action>
 	</package>
 	
 	<package name="changesetting" namespace="/" extends="struts-default">
@@ -139,7 +145,11 @@
 		<action name="giftcard" class="com.hoticket.action.GiftCardAction">
 			<result name="guest">/guest_payment.jsp</result>		
 			<result name="customer">/customer_payment.jsp</result>
-   	</action>
+   		</action>
+   		<action name="buyGiftcard" class="com.hoticket.action.BuyGiftcardAction">
+			<result name="success">/PurchaseSuccess.jsp</result>		
+			<result name="error">/purchaseFail.jsp</result>
+   		</action>
 	</package>
 	<package name="autocomplete" namespace="/" extends="struts-default">
 		<action name="autocomplete" class="com.hoticket.action.AutocompAction">
@@ -182,6 +192,17 @@
 		</action>
 		<action name="editCus" class="com.hoticket.action.EditCustomerAction">
 			<result name="success">/admin_manage_customer.jsp</result>
+
+	<package name="comment" namespace="/" extends="struts-default">
+		<action name="addComment" class="com.hoticket.action.CommentAction"  method="addComment">
+			<result name="success">/addCommentSuccessfully.jsp</result>
+			  <param name="url">${url}</param>
+		</action>
+		<action name="deleteComment" class="com.hoticket.action.CommentAction"  method="deleteComment">
+			<result name="success">/deleteCommentSuccessfully.jsp</result>
+			  <param name="url">${url}</param>
+			 <result name="error">/deleteCommentFail.jsp</result>
+			  <param name="url">${url}</param>
 		</action>
 	</package>
 

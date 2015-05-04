@@ -89,6 +89,10 @@
       position:relative;
 		left:30px;
        }
+       .btn-delete{
+       	position:relative;
+       	bottom: 12px;
+       }
   </style>
 
 </head>
@@ -144,20 +148,14 @@
 					<c:set var="counter" value="${0}" />
 						<table class="table table-bordered show_data" >
 						 <tr>
-						 	<c:forEach items="${sessionScope.default_theatre.showing}" var="showing" varStatus="status">
+						 	<c:forEach var="showing" items="${sessionScope.default_theatre.showing}"  varStatus="status" begin="0">
 					 	    <c:if test="${showing.movie.id==movie_id}"> 
 					 	    <c:set var="start_time_full" value="${showing.start_time}"/>
 					 	    <c:set var="start_time" value="${fn:substring(start_time_full, 0, 5)}" />
 					 	    	<!--add td every 4 tickets-->
-					 	    	 <c:if test="${counter % 4 ==0}">
-					 	    	 <td>
-					 	    	 </c:if> 
                   	 			<button class="btn btn-default"><a href="ticket?showing.id=<c:out value='${showing.id}'/>">
                   	 			<c:out value="${start_time}"/></a></button>
                   	 			<!--add td every 4 tickets-->
-					 	    	 <c:if test="${counter % 4 ==3}">
-					 	    	 </td>
-					 	    	 </c:if>
 					 	    	 <c:set var="counter" value="${counter+1}" />
                   	 		</c:if>
                     	    </c:forEach>
@@ -275,49 +273,65 @@
 									All</a>
 							</div>
 							<div id="scrollbar" class="panel-body contentHolder">
+							 <c:forEach items="${sessionScope.SEARCH_MOVIE.movie_ratings}" var="rating">
 								<!--user profiles  -->
 								<div class="profile-blog blog-border">
-									<div class="col-xs-3">
-									<div></div>
-									<h3>Rate By </h3>
+									<div class="col-lg-2">
+										<div>Rate: <c:out value="${rating.rating_score}"/></div>
 									</div>
-									<div class="col-xs-9">
-									<p>It is a good movie</p>
+								<div  class="col-lg-2">
+									<div>by <c:out value="${rating.customer.user_name}"/> </div>
+								</div>
+									<div class="col-lg-7">
+									<p><c:out value="${rating.comment}"/></p>
+									</div>
+									<div class="col-lg-1">
+										<s:if test="#session.login.role>0"> 
+											<form action = "deleteComment">
+											 <input type="hidden" name="r.id" value="<c:out value='${rating.id}'/>">
+											<button type="submit" onclick="return confirm('Are you sure you want to add the comment?');"
+                                                name='submit'  class="btn btn-info btn-delete">Delete</button>
+                                              </form>
+										</s:if>   
 									</div>
 								</div>
 							<!-- end of user profiles -->
+							</c:forEach>
 							</div>
 						</div>
 					</div>
 					<!-- end of fan reviews -->
 			</div>
 			<!-- END OF MOVIE REVIEWS -->
+			<s:if test="#session.login!= null">   
 			<div class="row col-xs-8">
 				<div class="headline">
 					<h2>Add movie review</h2>
 				</div>
-			<form role="form">
+			<form role="form" action="addComment">
 				   <table class="table table-striped" >
 				   	<tr class="success">
-				   		<input type="hidden" name="movie_id" value="<s:property value='#session.SEARCH_MOVIE.id' />">
+				   		<input type="hidden" name="r.movie.id" value="<s:property value='#session.SEARCH_MOVIE.id' />">
 				   		<td>Rated Movie: </td><td><s:property value="#session.SEARCH_MOVIE.name" /></td>
 				   	</tr>
 				   	 <tr>
-				   		<td>user_name:</td><td> <s:property value="#session.login.user_name" /></td>
+				   		<td>user_name:</td><td> 
+				   		<input type="hidden" name="r.customer.id" value="<s:property value='#session.login.id' />">
+				   		<s:property value="#session.login.user_name" /></td>
 				   	</tr>
                     <tr class="success">
                         <td class="success">rate: </td>
                         <td class="success">
-                        	<input type="radio" name="rate" value="1"> 1
-							<input type="radio" name="rate" value="2"> 2
-							<input type="radio" name="rate" value="3"> 3
-							<input type="radio" name="rate" value="4"> 4
-							<input type="radio" name="rate" value="5"> 5
+                        	<input type="radio" name="r.rating_score" value="1"> 1
+							<input type="radio" name="r.rating_score" value="2"> 2
+							<input type="radio" name="r.rating_score" value="3"> 3
+							<input type="radio" name="r.rating_score" value="4"> 4
+							<input type="radio" name="r.rating_score" value="5"> 5
                         </td>
                     </tr>
                     <tr><td>comments:</td>
                     	<td>
-                    	<textarea rows="4" cols="20" placeholder="add your comment here." maxlength="490" name ="comment"></textarea></td>
+                    	<textarea rows="4" cols="20" placeholder="add your comment here." maxlength="490" name ="r.comment"></textarea></td>
                     </tr>
                     <tr>
                     	<td> <button type="submit" onclick="return confirm('Are you sure you want to add the comment?');"
@@ -328,6 +342,7 @@
                 </table>
 			</form>
 		  </div>
+		</s:if>   
 		</div>
 		<!--/container-->
 		<!-- End Content Part -->
@@ -382,16 +397,13 @@
 			ParallaxSlider.initParallaxSlider();
 		});
 		$(document).ready(function() {
-
 			$("#owl-demo").owlCarousel({
 				items : 6,
 				lazyLoad : true,
 				autoPlay : 2000,
 				stopOnHover : true
 			});
-
 		});
-
 		//scroll bar starter
 		 jQuery(document).ready(function ($) {
 		        "use strict";

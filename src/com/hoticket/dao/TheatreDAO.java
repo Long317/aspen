@@ -10,8 +10,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.hoticket.modal.Customer;
-import com.hoticket.modal.Movie;
 import com.hoticket.modal.Price_table;
 import com.hoticket.modal.Theatre;
 import com.hoticket.util.ConnectionUtil;

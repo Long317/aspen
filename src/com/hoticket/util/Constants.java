@@ -9,11 +9,17 @@ public class Constants {
 	public final static String PASSWORD="hoticket308:)";
 	public final static String SUBJECT_REGISTER="You have register to hoticket!";
 	public final static String BODY_REGISTER="You have register to hoticket!Congratulation!!!";
+	public final static String SUBJECT_RESETPW="You have successfully reset your password";
+	public final static String BODY_RESETPW="Your new password is:";
+	public final static String SUBJECT_GIFTCARD="You have bought the hoticket gift card!!";
+	public final static String BODY_GIFTCARD="YOUR CARD NUMBER AND PIN RESPECTIVELY ARE :";
+
 	
 	/**
 	 * URL constant
 	 */
 	public static final String MovieChain_URL = "http://localhost:9999/MovieChain/MovieData";
+	public static final String CreditCardServer_URL = "http://localhost:9999/MovieChain/CreditcardValidate";
 	public static final String MovieData_URL= "/WEB-INF/ACMWebInfo.json";
 	public static final String GEOLocator_URL= "http://ip-api.com/json/#";
 	public static final String GoolgeMapAPI_URL = "https://maps.googleapis.com/maps/api/distancematrix/json";

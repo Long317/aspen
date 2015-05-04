@@ -4,8 +4,29 @@
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
    <%@ taglib prefix="s" uri="/struts-tags" %>
    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+   <jsp:useBean id="now" class="java.util.Date" />
+   <c:set var="day2" value="<%=new java.util.Date (new java.util.Date().getTime() + 60*60*24*1000)%>"/>
+	<c:set var="day3" value="<%=new java.util.Date(new java.util.Date().getTime() + 2*60*60*24*1000)%>"/>
+   <c:set var="day4" value="<%=new java.util.Date(new java.util.Date().getTime() + 3*60*60*24*1000)%>"/>
+   <c:set var="day5" value="<%=new java.util.Date(new java.util.Date().getTime() + 4*60*60*24*1000)%>"/>
+   <c:set var="day6" value="<%=new java.util.Date(new java.util.Date().getTime() + 5*60*60*24*1000)%>"/>
+   <c:set var="day7" value="<%=new java.util.Date(new java.util.Date().getTime() + 6*60*60*24*1000)%>"/> 
+<fmt:formatDate value="${now}" pattern="EEE " var="today_day" />
+<fmt:formatDate value="${now}" pattern="dd-MMM " var="today_date" />
+<fmt:formatDate value="${day2}" pattern="EEE " var="day2_day" />
+<fmt:formatDate value="${day2}" pattern="dd-MMM " var="day2_date" />
+<fmt:formatDate value="${day3}" pattern="EEE " var="day3_day" />
+<fmt:formatDate value="${day3}" pattern="dd-MMM " var="day3_date" />
+<fmt:formatDate value="${day4}" pattern="EEE " var="day4_day" />
+<fmt:formatDate value="${day4}" pattern="dd-MMM " var="day4_date" />
+<fmt:formatDate value="${day5}" pattern="EEE " var="day5_day" />
+<fmt:formatDate value="${day5}" pattern="dd-MMM " var="day5_date" />
+<fmt:formatDate value="${day6}" pattern="EEE " var="day6_day" />
+<fmt:formatDate value="${day6}" pattern="dd-MMM " var="day6_date" />
+<fmt:formatDate value="${day7}" pattern="EEE " var="day7_day" />
+<fmt:formatDate value="${day7}" pattern="dd-MMM " var="day7_date" />
 <head>
 	<title>Hoticket | Welcome...</title>
 
@@ -52,41 +73,19 @@
 	 <%@ include file="header.jsp" %>
 		 <!--/container-->
 			<div class="container content">	
-		 		<div id = "ticketInfoHeader">
-		 			<div class="headline row">
-		 				<div class = "col-md-4"><h2>CHECKOUT</h2></div>
-		 				<div class = "col-md-6">
-		 				<a href="ticketInfo.jsp" class= "btn btn-default disabled">Tickets</a><div class="glyphicon glyphicon-arrow-right"></div>
-                        <a href="user_payment.jsp" class= "btn btn-default disabled">Payment</a><div class="glyphicon glyphicon-arrow-right"></div>
-		 				<div class= "btn btn-default">Confirmation</div>
-		 			    </div>
-		 			</div>
-		 			<div class="ticketBody row">
-                      <div class="row">Theatre Info:</div>
-                      <div class="row"><s:property value="#session.showing.theatre.name"/></div>
-                      <div class="row"><s:property value="#session.showing.theatre.address"/></div>
-                      <div class="row"><s:property value="#session.showing.theatre.city"/>,<s:property value="#session.showing.theatre.state"/>,<s:property value="#session.showing.theatre.zipcode"/></div>
-		 			  <br>
-		 			  <div class="row">Movie Info:</div>
-                      <div class="row"><s:property value="#session.showing.movie.name"/></div>
-                      <div class="row"><s:property value="#session.showing.date"/><s:property value="#session.showing.start_time"/></div>
-                      <br>
-                      <div class="row">Ticket Info:</div>
-                      <div class="row">Adult: <s:property value="#session.adult"/> * <s:property value="#session.ticket_price"/></div>
-                      <div class="row">Child: <s:property value="#session.child"/> * <s:property value="#session.ticket_price*0.8"/></div>
-                      <div class="row">Senior: <s:property value="#session.senior"/> * <s:property value="#session.ticket_price*0.8"/></div>
-                      <div class="row">Total price: <s:property value="#session.ticket_price * #session.adult+#session.ticket_price*0.8 * #session.adult+#session.ticket_price * #session.adult*0.8" /></div>
-                      <form action = "pconfirm">
-                      	<input type ="hidden" name="totalprice" value="<s:property value='#session.ticket_price * #session.adult+#session.ticket_price*0.8 * #session.adult+#session.ticket_price * #session.adult*0.8' />">
-                      	<button type="submit" onclick="return confirm('Are you sure you want to add the comment?');"
-                                                 class="btn btn-info">Purchase</button>
-                      </form>
-		 			</div>
-		 		</div>
-		 	</div>	
+		 		<div class="headline"><h2>Forgot Password</h2></div> 
+		 		<s:fielderror fieldName="emailnotexist"/>
+			 		<div class="row">
+			 			<form action="resetpass" method="post">
+			 			  Email:<input type="text" name="email"></input>
+			 			  <input type="submit" value="Submit">
+			 			</form>
+		            </div>
+
+		      	</div>
+
 		<!-- End Content Part -->
 	</div><!--/wrapper-->
-	<!--end of sign up modal-->
 	<%@ include file="footer.jsp" %>
 
 
@@ -114,6 +113,10 @@
 
 	<script src="assets/js/google-code-prettify/prettify.js"></script>
 	  <script src="assets/js/application.js"></script>
+
+	  	  <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 <script type="text/javascript">
 	//sliders starter
 	jQuery(document).ready(function() {
@@ -130,7 +133,7 @@
 	   stopOnHover: true
 	  });
 	});
-	       
+
 </script>
 	<s:if test="#session.loginError== 1"> 
 		<script>

@@ -14,7 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-
+	<meta http-equiv="refresh" content="2;url=<s:property value='url'/>" />
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="favicon.ico">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700' rel='stylesheet' type='text/css'>
@@ -52,23 +52,10 @@
 	 <%@ include file="header.jsp" %>
 		 <!--/container-->
 			<div class="container content">	
-		 		<div id = "ticketInfoHeader">
-		 			<div class="headline row">
-		 				<div class = "col-md-4"><h2>CHECKOUT</h2></div>
-		 				<div class = "col-md-6">
-		 				<a href="ticketInfo.jsp" class= "btn btn-default">Tickets</a><div class="glyphicon glyphicon-arrow-right"></div>
-                        <a href="user_payment.jsp" class= "btn btn-default">Payment</a><div class="glyphicon glyphicon-arrow-right"></div>
-		 				<div class= "btn btn-default">Confirmation</div>
-		 			    </div>
-		 			</div>
-		 			<div class="ticketBody row">
-		 				
-		 			</div>
-		 		</div>
+		      <h1>Delete comment successfully </h1>
 		 	</div>	
 		<!-- End Content Part -->
 	</div><!--/wrapper-->
-	<!--end of sign up modal-->
 	<%@ include file="footer.jsp" %>
 
 
@@ -96,6 +83,10 @@
 
 	<script src="assets/js/google-code-prettify/prettify.js"></script>
 	  <script src="assets/js/application.js"></script>
+
+	  <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 <script type="text/javascript">
 	//sliders starter
 	jQuery(document).ready(function() {
@@ -112,7 +103,12 @@
 	   stopOnHover: true
 	  });
 	});
-	       
+	           function isNumberKey(evt) {
+                                        var charCode = (evt.which) ? evt.which : event.keyCode;
+                                        if (charCode > 31 && (charCode < 48 || charCode > 57))
+                                            return false;
+                                        return true;
+                                    }
 </script>
 	<s:if test="#session.loginError== 1"> 
 		<script>

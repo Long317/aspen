@@ -1,5 +1,7 @@
 package com.hoticket.action;
 
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Map;
 import java.util.Set;
 
@@ -11,6 +13,8 @@ import com.hoticket.dao.TheatreDAO;
 import com.hoticket.modal.Billing_account;
 import com.hoticket.modal.Billing_address;
 import com.hoticket.modal.Customer;
+import com.hoticket.modal.Guest_billing_account;
+import com.hoticket.modal.Guest_billing_address;
 import com.hoticket.modal.Showing;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -31,6 +35,7 @@ public class PurchaseAction extends ActionSupport implements
 	private int child;
     private int bacc;
     private int badd;
+    private double totalPrice;
 	@Override
 	public Showing getModel() {
 		return showing;
@@ -102,7 +107,27 @@ public class PurchaseAction extends ActionSupport implements
 		}
 		else {return "customer";}
 	}
-
+	
+	
+	public String purchaseConfirm() {
+		// get session object
+		@SuppressWarnings("rawtypes")
+		Map session = (Map) ActionContext.getContext().get("session");
+		
+		if (session.get("login")!=null){
+			Billing_account bacc  = (Billing_account)session.get("bacc");
+			Billing_address badd  = (Billing_address)session.get("badd");
+		
+		 }else{
+				Guest_billing_account bacc  = (Guest_billing_account)session.get("bacc");
+				Guest_billing_address badd  = (Guest_billing_address)session.get("badd");
+			 
+		 }
+	
+		
+		
+		return SUCCESS;
+	}
 	@SuppressWarnings("unchecked")
 	public String getBilling() {
 		// get session object
@@ -181,6 +206,14 @@ public class PurchaseAction extends ActionSupport implements
 
 	public void setBadd(int badd) {
 		this.badd = badd;
+	}
+
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 
