@@ -19,6 +19,11 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 public class AddCustomerAction extends ActionSupport implements ModelDriven<User>{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private String confirmpass;
 	
 	private User user = new User();
@@ -26,7 +31,10 @@ public class AddCustomerAction extends ActionSupport implements ModelDriven<User
 	public User getModel() {
 		return user;
 	}
+	
+	@Override
 	public String execute() {
+		System.out.println(1);
 		@SuppressWarnings("rawtypes")
 		UserDAO userdao=new UserDAO();
 		Map session = (Map) ActionContext.getContext().get("session");
@@ -67,13 +75,7 @@ public class AddCustomerAction extends ActionSupport implements ModelDriven<User
 			addFieldError("email", "email is required");
 			session.put("registerError", 1);
 		}
-		if (StringUtils.isEmpty(user.getUser_name())
-				|| user.getUser_name().length() > 20
-				|| user.getUser_name().length() < 6) {
-			addFieldError("username",
-					"username should be between 6 and 20 chars long");
-			session.put("registerError", 1);
-		}
+		
 		if (user.getEmail().indexOf("@") == -1 ) {
 			addFieldError("email", "email is invalid");
 			session.put("registerError", 1);

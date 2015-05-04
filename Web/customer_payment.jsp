@@ -120,7 +120,7 @@
                                             </c:forEach>
                                             </select>
                                             </label>
-                                            <a href="addbadd.jsp"><button type="button">Add Billing Address</button></a>
+                                            <a href=""><button type="button">Add Billing Address</button></a>
                                             </div>
                                          <s:if test="#session.nobilling!=null"><s:property value="#session.nobilling" /></s:if>
                                         <label class="input">

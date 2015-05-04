@@ -41,7 +41,7 @@ public class EditCustomerAction extends ActionSupport {
 		userDAO.updateUser(c, cus_id);
 		
 		
-		return null;
+		return SUCCESS;
 		
 	}
 	

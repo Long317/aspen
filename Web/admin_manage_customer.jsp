@@ -68,10 +68,10 @@
                     <li class="list-group-item">
                         <a href="admin_settings.jsp"><i class="fa fa-cog"></i> Settings</a>
                     </li> 
-                    <li class="list-group-item active">
+                    <li class="list-group-item">
                         <a href="admin_movie.jsp"><i class="fa fa-cog"></i> Manage Movie</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item active">
                         <a href="admin_manage_customer.jsp"><i class="fa fa-cog"></i> Manage User</a>
                     </li>
 
@@ -104,7 +104,7 @@
                                         </section>
                
                                         <button class="btn-u" type="submit">Search</button>
-                                        <s:fielderror fieldName="searchmovienotexit"/>
+                                        <s:fielderror fieldName="searchcustomernotexist"/>
                                         <!--End Checkout-Form-->
                                     </form>
                                     <form action="deleteCus">
@@ -184,7 +184,7 @@
                                 <div id="addmovie" class="profile-edit tab-pane fade">
                                     <h2 class="heading-md">Add Customer</h2>
                                     <p>Below are the required information for a customer.</p>
-                                    <form class="sky-form" id="sky-form" action="addCus">
+                                    <form class="sky-form" id="sky-form" action="addCustomer">
                                         <!--Checkout-Form-->                 
                                         
                                         

@@ -1,39 +1,40 @@
 package com.hoticket.action;
 
 import static com.hoticket.util.Constants.*;
+
 import java.util.List;
 import java.util.Map;
 
 import com.hoticket.dao.CustomerDAO;
+import com.hoticket.dao.UserDAO;
 import com.hoticket.modal.*;
 import com.hoticket.service.SearchService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SearchCustomerAction extends ActionSupport{
-//	private int cus_id;
-//	@SuppressWarnings("unchecked")
-//	public String execute() {
-//		@SuppressWarnngs("rawtypes")
-//		Map session = (Map) ActionContext.getContext().get("session");
-//		UserDAO userDao = new UserDAO();
-//		List<User>Users=userDao.getUsers();
-//		userDao.DeleteUser(cus_id);
-//		session.put("ALL_USERS", Users);
-//		System.out.println("Users: "+ Users);
-//
-//		return SUCCESS;
-//}
-//
-//	public int getcus_id() {
-//		return cus_id;
-//	}
-//
-//	public void setcus_id(int cus_id) {
-//		this.cus_id = cus_id;
-//	}
+public class SearchCustomerAction extends ActionSupport {
+	// private int cus_id;
+	// @SuppressWarnings("unchecked")
+	// public String execute() {
+	// @SuppressWarnngs("rawtypes")
+	// Map session = (Map) ActionContext.getContext().get("session");
+	// UserDAO userDao = new UserDAO();
+	// List<User>Users=userDao.getUsers();
+	// userDao.DeleteUser(cus_id);
+	// session.put("ALL_USERS", Users);
+	// System.out.println("Users: "+ Users);
+	//
+	// return SUCCESS;
+	// }
+	//
+	// public int getcus_id() {
+	// return cus_id;
+	// }
+	//
+	// public void setcus_id(int cus_id) {
+	// this.cus_id = cus_id;
+	// }
 	private String searchInput;
-
 
 	/**
 	 * 
@@ -42,42 +43,42 @@ public class SearchCustomerAction extends ActionSupport{
 
 	@SuppressWarnings("unchecked")
 	public String execute() {
-		
-		System.out.println("first time"+searchInput);
-		
+
+		System.out.println("first time" + searchInput);
+
 		// get session object
 		@SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
-		//clear search result
+		// clear search result
 		session.put(SEARCH_GENERAL_CUSTOMERS, null);
 
-	
 		// used to check if match customers
 		Customer matchedCustomer;
 		// store all the customers
-		CustomerDAO customerDao=new CustomerDAO();
-		List<Customer> customers =customerDao.getCustomers();
-		
-//		//check for null value
-//		if (StringUtils.isEmpty(searchInput)){
-//			return ERROR;
-//		}
+		CustomerDAO customerDao = new CustomerDAO();
+		List<Customer> customers = customerDao.getCustomers();
 
-		System.out.println("second time: "+searchInput);
-		
-		//check for movies
-		matchedCustomer = SearchService.matchCustomerWithCustomerEmail(searchInput, customers);
-		System.out.println("matchedCustomer: "+matchedCustomer);
-//			if (matchedCustomer!=null) {
-				// get result customers
-				session.put(SEARCH_GENERAL_CUSTOMERS, matchedCustomer);
-				System.out.println("matchedCustomer's user name: "+ matchedCustomer.getId());
-				return CUSTOMER;
-//			} else {
-//				return ERROR;
-//			}
+		// //check for null value
+		// if (StringUtils.isEmpty(searchInput)){
+		// return ERROR;
+		// }
 
-		
+		System.out.println("second time: " + searchInput);
+
+		// check for movies
+		matchedCustomer = SearchService.matchCustomerWithCustomerEmail(
+				searchInput, customers);
+		System.out.println("matchedCustomer: " + matchedCustomer);
+		// if (matchedCustomer!=null) {
+		// get result customers
+		session.put(SEARCH_GENERAL_CUSTOMERS, matchedCustomer);
+		System.out.println("matchedCustomer's user name: "
+				+ matchedCustomer.getId());
+		return CUSTOMER;
+		// } else {
+		// return ERROR;
+		// }
+
 	}
 
 	public String getSearchInput() {
@@ -87,17 +88,23 @@ public class SearchCustomerAction extends ActionSupport{
 	public void setSearchInput(String searchInput) {
 		this.searchInput = searchInput;
 	}
-	
-//	@SuppressWarnings("unchecked")
-//	public void validate() {
-//		@SuppressWarnings("rawtypes")
-//		Map session = (Map) ActionContext.getContext().get("session");
-//		session.put(SEARCH_GENERAL_CUSTOMERS, null);
-//		UserDAO cc=new UserDAO();
-//		Customer c=cc.getCustomerByEmail(searchInput);
-//		 if(c==null){
-//			addFieldError("searchcustomernotexist", "The customer you input does not exists");}
-//	
-//	}
+
+	@SuppressWarnings("unchecked")
+	public void validate() {
+		boolean isfound = false;
+		@SuppressWarnings("rawtypes")
+		Map session = (Map) ActionContext.getContext().get("session");
+		UserDAO cc = new UserDAO();
+		List<User> c = cc.getUsers();
+		for (int i = 0; i < c.size(); i++) {
+			if (c.get(i).getEmail().toLowerCase().trim().equals(searchInput.toLowerCase().trim())) {
+				isfound = true;
+			}
+		}
+		if (!isfound) {
+			addFieldError("searchcustomernotexist",
+					"The customer you input does not exists");
+		}
+	}
 
 }

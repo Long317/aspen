@@ -22,7 +22,7 @@
 		</action>
 		<action name="subscription" class="com.hoticket.action.subscriptionAction">
 			<result name="success">/subscriptSuccess.jsp</result>
-			<result name="input">/subscription.jsp</result>
+			<result name="input">/Subscription.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
 		<action name="sendMovieInfo" class="com.hoticket.action.sendMovieInfoAction">
@@ -177,9 +177,7 @@
 		</action>
 	</package>
 	<package name="adminmovie" namespace="/" extends="struts-default">
-	
-			
-			
+
 		<action name="deleteMovie" class="com.hoticket.action.AdminDeleteMovieAction">
 			<result name="success">/admin_movie.jsp</result>
 		</action>
@@ -196,16 +194,19 @@
 			<result name="input">/admin_movie.jsp</result>
 		</action>
 	</package>
-	<package name="editCus" namespace="/" extends="struts-default">
+	
+	<package name="admincus" namespace="/" extends="struts-default">
 		<action name="searchCus" class="com.hoticket.action.SearchCustomerAction">
 			<result name="customer">/admin_manage_customer.jsp</result>
+			<result name="input">/admin_manage_customer.jsp</result>
 		</action>
 		<action name="deleteCus" class="com.hoticket.action.DeleteCustomerAction">
 			<result name="success">/admin_manage_customer.jsp</result>
 		</action>
-		<action name="addCus" class="com.hoticket.action.AddCustomerAction">
+		<action name="addCustomer" class="com.hoticket.action.AddCustomerAction">
 			<result name="success">/admin_manage_customer.jsp</result>
 			<result name="error">/error.jsp</result>
+			<result name="input">/admin_manage_customer.jsp</result>
 		</action>
 		<action name="editCus" class="com.hoticket.action.EditCustomerAction">
 			<result name="success">/admin_manage_customer.jsp</result>

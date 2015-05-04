@@ -239,9 +239,9 @@ public class SearchService {
 	public static Customer matchCustomerWithCustomerEmail(String searchInput,
 			List<Customer> customers) {
 		for (int i = 0; i < customers.size(); i++) {
-			String DBCustomerEmail =customers.get(i).getEmail();
+			String DBCustomerEmail =customers.get(i). getEmail().toLowerCase().trim();
 			// if equal then return the movie
-			if (DBCustomerEmail.equals(searchInput)) {
+			if (DBCustomerEmail.equals(searchInput.toLowerCase().trim())) {
 				return customers.get(i);
 			}
 			
