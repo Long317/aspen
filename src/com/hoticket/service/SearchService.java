@@ -3,13 +3,10 @@ package com.hoticket.service;
 import static com.hoticket.util.Constants.*;
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
 
 import org.json.simple.parser.ParseException;
 
 import com.hoticket.modal.Customer;
-=======
->>>>>>> refs/remotes/origin/master
 import com.hoticket.modal.Movie;
 import com.hoticket.modal.Theatre;
 import com.hoticket.util.AddressConverter;
