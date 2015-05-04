@@ -42,9 +42,7 @@ public class MovieDAO {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			session.close();
-		}
+		} 
 
 		return movies;
 	}
