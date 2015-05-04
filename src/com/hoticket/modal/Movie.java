@@ -16,7 +16,9 @@ import javax.persistence.Table;
 import org.hibernate.annotations.NamedNativeQueries;
 import org.hibernate.annotations.NamedNativeQuery;
 
-@NamedNativeQueries({ @NamedNativeQuery(name = "callgetMovieByTheatreIdProcedure", query = "CALL getMovieByTheatreId(:theatre_id)", resultClass = Movie.class) })
+@NamedNativeQueries({ @NamedNativeQuery(name = "callgetMovieByTheatreIdProcedure", query = "CALL getMovieByTheatreId(:theatre_id)", resultClass = Movie.class) ,
+		 @NamedNativeQuery(name = "calladdMovieProcedure", query = "CALL addMovie(:id, :name, :release_time, :rating, :length, :trailer_url, :genre, :img_url, :synopsis)", resultClass = Movie.class) }
+)
 @Entity
 @Table(name = "movie")
 public class Movie implements Serializable {

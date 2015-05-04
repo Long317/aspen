@@ -66,7 +66,7 @@
                         <a href="admin_upcoming_tasks.jsp"><i class="fa fa-history"></i> Upcoming Tasks</a>
                     </li>                                       
                     <li class="list-group-item">
-                        <a href="admin_settings.jsp"><i class="fa fa-cog"></i> Settings</a>
+                        <a href="admin_manage_customer.jsp"><i class="fa fa-cog"></i> Manage User</a>
                     </li> 
 
                 </ul>   

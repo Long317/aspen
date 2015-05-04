@@ -3,6 +3,9 @@ package com.hoticket.dao;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -318,6 +321,78 @@ public Guest_billing_address setbillingadd(int badd) {
 	return null;
 }
 
+public void updateUser(User u,int cus_id) {
+
+	session = ConnectionUtil.getSessionFactory().openSession();
+	Transaction tx = session.beginTransaction();
+	try {
+		 Customer c=(Customer) session.get(Customer.class, cus_id);
+		 c.setFirst_name(u.getFirst_name());
+		 c.setLast_name(u.getLast_name());
+		 c.setUser_name(u.getUser_name());
+		 c.setPassword(u.getPassword());
+		 c.setEmail(u.getEmail());
+	     session.update(c);
+	     tx.commit();
+	}
+	catch (Exception e) {
+	    if (tx!=null) tx.rollback();
+	}
+	finally {
+	    session.close();
+	}
+	
+	}
+
+
+public void DeleteUser(int cus_id) {
+
+session = ConnectionUtil.getSessionFactory().openSession();
+
+Transaction tx = session.beginTransaction();
+
+try {
+
+Customer c=(Customer) session.get(Customer.class, cus_id);
+
+    session.delete(c);
+
+    tx.commit();
+
+}
+
+catch (Exception e) {
+
+    if (tx!=null) tx.rollback();
+
+}
+
+finally {
+
+    session.close();
+
+}
+
+
+}
+
+public List<User> getUsers() {
+
+	List<User> Users = new ArrayList<User>();
+	try {
+
+		session = ConnectionUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		Users= (List<User>) session.createQuery("from User").list();
+		session.getTransaction().commit();
+		return Users;
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+
+	return Users;
+}
 public String generateTempPass(String email) {
 	User user=null;
 	String re=null;
@@ -362,6 +437,5 @@ public Object checkPayHistory(String confirmation_number) {
 
 	return pay;
 }
-
 
 }

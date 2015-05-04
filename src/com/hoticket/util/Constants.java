@@ -30,7 +30,9 @@ public class Constants {
  * Session attribute name or result type constant
  */
 	public static final String MOVIE = "movie";
+	public static final String ADMINMOVIE = "adminmovie";
 	public static final String SEARCH_MOVIE = "SEARCH_MOVIE";
+	public static final String ADMIN_SEARCH_MOVIE = "ADMIN_SEARCH_MOVIE";
 	public static final String THEATRE = "theatre";
 	public static final String SEARCH_THEATRE = "SEARCH_THEATRE";
 	public static final String GENERAL = "general";
@@ -38,6 +40,11 @@ public class Constants {
 	public static final String SEARCH_GENERAL_THEATRES = "SEARCH_GENERAL_THEATRES";
 	public static final String SEARCH_GENERAL_MOVIES = "SEARCH_GENERAL_MOVIES";
 	public static final String SHOWING_MOVIES = "SHOWING_MOVIES";
+	public final static String SUBJECT_DEREGISTER="You have de-registered to hoticket!";
+	public final static String BODY_DEREGISTER="You have de-register to hoticket!Congratulation!!!";
+	public static final String CUSTOMER = "customer";
+	public static final String SEARCH_GENERAL_CUSTOMERS = "SEARCH_GENERAL_CUSTOMERS";
+	public static final String SEARCH_CUSTOMER = "SEARCH_CUSTOMER";
 	
 	/**
 	 * Attribute for movie filter session

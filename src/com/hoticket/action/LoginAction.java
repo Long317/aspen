@@ -3,12 +3,8 @@ package com.hoticket.action;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
+import static com.hoticket.util.Constants.*;
 import org.apache.commons.lang.xwork.StringUtils;
-
-
-
-
 
 import com.hoticket.dao.MovieDAO;
 import com.hoticket.modal.Movie;
@@ -66,8 +62,12 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
         }
 		System.out.println(user.getPassword());
 		switch(user.getRole()){
-		case 0:return "customer";
-		case 1:return "admin";
+		case 0:
+			
+			return "customer";
+		case 1:
+			session.put(ADMIN_SEARCH_MOVIE, null);
+			return "admin";
 		case 2: 
 			return "manager";
 		default: return ERROR;
