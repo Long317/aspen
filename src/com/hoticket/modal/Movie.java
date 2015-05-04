@@ -48,6 +48,8 @@ public class Movie implements Serializable {
 	private String trailer_url;
 	@Column(name = "info_url")
 	private String Info_url;
+	@Column(name = "special")
+	private int special;
 	@OneToMany(mappedBy = "movie")
 	private Set<Showing> showings;
 	@OneToMany(mappedBy = "movie")
@@ -166,6 +168,14 @@ public class Movie implements Serializable {
 
 	public void setInfo_url(String info_url) {
 		Info_url = info_url;
+	}
+
+	public int getSpecial() {
+		return special;
+	}
+
+	public void setSpecial(int special) {
+		this.special = special;
 	}
 
 }

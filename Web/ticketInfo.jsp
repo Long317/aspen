@@ -62,6 +62,9 @@
 		 			    </div>
 		 			</div>
 		 			<div class="ticketBody row">
+		 				<s:if test="#session.special== 1"> 
+		 				<h2>This movie has 20% off special offer right now!!</h2>
+		 				</s:if>
 		 				<form class="sky-form" id="sky-form" onsubmit="return validateForm()"  action="payment">
 				          <div class="form-group">
 				          	<div class="row">

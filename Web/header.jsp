@@ -34,6 +34,10 @@
 			<div class="container">
 				<!-- Topbar Navigation -->
 				<ul class="loginbar pull-right">
+					<li><a href="Subscription.jsp">Subscription</a></li>
+					<li class="topbar-devider"></li>
+					<li><a href="specialOffer">Special Offer</a></li>
+					<li class="topbar-devider"></li>
 					<li><a href="faq.html">FAQ</a></li>
 					<li class="topbar-devider"></li>
 					<li><a href="help.html">Help</a></li>  

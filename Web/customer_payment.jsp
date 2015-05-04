@@ -97,7 +97,6 @@
                         </div>
                         <div class = "col-md-6">
 		 				<form class="sky-form" id="sky-form" action="billing" method="post">
-				                            <s:if test="#session.login.billing_accounts!=null"> 
                                             <div class="row">
                                                 <label class="select">
                                                     <select name="bacc">
@@ -109,20 +108,9 @@
                                             </label>
                                             <a href="addbacc.jsp"><button type="button">Add Billing Account</button></a>
                                             </div>
-                                            </s:if>
                                             
-                                            <s:elseif test="#session.login.billing_accounts==null">
-                                            <div class="row">
-                                                <label class="select">
-                                                    <select name="bacc">
-                                                        <option disabled="" selected="" value="-1">Billing Account</option>
-                                            </select>
-                                            </label>
-                                            <a href="addbacc.jsp"><button type="button">Add Billing Account</button></a>
-                                            </div>
-                                            </s:elseif>
+                                
                                             
-                                            <s:if test="#session.login.billing_addresses!=null"> 
                                             <div class="row">
                                                 <label class="select">
                                                     <select name="badd">
@@ -134,18 +122,6 @@
                                             </label>
                                             <a href="addbadd.jsp"><button type="button">Add Billing Address</button></a>
                                             </div>
-                                            </s:if>
-                                            
-                                            <s:elseif test="#session.login.billing_addresses==null">
-                                            <div class="row">
-                                                <label class="select">
-                                                    <select name="badd">
-                                                        <option disabled="" selected="" value="-1">Billing Address</option>
-                                            </select>
-                                            </label>
-                                            <a href="addbadd.jsp"><button type="button">Add Billing Address</button></a>
-                                            </div>
-                                            </s:elseif>
                                          <s:if test="#session.nobilling!=null"><s:property value="#session.nobilling" /></s:if>
                                         <label class="input">
                                            <button class="btn-u" type="submit">Submit</button>

@@ -47,7 +47,7 @@ public class AdminEditMovieAction extends ActionSupport {
 		movieDAO.updateMovie(movie, admin_movie_id);
 		
 		
-		return null;
+		return SUCCESS;
 		
 	}
 	

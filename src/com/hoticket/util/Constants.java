@@ -66,9 +66,9 @@ public class Constants {
 	/**
 	 * ticket price constant
 	 */
-	public static final double PRICE_3D = 171.79;
-	public static final double PRICE_IMAX = 131.79;
-	public static final double PRICE_NORMAL = 71.79;
+	public static final double PRICE_3D = 17.79;
+	public static final double PRICE_IMAX = 13.79;
+	public static final double PRICE_NORMAL = 7.79;
 	public static final String ADULT = "adult";
 	public static final String SENIOR = "senior";
 	public static final String CHILD = "child";

@@ -210,7 +210,7 @@
 				<div class="col-xs-8">
 					<div id="trailer" class="trailer">
 						<iframe width="600" height="366"
-							src="https://www.youtube.com/embed/SfZWFDs0LxA" frameborder="0"
+							src="<s:property value='#session.SEARCH_MOVIE.trailer_url' />" frameborder="0"
 							allowfullscreen>
 							 </iframe>
 					</div>
@@ -331,7 +331,7 @@
                     </tr>
                     <tr><td>comments:</td>
                     	<td>
-                    	<textarea rows="4" cols="20" placeholder="add your comment here." maxlength="490" name ="r.comment"></textarea></td>
+                    	<textarea rows="4" cols="40" placeholder="add your comment here." maxlength="490" name ="r.comment"></textarea></td>
                     </tr>
                     <tr>
                     	<td> <button type="submit" onclick="return confirm('Are you sure you want to add the comment?');"

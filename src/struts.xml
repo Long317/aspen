@@ -20,6 +20,18 @@
 			<result name="success">/index.jsp</result>
 			<result name="input">/forgot_password.jsp</result>
 		</action>
+		<action name="subscription" class="com.hoticket.action.subscriptionAction">
+			<result name="success">/subscriptSuccess.jsp</result>
+			<result name="input">/subscription.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="sendMovieInfo" class="com.hoticket.action.sendMovieInfoAction">
+			<result name="success">/sendingSuccessfully.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="specialOffer" class="com.hoticket.action.SpecialOfferAction">
+			<result name="success">/specialOffer.jsp</result>
+		</action>
 		<action name="signout" class="com.hoticket.action.SignoutAction">
 			<result name="success">/index.jsp</result>
 		</action>

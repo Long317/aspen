@@ -14,7 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<meta http-equiv="refresh" content="2;url=index.jsp" />
+	<meta http-equiv="refresh" content="2;url=admin_sendMessage.jsp" />
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="favicon.ico">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700' rel='stylesheet' type='text/css'>
@@ -52,7 +52,7 @@
 	 <%@ include file="header.jsp" %>
 		 <!--/container-->
 			<div class="container content">	
-		      <h1>Thank you For purchase the tickets!!!</h1>
+		      <h1>Sending information successfully!!!</h1>
 		 	</div>	
 		<!-- End Content Part -->
 	</div><!--/wrapper-->

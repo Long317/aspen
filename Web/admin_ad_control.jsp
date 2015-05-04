@@ -53,7 +53,7 @@
                     <a href="admin_profile.jsp"><i class="fa fa-user"></i> Profile</a>
                     </li> 
                     <li class="list-group-item">
-                        <a href="admin_inventory_report.jsp"><i class="fa fa-bar-chart-o"></i> Inventory Report</a>
+                         <a href="admin_sendMessage.jsp"><i class="fa fa-bar-chart-o"></i> Send Movie Info</a>
                     </li>
                                                          
                     <li class="list-group-item">

@@ -20,7 +20,7 @@ public class RegisterService {
 			if(user1==null)return true;
 			else return false;
 	}
-	public void addCustomer(User user) {
+	public Customer addCustomer(User user) {
         Customer u3 = new Customer();
 	    u3.setEmail(user.getEmail());
 	    u3.setUser_name(user.getUser_name());
@@ -29,7 +29,7 @@ public class RegisterService {
 	    u3.setRole(0);
 	    u3.setGender(1);
         userDao.addCustomer(u3);
-		
+		return u3;
 	}
 
 }

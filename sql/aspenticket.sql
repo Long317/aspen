@@ -271,6 +271,11 @@ CREATE TABLE `hoticket`.`cast` (
     REFERENCES `hoticket`.`movie` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
+	
+CREATE TABLE `hoticket`.`subscription` (
+  `email` VARCHAR(250) NOT NULL,
+  PRIMARY KEY (`email`));
+
 
 UPDATE hoticket.movie
 SET movie.trailer_url="https://www.youtube.com/watch?v=8mM8iNarcRc"

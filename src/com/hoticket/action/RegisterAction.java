@@ -39,9 +39,8 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 		if (!registerService.verifyRegister(user)) {
 			return ERROR;
 		}
-		registerService.addCustomer(user);
 		session.put("registerError", null);
-		session.put("login", user);
+		session.put("login", registerService.addCustomer(user));
 		emailService.send(user.getEmail(), SUBJECT_REGISTER, BODY_REGISTER);
 		return SUCCESS;
 	}

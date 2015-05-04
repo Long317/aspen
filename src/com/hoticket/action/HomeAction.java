@@ -48,6 +48,7 @@ public class HomeAction extends ActionSupport{
         //check if we have movie data
         if (movies.size()>=12){
         session.put("movieCarousel", movies.subList(0, 12));
+        session.put("user_geo_status", "ok");
         }
         
         //Following codes are for user geolocator

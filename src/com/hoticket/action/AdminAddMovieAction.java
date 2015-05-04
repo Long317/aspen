@@ -44,7 +44,7 @@ public class AdminAddMovieAction extends ActionSupport{
 		movieDAO.addMovie(movie);
 		
 		
-		return null;
+		return SUCCESS;
 	
 
 	}

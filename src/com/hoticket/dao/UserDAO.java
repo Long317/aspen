@@ -17,6 +17,8 @@ import com.hoticket.modal.Gift_card;
 import com.hoticket.modal.Guest_billing_account;
 import com.hoticket.modal.Guest_billing_address;
 import com.hoticket.modal.Movie;
+import com.hoticket.modal.Rating;
+import com.hoticket.modal.Subscription;
 import com.hoticket.modal.User;
 import com.hoticket.util.ConnectionUtil;
 import com.hoticket.util.EncryptUtils;
@@ -404,7 +406,7 @@ public String generateTempPass(String email) {
 		user =  (User) session.createQuery(query).setParameter("email", email).uniqueResult();
 		RandomString rd=new RandomString(6);
 		re=rd.nextString();
-		user.setPassword(re);
+		user.setPassword(EncryptUtils.base64encode(re));
 		session.getTransaction().commit();
   
 	} catch (Exception e) {
@@ -437,5 +439,37 @@ public Object checkPayHistory(String confirmation_number) {
 
 	return pay;
 }
+public int addSubscription(String email) {
 
+	try {
+
+		session = ConnectionUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		Subscription s = new Subscription();
+		s.setEmail(email);
+		session.save(s);
+		session.getTransaction().commit();
+		return 1;
+	} catch (Exception e) {
+		e.printStackTrace();
+		return -1;
+	}
+
+}
+@SuppressWarnings("unchecked")
+public List<Subscription> getSubscription() {
+	List<Subscription> subs =new ArrayList<Subscription>();
+	try {
+
+		session = ConnectionUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		subs= (List<Subscription>) session.createQuery("from Subscription").list();
+		session.getTransaction().commit();
+		return subs;
+	} catch (Exception e) {
+		e.printStackTrace();
+		return subs;
+	}
+
+}
 }

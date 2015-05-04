@@ -29,5 +29,6 @@
 		<mapping class="com.hoticket.modal.Price_table" />
 		<mapping class="com.hoticket.modal.Gift_card" />
 		<mapping class="com.hoticket.modal.Cast" />
+		<mapping class="com.hoticket.modal.Subscription" />
 	</session-factory>
 </hibernate-configuration>

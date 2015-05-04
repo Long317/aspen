@@ -52,7 +52,7 @@
 	 <%@ include file="header.jsp" %>
 		 <!--/container-->
 			<div class="container content">	
-		      <h1>Thank you For purchase the tickets!!!</h1>
+		      <h1>You have got your refund!!!Congratulation! </h1>
 		 	</div>	
 		<!-- End Content Part -->
 	</div><!--/wrapper-->

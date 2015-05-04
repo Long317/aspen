@@ -14,7 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<meta http-equiv="refresh" content="2;url=index.jsp" />
+
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="favicon.ico">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700' rel='stylesheet' type='text/css'>
@@ -44,7 +44,16 @@
 	<!-- Prettify -->
 	<link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
-
+	<style>
+	      .movieImg{
+                width:166px;
+                height:245px;          
+            }
+      .movieImg img{
+                width:166px;
+                height:245px;
+            }
+            </style>
 </head>	
 
 <body>
@@ -52,7 +61,24 @@
 	 <%@ include file="header.jsp" %>
 		 <!--/container-->
 			<div class="container content">	
-		      <h1>Thank you For purchase the tickets!!!</h1>
+					<div class="headline"><h2>Special Offers for 20% off</h2></div> 
+
+            <c:forEach var="i" begin="0" end="80" step="6">
+				 		<div class="row">
+						<c:forEach items="${sessionScope.specialOffers}" var="movie" varStatus="status" begin="${i}" end="${i+5}">
+					  		<div class="col-md-2">
+                             <a href="movie?movie.id=<c:out value='${movie.id}'/>">
+                             <div class="movieImg">
+                             <img src="<c:out value='${movie.img_url}'/>">
+                        	 </div>
+                         	</a>
+                             <h4><c:out value="${movie.name}"/> </h4>
+                        	</div>
+					 	</c:forEach>
+          	</div>
+          </c:forEach>		 
+                  
+
 		 	</div>	
 		<!-- End Content Part -->
 	</div><!--/wrapper-->
@@ -84,7 +110,7 @@
 	<script src="assets/js/google-code-prettify/prettify.js"></script>
 	  <script src="assets/js/application.js"></script>
 
-	  <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+	  	  <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 <script type="text/javascript">
@@ -93,15 +119,6 @@
 		App.init();
 		App.initSliders();      
 		ParallaxSlider.initParallaxSlider();
-	});
-	   $(document).ready(function() {
-	   	//owl-demo starter
-	  $("#owl-demo").owlCarousel({
-		items : 8,
-		lazyLoad : true,
-	 autoPlay: 2000,
-	   stopOnHover: true
-	  });
 	});
 	           function isNumberKey(evt) {
                                         var charCode = (evt.which) ? evt.which : event.keyCode;

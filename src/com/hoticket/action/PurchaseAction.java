@@ -51,7 +51,7 @@ public class PurchaseAction extends ActionSupport implements
 	private int bacc;
 	private int badd;
 	private String totalprice;
-	RandomString rs= new RandomString(16);
+	RandomString rs = new RandomString(16);
 
 	@Override
 	public Showing getModel() {
@@ -63,6 +63,7 @@ public class PurchaseAction extends ActionSupport implements
 		// get session object
 		@SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
+		session.put("special",null);
 		session.put("giftcard", null);
 		session.put("giftcarderror", null);
 		session.put("nobilling", null);
@@ -85,20 +86,56 @@ public class PurchaseAction extends ActionSupport implements
 		// enter the ticket price based on the catogary
 		if (p == null) {
 			if (showing.getCategory().equals("3D")) {
-				session.put(TICKET_PRICE, PRICE_3D);
+				if (showing.getMovie().getSpecial() != 0) {
+
+					session.put("special",1);
+					session.put(TICKET_PRICE, PRICE_3D * 0.8);
+				} else {
+					session.put(TICKET_PRICE, PRICE_3D);
+				}
 			} else if (showing.getCategory().equals("IMAX")) {
-				session.put(TICKET_PRICE, PRICE_IMAX);
+				if (showing.getMovie().getSpecial() != 0) {
+
+					session.put("special",1);
+					session.put(TICKET_PRICE, PRICE_IMAX * 0.8);
+				} else {
+					session.put(TICKET_PRICE, PRICE_IMAX);
+				}
 			} else {
-				session.put(TICKET_PRICE, PRICE_NORMAL);
+				if (showing.getMovie().getSpecial() != 0) {
+
+					session.put("special",1);
+					session.put(TICKET_PRICE, PRICE_NORMAL * 0.8);
+				} else {
+					session.put(TICKET_PRICE, PRICE_NORMAL);
+				}
 			}
 		} else {
 
 			if (showing.getCategory().equals("3D")) {
-				session.put(TICKET_PRICE, p[1]);
+				if (showing.getMovie().getSpecial() != 0) {
+					session.put("special", 1);
+					session.put(TICKET_PRICE, p[1] * 0.8);
+				} else {
+					session.put(TICKET_PRICE, p[1]);
+				}
 			} else if (showing.getCategory().equals("IMAX")) {
-				session.put(TICKET_PRICE, p[0]);
+				if (showing.getMovie().getSpecial() != 0) {
+
+					session.put("special", 1);
+					session.put(TICKET_PRICE, p[0] * 0.8);
+				} else {
+					session.put(TICKET_PRICE, p[0]);
+				}
 			} else {
-				session.put(TICKET_PRICE, p[2]);
+
+				if (showing.getMovie().getSpecial() != 0) {
+
+					session.put("special", 1);
+					session.put(TICKET_PRICE, p[2] * 0.8);
+				} else {
+					session.put(TICKET_PRICE, p[2]);
+				}
 			}
 
 		}
@@ -185,7 +222,7 @@ public class PurchaseAction extends ActionSupport implements
 						ph.setTicket_number((int) session.get("adult")
 								+ (int) session.get("senior")
 								+ (int) session.get("child"));
-						String conNumber=rs.nextString();
+						String conNumber = rs.nextString();
 						ph.setConfirmation_number(conNumber);
 						int receive = Pay_historyDAO.getInstance().addHistory(
 								ph);
@@ -260,7 +297,7 @@ public class PurchaseAction extends ActionSupport implements
 								+ (int) session.get("senior")
 								+ (int) session.get("child"));
 						String conNumber = rs.nextString();
-						
+
 						ph.setConfirmation_number(conNumber);
 						int receive = Pay_historyDAO.getInstance().addHistory(
 								ph);
@@ -342,9 +379,9 @@ public class PurchaseAction extends ActionSupport implements
 						gph.setTicket_number((int) session.get("adult")
 								+ (int) session.get("senior")
 								+ (int) session.get("child"));
-						String conNumber=rs.nextString();
+						String conNumber = rs.nextString();
 						gph.setConfirmation_number(conNumber);
-						
+
 						int receive = Guest_pay_historyDAO.getInstance()
 								.addHistory(gph);
 						System.out.println(receive);
@@ -417,7 +454,7 @@ public class PurchaseAction extends ActionSupport implements
 						gph.setTicket_number((int) session.get("adult")
 								+ (int) session.get("senior")
 								+ (int) session.get("child"));
-						String conNumber=rs.nextString();
+						String conNumber = rs.nextString();
 						gph.setConfirmation_number(conNumber);
 						int receive = Guest_pay_historyDAO.getInstance()
 								.addHistory(gph);
