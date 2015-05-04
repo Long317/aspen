@@ -43,7 +43,8 @@
  						<a href="#" data-toggle="modal" data-target="#login">login</a>
 						</li> 
 						<li style="display:inline"class="topbar-devider"></li>    
-						<li><a href="#" data-toggle="modal" data-target="#signUp">Register</a></li> 
+						<li><a href="#" data-toggle="modal" data-target="#signUp">Register</a></li>
+						<li class="topbar-devider"></li> 
 						<li style="display:inline"><a href="forgot_password.jsp">forgot password</a></li>
 					</s:if>
 					<s:else>     
