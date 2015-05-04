@@ -31,7 +31,9 @@
 			<div class="container">
 				<!-- Topbar Navigation -->
 				<ul class="loginbar pull-right">
-					<li><a href="page_faq.html">Help</a></li>  
+					<li><a href="faq.html">FAQ</a></li>
+					<li class="topbar-devider"></li>
+					<li><a href="help.html">Help</a></li>  
 					<li class="topbar-devider"></li>
 					<s:if test="#session.login== null">       
 						<li style="display:inline">

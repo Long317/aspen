@@ -149,5 +149,40 @@
 			</result>
 		</action>
 	</package>
+	<package name="adminmovie" namespace="/" extends="struts-default">
+	
+			
+			
+		<action name="deleteMovie" class="com.hoticket.action.AdminDeleteMovieAction">
+			<result name="success">/admin_movie.jsp</result>
+		</action>
+		<action name="addMovie" class="com.hoticket.action.AdminAddMovieAction">
+			<result name="success">/admin_movie.jsp</result>
+		</action>
+		
+		<action name="editMovie" class="com.hoticket.action.AdminEditMovieAction">
+			<result name="success">/admin_movie.jsp</result>
+		</action>
+		
+		<action name="searchMovie" class="com.hoticket.action.AdminSearchMovieAction">
+			<result name="success">/admin_movie.jsp</result>
+			<result name="input">/admin_movie.jsp</result>
+		</action>
+	</package>
+	<package name="editCus" namespace="/" extends="struts-default">
+		<action name="searchCus" class="com.hoticket.action.SearchCustomerAction">
+			<result name="customer">/admin_manage_customer.jsp</result>
+		</action>
+		<action name="deleteCus" class="com.hoticket.action.DeleteCustomerAction">
+			<result name="success">/admin_manage_customer.jsp</result>
+		</action>
+		<action name="addCus" class="com.hoticket.action.AddCustomerAction">
+			<result name="success">/admin_manage_customer.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="editCus" class="com.hoticket.action.EditCustomerAction">
+			<result name="success">/admin_manage_customer.jsp</result>
+		</action>
+	</package>
 
 </struts>

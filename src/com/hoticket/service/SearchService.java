@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.json.simple.parser.ParseException;
 
+import com.hoticket.modal.Customer;
 import com.hoticket.modal.Movie;
 import com.hoticket.modal.Theatre;
 import com.hoticket.util.AddressConverter;
@@ -228,4 +229,28 @@ public class SearchService {
 		return closeTheatres;
 		
 	}
+	
+	
+	/**
+	 * 
+	 * @param searchInput
+	 * @param users
+	 * @return users that contains search input or user that equals search
+	 *         input
+	 */
+	public static Customer matchCustomerWithCustomerEmail(String searchInput,
+			List<Customer> customers) {
+		for (int i = 0; i < customers.size(); i++) {
+			String DBCustomerEmail =customers.get(i).getEmail();
+			// if equal then return the movie
+			if (DBCustomerEmail.equals(searchInput)) {
+				return customers.get(i);
+			}
+			
+		}
+		return null;
+	}
+	
+	
+	
 }

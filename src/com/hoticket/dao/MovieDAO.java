@@ -225,7 +225,7 @@ public class MovieDAO {
 			Query query = session.getNamedQuery("calladdMovieProcedure");
 			query.setParameter("id", movie.getId());
 			query.setParameter("name", movie.getName());
-			query.setParameter("release_date", movie.getRelease_time());
+			query.setParameter("release_time", movie.getRelease_time());
 			query.setParameter("rating", movie.getRating());
 			query.setParameter("length", movie.getLength());
 			query.setParameter("trailer_url", movie.getTrailer_url());
@@ -234,8 +234,7 @@ public class MovieDAO {
 			query.setParameter("synopsis", movie.getSynopsis());
 			query.executeUpdate();
 			transaction.commit();
-			session.flush();
-			session.close();
+//			session.flush();
 		} catch (Exception e) {
 			e.getMessage();
 			e.printStackTrace();
@@ -260,5 +259,43 @@ public class MovieDAO {
 			session.close();
 		}
 
+	}
+	
+	public void updateMovie(Movie newMovie, int id) {
+		session = ConnectionUtil.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			Movie m = (Movie) session.get(Movie.class, id);
+			m.setName(newMovie.getName());
+			m.setGenre(newMovie.getGenre());
+			m.setImg_url(newMovie.getImg_url());
+			m.setSynopsis(newMovie.getSynopsis());
+			m.setRelease_time(newMovie.getRelease_time());
+			m.setRating(newMovie.getRating());
+			m.setLength(newMovie.getLength());
+			m.setTrailer_url(newMovie.getTrailer_url());
+			session.update(m);
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+		} finally {
+			session.close();
+		}
+	}
+	
+	public void deleteMovie(int movie_id) {
+		session = ConnectionUtil.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			Movie m = (Movie) session.get(Movie.class, movie_id);
+			session.delete(m);
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+		} finally {
+			session.close();
+		}
 	}
 }

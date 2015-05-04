@@ -68,6 +68,12 @@
                     <li class="list-group-item">
                         <a href="admin_settings.jsp"><i class="fa fa-cog"></i> Settings</a>
                     </li> 
+                    <li class="list-group-item">
+                        <a href="admin_movie.jsp"><i class="fa fa-cog"></i> Manage Movie</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="admin_manage_customer.jsp"><i class="fa fa-cog"></i> Manage User</a>
+                    </li>
 
                 </ul>   
 

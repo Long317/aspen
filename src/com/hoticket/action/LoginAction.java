@@ -1,10 +1,8 @@
 package com.hoticket.action;
 
 import java.util.Map;
-
+import static com.hoticket.util.Constants.*;
 import org.apache.commons.lang.xwork.StringUtils;
-
-
 import com.hoticket.modal.User;
 import com.hoticket.service.LoginService;
 import com.hoticket.util.EncryptUtils;
@@ -44,8 +42,12 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 		session.put("login", user);
 		System.out.println(user.getPassword());
 		switch(user.getRole()){
-		case 0:return "customer";
-		case 1:return "admin";
+		case 0:
+			
+			return "customer";
+		case 1:
+			session.put(ADMIN_SEARCH_MOVIE, null);
+			return "admin";
 		case 2: 
 			return "manager";
 		default: return ERROR;

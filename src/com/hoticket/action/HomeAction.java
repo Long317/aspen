@@ -26,7 +26,6 @@ public class HomeAction extends ActionSupport{
 		//get session object
 		@SuppressWarnings("rawtypes")
 		Map session = (Map) ActionContext.getContext().get("session");
-		
 		//fowlloing codes are for movie carousal
 		
 		//get all movies
