@@ -148,7 +148,7 @@
 					<c:set var="counter" value="${0}" />
 						<table class="table table-bordered show_data" >
 						 <tr>
-						 	<c:forEach items="${sessionScope.default_theatre.showing}" var="showing" varStatus="status">
+						 	<c:forEach var="showing" items="${sessionScope.default_theatre.showing}"  varStatus="status" begin="0">
 					 	    <c:if test="${showing.movie.id==movie_id}"> 
 					 	    <c:set var="start_time_full" value="${showing.start_time}"/>
 					 	    <c:set var="start_time" value="${fn:substring(start_time_full, 0, 5)}" />
@@ -397,16 +397,13 @@
 			ParallaxSlider.initParallaxSlider();
 		});
 		$(document).ready(function() {
-
 			$("#owl-demo").owlCarousel({
 				items : 6,
 				lazyLoad : true,
 				autoPlay : 2000,
 				stopOnHover : true
 			});
-
 		});
-
 		//scroll bar starter
 		 jQuery(document).ready(function ($) {
 		        "use strict";

@@ -17,6 +17,7 @@ import com.hoticket.modal.Movie;
 import com.hoticket.modal.User;
 import com.hoticket.util.ConnectionUtil;
 import com.hoticket.util.EncryptUtils;
+import com.hoticket.util.RandomString;
 
 
 
@@ -94,8 +95,7 @@ public class UserDAO {
 		
 		return c;
 	}
-
-
+	
 public void addCustomer(Customer c) {
 	try {
 
@@ -316,6 +316,28 @@ public Guest_billing_address setbillingadd(int badd) {
 	    session.close();
 	}
 	return null;
+}
+
+public String generateTempPass(String email) {
+	User user=null;
+	String re=null;
+	try {
+
+		session = ConnectionUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		String query ="from User where email =:email";
+		user =  (User) session.createQuery(query).setParameter("email", email).uniqueResult();
+		RandomString rd=new RandomString(6);
+		re=rd.nextString();
+		user.setPassword(re);
+		session.getTransaction().commit();
+  
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	finally{session.close();}
+
+	return re;
 }
 
 
